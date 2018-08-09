@@ -4,11 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <font face='courier'>
-  <title>{% block title %}homepage{% endblock %}</title></font>
-
-  {% comment %}
-  The following is for logos
+  <title>{% block title %}Homepage{% endblock %}</title>
+<!-- The following is for logos
   <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/apple-touch-icon-57x57.png' %}">
   <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/apple-touch-icon-60x60.png' %}">
   <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
@@ -29,51 +26,33 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="mask-icon" href="{% static 'img/pinned-woid.svg' %}" color="#0e1936">
   <link href="{% static 'css/vendor/normalize.css' %}" rel="stylesheet"> 
-  <link href="{% static 'css/woid.css' %}" rel="stylesheet">
-  {% endcomment %}
+  <link href="{% static 'css/woid.css' %}" rel="stylesheet"> -->
   {% block stylesheet %}{% endblock %}
 </head>
 
-<style>
-.content {
-	max-width: 960px;
-	margin: auto;
-}
-</style>
-
 
 <body>
-	<font face='courier' font size="6" color="goldenrod">
-		<div class="wrapper">
-		<header>
-		<a href="{% url 'homepage' %}" style="text-decoration: none">top</a>
-		</header>
-	</font>
-	<hr width="95%" size="1" noshade>
-	<font face='courier'>
-	<main>
-{% comment %}
-{% endcomment %}
-	  <h1>home</h1>
-      
+  <div class="wrapper">
+    <header>
+      <a href="{% url 'homepage' %}">homepage</a>
+    </header>
+	
 
-	  
-	</main>
-	<div class="push"></div>
-  </div>
-  <hr width="95%" size="1" noshade>
+  <p>this is the homepage</p>
+  <p><a href="{% url 'aboutpage' %}">go to about page</a></p>
+  
   <footer>
-    <a href="{% url 'homepage' %}">home</a>
     <a href="{% url 'aboutpage' %}">about</a>
-	{% comment %}
+
     <a href="{% url 'status' %}">status</a>
     <a href="https://github.com/vitorfs/woid/" target="_blank">github</a>
+    {% comment %}
     <a href="{% url 'cookies' %}">cookies</a>
     <a href="{% url 'privacy' %}">privacy</a>
     <a href="{% url 'terms' %}">terms</a>
     {% endcomment %}
 
-  </footer></font>
+  </footer>
 <!--
   <script src="{% static 'js/ga.js' %}"></script>
   <script src="{% static 'js/vendor/jquery-1.11.3.min.js' %}"></script>

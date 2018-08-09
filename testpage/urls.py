@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+
 from django.contrib import admin
 
 from django.views.generic import TemplateView
@@ -33,8 +34,23 @@ from django.views.generic import TemplateView
 	# return HttpResponse(html)
 
 urlpatterns = [
-#    url(r'^$', TemplateView.as_view(template_name='home.html'), name='homepage'),
-	url(r'^index.+?$', TemplateView.as_view(template_name='index.html'), name='homepage'),
+    url(r'^$', TemplateView.as_view(template_name='home.html'), name='homepage'),
+#	url(r'^index.+?$', TemplateView.as_view(template_name='index.html'), name='homepage'),
 #	url(r'^admin/', admin.site.urls),
 	url(r'^about/$',TemplateView.as_view(template_name='about.html'), name='aboutpage'),
 ]
+
+# Use include() to add paths from the holdings application
+from django.conf.urls import include
+
+
+urlpatterns += [
+	url(r'^holdings/', include('holdings.urls')),
+]
+
+# Use static() to add url mapping to serve static files during development (only)
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

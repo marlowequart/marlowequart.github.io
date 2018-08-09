@@ -4,15 +4,34 @@
 <basefont color="goldenrod" face="courier">
   <title>{{ title }}</title>
 </head>
+
 <style>
 .content {
 	max-width: 960px;
 	margin: auto;
 }
 </style>
+
+
 <body>
+	<font face='courier' font size="6" color="goldenrod">
+		<div class="wrapper">
+		<header>
+		<a href="{% url 'homepage' %}" style="text-decoration: none">top</a>
+		</header>
+	</font>
+	<hr width="95%" size="1" noshade>
+	
+	<font face='courier'>
   <h1>about {{ title }}</h1>
   <p>this website was developed on 8/2/2018</p>
-  <p><a href="{% url 'homepage' %}">homepage</a></p>
+
+  <hr width="95%" size="1" noshade>
+  <footer>
+    <a href="{% url 'homepage' %}">home</a>
+    <a href="{% url 'aboutpage' %}">about</a>
+  </footer></font>
+  
+  
 </body>
 </html>
