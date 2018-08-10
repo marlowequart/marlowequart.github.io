@@ -36,13 +36,12 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='home.html'), name='homepage'),
 #	url(r'^index.+?$', TemplateView.as_view(template_name='index.html'), name='homepage'),
-#	url(r'^admin/', admin.site.urls),
+	url(r'^admin/', admin.site.urls),
 	url(r'^about/$',TemplateView.as_view(template_name='about.html'), name='aboutpage'),
 ]
 
 # Use include() to add paths from the holdings application
 from django.conf.urls import include
-
 
 urlpatterns += [
 	url(r'^holdings/', include('holdings.urls')),
