@@ -112,6 +112,10 @@ class combiner:
 
         # Now we reset indexes, to make them visible for exporting.
         final_dataframe = final_dataframe.reset_index()
+		
+		# 3/1/19 Need to add header to final dataframe
+		#final_dataframe = final_dataframe.add_header(
+		
         # Our final dataframe unsorted after all our merges. Maybe if we run in another order we get it right way,
         #  but fortunately we can just sort dataframe by two index columns:
         final_dataframe = final_dataframe.sort_values(by=['Date','Time'], ascending=False)
@@ -122,7 +126,13 @@ class combiner:
         print('Done!')
         print('Operation took: {}'.format(self.stop-self.start))
 
-    # Find date with respect to full or not working day
+    # Find date with respect to full or not working day:
+	
+	# This function cycles through the dates starting from the top
+	# of the .csv file and finds the boundary date that corresponds
+	# to the nth actual trading date as specified at the beginning of the script (trading_days_in_deep)
+	# this function filters out non-trading days. It does not consider half days
+	# to skip half days, change the check_if_this_is_a_full_trading_day function
     def get_boundary_date(self, df):
         full_trading_days_passed = 0
         total_trading_days_passed = 0
@@ -163,7 +173,10 @@ class combiner:
         # save the dataframe to a csv file
         dataframe.to_csv(filename, sep=',', index=False)
 
-    # Checking if time is in the trading time, i.e. this is a full trading day
+    # Checking if any time of the current date is in the trading time,
+	# i.e. this is a full trading day.
+	# note this does not check for and ignore half days, but returns true for the first
+	# minute that falls within the trading day range
     def check_if_this_is_a_full_trading_day(self, day):
         for time in day.Time:
             startTradingTime = datetime.datetime.strptime('09:30:00', '%H:%M:%S')

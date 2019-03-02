@@ -7,6 +7,8 @@ Use this script to generate desired price data from the csv file.
 import pandas as pd
 import os
 import numpy as np
+import datetime
+import time
 # import csv
 
 
@@ -37,7 +39,16 @@ def day_stats(df,time):
 	
 	return open,close,volume
 
-
+def check_if_full_trading_day(day):
+	for time in day.Time:
+		print(time)
+		startTradingTime = datetime.datetime.strptime('09:30:00', '%H:%M:%S')
+		endTradingTime = datetime.datetime.strptime('15:00:00', '%H:%M:%S')
+		curTime = datetime.datetime.strptime(time, '%H:%M:%S')
+		if curTime >= startTradingTime and curTime <= endTradingTime:
+			print('current time passes '+time)
+			return True
+	pass
 
 def main():
 	#####
@@ -55,7 +66,7 @@ def main():
 	# ~ return
 	
 	# Data location for windows:
-	path = 'C:\\Users\\quartm\\Desktop\\Archive\\'
+	path = 'C:\\Python\\transfer\\sum_vol\\'
 	
 	in_file_name1='18ESU_05_01_to_09_30.csv'
 	in_file_name2='18ESM_03_01_to_06_30.csv'
@@ -72,7 +83,7 @@ def main():
 	# check_nan=np.where(pd.isnull(df_1))
 	# df=df_1.drop(df_1.index[[check_nan[0][0]]])
 	
-	
+	'''
 	in_df1=import_data(in_file1)
 	in_df2=import_data(in_file2)
 	out_df1=import_data(out_file)
@@ -117,6 +128,27 @@ def main():
 	print(in_file_name2+': Volume:'+str(vol_in2)+' Open:'+str(open_in2)+' Close:'+str(close_in2))
 	print(out_file_name+': Volume:'+str(vol_out)+' Open:'+str(open_out)+' Close:'+str(close_out))
 	print('\n')
+	'''
+	
+	#Here is a function to detect the number of full trading days that has passed
+	
+	in_df1=import_data(in_file1)
+	# test grouped dataframe
+	full_trading_days_passed = 0
+	total_trading_days_passed = 0
+	boundary_date = ''
+	for i, x in in_df1.groupby('Date', sort=False):
+		print(i)
+		# print(x.head())
+		boundary_date = i
+		total_trading_days_passed += 1
+		if check_if_full_trading_day(x):
+			print(i+' is a full trading day')
+			full_trading_days_passed+=1
+		if full_trading_days_passed >= 2:
+			print('detected 5 days')
+			return
+
 	
 
 main()
