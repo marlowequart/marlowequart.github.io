@@ -56,21 +56,15 @@ def main():
 	#####
 	
 	# Data location for mac:
-	# ~ path = '/Users/Marlowe/Marlowe/Securities_Trading/Trading_Ideas/Data/ES_Data/'
-	# ~ file_name='ES_full_dec_2007_to_nov_2018.csv'
-	# ~ file_name='ESZ18_06_13_to_11_13.csv'
-	# ~ file_full= os.path.join(path,file_name)
-	
-	# ~ df=import_data(file_full)
-	# ~ print(df.head())
-	# ~ return
+	path = '/Users/Marlowe/gitsite/transfer/sum_vol/'
 	
 	# Data location for windows:
-	path = 'C:\\Python\\transfer\\sum_vol\\'
+	#path = 'C:\\Python\\transfer\\sum_vol\\'
 	
 	in_file_name1='18ESU_05_01_to_09_30.csv'
 	in_file_name2='18ESM_03_01_to_06_30.csv'
-	out_file_name='18ESU_05_01_to_09_30.csv'
+	# ~ out_file_name='Final_data_using1.csv'
+	out_file_name='Final_full_data_20190308.csv'
 	
 	in_file1= os.path.join(path,in_file_name1)
 	in_file2= os.path.join(path,in_file_name2)
@@ -83,11 +77,10 @@ def main():
 	# check_nan=np.where(pd.isnull(df_1))
 	# df=df_1.drop(df_1.index[[check_nan[0][0]]])
 	
-	'''
+	
 	in_df1=import_data(in_file1)
 	in_df2=import_data(in_file2)
 	out_df1=import_data(out_file)
-	
 	
 	
 	#####
@@ -100,8 +93,8 @@ def main():
 	#today = '2018-10-24'
 	#yesterday = '2018-10-23'
 	
-	date = '2018-06-15'
-	time = '09:10:00'
+	date = '2018-06-07'
+	time = '18:38:00'
 	
 	# cash session starts at 09:30:00 ends at 16:00:00
 	# ~ open_time='09:30:00'
@@ -128,8 +121,8 @@ def main():
 	print(in_file_name2+': Volume:'+str(vol_in2)+' Open:'+str(open_in2)+' Close:'+str(close_in2))
 	print(out_file_name+': Volume:'+str(vol_out)+' Open:'+str(open_out)+' Close:'+str(close_out))
 	print('\n')
-	'''
 	
+	'''
 	#Here is a function to detect the number of full trading days that has passed
 	
 	in_df1=import_data(in_file1)
@@ -148,7 +141,7 @@ def main():
 		if full_trading_days_passed >= 2:
 			print('detected 5 days')
 			return
-
+'''
 	
 
 main()
