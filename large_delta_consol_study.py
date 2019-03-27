@@ -29,30 +29,36 @@ from scipy import stats
 
 
 #open csv file, return the data in a pandas dataframe
-def import_data(file_name):
+def import_data(file_name,fields):
+	#only add items in fields list to dataframe
+	
 	#only add date, open, high, low, last to dataframe
-	fields = ['Date','Open','High','Low','Last']
+	# fields = ['Date','Open','High','Low','Close']
 	
 	#open the file using pandas, use the first row as the header
 	data = pd.read_csv(file_name,header=0,usecols=fields)
 	
+	#change the order to most recent date on top if necessary
+	data=data.sort(fields[0],ascending=0)
+	data=data.reset_index(drop=True)
 	# ~ print(data.head(5))
 	
 	return data
 	
 	
-def gen_plot(dataframe,startidx,endidx):
+def gen_plot_mac(dataframe,startidx,endidx,fields):
+	# fields = ['Date','Open','High','Low','Close']
 	#####
 	# plot just price
 	#####
 	endidx=endidx+1
 	#dataframe is a pandas dataframe with open, high, low, close for each date
 	
-	open_day=dataframe['Open'][startidx:endidx].tolist()
-	high=dataframe['High'][startidx:endidx].tolist()
-	low=dataframe['Low'][startidx:endidx].tolist()
-	close=dataframe['Last'][startidx:endidx].tolist()
-	date=dataframe['Date'][startidx:endidx].tolist()
+	open_day=dataframe[fields[1]][startidx:endidx].tolist()
+	high=dataframe[fields[2]][startidx:endidx].tolist()
+	low=dataframe[fields[3]][startidx:endidx].tolist()
+	close=dataframe[fields[4]][startidx:endidx].tolist()
+	date=dataframe[fields[0]][startidx:endidx].tolist()
 	open_day.reverse()
 	high.reverse()
 	low.reverse()
@@ -72,7 +78,7 @@ def gen_plot(dataframe,startidx,endidx):
 	#####
 	fig = plt.figure()
 	ax = plt.subplot()
-	candlestick2_ochl(ax,open_day,close,high,low,width=0.5,colorup='b',colordown='r',alpha=0.75)
+	candlestick2_ochl(ax,open_day,close,high,low,width=0.5,colorup='blue',colordown='r',alpha=0.75)
 	ax.xaxis.set_major_locator(ticker.MaxNLocator(num_ticks))
 	ax.xaxis.set_major_formatter(ticker.FuncFormatter(date))
 	fig.autofmt_xdate()
@@ -86,20 +92,73 @@ def gen_plot(dataframe,startidx,endidx):
 	plt.show()
 	
 	
+def gen_plot_pc(dataframe,startidx,endidx,fields,indexes):
+	# fields = ['Date','Open','High','Low','Close']
+	#####
+	# plot just price
+	#####
+	endidx=endidx+1
+	#dataframe is a pandas dataframe with open, high, low, close for each date
+	# print(startidx,endidx)
+	# print(dataframe['Date'][20:75])
+	# return
+	open_day=dataframe[fields[1]][startidx:endidx].tolist()
+	high=dataframe[fields[2]][startidx:endidx].tolist()
+	low=dataframe[fields[3]][startidx:endidx].tolist()
+	close=dataframe[fields[4]][startidx:endidx].tolist()
+	date=dataframe[fields[0]][startidx:endidx].tolist()
+	open_day.reverse()
+	high.reverse()
+	low.reverse()
+	close.reverse()
+	date.reverse()
+	# num_ticks=6
+	# print(len(open_day))
+	# return
+	# ~ def mydate(x,pos):
+		# ~ try:
+			# ~ return time[int(x)]
+		# ~ except IndexError:
+			# ~ return ''
+	
+	#####
+	# plot just price
+	#####
+	fig = plt.figure()
+	ax = plt.subplot()
+	candlestick2_ochl(ax,open_day,close,high,low,width=0.5,colorup='blue',colordown='r',alpha=0.75)
+	
+	for idx in indexes:
+		# ~ print(item)
+		plt.axvline(x=idx, color='k', linestyle='--')
+			
+	
+	# ax.xaxis.set_major_locator(ticker.MaxNLocator(num_ticks))
+	# ax.xaxis.set_major_formatter(ticker.FuncFormatter(date))
+	# fig.autofmt_xdate()
+	# fig.tight_layout()
+	ax.set_ylabel('Price')
+	ax.set_xlabel('Date/Time')
+	ax.set_xlim(-1.0,len(open_day)-1.0)
+	# ax.xaxis.set_major_locator(ticker.MaxNLocator(num_ticks))
+	# ax.xaxis.set_major_formatter(ticker.FuncFormatter(date))
+	ax.grid()
+	plt.show()
 	
 	
-def list_gen(df,start_date,end_date):
+def list_gen(df,start_date,end_date,fields):
 	#generate a list of dates (x axis) and values (y axis) for given inputs
+	#fields order = ['Date','Open','High','Low','Close']
 	
-	start_day_df=df.loc[df['Date'] == start_date]
-	end_day_df=df.loc[df['Date'] == end_date]
+	start_day_df=df.loc[df[fields[0]] == start_date]
+	end_day_df=df.loc[df[fields[0]] == end_date]
 	# end_date_idx is an int
 	startidx=end_day_df.index[0].tolist()
 	endidx=start_day_df.index[0].tolist()
 	
 	
-	date=df['Date'][startidx:endidx].tolist()
-	close=df['Last'][startidx:endidx].tolist()
+	date=df[fields[0]][startidx:endidx].tolist()
+	close=df[fields[4]][startidx:endidx].tolist()
 	#order lists from oldest to newest
 	close.reverse()
 	date.reverse()
@@ -142,7 +201,8 @@ def slice_df(df,start_date,end_date):
 	
 	startidx=end_day_df.index[0].tolist()
 	endidx=start_day_df.index[0].tolist()
-	
+	# print(startidx,endidx)
+	# return
 	return df[startidx:endidx],startidx,endidx
 	
 	
@@ -152,10 +212,15 @@ def main():
 	#####
 	
 	# Data location for mac:
-	path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
+	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
+	# in_file_name='Emini_Daily_1998_2018.csv'
+	# in_file= os.path.join(path,in_file_name)
 	
-	in_file_name='Emini_Daily_1998_2018.csv'
-	
+	# Data location for PC:
+	path = 'C:\\Python\\transfer\\'
+	in_file_name='FB.csv'
+	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
+	fields = ['Date','Open','High','Low','Close']
 	in_file= os.path.join(path,in_file_name)
 	
 	# add a header to the file if no header exists
@@ -166,7 +231,7 @@ def main():
 	
 	# create dataframe from the data
 	#headers=file_noblanks[0]
-	df=import_data(in_file)
+	df=import_data(in_file,fields)
 	
 	
 	#####
@@ -176,20 +241,23 @@ def main():
 	end_date='2018-08-31'
 	
 	#generate price data for plotting
-	date_list,close_list=list_gen(df,start_date,end_date)
+	# date_list,close_list=list_gen(df,start_date,end_date,fields)
+	# print(df.head())
+	# print(df.tail())
 	
 	#create new dataframe with new range
 	
-	df,idxl,idxh=slice_df(df,start_date,end_date)
-	
-	
+	df_2,idxl,idxh=slice_df(df,start_date,end_date)
+	# print(df['Date'][20:75])
+	# return
+
 	#add true range column and column for 10 day atr
-	num_day_av=10
-	df=true_range_calc(df,idxl,idxh,num_day_av)
+	# num_day_av=10
+	# df=true_range_calc(df,idxl,idxh,num_day_av)
 	# ~ print(df.head(5))
 	# ~ print(df.tail(15))
 	
-	idxh=idxh-num_day_av
+	# idxh=idxh-num_day_av
 	# ~ return
 	
 	
@@ -198,50 +266,56 @@ def main():
 	#####
 	
 	#try a daily delta of true range of >50%, how many?
-	cutoff=float(50.0)
-	idx_locs=[]
-	for idx in range(idxl,idxh-2):
-		cur_tr=float(df['true_range'][idx])
-		prev_tr=float(df['true_range'][idx+1])
-		## ~ print('current '+str(cur_tr))
-		## ~ print('prev '+str(prev_tr))
+	# cutoff=float(50.0)
+	# idx_locs=[]
+	# for idx in range(idxl,idxh-2):
+		# cur_tr=float(df['true_range'][idx])
+		# prev_tr=float(df['true_range'][idx+1])
+		# ~ print('current '+str(cur_tr))
+		# ~ print('prev '+str(prev_tr))
 		
-		delta=100.*abs(cur_tr-prev_tr)/prev_tr
-		## ~ print(delta)
-		if delta > cutoff:
-			idx_locs.append(idx)
+		# delta=100.*abs(cur_tr-prev_tr)/prev_tr
+		# ~ print(delta)
+		# if delta > cutoff:
+			# idx_locs.append(idx)
 			
 	
 	#try a delta from atr >50%, how many incidents?
-	cutoff=float(50.0)
-	idx_locs=[]
-	for idx in range(idxl,idxh-1):
-		cur_tr=float(df['true_range'][idx])
-		atr=float(df['ATR'][idx])
+	# cutoff=float(50.0)
+	# idx_locs=[]
+	# for idx in range(idxl,idxh-1):
+		# cur_tr=float(df['true_range'][idx])
+		# atr=float(df['ATR'][idx])
 		
-		delta=100.*abs(cur_tr-atr)/atr
+		# delta=100.*abs(cur_tr-atr)/atr
 		# ~ print(delta)
-		if delta > cutoff:
-			idx_locs.append(idx)
+		# if delta > cutoff:
+			# idx_locs.append(idx)
 	
 	
 	#try a price delta form yesterdays close to todays high
 	#>10%. I think we want to use this method for jumps in indiv equities
-	cutoff=float(1.0)
+	cutoff=float(5.0)
 	idx_locs=[]
 	for idx in range(idxl,idxh-1):
 		cur_high=float(df['High'][idx])
-		yest_close=float(df['Last'][idx+1])
+		cur_low=float(df['Low'][idx])
+		yest_close=float(df['Close'][idx+1])
 		
-		delta=100.*abs(cur_high-yest_close)/yest_close
+		delta_h=100.*abs(cur_high-yest_close)/yest_close
+		delta_l=100.*abs(yest_close-cur_low)/yest_close
 		# ~ print(delta)
-		if delta > cutoff:
-			idx_locs.append(idx)
+		if delta_h > cutoff or delta_l > cutoff:
+			idx_locs.append(idx-idxl)
 			
 	
-	# ~ print(idx_locs)
-	# ~ print(len(idx_locs))
-	
+	# print(idx_locs)
+	# print(idxl,idxh,idxh-idxl)
+	# print(df['Date'][20:75])
+	# return
+	gen_plot_pc(df,idxl,idxh,fields,idx_locs)
+	# gen_plot_mac(df,idxl,idxh,fields)
+	return
 	
 	#####
 	# Using the indexes from the large deltas, and a pre-determined envelope size,
@@ -297,7 +371,7 @@ def main():
 		bounds[idx].append(upper_idx)
 		# ~ bounds[idx].append(0)
 	
-	print(df['Date'][upper_idx])
+	# print(df['Date'][upper_idx])
 	return
 	
 	# ~ print(len(slopes))
