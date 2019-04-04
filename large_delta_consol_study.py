@@ -92,7 +92,7 @@ def gen_plot_mac(dataframe,startidx,endidx,fields):
 	plt.show()
 	
 	
-def gen_plot_pc(dataframe,startidx,endidx,fields,indexes):
+def gen_plot_pc(dataframe,startidx,endidx,fields,indexes,upper_bounds):
 	# fields = ['Date','Open','High','Low','Close']
 	#####
 	# plot just price
@@ -107,11 +107,26 @@ def gen_plot_pc(dataframe,startidx,endidx,fields,indexes):
 	low=dataframe[fields[3]][startidx:endidx].tolist()
 	close=dataframe[fields[4]][startidx:endidx].tolist()
 	date=dataframe[fields[0]][startidx:endidx].tolist()
+	#need to reverse data because dataframe has order from most recent to oldest
 	open_day.reverse()
 	high.reverse()
 	low.reverse()
 	close.reverse()
 	date.reverse()
+	
+	# print(indexes)
+	#need to reverse indexes too
+	for i in range(len(indexes)):
+		current_num=indexes[i]
+		shift_num=endidx-current_num+startidx-1
+		indexes[i]=shift_num
+		
+	for i in range(len(upper_bounds)):
+		current_num=upper_bounds[i]
+		shift_num=endidx-current_num+startidx-1
+		upper_bounds[i]=shift_num
+	
+	
 	# num_ticks=6
 	# print(len(open_day))
 	# return
@@ -128,9 +143,13 @@ def gen_plot_pc(dataframe,startidx,endidx,fields,indexes):
 	ax = plt.subplot()
 	candlestick2_ochl(ax,open_day,close,high,low,width=0.5,colorup='blue',colordown='r',alpha=0.75)
 	
+	#for 
 	for idx in indexes:
 		# ~ print(item)
-		plt.axvline(x=idx, color='k', linestyle='--')
+		plt.axvline(x=idx-startidx, color='k', linestyle='--')
+	for bd in upper_bounds:
+		# ~ print(item)
+		plt.axvline(x=bd-startidx, color='g', linestyle='--')
 			
 	
 	# ax.xaxis.set_major_locator(ticker.MaxNLocator(num_ticks))
@@ -237,8 +256,10 @@ def main():
 	#####
 	# input the date range of interest
 	#####
-	start_date='2018-06-28'
-	end_date='2018-08-31'
+	start_date='2018-01-02'
+	# start_date='2018-06-04'
+	# end_date='2018-08-31'
+	end_date='2018-10-01'
 	
 	#generate price data for plotting
 	# date_list,close_list=list_gen(df,start_date,end_date,fields)
@@ -295,41 +316,47 @@ def main():
 	
 	#try a price delta form yesterdays close to todays high
 	#>10%. I think we want to use this method for jumps in indiv equities
-	cutoff=float(5.0)
+	cutoff=float(6.0)
 	idx_locs=[]
 	for idx in range(idxl,idxh-1):
 		cur_high=float(df['High'][idx])
 		cur_low=float(df['Low'][idx])
 		yest_close=float(df['Close'][idx+1])
+		# print('test idx: '+str(idx)+' date: '+df['Date'][idx]+' yest close: '+str(yest_close))
 		
 		delta_h=100.*abs(cur_high-yest_close)/yest_close
 		delta_l=100.*abs(yest_close-cur_low)/yest_close
-		# ~ print(delta)
+		# print('delta_h: '+str(delta_h)+' delta_l: '+str(delta_l))
+		# print()
 		if delta_h > cutoff or delta_l > cutoff:
-			idx_locs.append(idx-idxl)
+			idx_locs.append(idx)
 			
 	
 	# print(idx_locs)
-	# print(idxl,idxh,idxh-idxl)
-	# print(df['Date'][20:75])
+	# print(idxl,idxh)
+	# print(df['Date'][46])
+	# print(df['Close'][47])
+	# print(df['Close'][46])
+	# print(df['Close'][45])
 	# return
-	gen_plot_pc(df,idxl,idxh,fields,idx_locs)
+	# gen_plot_pc(df,idxl,idxh,fields,idx_locs)
 	# gen_plot_mac(df,idxl,idxh,fields)
-	return
+	
 	
 	#####
 	# Using the indexes from the large deltas, and a pre-determined envelope size,
 	# work forwards in date to find how long the price remains within that envelope
 	#####
-	env_size=30
+	env_size_pct=8
+	env_size=env_size_pct/100*df['Close'][46]
 	
-	# ~ print('')
-	# ~ print('envelope detection')
-	# ~ print('zero crossing indexes: '+str(z_c))
-	# ~ print('closing price at idx 27: '+str(close_list[27]))
-	# ~ print('upper envelope: '+str(close_list[27]+env_size))
-	# ~ print('lower envelope: '+str(close_list[27]-env_size))
-	
+	print('')
+	print('envelope detection')
+	print('zero crossing indexes: '+str(idx_locs))
+	print('closing price at idx 46: '+str(df['Close'][46]))
+	print('upper envelope: '+str(df['Close'][46]+env_size))
+	print('lower envelope: '+str(df['Close'][46]-env_size))
+	# return
 	# ~ u=0
 	# ~ for item in close_list[10:50]:
 		# ~ print('close at idx: '+str(u+10)+' is '+str(item))
@@ -339,7 +366,29 @@ def main():
 	# ~ print('closing price at idx 22: '+str(close_list[22]))
 	# ~ print('closing price at idx 36: '+str(close_list[36]))
 	
+	#lower bound for each index is the idx_locs value
+	#for each value in idx_locs, find the upper bound.
+	#iterate through the sequential dates until the close is outside of the envelope
+	# print(df.head(30))
+	# return
+	upper_bds=[]
+	for idx in idx_locs:
+		close_init=df['Close'][idx]
+		bd_upper=close_init+env_size
+		bd_lower=close_init-env_size
+		z=0
+		while (df['Close'][idx-z] < bd_upper) & (df['Close'][idx-z] > bd_lower):
+			z=z+1
+			if idx-z < 1:
+				print('no upper bound found')
+				break
+			# print(z)
+		upper_bds.append(idx-z)
 	
+	# print(upper_bds)
+	gen_plot_pc(df,idxl,idxh,fields,idx_locs,upper_bds)
+	return
+	'''
 	# create dictionary for each index. syntax will be:
 	# {index:[lower bound,upper bound],index:[lower bound, upper bound]}
 	bounds={}
@@ -373,7 +422,7 @@ def main():
 	
 	# print(df['Date'][upper_idx])
 	return
-	
+	'''
 	# ~ print(len(slopes))
 	# ~ print(len(date_list))
 	
