@@ -13,6 +13,12 @@ on how long the consolidation has happend.
 also want to detect false breakouts. Consider searching up to x number of days
 before and after to find if price re-entered envelope
 
+pandas version: 0.18.1
+matplotlib version: 2.0.0
+mpl_finance version: 0.10.0
+numpy version: 1.10.1
+scipy version: 0.16.0
+
 '''
 
 import pandas as pd
@@ -279,37 +285,165 @@ def env_detector_revert(df,date_idxs,direction):
 	# Using a breakout detection envelope to set upper and lower bound
 	#####
 	'''
-	1. determine max envelope size:
-	store highest/lowest price
-	move up to new date. Check if higher or lower price is detected
-	look forward x number of days to see if there is a lower high or higher low.
-	if yes, keep iterating, otherwise found max before breakout.
+	determine max envelope size:
+	store highest/lowest price. Use open/close, not high or low
 	
-	2. get date where leaving of the envelope was detected
+	1. Move up to new date.
+	2. Check for breakout (see below).
+	3. If no breakout detected, check for new high/low bounds, and reset limits.
+		Iterate to next date
+	4. If yes breakout detected, set date as last date in envelope. Finish loop.
+	
+	
+	
+	
+	-Check for breakout:
+	look forward x number of days to see if there is a lower high or higher low than current bounds.
+	if yes, keep iterating, otherwise the current bound is max/min before breakout.
+	Basically want to test all the way up until the end of the consolidation and look out from that point
+	x number of days to verify that the price has not moved back into the consolidation range.
+	
+	
+	
+	
+	
 	for each envelope:
 	return number of days in envelope
 	return number of days before returning to the detected envelope, i.e.
 	'''
 	
-	env_size_pct=8
+	# env_size_pct=8
+	date_idxs=[135]
+	print('')
+	# Set the number of days to look foward/backward for new high/low
+	# this tells you how many days you need to move away from your current bounds
+	# to consider it a breakout
+	num_days=10
 	
 	if direction == 'up':
 	
 		upper_bds=[]
 		for idx in date_idxs:
 			close_init=df['Close'][idx]
-			env_size=env_size_pct/100*close_init
-			bd_upper=close_init+env_size
-			bd_lower=close_init-env_size
-			z=0
-			while (df['Close'][idx-z] < bd_upper) & (df['Close'][idx-z] > bd_lower):
-				z=z+1
-				if idx-z < 1:
-					print('no upper bound found')
-					break
-				# print(z)
-			upper_bds.append(idx-z)
+			open_init=df['Open'][idx]
+			high_init=df['High'][idx]
+			low_init=df['Low'][idx]
+			max_init=max(open_init,close_init)
+			min_init=min(open_init,close_init)
 			
+			# print('index: '+str(idx))
+			# print('close_init: '+str(close_init))
+			# print('high_init: '+str(high_init))
+			# print('low_init: '+str(low_init))
+			
+			
+			# for the initial bounds, use the first days high and low
+			# all bounds after the initial day will be based on open and close values
+			bd_upper=high_init
+			bd_lower=low_init
+			
+			# check for lower bound. If there is a higher low than the current lower bound in the next x num days,
+			# keep iterating
+			lower_bd_break=False
+			upper_bd_break=False
+			i=0
+			x=0
+			# return
+			while (lower_bd_break==False) & (upper_bd_break==False) & (idx-i-x>105):
+				# 2. iterate through next num_days to find higher low or lower high
+				# x is representing the days counting outward. Each time you do not find a day in the range
+				# x should increment.
+				# i is representing how many days you have gone up in your search.
+				# Once you do find a day in the range, i should increment and x should start over
+				for x in range(num_days):
+					# print('')
+					'''
+					need to set bounds in some way to not set bounds until we are looking forward
+					this current setup keeps setting a higher bound bc it tests the new day
+					we should only be setting a higher bound if we have looked forward up to x number of days and
+					found something in the current range, we want to use the x as a test value to decide
+					if we should be setting a new bound.
+					'''
+					print('index: '+str(idx-i-x)+', x: '+str(x)+', i: '+str(i))
+					print('current max bound: '+str(bd_upper)+', current min bound: '+str(bd_lower))
+					# print('current min bound: '+str(bd_lower))
+					low=df['Low'][idx-i-x]
+					high=df['High'][idx-i-x]
+					curr_open=df['Open'][idx-i-x]
+					curr_close=df['Close'][idx-i-x]
+					curr_max=max(curr_open,curr_close)
+					curr_min=min(curr_open,curr_close)
+					print('current high '+str(high)+', current low '+str(low))
+					print('current open '+str(curr_open)+', current close '+str(curr_close))
+					# print('current high '+str(high))
+					# print('current low '+str(low)+' and type: '+str(type(low))+' type of lower bd: '+str(type(bd_lower)))
+					# print('current high '+str(high)+' and type: '+str(type(high))+' type of lower bd: '+str(type(bd_upper)))
+					# return
+					
+					# 3.if any day in next x num days is found to be in the range,
+					# increment i and start over with new x
+					if (low > bd_lower) | (high < bd_upper):
+						print('step to next day to iterate from')
+						i=i+1
+						# when moving to a new day to start iterating x from, check to see if the new day
+						# has a higher/lower open/close to reset the bounds
+						# This should only happen if we have looked forward x number of days
+						# and found something in the current range
+						next_open=df['Open'][idx-i]
+						next_close=df['Close'][idx-i]
+						next_max=max(next_open,next_close)
+						next_min=min(next_open,next_close)
+						if next_max > bd_upper:
+							bd_upper=next_max
+							print('set new bound upper')
+						if next_min < bd_lower:
+							bd_lower=next_min
+							print('set new bound lower')
+						break
+					# check for new high/low values and move to next day
+					'''
+					if (low > bd_lower) | (high < bd_upper):
+						if curr_max > bd_upper:
+							bd_upper=curr_max
+							print('set new bound upper')
+						if curr_min < bd_lower:
+							bd_lower=curr_min
+							print('set new bound lower')
+						
+						x=x+1
+						# i=i+1
+						# break
+						'''
+				# once we have decided to move to next day, look at todays high/low and set new upper/lower bounds
+					
+					# 4.if no day in next x num days is found to be in the range (i.e. x reaches max(x)),
+					# set current day as last date before breakout
+					if x==(num_days-1):
+						print('')
+						print('reached max num days, have a breakout')
+						upper_bd_break=True
+						
+					# elif curr_max>bd_upper:
+						# upper_bd_break=True
+						# upper_bds.append(idx-i-x)
+						# print('found breakout')
+						# i=i+1
+						# break
+				# break
+			# z=0
+			# while (df['Close'][idx-z] < bd_upper) & (df['Close'][idx-z] > bd_lower):
+				# z=z+1
+				# if idx-z < 1:
+					# print('no upper bound found')
+					# break
+				# # print(z)
+			# upper_bds.append(idx-z)
+	
+	
+	
+
+	
+	'''
 	if direction == 'down':
 	
 		upper_bds=[]
@@ -329,6 +463,7 @@ def env_detector_revert(df,date_idxs,direction):
 			upper_bds.append(idx+z)
 
 	# print(upper_bds)
+	'''
 	return upper_bds
 	
 	
@@ -363,6 +498,7 @@ def main():
 	#####
 	# input the date range of interest
 	#####
+	# start_date='2012-05-18'
 	# start_date='2017-01-04'
 	# start_date='2018-06-04'
 	start_date='2018-01-02'
@@ -398,7 +534,11 @@ def main():
 	# Find dates with a large price delta form yesterdays close to todays high/low
 	# This designates jumps from a significant news event or earnings release
 	
-	# set daily percent change
+	# set days percent change
+	'''
+	4/9/19
+	commenting out this section in order to test envelope detection revert method
+	
 	pct_delta=float(10.0)
 	
 	idx_locs=[]
@@ -418,7 +558,7 @@ def main():
 	
 	
 	
-	
+	'''
 	# want to include some filter to look at x number of days before a large change to
 	# determine that there was a consolidation/price agreement before the change happened
 	# i.e. it was a significant event that caused the price change
@@ -450,7 +590,16 @@ def main():
 	
 	# use env_detector_simple to find breakouts based on simple percent bounds
 	# up/down sets direction to look in moving days
-	upper_bds=env_detector_simple(df,idx_locs,'down')
+	#upper_bds=env_detector_simple(df,idx_locs,'down')
+	
+	
+	# use env_detector_revert to find breakouts based on creating bounds by look forward method
+	# up/down sets direction to look in moving days
+	idx_locs=[135]
+	upper_bds=env_detector_revert(df,idx_locs,'up')
+	# print(upper_bds)
+	return
+	upper_bds=[109]
 	
 	gen_plot_pc(df,idxl,idxh,fields,idx_locs,upper_bds)
 	return
