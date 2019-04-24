@@ -171,43 +171,6 @@ def gen_plot_pc(dataframe,startidx,endidx,fields,indexes,upper_bounds):
 	plt.show()
 	
 	
-	
-def plot_hist(a_list):
-	#this funciton will plot a histogram to bring out the data in the tails
-	#the limit val will limit the top of the bars in order to bring out the tail values
-	
-	#create bins of data
-	n_bins=20
-	max_data=max(a_list)
-	min_data=min(a_list)
-	dx=(max_data-min_data)/n_bins
-	xs = np.arange(min_data,max_data+dx,dx).round(decimals=1)
-	
-	#####
-	#Plot a histogram of the normalized (%) number of values in each range
-	#####
-	df=pd.DataFrame(a_list)
-	# ~ out=pd.cut(df[0],bins=xs,include_lowest=True)
-	# ~ out_norm = out.value_counts(sort=False, normalize=True).mul(100)
-	# ~ ax=out_norm.plot.bar(color="b")
-	# ~ plt.show()
-	
-	#####
-	#Plot a histogram with the frequency of values in each range
-	#####
-	out, bins  = pd.cut(df[0], bins=xs, include_lowest=True, right=False, retbins=True)
-	ax=out.value_counts(sort=False).plot.bar()
-	plt.show()
-	
-	#####
-	#print the frequency for each interval, mean, std deviation
-	#####
-	# ~ print(out.value_counts(sort=False))
-	# ~ print('The mean is '+str(round(np.mean(a_list),4)))
-	# ~ print('The std dev is '+str(round(np.std(a_list),4)))
-	
-	
-	
 def list_gen(df,start_date,end_date,fields):
 	#generate a list of dates (x axis) and values (y axis) for given inputs
 	#fields order = ['Date','Open','High','Low','Close']
@@ -321,10 +284,12 @@ def large_delta_detect(df,index_l,index_h,pct_delta):
 		cur_high=float(df['High'][idx])
 		cur_low=float(df['Low'][idx])
 		yest_close=float(df['Close'][idx+1])
+		# print('test idx: '+str(idx)+' date: '+df['Date'][idx]+' yest close: '+str(yest_close))
 		
 		delta_h=100.*abs(cur_high-yest_close)/yest_close
 		delta_l=100.*abs(yest_close-cur_low)/yest_close
-		
+		# print('delta_h: '+str(delta_h)+' delta_l: '+str(delta_l))
+		# print()
 		if delta_h > pct_delta or delta_l > pct_delta:
 			index_locations.append(idx)
 			
@@ -480,11 +445,30 @@ def env_detector_revert(df,date_idxs,direction):
 						upper_bds.append(idx)
 						break
 	
+	
+	
+
+	
 	'''
 	if direction == 'down':
 	
-	04/19/19-need to complete this section to match the above section if we desire to look
-	in the reverse direction.
+		upper_bds=[]
+		for idx in date_idxs:
+			#start with the previous day to skip large delta
+			close_init=df['Close'][idx+1]
+			env_size=env_size_pct/100*close_init
+			bd_upper=close_init+env_size
+			bd_lower=close_init-env_size
+			z=1
+			while (df['Close'][idx+z] < bd_upper) & (df['Close'][idx+z] > bd_lower):
+				z=z+1
+				if idx+z < 2:
+					print('no lower bound found')
+					break
+				# print(z)
+			upper_bds.append(idx+z)
+
+	# print(upper_bds)
 	'''
 	return upper_bds
 	
@@ -508,18 +492,10 @@ def mid_idx_prefilter(start_indexes,end_indexes):
 			end_indexes_filt.append(end_indexes[x])
 			end_index_store=end_indexes[x]
 	
-	# now filter out the pairs that have less than 5 days in the consolidation
-	start_indexes_filt_1=[]
-	end_indexes_filt_1=[]
-	for x in range(len(end_indexes_filt)):
-		if (start_indexes_filt[x]-end_indexes_filt[x])>5:
-			start_indexes_filt_1.append(start_indexes_filt[x])
-			end_indexes_filt_1.append(end_indexes_filt[x])
+	start_indexes_filt.reverse()
+	end_indexes_filt.reverse()
 	
-	start_indexes_filt_1.reverse()
-	end_indexes_filt_1.reverse()
-	
-	return start_indexes_filt_1,end_indexes_filt_1
+	return start_indexes_filt,end_indexes_filt
 	
 	
 def mid_idx_filter(start_indexes,end_indexes):
@@ -527,6 +503,10 @@ def mid_idx_filter(start_indexes,end_indexes):
 	# a start index that shares an end index with a previous start index, it will
 	# remove those pairs. The input indexes are lists.
 	
+	# ~ print('start_indexes length is : '+str(len(start_indexes)))
+	# ~ print('end_indexes length is : '+str(len(end_indexes)))
+	# ~ print(end_indexes[2])
+	# ~ return
 	
 	start_indexes.reverse()
 	end_indexes.sort()
@@ -572,43 +552,54 @@ def mid_idx_filter(start_indexes,end_indexes):
 		match2=0
 		#check to see if two starts have the same end. If so, ignore the middle starting point
 		if end_indexes[0]==end_indexes[1]:
+			# ~ start_indexes_filt.append(start_indexes[0])
 			match1=1
 			# ~ print('match1 positive')
-			
+			# ~ skip_line=0
 			#dont append to end_indexes_filt in order to remove the data
 			#append to start_indexes_filt because it will always be in the data
 		elif end_indexes[0]!=end_indexes[1]:
+			# ~ start_indexes_filt.append(start_indexes[0])
 			end_indexes_filt.append(end_indexes[0])
 			
 		if end_indexes[1]==end_indexes[2]:
+			# ~ start_indexes_filt.append(start_indexes[1])
 			match2=1
 			# ~ print('match2 positive')
-			
+			# ~ skip_line=0
 			#dont append to end_indexes_filt in order to remove the data
 			#dont append to start_indexes_filt in order to remove the data if they are equal
 		elif end_indexes[1]!=end_indexes[2]:
 			#if they are not equal, need to add the previous start index
+			# ~ start_indexes_filt.append(start_indexes[1])
 			end_indexes_filt.append(end_indexes[1])
 		
+		# ~ print('match1: '+str(match1)+', match2: '+str(match2))
 		
 		if match1==1 and match2==1:
+			# ~ print('first if')
 			#if end_index1=endindex2=endindex3 just put the first start index
 			start_indexes_filt.append(start_indexes[0])
 		elif match1==0 and match2==1:
+			# ~ print('second if')
 			#if end_index2=endindex3 but not endindex1, add first and second but not third
 			start_indexes_filt.append(start_indexes[0])
 			start_indexes_filt.append(start_indexes[1])
 		elif match1==1 and match2==0:
+			# ~ print('third if')
 			#if end_index1=endindex2 but not endindex3, add first and third but not second
 			start_indexes_filt.append(start_indexes[0])
 			start_indexes_filt.append(start_indexes[2])
 			
 			
+			
 		# if the last two are matching, this means you hit the end of the df, ignore the end index
 		if end_indexes[2]==start_indexes[2]:
 			skip=0
+			# ~ start_indexes_filt.append(start_indexes[2])
 			#dont append to end_indexes_filt in order to remove the data
 		elif end_indexes[2]!=start_indexes[2]:
+			# ~ start_indexes_filt.append(start_indexes[2])
 			end_indexes_filt.append(end_indexes[2])
 
 	elif len(start_indexes)>3:
@@ -632,10 +623,13 @@ def mid_idx_filter(start_indexes,end_indexes):
 		if end_indexes[0]>start_indexes[1]:
 			start_indexes_filt.append(start_indexes[0])
 			end_indexes_filt.append(end_indexes[0])
+		# ~ else:
+			
+		# ~ end_indexes_filt.append(end_indexes[1])
 		
 		matching_idx=False
 		if end_indexes[0]==end_indexes[1]:
-			matching_idx=True
+			matching_idx=1
 		for x in range(1,len(start_indexes)-1):
 			# ~ print('x='+str(x)+', matchingidx= '+str(matching_idx))
 			# ~ print('start_filt='+str(start_indexes_filt)+', end_filt='+str(end_indexes_filt))
@@ -659,7 +653,8 @@ def mid_idx_filter(start_indexes,end_indexes):
 					start_indexes_filt.append(start_indexes[x])
 					end_indexes_filt.append(end_indexes[x])
 					matching_idx=True
-			
+				# ~ if matching_idx=1:
+					# ~ matching_idx=0
 			#if the end indexes dont match, do logic to add start/end index values to filtered lists
 			elif end_indexes[x]!=end_indexes[x+1]:
 				#if normal conditions, add both the start and end indexes
@@ -688,23 +683,71 @@ def mid_idx_filter(start_indexes,end_indexes):
 	end_indexes_filt.reverse()
 	return start_indexes_filt,end_indexes_filt
 	
-def get_idxs(df,start_date,end_date):
-	#this function will get the start and end indexes for the consolidation points from a
-	#series of dates and a data set.
-	# The output of this function is two lists of indexes which represent the start
-	# and end indexes of the consolidation periods.
 	
+def main():
+	#####
+	# input the file name and info here
+	#####
 	
+	# Data location for mac:
+	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
+	path = '/Users/Marlowe/gitsite/transfer/'
+	# in_file_name='Emini_Daily_1998_2018.csv'
+	# in_file= os.path.join(path,in_file_name)
+	
+	# Data location for PC:
+	# ~ path = 'C:\\Python\\transfer\\'
+	in_file_name='FB.csv'
+	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
 	fields = ['Date','Open','High','Low','Close']
+	in_file= os.path.join(path,in_file_name)
 	
-	#get the low and high index of the dataframe based on the start and end dates
+	# add a header to the file if no header exists
+	#add_header(in_file)
+	
+	#use csv module to pull out proper data
+	#file_noblanks=remove_blanks(in_file)
+	
+	# create dataframe from the data
+	#headers=file_noblanks[0]
+	df=import_data(in_file,fields)
+	
+	
+	#####
+	# input the date range of interest
+	#####
+	# ~ start_date='2012-07-03'
+	# ~ start_date='2014-01-03'
+	start_date='2015-01-05'
+	# ~ start_date='2017-01-04'
+	# ~ start_date='2018-06-04'
+	# ~ start_date='2018-01-02'
+	
+	
+	# ~ end_date='2013-01-03'
+	# ~ end_date='2014-01-03'
+	# ~ end_date='2016-06-01'
+	# ~ end_date='2017-01-03'
+	# ~ end_date='2018-08-31'
+	end_date='2018-10-01'
+	
+	
+	#generate price data for plotting
+	# date_list,close_list=list_gen(df,start_date,end_date,fields)
+	# print(df.head())
+	# print(df.tail())
+	
+	#create new dataframe with new range
+	
 	df_2,idxl,idxh=slice_df(df,start_date,end_date)
+	# ~ print(idxh,idxl)
+	# print(df['Date'][20:75])
 	
 	# plot using dataframe, start date, end date
 	
 	# ~ gen_plot_mac(df,idxl,idxh,fields)
 	# ~ return
-	
+
 	#add true range column and column for 10 day atr
 	# num_day_av=10
 	# df=true_range_calc(df,idxl,idxh,num_day_av)
@@ -713,6 +756,7 @@ def get_idxs(df,start_date,end_date):
 	
 	# idxh=idxh-num_day_av
 	# ~ return
+	
 	
 	#####
 	# detect the dates of interest
@@ -723,7 +767,7 @@ def get_idxs(df,start_date,end_date):
 	
 	# set days percent change
 	
-	pct_delta=float(10.0)
+	pct_delta=float(8.0)
 	
 	idx_locs=large_delta_detect(df,idxl,idxh,pct_delta)
 	
@@ -734,9 +778,25 @@ def get_idxs(df,start_date,end_date):
 	# determine that there was a consolidation/price agreement before the change happened
 	# i.e. it was a significant event that caused the price change
 	
+	
+	
 	# Want to include some filter that looks at significant changes over a several day period
 	# rather than just a single day. This could include data that is part of a trend movement.
 	# need to filter out based on price agreement before the several day price delta.
+	
+	
+	
+	
+	# print(idx_locs)
+	# print(idxl,idxh)
+	# print(df['Date'][46])
+	# print(df['Close'][47])
+	# print(df['Close'][46])
+	# print(df['Close'][45])
+	# return
+	# gen_plot_pc(df,idxl,idxh,fields,idx_locs)
+	# gen_plot_mac(df,idxl,idxh,fields)
+	
 	
 	#####
 	# Using the indexes from the large deltas, and a pre-determined envelope size,
@@ -752,7 +812,10 @@ def get_idxs(df,start_date,end_date):
 	# up/down sets direction to look in moving days
 	# 04-15-19: consider putting a minimum on number of days in an envelope. Maybe 5-10 days
 	
-	
+	# ~ idx_locs=[46,109,200,300,320]
+	# ~ idx_locs=[46,109,136]
+	# ~ idx_locs=[1306,1427,1472,1510,1555]
+	# ~ upper_bds=[1286,1350,1460,1446,1446]
 	upper_bds=env_detector_revert(df,idx_locs,'up')
 	# ~ print('start index locations: '+str(idx_locs))
 	# ~ print('end index locations: '+str(upper_bds))
@@ -773,95 +836,15 @@ def get_idxs(df,start_date,end_date):
 	# ~ return
 	# ~ upper_bds=[109]
 	
-	# Here we can generate two plots to compare the difference between the filtered and
-	# non filtered index locations
-	
-	# ~ gen_plot_pc(df,idxl,idxh,fields,idx_locs,upper_bds)
+	gen_plot_pc(df,idxl,idxh,fields,idx_locs,upper_bds)
 	gen_plot_pc(df,idxl,idxh,fields,idx_locs_filt,upper_bds_filt)
-	# ~ return
-	
-	return idx_locs_filt,upper_bds_filt
+	return
 	
 	
-	
-	
-	
-def main():
-	#####
-	# input the file name and info here
-	#####
-	
-	# Data location for mac:
-	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	path = '/Users/Marlowe/gitsite/transfer/'
-	# in_file_name='Emini_Daily_1998_2018.csv'
-	# in_file= os.path.join(path,in_file_name)
-	
-	# Data location for PC:
-	# ~ path = 'C:\\Python\\transfer\\'
-	in_file_name='NKE.csv'
-	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
-	fields = ['Date','Open','High','Low','Close']
-	in_file= os.path.join(path,in_file_name)
-	
-	# add a header to the file if no header exists
-	#add_header(in_file)
-	
-	#use csv module to pull out proper data
-	#file_noblanks=remove_blanks(in_file)
-	
-	# create dataframe from the data
-	#headers=file_noblanks[0]
-	df=import_data(in_file,fields)
-	
-	
-	#####
-	# input the date range of interest
-	#####
-	
-	
-	#####
-	# the following dates are for FB.csv
-	#####
-	# ~ start_date='2012-07-03'
-	# ~ start_date='2014-01-03'
-	# ~ start_date='2015-01-05'
-	# ~ start_date='2017-01-04'
-	# ~ start_date='2018-06-04'
-	# ~ start_date='2018-01-02'
-	
-	# ~ end_date='2013-01-03'
-	# ~ end_date='2014-01-03'
-	# ~ end_date='2016-06-01'
-	# ~ end_date='2017-01-03'
-	# ~ end_date='2018-08-31'
-	# ~ end_date='2018-10-01'
-	
-	#####
-	# the following dates are for NKE.csv
-	#####
-	start_date='1980-12-02'
-	# ~ start_date='1995-01-03'
-	# ~ start_date='2018-01-02'
-	
-	# ~ end_date='2004-01-05'
-	# ~ end_date='2014-01-03'
-	end_date='2018-09-13'
-	
-	
-	#generate price data for plotting
-	# date_list,close_list=list_gen(df,start_date,end_date,fields)
-	# print(df.head())
-	# print(df.tail())
-	
-	
-	start_idx_locs,end_idx_locs=get_idxs(df,start_date,end_date)
-	
-	# ~ print(start_idx_locs)
-	# ~ print(end_idx_locs)
-	# ~ return
-	
-	
+	# print(upper_bds)
+	# gen_plot_pc(df,idxl,idxh,fields,idx_locs,upper_bds)
+	# return
+
 	#####
 	# Determine statistics about the indexes and upper bounds
 	# -How long on average does the consolidation last?
@@ -888,32 +871,19 @@ def main():
 	
 	
 	
-	###
-	# Average length of consolidations
-	###
+	# ~ print(len(slopes))
+	# ~ print(len(date_list))
 	
-	# if the last start index has no end index, remove it.
-	if len(start_idx_locs) > len(end_idx_locs):
-		start_idx_locs=start_idx_locs[1:]
+	# ~ gen_plot(df,3,100)
+	# ~ plot_price_df(df,end_date_idx,start_date_idx)
 	
-	# ~ return
+	# ~ plot_price_list(date_list,close_list)
+	# ~ plot_price_list(date_list,close_filt)
+	# ~ plot_price_list_2(date_list,close_filt,close_list)
+	# ~ plot_price_list_2axes(date_list,close_filt,slopes)
 	
-	deltas=[]
-	for y in range(len(start_idx_locs)):
-		deltas.append(start_idx_locs[y]-end_idx_locs[y])
 	
-	# ~ print(deltas)
-	# ~ return
-	# ~ plot_hist(deltas)
-	# ~ return
 	
-	print()
-	print('full list of deltas: ')
-	print(deltas)
-	print('min delta is '+str(min(deltas))+', max delta is '+str(max(deltas)))
-	print('mean delta is '+str(round(np.mean(deltas),3))+', std dev is '+str(round(np.std(deltas),3)))
-	print()
 	
-	# ~ idx_locs_filt,upper_bds_filt
 	
 main()
