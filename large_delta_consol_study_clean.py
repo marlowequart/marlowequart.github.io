@@ -688,7 +688,7 @@ def mid_idx_filter(start_indexes,end_indexes):
 	end_indexes_filt.reverse()
 	return start_indexes_filt,end_indexes_filt
 	
-def get_idxs(df,start_date,end_date):
+def get_idxs(df,start_date,end_date,adj_dates,lens):
 	#this function will get the start and end indexes for the consolidation points from a
 	#series of dates and a data set.
 	# The output of this function is two lists of indexes which represent the start
@@ -698,7 +698,13 @@ def get_idxs(df,start_date,end_date):
 	fields = ['Date','Open','High','Low','Close']
 	
 	#get the low and high index of the dataframe based on the start and end dates
-	df_2,idxl,idxh=slice_df(df,start_date,end_date)
+	index_list=df.index.values.tolist()
+	
+	if adj_dates:
+		idxl=0
+		idxh=index_list[-1]
+	else:
+		df_2,idxl,idxh=slice_df(df,start_date,end_date)
 	
 	# plot using dataframe, start date, end date
 	
@@ -726,6 +732,12 @@ def get_idxs(df,start_date,end_date):
 	pct_delta=float(10.0)
 	
 	idx_locs=large_delta_detect(df,idxl,idxh,pct_delta)
+	
+	# if multiple dfs merged, remove the idx_locs that correspond with the start
+	# of the merges
+	for num in lens:
+		if num-1 in idx_locs:
+			idx_locs.remove(num-1)
 	
 	# ~ print(idx_locs)
 	# ~ return
@@ -777,7 +789,7 @@ def get_idxs(df,start_date,end_date):
 	# non filtered index locations
 	
 	# ~ gen_plot_pc(df,idxl,idxh,fields,idx_locs,upper_bds)
-	gen_plot_pc(df,idxl,idxh,fields,idx_locs_filt,upper_bds_filt)
+	# ~ gen_plot_pc(df,idxl,idxh,fields,idx_locs_filt,upper_bds_filt)
 	# ~ return
 	
 	return idx_locs_filt,upper_bds_filt
@@ -788,20 +800,29 @@ def get_idxs(df,start_date,end_date):
 	
 def main():
 	#####
-	# input the file name and info here
+	# input main info here
 	#####
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
 	path = '/Users/Marlowe/gitsite/transfer/'
-	# in_file_name='Emini_Daily_1998_2018.csv'
-	# in_file= os.path.join(path,in_file_name)
 	
 	# Data location for PC:
 	# ~ path = 'C:\\Python\\transfer\\'
-	in_file_name='NKE.csv'
+	
 	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
 	fields = ['Date','Open','High','Low','Close']
+	
+	
+	
+	#####
+	# Run analysis with one dataset
+	# (comment out this section to run with multiple datasets)
+	#####
+	'''
+	#input file name of interest
+	in_file_name='AAPL.csv'
+	
 	in_file= os.path.join(path,in_file_name)
 	
 	# add a header to the file if no header exists
@@ -810,10 +831,10 @@ def main():
 	#use csv module to pull out proper data
 	#file_noblanks=remove_blanks(in_file)
 	
-	# create dataframe from the data
-	#headers=file_noblanks[0]
-	df=import_data(in_file,fields)
 	
+	
+	# create dataframe from the data
+	df=import_data(in_file,fields)
 	
 	#####
 	# input the date range of interest
@@ -849,13 +870,70 @@ def main():
 	end_date='2018-09-13'
 	
 	
-	#generate price data for plotting
-	# date_list,close_list=list_gen(df,start_date,end_date,fields)
-	# print(df.head())
-	# print(df.tail())
+	#####
+	# the following dates are for AAPL.csv
+	#####
+	start_date='2013-09-11'
 	
 	
-	start_idx_locs,end_idx_locs=get_idxs(df,start_date,end_date)
+	end_date='2018-09-11'
+	
+	full_set=False
+	lengths=[]
+	
+	#####
+	# generate price data for plotting and analysis
+	#####
+	
+	
+	start_idx_locs,end_idx_locs=get_idxs(df,start_date,end_date,full_set,lengths)
+	
+	print(start_idx_locs)
+	print(end_idx_locs)
+	return
+	
+	'''
+	
+	#####
+	# Run analysis with multiple datasets
+	# (comment out this section to run with single datasets
+	#####
+	
+	#input file names of interest
+	in_file_names=['NKE.csv','FB.csv','AAPL.csv','MHK.csv']
+	
+	start_dates=['1980-12-02','2012-07-03','2013-09-11','1992-04-01']
+	# ~ start_dates=['1995-01-03','2017-01-04']
+	end_dates=['2018-09-13','2018-10-01','2018-09-11','2018-09-13']
+	
+	# initialize dataframe
+	df = pd.DataFrame()
+	df_lengths=[]
+	# merge dataframes from given input files
+	for i in range(len(in_file_names)):
+		in_file= os.path.join(path,in_file_names[i])
+		df_store=import_data(in_file,fields)
+		df_store_trim,startidx,endidx=slice_df(df_store,start_dates[i],end_dates[i])
+		df_lengths.append(len(df_store_trim))
+		df=df.append(df_store_trim)
+	
+	#renumber indexes
+	df = df.reset_index(drop=True)
+	
+	index_list=df.index.values.tolist()
+	# ~ print(index_list[-1])
+	full_set=True
+	# ~ print(df_lengths)
+	# ~ print(df['Close'][index_list[-1]])
+	# ~ return
+	
+	#####
+	# generate price data for plotting and analysis
+	#####
+	
+	start_idx_locs,end_idx_locs=get_idxs(df,start_dates[0],end_dates[0],full_set,df_lengths)
+	
+	
 	
 	# ~ print(start_idx_locs)
 	# ~ print(end_idx_locs)
@@ -896,24 +974,82 @@ def main():
 	if len(start_idx_locs) > len(end_idx_locs):
 		start_idx_locs=start_idx_locs[1:]
 	
-	# ~ return
-	
 	deltas=[]
 	for y in range(len(start_idx_locs)):
 		deltas.append(start_idx_locs[y]-end_idx_locs[y])
 	
 	# ~ print(deltas)
 	# ~ return
-	# ~ plot_hist(deltas)
+	plot_hist(deltas)
 	# ~ return
 	
 	print()
-	print('full list of deltas: ')
-	print(deltas)
+	# ~ print('full list of deltas: ')
+	# ~ print(deltas)
 	print('min delta is '+str(min(deltas))+', max delta is '+str(max(deltas)))
 	print('mean delta is '+str(round(np.mean(deltas),3))+', std dev is '+str(round(np.std(deltas),3)))
+	print('number of samples: '+str(len(deltas)))
 	print()
 	
 	# ~ idx_locs_filt,upper_bds_filt
+	
+	###
+	# Average range of consolidations
+	###
+	'''
+	# if the last start index has no end index, remove it.
+	if len(start_idx_locs) > len(end_idx_locs):
+		start_idx_locs=start_idx_locs[1:]
+	
+	
+	ranges=[]
+	ranges_pct=[]
+	for p in range(len(start_idx_locs)):
+		#find the min and max in each consolidation period
+		#cycle through the indexes from start to end index and find min and max
+		start_idx=start_idx_locs[p]
+		end_idx=end_idx_locs[p]
+		# ~ print(df['Close'][303])
+		# ~ break
+		start_close=df['Close'][start_idx]
+		# ~ print(start_close)
+		
+		minval=1000000
+		maxval=0
+		# ~ print('start_idx='+str(start_idx)+', end_idx='+str(end_idx))
+		for m in range(end_idx,start_idx):
+			day_high=df['High'][m]
+			day_low=df['Low'][m]
+			# ~ print('day high='+str(day_high)+', day low='+str(day_low))
+			# ~ print('min val='+str(minval)+', max val='+str(maxval))
+			if day_low < minval:
+				minval=day_low
+			if day_high > maxval:
+				maxval=day_high
+		# ~ print()
+		consol_range=maxval-minval
+		consol_range_pct=100*consol_range/start_close
+		ranges.append(round(consol_range,4))
+		ranges_pct.append(round(consol_range_pct,2))
+	
+	# ~ print(ranges_pct)
+	# ~ return
+	# ~ plot_hist(ranges_pct)
+	# ~ return
+	
+	print()
+	# ~ print('full list of ranges by percent: ')
+	# ~ print(ranges_pct)
+	print('min percent range is '+str(min(ranges_pct))+', max percent range is '+str(max(ranges_pct)))
+	print('mean range is '+str(round(np.mean(ranges_pct),3))+', std dev is '+str(round(np.std(ranges_pct),3)))
+	print('number of samples: '+str(len(deltas)))
+	print()
+	
+	###
+	# largest single day move in consolidation, compared to initial move into consolidation
+	###
+	'''
+	
+	
 	
 main()
