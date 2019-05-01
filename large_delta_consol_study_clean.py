@@ -789,7 +789,7 @@ def get_idxs(df,start_date,end_date,adj_dates,lens):
 	# non filtered index locations
 	
 	# ~ gen_plot_pc(df,idxl,idxh,fields,idx_locs,upper_bds)
-	# ~ gen_plot_pc(df,idxl,idxh,fields,idx_locs_filt,upper_bds_filt)
+	# gen_plot_pc(df,idxl,idxh,fields,idx_locs_filt,upper_bds_filt)
 	# ~ return
 	
 	return idx_locs_filt,upper_bds_filt
@@ -805,10 +805,10 @@ def main():
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	path = '/Users/Marlowe/gitsite/transfer/'
+	# path = '/Users/Marlowe/gitsite/transfer/'
 	
 	# Data location for PC:
-	# ~ path = 'C:\\Python\\transfer\\'
+	path = 'C:\\Python\\transfer\\'
 	
 	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
 	fields = ['Date','Open','High','Low','Close']
@@ -819,9 +819,9 @@ def main():
 	# Run analysis with one dataset
 	# (comment out this section to run with multiple datasets)
 	#####
-	'''
+	
 	#input file name of interest
-	in_file_name='AAPL.csv'
+	in_file_name='FB.csv'
 	
 	in_file= os.path.join(path,in_file_name)
 	
@@ -846,7 +846,7 @@ def main():
 	#####
 	# ~ start_date='2012-07-03'
 	# ~ start_date='2014-01-03'
-	# ~ start_date='2015-01-05'
+	start_date='2015-01-05'
 	# ~ start_date='2017-01-04'
 	# ~ start_date='2018-06-04'
 	# ~ start_date='2018-01-02'
@@ -856,27 +856,26 @@ def main():
 	# ~ end_date='2016-06-01'
 	# ~ end_date='2017-01-03'
 	# ~ end_date='2018-08-31'
-	# ~ end_date='2018-10-01'
+	end_date='2018-10-01'
 	
 	#####
 	# the following dates are for NKE.csv
 	#####
-	start_date='1980-12-02'
+	# start_date='1980-12-02'
 	# ~ start_date='1995-01-03'
 	# ~ start_date='2018-01-02'
 	
 	# ~ end_date='2004-01-05'
 	# ~ end_date='2014-01-03'
-	end_date='2018-09-13'
+	# end_date='2018-09-13'
 	
 	
 	#####
 	# the following dates are for AAPL.csv
 	#####
-	start_date='2013-09-11'
+	# start_date='2013-09-11'
 	
-	
-	end_date='2018-09-11'
+	# end_date='2018-09-11'
 	
 	full_set=False
 	lengths=[]
@@ -888,17 +887,17 @@ def main():
 	
 	start_idx_locs,end_idx_locs=get_idxs(df,start_date,end_date,full_set,lengths)
 	
-	print(start_idx_locs)
-	print(end_idx_locs)
-	return
+	# print(start_idx_locs)
+	# print(end_idx_locs)
+	# return
 	
-	'''
+	
 	
 	#####
 	# Run analysis with multiple datasets
 	# (comment out this section to run with single datasets
 	#####
-	
+	'''
 	#input file names of interest
 	in_file_names=['NKE.csv','FB.csv','AAPL.csv','MHK.csv']
 	
@@ -939,7 +938,7 @@ def main():
 	# ~ print(end_idx_locs)
 	# ~ return
 	
-	
+	'''
 	#####
 	# Determine statistics about the indexes and upper bounds
 	# -How long on average does the consolidation last?
@@ -969,7 +968,7 @@ def main():
 	###
 	# Average length of consolidations
 	###
-	
+	'''
 	# if the last start index has no end index, remove it.
 	if len(start_idx_locs) > len(end_idx_locs):
 		start_idx_locs=start_idx_locs[1:]
@@ -980,7 +979,7 @@ def main():
 	
 	# ~ print(deltas)
 	# ~ return
-	plot_hist(deltas)
+	# plot_hist(deltas)
 	# ~ return
 	
 	print()
@@ -992,7 +991,7 @@ def main():
 	print()
 	
 	# ~ idx_locs_filt,upper_bds_filt
-	
+	'''
 	###
 	# Average range of consolidations
 	###
@@ -1044,12 +1043,171 @@ def main():
 	print('mean range is '+str(round(np.mean(ranges_pct),3))+', std dev is '+str(round(np.std(ranges_pct),3)))
 	print('number of samples: '+str(len(deltas)))
 	print()
-	
+	'''
 	###
-	# largest single day move in consolidation, compared to initial move into consolidation
+	# largest single day move during consolidation, compared to initial move into consolidation
 	###
 	'''
+	# print(start_idx_locs)
+	# print(end_idx_locs)
+	print()
+	# return
+	# first get the value of the large delta at the initial day
+	pct_delta_val=[]
+	for idx in start_idx_locs:
+		cur_high=float(df['High'][idx])
+		cur_low=float(df['Low'][idx])
+		yest_close=float(df['Close'][idx+1])
+		
+		delta_h=100.*abs(cur_high-yest_close)/yest_close
+		delta_l=100.*abs(yest_close-cur_low)/yest_close
+		max_pct_delta=round(max(delta_h,delta_l),2)
+		pct_delta_val.append(max_pct_delta)
+		
+		# print('index is '+str(idx))
+		# print('delta high: '+str(round(delta_h,3))+', delta low: '+str(round(delta_l,3)))
+		# print('max delta: '+str(max_pct_delta))
+		# print()
+		
+	# next search through the consolidation range and find the max daily delta
+	# start_idx is a higher number than end_idx, need to reverse these and work backwards
+	# most recent date is lowes idx
+	consol_max_pct_delta=[]
+	for x in range(len(start_idx_locs)):
+		start_idx=start_idx_locs[x]
+		end_idx=end_idx_locs[x]
+		# print(start_idx,end_idx)
+		max_pct_delta_range=0
+		for num in range(start_idx-1,end_idx,-1):
+			cur_high=float(df['High'][num])
+			cur_low=float(df['Low'][num])
+			yest_close=float(df['Close'][num+1])
+			
+			delta_h=100.*abs(cur_high-yest_close)/yest_close
+			delta_l=100.*abs(yest_close-cur_low)/yest_close
+			max_pct_delta=round(max(delta_h,delta_l),2)
+			
+			# print('index is '+str(num)+', date is '+df['Date'][num]+', yest close: '+str(yest_close)+', cur high: '+str(cur_high))
+			# print('delta high: '+str(round(delta_h,3))+', delta low: '+str(round(delta_l,3)))
+			# print('max delta: '+str(max_pct_delta))
+			# print()
+			
+			if max_pct_delta > max_pct_delta_range:
+				max_pct_delta_range=max_pct_delta
+		# print(max_pct_delta_range)
+		consol_max_pct_delta.append(max_pct_delta_range)
+		
+	# output results of study
+	for z in range(len(start_idx_locs)):
+		print()
+		print('Considering consolidation from '+df['Date'][start_idx_locs[z]]+' to '+df['Date'][end_idx_locs[z]])
+		print('The impulse into the consolidation was '+str(pct_delta_val[z])+' and the max daily delta during consol was '+str(consol_max_pct_delta[z]))
+	# print(pct_delta_val)
+	# print(consol_max_pct_delta)
+	'''
 	
+	###
+	# largest multi day move during consolidation, compared to initial move into consolidation
+	###
+	'''
+	# first get the value of the large delta at the initial day
+	pct_delta_val=[]
+	for idx in start_idx_locs:
+		cur_high=float(df['High'][idx])
+		cur_low=float(df['Low'][idx])
+		yest_close=float(df['Close'][idx+1])
+		
+		delta_h=100.*abs(cur_high-yest_close)/yest_close
+		delta_l=100.*abs(yest_close-cur_low)/yest_close
+		max_pct_delta=round(max(delta_h,delta_l),2)
+		pct_delta_val.append(max_pct_delta)
+		
+		# print('index is '+str(idx))
+		# print('delta high: '+str(round(delta_h,3))+', delta low: '+str(round(delta_l,3)))
+		# print('max delta: '+str(max_pct_delta))
+		# print()
+		
+	# next search through the consolidation range and find the min and the max
+	# calculate the total range
+	# also calculate the delta to min and max from start of consolidation
 	
+	consol_max=[]
+	consol_min=[]
+	consol_pct_range=[]
+	for x in range(len(start_idx_locs)):
+		start_idx=start_idx_locs[x]
+		end_idx=end_idx_locs[x]
+		# print(start_idx,end_idx)
+		highest_high=0
+		lowest_low=100000.
+		for num in range(start_idx-1,end_idx,-1):
+			cur_high=float(df['High'][num])
+			cur_low=float(df['Low'][num])
+			
+			if cur_high > highest_high:
+				highest_high=cur_high
+			if cur_low < lowest_low:
+				lowest_low=cur_low
+				
+			# print('index is '+str(num)+', date is '+df['Date'][num]+', yest close: '+str(yest_close)+', cur high: '+str(cur_high))
+			# print('delta high: '+str(round(delta_h,3))+', delta low: '+str(round(delta_l,3)))
+			# print('max delta: '+str(max_pct_delta))
+			# print()
+			
+		# print(max_pct_delta_range)
+		consol_max.append(highest_high)
+		consol_min.append(lowest_low)
+		
+		# total pct range
+		mid_price=lowest_low+((highest_high-lowest_low)/2)
+		consol_pct_range.append(round(100*(highest_high-lowest_low)/mid_price,2))
+	# output results of study
+	for z in range(len(start_idx_locs)):
+		print()
+		print('Considering consolidation from '+df['Date'][start_idx_locs[z]]+' to '+df['Date'][end_idx_locs[z]])
+		print('The impulse into the consol was '+str(pct_delta_val[z])+' and the pct range during consol was '+str(consol_pct_range[z]))
+	# print(pct_delta_val)
+	# print(consol_max_pct_delta)
+	'''
+	###
+	# Number of days before min/max of consolidation are reached
+	###
+	consol_max_delta_idx=[]
+	consol_min_delta_idx=[]
+	for x in range(len(start_idx_locs)):
+		start_idx=start_idx_locs[x]
+		end_idx=end_idx_locs[x]
+		# print(start_idx,end_idx)
+		highest_high=0
+		lowest_low=100000.
+		high_idx=0
+		low_idx=0
+		for num in range(start_idx-1,end_idx,-1):
+			cur_high=float(df['High'][num])
+			cur_low=float(df['Low'][num])
+			
+			if cur_high > highest_high:
+				highest_high=cur_high
+				high_idx=num
+			if cur_low < lowest_low:
+				lowest_low=cur_low
+				low_idx=num
+				
+			# print('index is '+str(num)+', date is '+df['Date'][num]+', yest close: '+str(yest_close)+', cur high: '+str(cur_high))
+			# print('delta high: '+str(round(delta_h,3))+', delta low: '+str(round(delta_l,3)))
+			# print('max delta: '+str(max_pct_delta))
+			# print()
+			
+		# print(max_pct_delta_range)
+		consol_max_delta_idx.append(start_idx-high_idx)
+		consol_min_delta_idx.append(start_idx-low_idx)
+		
+	# output results of study	
+	for z in range(len(start_idx_locs)):
+		print()
+		print('Considering consolidation from '+df['Date'][start_idx_locs[z]]+' to '+df['Date'][end_idx_locs[z]])
+		print('The num days to high was '+str(consol_max_delta_idx[z])+' num days to low was '+str(consol_min_delta_idx[z]))
+
+		
 	
 main()
