@@ -4,6 +4,9 @@ This works by finding the dates where a large delta hapened.
 next an envelope filter is used starting at that date to determine
 the number of days where the consolidation happend.
 
+When generating statistics of interest, want to consider the single issue, the sector and
+the overall market
+
 1. find dates with daily TR above x%
 2. work forward from those points to find place where upper/lower bounds is broken using envelope
 
@@ -963,7 +966,28 @@ def main():
 	# if the price drops by XX ammt within XX days after large delta, this usually happens.
 	# if it drops by even more, then other things happen?
 	
+	# Is behavior different when price goes up vs down after breakout?
 	
+	###
+	# was the move into the consolidation up or down?
+	###
+	
+	# first get the value of the large delta at the initial day
+	move_dir=[]
+	for idx in start_idx_locs:
+		today_close=float(df['Close'][idx])
+		yest_close=float(df['Close'][idx+1])
+		
+		if today_close < yest_close:
+			move_dir.append('Down')
+		if yest_close < today_close:
+			move_dir.append('Up')
+		
+		# print('index is '+str(idx))
+		# print('delta high: '+str(round(delta_h,3))+', delta low: '+str(round(delta_l,3)))
+		# print('max delta: '+str(max_pct_delta))
+		# print()
+
 	
 	###
 	# Average length of consolidations
@@ -1172,6 +1196,7 @@ def main():
 	###
 	# Number of days before min/max of consolidation are reached
 	###
+	
 	consol_max_delta_idx=[]
 	consol_min_delta_idx=[]
 	for x in range(len(start_idx_locs)):
@@ -1206,7 +1231,14 @@ def main():
 	for z in range(len(start_idx_locs)):
 		print()
 		print('Considering consolidation from '+df['Date'][start_idx_locs[z]]+' to '+df['Date'][end_idx_locs[z]])
+		print('number of days in consolidation: '+str(start_idx_locs[z]-end_idx_locs[z]))
+		print('The direction into the move was '+move_dir[z])
 		print('The num days to high was '+str(consol_max_delta_idx[z])+' num days to low was '+str(consol_min_delta_idx[z]))
+		
+	###
+	# Correlation between direction of large move and how much that move follows through
+	###
+
 
 		
 	
