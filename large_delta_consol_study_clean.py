@@ -735,6 +735,8 @@ def get_idxs(df,start_date,end_date,adj_dates,lens):
 	pct_delta=float(10.0)
 	
 	idx_locs=large_delta_detect(df,idxl,idxh,pct_delta)
+	# print(idx_locs)
+	# return
 	
 	# if multiple dfs merged, remove the idx_locs that correspond with the start
 	# of the merges
@@ -769,9 +771,9 @@ def get_idxs(df,start_date,end_date,adj_dates,lens):
 	
 	
 	upper_bds=env_detector_revert(df,idx_locs,'up')
-	# ~ print('start index locations: '+str(idx_locs))
-	# ~ print('end index locations: '+str(upper_bds))
-	# ~ return
+	print('start index locations: '+str(idx_locs))
+	print('end index locations: '+str(upper_bds))
+	return
 	
 	# compare the start index locations and end index locations. if two start index locations
 	# share the same end index location, remove the middle start index.
@@ -824,7 +826,7 @@ def main():
 	#####
 	
 	#input file name of interest
-	in_file_name='FB.csv'
+	in_file_name='NFLX.csv'
 	
 	in_file= os.path.join(path,in_file_name)
 	
@@ -849,7 +851,7 @@ def main():
 	#####
 	# ~ start_date='2012-07-03'
 	# ~ start_date='2014-01-03'
-	start_date='2015-01-05'
+	# start_date='2015-01-05'
 	# ~ start_date='2017-01-04'
 	# ~ start_date='2018-06-04'
 	# ~ start_date='2018-01-02'
@@ -859,7 +861,7 @@ def main():
 	# ~ end_date='2016-06-01'
 	# ~ end_date='2017-01-03'
 	# ~ end_date='2018-08-31'
-	end_date='2018-10-01'
+	# end_date='2018-10-01'
 	
 	#####
 	# the following dates are for NKE.csv
@@ -880,6 +882,13 @@ def main():
 	
 	# end_date='2018-09-11'
 	
+	#####
+	# the following dates are for NFLX.csv
+	#####
+	start_date='2002-05-28'
+	
+	end_date='2019-04-30'
+	
 	full_set=False
 	lengths=[]
 	
@@ -892,7 +901,7 @@ def main():
 	
 	# print(start_idx_locs)
 	# print(end_idx_locs)
-	# return
+	return
 	
 	
 	
