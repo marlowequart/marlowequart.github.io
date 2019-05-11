@@ -376,7 +376,7 @@ def env_detector_revert(df,date_idxs,direction):
 	num_days=20
 	
 	if direction == 'up':
-	
+		
 		upper_bds=[]
 		# This for loop iterates through the date_idxs list which is the index values of the
 		# dates that have a large delta.
@@ -428,9 +428,9 @@ def env_detector_revert(df,date_idxs,direction):
 				# i is representing how many days you have gone up in your search.
 				# Once you do find a day in the range, i should increment and x should start over
 				for x in range(num_days):
-					# ~ print('')
-					# ~ print('index: '+str(idx-i-x)+', x: '+str(x)+', i: '+str(i))
-					# ~ print('current max bound: '+str(bd_upper)+', current min bound: '+str(bd_lower))
+					# print('')
+					# print('index: '+str(idx-i-x)+', x: '+str(x)+', i: '+str(i)+', idx: '+str(idx))
+					# print('current max bound: '+str(bd_upper)+', current min bound: '+str(bd_lower))
 					low=df['Low'][idx-i-x]
 					high=df['High'][idx-i-x]
 					curr_open=df['Open'][idx-i-x]
@@ -440,6 +440,17 @@ def env_detector_revert(df,date_idxs,direction):
 					# ~ print('current high '+str(high)+', current low '+str(low))
 					# ~ print('current open '+str(curr_open)+', current close '+str(curr_close))
 					
+					
+					# if you hit the last date and have not found a breakout
+					# just input the index of the original price move to be the breakout point.
+					# these values will be disregarded in a later function
+					# print('check last day')
+					if (idx-i-x) < final_day_test:
+						# print('')
+						# print('hit last day with no breakout, '+str(final_day_test)+' days from final day')
+						last_day=True
+						upper_bds.append(idx)
+						break
 					
 					# 3.if any day in next x num days is found to be in the range,
 					# increment i and start over with new x
@@ -473,15 +484,7 @@ def env_detector_revert(df,date_idxs,direction):
 						bound_break=True
 						break
 						
-					# if you hit the last date and have not found a breakout
-					# just input the index of the original price move to be the breakout point.
-					# these values will be disregarded in a later function
-					if (idx-x-i) < final_day_test:
-						# ~ print('')
-						# ~ print('hit last day with no breakout, '+str(final_day_test)+' days from final day')
-						last_day=True
-						upper_bds.append(idx)
-						break
+					
 	
 	'''
 	if direction == 'down':
@@ -744,8 +747,8 @@ def get_idxs(df,start_date,end_date,adj_dates,lens):
 		if num-1 in idx_locs:
 			idx_locs.remove(num-1)
 	
-	# ~ print(idx_locs)
-	# ~ return
+	# print(idx_locs)
+	# return
 	
 	# want to include some filter to look at x number of days before a large change to
 	# determine that there was a consolidation/price agreement before the change happened
@@ -771,9 +774,9 @@ def get_idxs(df,start_date,end_date,adj_dates,lens):
 	
 	
 	upper_bds=env_detector_revert(df,idx_locs,'up')
-	print('start index locations: '+str(idx_locs))
-	print('end index locations: '+str(upper_bds))
-	return
+	# print('start index locations: '+str(idx_locs))
+	# print('end index locations: '+str(upper_bds))
+	# return
 	
 	# compare the start index locations and end index locations. if two start index locations
 	# share the same end index location, remove the middle start index.
@@ -793,8 +796,8 @@ def get_idxs(df,start_date,end_date,adj_dates,lens):
 	# Here we can generate two plots to compare the difference between the filtered and
 	# non filtered index locations
 	
-	# ~ gen_plot_pc(df,idxl,idxh,fields,idx_locs,upper_bds)
-	# gen_plot_pc(df,idxl,idxh,fields,idx_locs_filt,upper_bds_filt)
+	# gen_plot_pc(df,idxl,idxh,fields,idx_locs,upper_bds)
+	gen_plot_pc(df,idxl,idxh,fields,idx_locs_filt,upper_bds_filt)
 	# ~ return
 	
 	return idx_locs_filt,upper_bds_filt
@@ -901,7 +904,7 @@ def main():
 	
 	# print(start_idx_locs)
 	# print(end_idx_locs)
-	return
+	# return
 	
 	
 	
@@ -1001,7 +1004,7 @@ def main():
 	###
 	# Average length of consolidations
 	###
-	'''
+	
 	# if the last start index has no end index, remove it.
 	if len(start_idx_locs) > len(end_idx_locs):
 		start_idx_locs=start_idx_locs[1:]
@@ -1018,13 +1021,13 @@ def main():
 	print()
 	# ~ print('full list of deltas: ')
 	# ~ print(deltas)
-	print('min delta is '+str(min(deltas))+', max delta is '+str(max(deltas)))
-	print('mean delta is '+str(round(np.mean(deltas),3))+', std dev is '+str(round(np.std(deltas),3)))
-	print('number of samples: '+str(len(deltas)))
-	print()
+	print('min length of consol is '+str(min(deltas))+', max is '+str(max(deltas)))
+	print('mean length of consol is '+str(round(np.mean(deltas),3))+', std dev is '+str(round(np.std(deltas),3)))
+	# print('number of samples: '+str(len(deltas)))
+	# print()
 	
 	# ~ idx_locs_filt,upper_bds_filt
-	'''
+	
 	###
 	# Average range of consolidations
 	###
@@ -1236,14 +1239,93 @@ def main():
 		consol_max_delta_idx.append(start_idx-high_idx)
 		consol_min_delta_idx.append(start_idx-low_idx)
 		
-	# output results of study	
-	for z in range(len(start_idx_locs)):
-		print()
-		print('Considering consolidation from '+df['Date'][start_idx_locs[z]]+' to '+df['Date'][end_idx_locs[z]])
-		print('number of days in consolidation: '+str(start_idx_locs[z]-end_idx_locs[z]))
-		print('The direction into the move was '+move_dir[z])
-		print('The num days to high was '+str(consol_max_delta_idx[z])+' num days to low was '+str(consol_min_delta_idx[z]))
 		
+	##### output results of study	
+	
+	# print results for each consol period
+	# for z in range(len(start_idx_locs)):
+		# print()
+		# print('Considering consolidation from '+df['Date'][start_idx_locs[z]]+' to '+df['Date'][end_idx_locs[z]])
+		# print('number of days in consolidation: '+str(start_idx_locs[z]-end_idx_locs[z]))
+		# print('The direction into the move was '+move_dir[z])
+		# print('The num days to high was '+str(consol_max_delta_idx[z])+' num days to low was '+str(consol_min_delta_idx[z]))
+		
+	# Output averages of results
+	# overall averages:
+	#average days to high
+	print()
+	print('Overall min days to high is '+str(min(consol_max_delta_idx))+', max days to high is '+str(max(consol_max_delta_idx)))
+	print('Overall mean days to high is '+str(round(np.mean(consol_max_delta_idx),3))+', std dev is '+str(round(np.std(consol_max_delta_idx),3)))
+	
+	#average days to low
+	print('Overall min days to low is '+str(min(consol_min_delta_idx))+', max days to low is '+str(max(consol_min_delta_idx)))
+	print('Overall mean days to low is '+str(round(np.mean(consol_min_delta_idx),3))+', std dev is '+str(round(np.std(consol_min_delta_idx),3)))
+	print('Overall number of samples: '+str(len(consol_min_delta_idx)))
+	
+	# Get data to produce directional dependent averages
+	up_idxs=[]
+	down_idxs=[]
+	for p in range(len(start_idx_locs)):
+		if move_dir[p] == 'Up':
+			up_idxs.append(p)
+		if move_dir[p] == 'Down':
+			down_idxs.append(p)
+			
+	up_dates_lows=[]
+	up_dates_highs=[]
+	down_dates_lows=[]
+	down_dates_highs=[]
+	for idx in up_idxs:
+		up_dates_lows.append(consol_min_delta_idx[idx])
+		up_dates_highs.append(consol_max_delta_idx[idx])
+	
+	for idx in down_idxs:
+		down_dates_lows.append(consol_min_delta_idx[idx])
+		down_dates_highs.append(consol_max_delta_idx[idx])
+		
+	# Averages if move into consol was up
+	#average days to high
+	print()
+	print('On Up into consol, min days to high is '+str(min(up_dates_highs))+', max days to high is '+str(max(up_dates_highs)))
+	print('On Up into consol, mean days to high is '+str(round(np.mean(up_dates_highs),3))+', std dev is '+str(round(np.std(up_dates_highs),3)))
+	
+	# average days to low
+	print('On Up into consol, min days to low is '+str(min(up_dates_lows))+', max days to low is '+str(max(up_dates_lows)))
+	print('On Up into consol, mean days to low is '+str(round(np.mean(up_dates_lows),3))+', std dev is '+str(round(np.std(up_dates_lows),3)))
+	print('On Up into consol, number of samples: '+str(len(up_idxs)))
+	
+	
+	# Averages if move into consol was down
+	# average days to high
+	print()
+	print('On Down into consol, min days to high is '+str(min(down_dates_highs))+', max days to high is '+str(max(down_dates_highs)))
+	print('On Down into consol, mean days to high is '+str(round(np.mean(down_dates_highs),3))+', std dev is '+str(round(np.std(down_dates_highs),3)))
+	
+	# average days to low
+	print('On Down into consol, min days to low is '+str(min(down_dates_lows))+', max days to low is '+str(max(down_dates_lows)))
+	print('On Down into consol, mean days to low is '+str(round(np.mean(down_dates_lows),3))+', std dev is '+str(round(np.std(down_dates_lows),3)))
+	print('On Down into consol, number of samples: '+str(len(down_idxs)))
+
+	
+	###### How often does the high of the consol period come after the low?
+	
+	high_b4_low=[]
+	low_b4_high=[]
+	for n in range(len(start_idx_locs)):
+		if consol_max_delta_idx[n] > consol_min_delta_idx[n]:
+			low_b4_high.append(n)
+		if consol_max_delta_idx[n] < consol_min_delta_idx[n]:
+			high_b4_low.append(n)
+			
+	print()
+	print('Number of consolidations with high before low is: '+str(len(high_b4_low)))
+	print('Number of consolidations with low before high is: '+str(len(low_b4_high)))
+	print('Probability that the low of consolidation is reached before the high is: '+str(round(100*len(low_b4_high)/len(start_idx_locs),2)))
+	
+	
+	
+	
+	
 	###
 	# Correlation between direction of large move and how much that move follows through
 	###
