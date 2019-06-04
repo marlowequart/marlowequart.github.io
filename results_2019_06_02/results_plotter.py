@@ -13,6 +13,11 @@ from matplotlib import pyplot as plt
 from datetime import datetime
 
 
+flattenList=lambda _: [_1 for _2 in _ for _1 in _2] # collapse a list of lists to a 1d-list.
+lTranspose=lambda _: list(map(list, zip(*_))) # transpose a list (pivot table)
+
+
+
 def import_data(file_name):
 	#only add items in fields list to dataframe
 	
@@ -72,47 +77,67 @@ def main():
 				'Bear Pullback': []
 	}
 	
-	for idx in range(len(df)-10,len(df)):
+	sampleDataset=[]
+	
+	for idx in range(len(df)-1000,len(df)):
 		curr_mkt=df['Market'][idx]
 		curr_close=float(df['Close'][idx])
 		curr_date=datetime.strptime(df['Date'][idx],"%Y-%m-%d")
 		
 		curr_add=[curr_date,curr_close]
-		
+		sampleDataset.append(curr_add)
 		data_dict[curr_mkt].append(curr_add)
 		
-	# ~ print(data_dict)
+	# ~ print(data_dict['Bear'])
+	
+	# ~ return
+	# ~ allBulls=[_ for _ in allMarkets['bull_markets'] if _[1] is not None]
+	# ~ allBears=[_ for _ in allMarkets['bear_markets'] if _[1] is not None]
+	
+	# ~ allBulls=[data_dict['Bull']]
+	# ~ allBears=[data_dict['Bear']]
+	# ~ allBullPullbacks=[data_dict['Bull Pullback']]
+	# ~ allBullCorrs=[data_dict['Bull Correction']]
+	# ~ allBearPullbacks=[data_dict['Bear Pullback']]
+	# ~ allBearCorrs=[data_dict['Bear Correction']]
+	
+	# ~ sampleDataset=
+	
+	# ~ print()
+	# ~ print(allBearCorrs)
+	
 	# ~ return
 	
 	####
 	# PLOT Data
 	####
 	#plot with line overlays
+	####
 	'''
 	plt.figure()
-	plt.title("Markets, bull corrections and bull pullbacks on ^GSPC")
+	plt.title("Markets, corrections and pullbacks")
 	plt.yscale('log')
-
+	# ~ plt.plot(*lTranspose(sampleDataset))
 	plt.plot(*lTranspose(sampleDataset))
-
+	
 	def plotMarket(market, color, label):
 		for i,_ in enumerate(market): # PLOT BULL MARKETS
 			if i==0: 
 				plt.plot(*lTranspose(_), color=color, label=label)
 			else: 
 				plt.plot(*lTranspose(_), color=color)
-
+	
 	plotMarket(allBulls, 'green', 'bull market')
 	plotMarket(allBears, 'red', 'bear market')
 	plotMarket(flattenList(allBullCorrs), 'orange', 'bull correction')
 	plotMarket(flattenList(allBullPullbacks), 'yellow', 'bull pullback')
 	plotMarket(flattenList(allBearCorrs), 'orange', 'bull correction')
 	plotMarket(flattenList(allBearPullbacks), 'yellow', 'bull pullback')
-	   
+	
 	plt.legend()
 	plt.show()
+	
 	'''
-
 
 	'''
 	print("Latest price is %s" %sampleDataset[-1])
@@ -126,6 +151,7 @@ def main():
 	'''
 
 	#plot with markers
+	'''
 	import copy
 	sampleDatasetEdit=copy.deepcopy(sampleDataset) # we wouldn't want to mess up our data
 
@@ -165,30 +191,48 @@ def main():
 		updateColumnTo(sampleDatasetEdit,_,4,'pullback')
 	for _ in flattenList(allBullBwPullbacks):
 		updateColumnTo(sampleDatasetEdit,_,4,'between_pullbacks')
-
+'''
 	#set plot start and finish
 	p_start=0
 	p_finish=7823
 	# ~ print(len(sampleDatasetEdit))
 
-	test_bull_bw_pullbacks=[_[0:2] for _ in sampleDatasetEdit[p_start:p_finish] if _[2]=='bull' and _[4]=='between_pullbacks']
-	test_bull_corrs=[_[0:2] for _ in sampleDatasetEdit[p_start:p_finish] if _[2]=='bull' and _[3]=='correction']
-	test_bull_pullbacks=[_[0:2] for _ in sampleDatasetEdit[p_start:p_finish] if _[2]=='bull' and _[4]=='pullback']
-	test_bear=[_[0:2] for _ in sampleDatasetEdit[p_start:p_finish] if _[2]=='bear']
-	test_bear_corrs=[_[0:2] for _ in sampleDatasetEdit[p_start:p_finish] if _[2]=='bear' and _[3]=='correction']
-	test_bear_pullbacks=[_[0:2] for _ in sampleDatasetEdit[p_start:p_finish] if _[2]=='bear' and _[4]=='pullback']
-
+	# ~ test_bull_bw_pullbacks=[_[0:2] for _ in sampleDatasetEdit[p_start:p_finish] if _[2]=='bull' and _[4]=='between_pullbacks']
+	# ~ test_bull_corrs=[_[0:2] for _ in sampleDatasetEdit[p_start:p_finish] if _[2]=='bull' and _[3]=='correction']
+	# ~ test_bull_pullbacks=[_[0:2] for _ in sampleDatasetEdit[p_start:p_finish] if _[2]=='bull' and _[4]=='pullback']
+	# ~ test_bear=[_[0:2] for _ in sampleDatasetEdit[p_start:p_finish] if _[2]=='bear']
+	# ~ test_bear_corrs=[_[0:2] for _ in sampleDatasetEdit[p_start:p_finish] if _[2]=='bear' and _[3]=='correction']
+	# ~ test_bear_pullbacks=[_[0:2] for _ in sampleDatasetEdit[p_start:p_finish] if _[2]=='bear' and _[4]=='pullback']
+	
+	test_bull=[data_dict['Bull']]
+	test_bull_corrs=[data_dict['Bull Correction']]
+	test_bull_pullbacks=[data_dict['Bull Pullback']]
+	test_bear=[data_dict['Bear']]
+	test_bear_corrs=[data_dict['Bear Correction']]
+	test_bear_pullbacks=[data_dict['Bear Pullback']]
+	
+	# ~ allBulls=[data_dict['Bull']]
+	# ~ allBears=[data_dict['Bear']]
+	# ~ allBullPullbacks=
+	# ~ allBullCorrs=
+	# ~ allBearPullbacks=[data_dict['Bear Pullback']]
+	# ~ allBearCorrs=
+	
+	# ~ print(test_bull)
+	# ~ return
+	
 	# ~ plt.figure(figsize=(20,8))
 	plt.figure()
 	plt.title("Markets, bull corrections and bull pullbacks on ^GSPC")
 	plt.yscale('log')
-	plt.plot(*lTranspose(test_bull_bw_pullbacks),'.', markersize=1, color='green')
-	plt.plot(*lTranspose(test_bear),'.', markersize=1, color='red')
-	plt.plot(*lTranspose(test_bull_corrs),'.', markersize=1, color='orange')
-	plt.plot(*lTranspose(test_bull_pullbacks),'.', markersize=1, color='yellow')
-	plt.plot(*lTranspose(test_bear_corrs),'.', markersize=1, color='orange')
-	plt.plot(*lTranspose(test_bear_pullbacks),'.', markersize=1, color='yellow')
+	plt.plot(*lTranspose(flattenList(test_bull)),'.', markersize=1, color='green')
+	plt.plot(*lTranspose(flattenList(test_bear)),'.', markersize=1, color='red')
+	plt.plot(*lTranspose(flattenList(test_bull_corrs)),'.', markersize=1, color='orange')
+	plt.plot(*lTranspose(flattenList(test_bull_pullbacks)),'.', markersize=1, color='yellow')
+	plt.plot(*lTranspose(flattenList(test_bear_corrs)),'.', markersize=1, color='orange')
+	plt.plot(*lTranspose(flattenList(test_bear_pullbacks)),'.', markersize=1, color='yellow')
 	plt.show()
+	
 
 
 main()
