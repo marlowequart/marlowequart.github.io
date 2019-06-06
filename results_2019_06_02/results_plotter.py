@@ -44,10 +44,12 @@ def main():
 	#####
 	# input main info here
 	#####
-
+	# Data location for PC:
+	path = 'C:\\Python\\transfer\\results_2019_06_02\\'
+	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	path = '/Users/Marlowe/gitsite/transfer/results_2019_06_02/'
+	# path = '/Users/Marlowe/gitsite/transfer/results_2019_06_02/'
 
 	#input file name of interest
 	in_file_name='RUT_output.csv'
@@ -235,4 +237,5 @@ def main():
 	
 
 
-main()
+if __name__ == '__main__': main()
+# main()
