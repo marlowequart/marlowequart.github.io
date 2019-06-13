@@ -1,0 +1,9 @@
+For example, if you'd like to only see the probability of a pullback 1000 days ago, you can say head -n -1000 data/GSPC.csv > GSPC-1000.csv; python -m market_analysis.current_probability.current_probability GSPC-1000.csv GSPC-1000.pdf | grep 'The probability that pullback will occur based on price change'
+
+
+Naturally you can put this in a loop and see how it changes over time. Suppose you'd like to see how the probability of a pullback changed during the last 100 days, taking measurements at 5 day increments. If you're using Bash, you can simply say: for i in $(seq 100 -5 0); do head -n -$i data/GSPC.csv > GSPC-x.csv; python -m market_analysis.current_probability.current_probability GSPC-x.csv GSPC-x.pdf | grep 'The probability that pullback will occur based on price change\|Current date is'; done
+
+
+Or even like this: for i in $(seq 100 -5 0); do head -n -$i data/GSPC.csv > GSPC-x.csv; python -m market_analysis.current_probability.current_probability GSPC-x.csv GSPC-x.pdf | grep 'The probability that pullback will occur based on price change is\|Current date is\|Current market direction is'; done
+
+
