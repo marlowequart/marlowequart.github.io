@@ -110,7 +110,7 @@ def main(input_file_path: str,output_file_path:str) -> None:
 		# for pullbacks only the last should be removed, but not the first
 		past_moves=[[(_[1][0]-_[0][0]).days,(_[1][1]-_[0][1])/_[0][1]] for _ in flatten_list(mrkt_intervals[query])[:-1]]
 
-	pprint.pprint(past_moves)
+	# pprint.pprint(past_moves)
 
 	# 4. Calculate odds comparing current extent and duration to historical data. 
 	# For example if there are 75 samples of bull market corrections in the database, 
