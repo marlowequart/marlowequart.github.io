@@ -1,0 +1,7 @@
+Download data:
+
+fed-funds-rate-historical-chart.csv:
+https://www.macrotrends.net/2015/fed-funds-rate-historical-chart
+
+T10Y2Y.csv:
+https://fred.stlouisfed.org/series/T10Y2Y
