@@ -16,8 +16,10 @@ scipy version: 0.16.0
 
 import pandas as pd
 import os
+import re
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.ticker as plticker
 import datetime
 
 
@@ -66,21 +68,24 @@ def return_list(df):
 	date_list_r=date_list[::-1]
 	yield_list_r=yield_list[::-1]
 	
-	return date_list_r,yield_list_r
+	# make list of dates into datetime objects
+	date_list_out = [datetime.datetime.strptime(date_item,"%Y-%m-%d").date() for date_item in date_list_r]
+	
+	return date_list_out,yield_list_r
 
 
 def slice_df(df,start_date,end_date,col_name):
 	
 	start_day_df=df.loc[df[col_name] == start_date]
 	end_day_df=df.loc[df[col_name] == end_date]
-	print()
-	print(df[45:75])
+	# print()
+	# print(df[45:75])
 	
 	
 	startidx=end_day_df.index[0].tolist()
 	endidx=start_day_df.index[0].tolist()
 	
-	print(df[startidx:endidx])
+	# print(df[startidx:endidx])
 	# ~ return
 	return df[startidx:endidx],startidx,endidx
 
@@ -156,10 +161,10 @@ def main():
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	path = '/Users/Marlowe/gitsite/transfer/bond/'
+	# path = '/Users/Marlowe/gitsite/transfer/bond/'
 	
 	# Data location for PC:
-	# ~ path = 'C:\\Python\\transfer\\'
+	path = 'C:\\Python\\transfer\\Bond\\'
 	
 	# input the names of the fields (top column)
 	fields = ['DATE','YIELD']
@@ -173,10 +178,12 @@ def main():
 	fed_funds_file_name='FEDFUNDS_daily.csv'
 	ten_minus_two_file_name='T10Y2Y.csv'
 	two_year_file_name='DGS2.csv'
+	ten_year_file_name='DGS10.csv'
 	
 	fed_in_file= os.path.join(path,fed_funds_file_name)
 	TUT_in_file= os.path.join(path,ten_minus_two_file_name)
 	tyr_in_file= os.path.join(path,two_year_file_name)
+	tenyr_in_file= os.path.join(path,ten_year_file_name)
 	
 	
 	# add a header to the file if no header exists
@@ -191,12 +198,14 @@ def main():
 	fed_df=import_data(fed_in_file,fields)
 	TUT_df=import_data(TUT_in_file,fields)
 	tyr_df=import_data(tyr_in_file,fields)
+	tenyr_df=import_data(tenyr_in_file,fields)
 	
+	# print(fed_df[30:45])
+	# print(TUT_df[30:45])
+	# print(tyr_df[30:45])
 	
-	# ~ print(fed_df.YIELD.dtype)
-	# ~ print(TUT_df_in.YIELD.dtype)
-	# ~ print(tyr_df.YIELD.dtype)
-	# ~ return
+	# return
+	
 	
 	
 	
@@ -205,23 +214,42 @@ def main():
 	#####
 	# input the date range of interest for overall analysis
 	#####
-	start_date='2019-04-08'
-	end_date='2019-05-10'
+	
+	####
+	# Some interesting date ranges:
+	# 1985-01-04 to 1991-01-11
+	# 1998-01-05 to 2002-07-09
+	# 2004-01-06 to 2009-12-14
+	# current:
+	####
+	# start_date='1985-01-04'
+	# start_date='1998-01-05'
+	start_date='2004-01-06'
+	# end_date='1991-01-11'
+	# end_date='2002-07-09'
+	# end_date='2009-12-14'
+	end_date='2019-07-16'
 	fed_df_2,startidx_fed,endidx_fed=slice_df(fed_df,start_date,end_date,'DATE')
 	tut_df_2,startidx_tut,endidx_tut=slice_df(TUT_df,start_date,end_date,'DATE')
 	tyr_df_2,startidx_tyr,endidx_tyr=slice_df(tyr_df,start_date,end_date,'DATE')
+	tenyr_df_2,startidx_tenyr,endidx_tenyr=slice_df(tenyr_df,start_date,end_date,'DATE')
 	
+	# print(fed_df_2)
+	# print(tut_df_2)
+	# print(tyr_df_2)
 	
+	# return
 	
 	fed_dates,fed_yields=return_list(fed_df_2)
 	tut_dates,tut_yields=return_list(tut_df_2)
 	tyr_dates,tyr_yields=return_list(tyr_df_2)
+	tenyr_dates,tenyr_yields=return_list(tenyr_df_2)
 	
-	print(fed_dates)
-	print(tut_dates)
-	print(tyr_dates)
+	# print(fed_dates)
+	# print(tut_dates)
+	# print(tyr_dates)
 	
-	return
+	# return
 	########
 	# Plot data
 	########
@@ -229,10 +257,10 @@ def main():
 	fig = plt.figure()
 	ax = plt.subplot()
 	
-	ax.plot(fed_dates,fed_yields,color='b')
-	ax.plot(tut_dates,tut_yields,color='r')
-	ax.plot(tyr_dates,tyr_yields,color='g')
-	
+	ax.plot(fed_dates,fed_yields,color='b',label='Fed Funds Yield')
+	ax.plot(tut_dates,tut_yields,color='r',label='10yr - 2yr Yield')
+	ax.plot(tyr_dates,tyr_yields,color='g',label='2yr Yield')
+	ax.plot(tenyr_dates,tenyr_yields,color='k',label='10yr Yield')
 	
 	ax.set_ylabel('Yields')
 	ax.set_xlabel('Date')
@@ -244,7 +272,23 @@ def main():
 		# ~ plt.axvline(datetime.datetime(start_date_yr,1,1),color='y')
 		# ~ plt.axvline(datetime.datetime(start_date_yr,1,31),color='k')
 	
+	#####
+	# Fix date xaxis
+	#####
+	# get a list of years between start_date and end_date
+	# first_yr=int(re.findall(r'(.+?)-',start_date)[0])
+	# last_yr=int(re.findall(r'(.+?)-',end_date)[0])
+	
+	# x_vals=[x for x in range(first_yr,last_yr,1)]
+	
+	# set_base=int(len(x_vals)/1)
+	# print(x_vals)
+	# loc=plticker.MultipleLocator(base=set_base)
+	# print(loc)
+	# ax.xaxis.set_major_locator(loc)
+	
 	ax.grid()
+	plt.legend()
 	plt.show()
 
 
