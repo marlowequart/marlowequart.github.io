@@ -1,16 +1,17 @@
 '''
-This script compares the small cap (russell 2000) vs large cap (S&P 500)
-over a given number of years for a desired time frame.
+This script plots various bond yields over a given period
 
-Input: daily OHLC data for S&P500 and Russell 2000
+Input: daily YIELD data for various bonds (2yr, 10yr, fed funds, 10yr-2yr
 
-Output: ratio of large cap to small cap
+Output: plot of bond yields over time
 
-
-pandas version: 0.18.1
-matplotlib version: 2.0.0
+Versions at work:
+pandas version: 1.0.21
+matplotlib version: 3.0.3
 numpy version: 1.10.1
 scipy version: 0.16.0
+
+python version: 3.5.4
 
 '''
 

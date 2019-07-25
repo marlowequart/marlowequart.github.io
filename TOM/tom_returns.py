@@ -1,17 +1,21 @@
 '''
-This script compares the returns of small cap (russell 2000) vs large cap (S&P 500)
-over a given number of years for a desired time frame.
+This script looks at the TOM effect over a given period and generates the 
+expected return, as well as best and worst case and plots the equity curve
 
-Input: daily OHLC data for S&P500 and Russell 2000
+The purpose is to compare different start and end dates around tom.
 
-Output: returns over period
+Input: daily OHLC data for desired trading symbol
+
+Output: returns over period and plot of equity
 
 
 pandas version: 0.18.1
-matplotlib version: 2.0.0
+matplotlib version: 3.0.3
 mpl_finance version: 0.10.0
 numpy version: 1.10.1
 scipy version: 0.16.0
+
+python version: 3.5.4
 
 '''
 
@@ -19,13 +23,7 @@ import pandas as pd
 import os
 import numpy as np
 import re
-# ~ import csv
 
-# ~ import matplotlib.pyplot as plt
-# ~ from mpl_finance import candlestick2_ochl
-# ~ import matplotlib.ticker as ticker
-
-from scipy import stats
 
 
 #open csv file, return the data in a pandas dataframe
@@ -83,10 +81,12 @@ def start_date_detect(df,index_l,index_h,month):
 
 
 
-def get_returns(df,start_date,end_date,month,start_day,num_days):
-	# this function will generate a list of the returns over the num_days for the given month.
-	# each entry in the list will be the return for the given month over the number of years
-	# between start_date and end_date
+def get_returns(df,start_date,end_date,start_day,end_day):
+	# this function will generate a list of the returns for each month over the given period (start_date/end_date)
+	# with the given start_day and end_day
+	#
+	# each entry in the list will be the return for each month in % or absolute terms
+	
 	
 	fields = ['Date','Open','High','Low','Close']
 	
@@ -95,28 +95,43 @@ def get_returns(df,start_date,end_date,month,start_day,num_days):
 	df_2,idxl,idxh=slice_df(df,start_date,end_date)
 	
 	#create a list of the index of the first trading day of the desired month in each year in the new dataframe
-	start_points=[]
-	start_points=start_date_detect(df_2,idxl,idxh,month)
-	# ~ print(start_points)
+	months=['01','02','03','04','05','06','07','08','09','10','11','12']
+	start_points_1=[]
+	for mo in months:
+		start_points_1.append(start_date_detect(df_2,idxl,idxh,mo))
+	# print(start_points)
 	
-	#next adjust those indexes by the start_day factor
+	# create one list with indexes in order
+	start_points_2=[item for sublist in start_points_1 for item in sublist]
+	start_points=sorted(start_points_2)
+
+	# print(df.loc[[start_points[4]-1]])
+	# return
+	
+	# next adjust those indexes by the start_day factor
+	# moving down in index (ex: from 4786 to 4785) increases the date
+	# moving up in index decreases date
+	# using subtraction to change start date takes into consideration negative start dates
 	adj_start_points=[idx-start_day for idx in start_points]
-	# ~ print(adj_start_points)
+	
+	# total number of days held
+	
+	hold_days=abs(start_day-end_day)
+	
 	
 	#print the start date and end date of analysis
 	# ~ for idx in adj_start_points:
 		# ~ print('start date: '+df_2['Date'][idx]+', end date: '+df_2['Date'][idx-num_days])
 	
-	#5/22/19: want to do statistical analysis by searching through first of year -10 days to feb 1st +10 days and find
-	#the optimal holding period for start date and end date
 	
-	#get the return, the closing price at the last trading day minus the closing price
+	
+	#get the return, the opening price at the last trading day minus the opening price
 	#at the first trading day over the given period.
 	abs_returns=[]
 	pct_returns=[]
 	for idx in adj_start_points:
-		start_val=df_2['Close'][idx]
-		end_val=df_2['Close'][idx-num_days]
+		start_val=df_2['Open'][idx]
+		end_val=df_2['Open'][idx-hold_days]
 		# ~ print('start date: '+df_2['Date'][idx]+', value: '+str(round(start_val,2))+', end date: '+df_2['Date'][idx-num_days]+', value: '+str(round(end_val,2)))
 		abs_returns.append(end_val-start_val)
 		pct_returns.append(round(100*(end_val-start_val)/start_val,2))
@@ -126,11 +141,11 @@ def get_returns(df,start_date,end_date,month,start_day,num_days):
 		# ~ print('start date: '+df_2['Date'][adj_start_points[x]]+', end date: '+df_2['Date'][adj_start_points[x]-num_days]+', pct return: '+str(pct_returns[x]))
 	
 	
-	return pct_returns,adj_start_points,abs_returns
+	return pct_returns,abs_returns
 	
-
-
-
+	
+	
+	
 def main():
 	#####
 	# input main info here
@@ -138,10 +153,10 @@ def main():
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	path = '/Users/Marlowe/gitsite/transfer/'
+	# path = '/Users/Marlowe/gitsite/transfer/'
 	
 	# Data location for PC:
-	# ~ path = 'C:\\Python\\transfer\\'
+	path = 'C:\\Python\\transfer\\TOM\\'
 	
 	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
 	fields = ['Date','Open','High','Low','Close']
@@ -152,11 +167,11 @@ def main():
 	#####
 	
 	#input file names of interest
-	small_cap_file_name='^RUT.csv'
-	large_cap_file_name='^GSPC.csv'
+	# file_name='^RUT.csv'
+	file_name='^GSPC.csv'
 	
-	SC_in_file= os.path.join(path,small_cap_file_name)
-	LC_in_file= os.path.join(path,large_cap_file_name)
+	
+	in_file= os.path.join(path,file_name)
 	
 	
 	# add a header to the file if no header exists
@@ -167,42 +182,38 @@ def main():
 	
 	
 	# create dataframe from the data
-	sc_df=import_data(SC_in_file,fields)
-	lc_df=import_data(LC_in_file,fields)
+	df=import_data(in_file,fields)
 	
 	#####
 	# input the date range of interest for overall analysis
 	#####
 	
 	#first date in russell: 1987-09-10
-	start_date='1987-09-10'
+	# start_date='1987-09-10'
+	start_date='1999-09-10'
 	# ~ start_date='2000-09-11'
 	
-	end_date='2000-09-11'
-	# ~ end_date='2019-05-10'
+	# end_date='2000-09-11'
+	end_date='2019-05-10'
 	
-	# input the desired 2 digit month to analyze. Jan=01, Feb=02 etc
-	test_month='01'
+	
 	# input month start date. 0=first day, 1=second day, -1=day before 1st day, etc
-	start_day=-2
-	# input number of days to analyze. On average 20 trading days in jan
-	num_days=10
+	start_day=-4
+	# input end date. 0=first day, 1=second day, -1=day before 1st day, etc
+	end_day=1
 	
 	
 	#####
 	# generate a list of returns for the given month over the desired period
 	#####
 	
-	sc_pct_returns,sc_start_idxs,sc_abs_rtn=get_returns(sc_df,start_date,end_date,test_month,start_day,num_days)
-	lc_pct_returns,lc_start_idxs,lc_abs_rtn=get_returns(lc_df,start_date,end_date,test_month,start_day,num_days)
-	# ~ return
-	# ~ print(sc_pct_returns)
-	# ~ print(lc_pct_returns)
+	pct_rtns,abs_rtns=get_returns(df,start_date,end_date,start_day,end_day)
 	
-	# ~ for x in range(len(sc_start_idxs)):
-		# ~ print('Month start date: '+sc_df['Date'][sc_start_idxs[x]]+', sc pct return: '+str(sc_pct_returns[x])+', lc pct return: '
-			# ~ +str(lc_pct_returns[x]))
-	# ~ return
+	# ~ print(sc_pct_returns)
+	print(pct_rtns)
+	# return
+	
+	
 	#####
 	# provide statistics on returns
 	#####
@@ -240,33 +251,26 @@ def main():
 	'''
 	
 	#####
-	# Look at returns of strategy and equity curve
+	# Look at returns of strategy
 	#####
 	
-	#set the ratio of SC to LC
-	ratio=1.9
-	yearly_abs_return=[]
-	for x in range(len(sc_abs_rtn)):
-		#find the baseline value
-		sc_start_val=sc_df['Close'][sc_start_idxs[x]]*ratio
-		lc_start_val=lc_df['Close'][lc_start_idxs[x]]
-		baseline=sc_start_val-lc_start_val
-		curr_rtn_sc=sc_abs_rtn[x]*ratio
-		curr_rtn_lc=lc_abs_rtn[x]
-		yearly_abs_return.append(curr_rtn_sc-curr_rtn_lc)
-		
-	
-	worst_case_return=min(yearly_abs_return)
-	mean_return=round(np.mean(yearly_abs_return),2)
-	std_dev_return=round(np.std(yearly_abs_return),2)
+	worst_case_return=min(pct_rtns)
+	mean_return=round(np.mean(pct_rtns),2)
+	std_dev_return=round(np.std(pct_rtns),2)
 	
 	print()
-	print('Mean returns: '+str(mean_return)+', std_dev: '+str(std_dev_return))
+	print('Testing from '+start_date+' to '+end_date)
+	print('Purchase on day '+str(start_day)+', sell on day '+str(end_day))
+	print('Mean returns: '+str(mean_return)+', std_dev: '+str(std_dev_return)+', worst case return: '+str(worst_case_return))
 	print()
 	# ~ print(yearly_abs_return)
-	return
 	
-
-
+	
+	#####
+	# Plot equity curve
+	#####
+	
+	
+	return
 
 main()
