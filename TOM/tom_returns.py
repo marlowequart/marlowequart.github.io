@@ -23,7 +23,9 @@ import pandas as pd
 import os
 import numpy as np
 import re
-
+import datetime
+import matplotlib.pyplot as plt
+import matplotlib.ticker as plticker
 
 
 #open csv file, return the data in a pandas dataframe
@@ -91,8 +93,8 @@ def get_returns(df,start_date,end_date,start_day,end_day):
 	fields = ['Date','Open','High','Low','Close']
 	
 	#get the low and high index of the dataframe based on the start and end dates
-	
 	df_2,idxl,idxh=slice_df(df,start_date,end_date)
+	
 	
 	#create a list of the index of the first trading day of the desired month in each year in the new dataframe
 	months=['01','02','03','04','05','06','07','08','09','10','11','12']
@@ -129,19 +131,31 @@ def get_returns(df,start_date,end_date,start_day,end_day):
 	#at the first trading day over the given period.
 	abs_returns=[]
 	pct_returns=[]
+	dates=[]
 	for idx in adj_start_points:
 		start_val=df_2['Open'][idx]
 		end_val=df_2['Open'][idx-hold_days]
 		# ~ print('start date: '+df_2['Date'][idx]+', value: '+str(round(start_val,2))+', end date: '+df_2['Date'][idx-num_days]+', value: '+str(round(end_val,2)))
 		abs_returns.append(end_val-start_val)
 		pct_returns.append(round(100*(end_val-start_val)/start_val,2))
+		# Generate list of dates for plotting purposes
+		dates.append(df_2['Date'][idx])
 	
 	#print the start date and returns of analysis
 	# ~ for x in range(len(adj_start_points)):
 		# ~ print('start date: '+df_2['Date'][adj_start_points[x]]+', end date: '+df_2['Date'][adj_start_points[x]-num_days]+', pct return: '+str(pct_returns[x]))
 	
 	
-	return pct_returns,abs_returns
+	# make list of dates into datetime objects
+	date_list_r = [datetime.datetime.strptime(date_item,"%Y-%m-%d").date() for date_item in dates]
+	
+	# Reverse all lists to go from start date to end date
+	# Transpose lists
+	date_list_out=date_list_r[::-1]
+	pct_returns_out=pct_returns[::-1]
+	abs_returns_out=abs_returns[::-1]
+	
+	return pct_returns_out,abs_returns_out,date_list_out
 	
 	
 	
@@ -189,8 +203,10 @@ def main():
 	#####
 	
 	#first date in russell: 1987-09-10
-	# start_date='1987-09-10'
-	start_date='1999-09-10'
+	#first date in GSPC: 1950-01-04
+	# start_date='1950-01-04'
+	start_date='1987-09-10'
+	# start_date='1999-09-10'
 	# ~ start_date='2000-09-11'
 	
 	# end_date='2000-09-11'
@@ -204,13 +220,14 @@ def main():
 	
 	
 	#####
-	# generate a list of returns for the given month over the desired period
+	# generate a list of returns over the desired period
 	#####
 	
-	pct_rtns,abs_rtns=get_returns(df,start_date,end_date,start_day,end_day)
+	pct_rtns,abs_rtns,dates=get_returns(df,start_date,end_date,start_day,end_day)
 	
+	# print(len(dates))
 	# ~ print(sc_pct_returns)
-	print(pct_rtns)
+	# print(len(pct_rtns))
 	# return
 	
 	
@@ -253,7 +270,7 @@ def main():
 	#####
 	# Look at returns of strategy
 	#####
-	
+	'''
 	worst_case_return=min(pct_rtns)
 	mean_return=round(np.mean(pct_rtns),2)
 	std_dev_return=round(np.std(pct_rtns),2)
@@ -265,10 +282,59 @@ def main():
 	print()
 	# ~ print(yearly_abs_return)
 	
-	
+	'''
 	#####
 	# Plot equity curve
 	#####
+	
+	
+	
+	#####
+	# Plot total returns over the given period for the following time frames:
+	# 6mo, 1yr, 2yr, 5yr, 10yr
+	# So at each point in time you can see how successful the strategy has been
+	# historically in short term and long term durations. The idea is that this is helpful to find out
+	# if a strategy is becoming less effective. We can use this to look through historical periods
+	# where it has been shown that a given strategy that was once effective has become ineffective.
+	# Will this early warning system help us to know when to stop using this strategy?
+	#####
+	# Total return over a period is defined as the sum of all gains minus all losses in % terms
+	
+	# Need to start 10yrs after start_date, 120 months
+	six_mo_rtns=[]
+	one_yr_rtns=[]
+	two_yr_rtns=[]
+	five_yr_rtns=[]
+	ten_yr_rtns=[]
+	for idx in range(120,len(pct_rtns)):
+		ten_yr_rtns.append(sum(pct_rtns[idx-120:idx]))
+		five_yr_rtns.append(sum(pct_rtns[idx-60:idx]))
+		two_yr_rtns.append(sum(pct_rtns[idx-24:idx]))
+		one_yr_rtns.append(sum(pct_rtns[idx-12:idx]))
+		six_mo_rtns.append(sum(pct_rtns[idx-6:idx]))
+	
+	# print(len(ten_yr_rtns))
+	# print(len(six_mo_rtns))
+	# print(len(dates[120:]))
+	# return
+	# Plot returns over dates
+	fig = plt.figure()
+	ax = plt.subplot()
+	
+	ax.plot(dates[120:],ten_yr_rtns,color='b',label='6mo Returns')
+	ax.plot(dates[120:],five_yr_rtns,color='r',label='1yr Returns')
+	ax.plot(dates[120:],two_yr_rtns,color='g',label='2yr Returns')
+	ax.plot(dates[120:],one_yr_rtns,color='k',label='5yr Returns')
+	ax.plot(dates[120:],six_mo_rtns,color='c',label='10yr Returns')
+	
+	ax.set_ylabel('Returns')
+	ax.set_xlabel('Date')
+	
+	
+	ax.grid()
+	plt.legend()
+	plt.show()
+
 	
 	
 	return
