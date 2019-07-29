@@ -236,7 +236,7 @@ def main():
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	path = '/Users/Marlowe/gitsite/transfer/'
+	path = '/Users/Marlowe/gitsite/transfer/TOM/'
 	
 	# Data location for PC:
 	# ~ path = 'C:\\Python\\transfer\\'
@@ -336,7 +336,7 @@ def main():
 	
 	
 	# plot the returns
-	# ~ bar_plot(tot_mean_rtns,num_days)
+	bar_plot(tot_mean_rtns,num_days)
 	
 	# get the average daily returns based on start and end around TOM
 	# ex avg daily return over period for -1 to +4

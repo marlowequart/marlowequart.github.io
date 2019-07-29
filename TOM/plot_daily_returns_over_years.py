@@ -8,6 +8,9 @@ Using the previous 10 years of data, 120 months to get the avg daily % returns
 using a specified TOM time frame, as if what would be the returns if you were
 trading this idea over the last 10 years. We want to see how this might change over time
 
+The method this is calculated is done by taking the mean of each TOM's return over the given period.
+Each TOM's return is calculated by taking the mean of each days returns in that particular TOM.
+
 Inputs:
 
 
@@ -69,39 +72,6 @@ def slice_df(df,start_date,end_date):
 	return df[startidx:endidx],startidx,endidx
 
 
-def get_returns(df,idx_ut,num_days):
-	# this function will generate a list of the percent returns over the +/-num_days range for the given index.
-	# each entry in the list will be the return for the given day with respect to that day
-	
-	fields = ['Date','Open','High','Low','Close']
-	
-	
-	# get the index of the test_date
-	# ~ test_day_df=df.loc[df['Date'] == test_date]
-	# ~ test_date_idx=test_day_df.index[0].tolist()
-	
-	# for 1995-01-03, index is 6133
-	
-	#adjust index start
-	# ~ if num_days[0] < 0:
-		# ~ idx_start_adj=
-	# ~ idx_end_adj=
-	
-	#get the return, the closing price at the last trading day minus the closing price
-	#at the first trading day over the given period.
-	abs_returns=[]
-	pct_returns=[]
-	for idx in range(idx_ut-num_days[0],idx_ut-num_days[1]-1,-1):
-		days_close=df['Close'][idx]
-		days_open=df['Open'][idx]
-		abs_returns.append(days_close-days_open)
-		pct_returns.append(round(100*(days_close-days_open)/days_open,2))
-		# ~ print('Index: '+str(idx)+', Date: '+str(df['Date'][idx])+', return: '+str(round(100*(days_close-days_open)/days_open,2)))
-	
-	
-	
-	return pct_returns
-
 
 def start_of_month_detect(df,index_l,index_h,month):
 	#return a list of the index of the first day of the select month over
@@ -134,9 +104,46 @@ def start_of_month_detect(df,index_l,index_h,month):
 	return index_locations
 
 
+def get_returns(df,idx_ut,num_days):
+	# this function will generate a list of the percent returns over the +/-num_days range for the given index.
+	# each entry in the list will be the return for the given day with respect to that day
+	# num_days=[start_day,end_day] in a format of +/- around 0
+	
+	fields = ['Date','Open','High','Low','Close']
+	
+	
+	# get the index of the test_date
+	# ~ test_day_df=df.loc[df['Date'] == test_date]
+	# ~ test_date_idx=test_day_df.index[0].tolist()
+	
+	# for 1995-01-03, index is 6133
+	
+	#adjust index start
+	# ~ if num_days[0] < 0:
+		# ~ idx_start_adj=
+	# ~ idx_end_adj=
+	
+	#get the return, the closing price at the last trading day minus the closing price
+	#at the first trading day over the given period.
+	abs_returns=[]
+	pct_returns=[]
+	for idx in range(idx_ut-num_days[0],idx_ut-num_days[1]-1,-1):
+		days_close=df['Close'][idx]
+		days_open=df['Open'][idx]
+		abs_returns.append(days_close-days_open)
+		pct_returns.append(round(100*(days_close-days_open)/days_open,2))
+		# ~ print('Index: '+str(idx)+', Date: '+str(df['Date'][idx])+', return: '+str(round(100*(days_close-days_open)/days_open,2)))
+	
+	return pct_returns
+
+
 def avg_returns(df,start_date,end_date,num_days,month):
 	# get the average daily returns on the num_days around the first of the month
 	# over a specified date range
+	# num_days=[start_day,end_day] in a format of +/- around 0
+	# The output of this function is the mean daily return for each day over the given period
+	# for instance if you choose num_days to be -4to+1, then the output list(mean_returns)
+	# will have the mean of all -4 days, all -3 days, all -2 days and so on.
 	
 	
 	#get the low and high index of the dataframe based on the start and end dates
@@ -149,7 +156,9 @@ def avg_returns(df,start_date,end_date,num_days,month):
 	# ~ print('Number of months tested: '+str(len(start_idxs)))
 	
 	# cycle through the start indexes and get the returns +/- num_days over each period
-	# result will be a list of lists
+	# result will be a list of lists where each internal list is the list of daily returns around
+	# each given TOM.
+	# get_returns returns a list of each days % return around the given idx for +/-num_days
 	all_pct_returns=[]
 	for idx in start_idxs:
 		all_pct_returns.append(get_returns(df,idx,num_days))
@@ -246,7 +255,7 @@ def gen_avg_daily_rtn(df,start_date,end_date,num_days,month,num_yrs):
 			# ~ print('4 is first trading day')
 			test_start_date=str(start_date_yr)+'-'+test_month+'-04'
 		else:
-			print('Error, did not find first trading day for start date')
+			print('Error, did not find first trading day for given start date')
 			
 			
 		# find the first trading day of the end date month/year
@@ -307,13 +316,15 @@ def plot_returns(a_list,start_date,end_date):
 	# ~ ax.plot(x_vals,a_list,color='b')
 	ax.plot(x_vals,a_list,color='blue')
 	ax.set_ylabel('avg daily % return')
-	ax.set_xlabel('year-mo-day')
+	ax.set_xlabel('Date')
 	
 	loc=plticker.MultipleLocator(base=set_base)
 	ax.xaxis.set_major_locator(loc)
 	# ~ ax.set_xlim(num_days[0],num_days[1])
 	
 	# ~ ax.grid(which='major', axis='both')
+	plt.title('Avg Daily Returns (mean of mean), 10 year periods, all months, -1 to +3, 1987 to 2019')
+	ax.set_ylim([0,0.2])
 	plt.show()
 	
 	
@@ -330,7 +341,7 @@ def main():
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	path = '/Users/Marlowe/gitsite/transfer/'
+	path = '/Users/Marlowe/gitsite/transfer/TOM/'
 	
 	# Data location for PC:
 	# ~ path = 'C:\\Python\\transfer\\'
@@ -363,8 +374,8 @@ def main():
 	#####
 	
 	# ^GSPC data starts at 1950, need to start at least 10yrs ahead of that
-	start_date='1960-02-01'
-	# ~ start_date='1987-09-10'
+	# ~ start_date='1960-02-01'
+	start_date='1987-09-10'
 	# ~ start_date='1988-01-08'
 	# ~ start_date='2000-09-11'
 	
@@ -373,12 +384,12 @@ def main():
 	# ~ end_date='1995-01-05'
 	# ~ end_date='2000-09-11'
 	# ~ end_date='2001-10-12'
-	end_date='2019-04-10'
+	end_date='2019-05-10'
 	
 	# input number of days to analyze before and after the TOM
 	# num days is a range [start,end] so like [-1,4] or [-10,10]
 	# note compared to ziemba, my-1 = ziemba-1, my+3 = ziemba+4
-	num_days=[-4,1]
+	num_days=[-1,3]
 	print()
 	
 	# input the month, which is the two digit month if we want to test a specific month.
