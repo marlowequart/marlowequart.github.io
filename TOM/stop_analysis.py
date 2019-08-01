@@ -1,20 +1,19 @@
 '''
-This script looks at the TOM effect over a given period and generates the 
-expected return, as well as best and worst case and plots the equity curve
+This study is used to help determine the optimal stop loss for the TOM trade.
 
-The purpose is to compare different start and end dates around tom.
+The biggest loss is calculated as the largest % decline during the trade from the opening price
 
 Input: daily OHLC data for desired trading symbol
 
-Output: returns over period and plot of equity
+Output: 
+1. Plot the histogram (bar plot) of each months returns.
+2. Determine correlation between lowest low during the period while trade was on
+	and winners/loosers. Want to find a way to eliminate the really big losses, maybe two std dev
+	but also look at what is the biggest loss experienced on trades that were winners.
+	Also consider when did that loss reach its maximum point, was it early on or later in the trade
 
-What we want to calculate is the average(mean) of the % daily returns over a given period.
-For a single TOM, this is the mean of the daily returns on that particular TOM.
-For extended periods, you would take the mean of each TOM's mean over the given period.
+	
 
-For example, for a 2 year period, you first calculate the mean of the % daily returns
-around the TOM of each month in that period. Then you take the mean of all of the means
-over that given period.
 
 
 pandas version: 0.18.1
@@ -145,6 +144,7 @@ def tot_returns(df,start_date,end_date,start_day,end_day):
 	abs_returns=[]
 	pct_returns=[]
 	dates=[]
+	lows=[]
 	for idx in adj_start_points:
 		start_val=df_2['Open'][idx]
 		end_val=df_2['Open'][idx-hold_days]
@@ -153,6 +153,11 @@ def tot_returns(df,start_date,end_date,start_day,end_day):
 		pct_returns.append(round(100*(end_val-start_val)/start_val,2))
 		# Generate list of dates for plotting purposes
 		dates.append(df_2['Date'][idx])
+		curr_lows=[]
+		for idx_l in range(idx-hold_days,idx):
+			curr_lows.append(df_2['Low'][idx_l])
+		# get the largest percent decline from the opening value of this months trade
+		lows.append(round(-100*(start_val-min(curr_lows))/start_val,2))
 	
 	#print the start date and returns of analysis
 	# ~ for x in range(len(adj_start_points)):
@@ -167,9 +172,30 @@ def tot_returns(df,start_date,end_date,start_day,end_day):
 	date_list_out=date_list_r[::-1]
 	pct_returns_out=pct_returns[::-1]
 	abs_returns_out=abs_returns[::-1]
+	lows_out=lows[::-1]
 	
-	return pct_returns_out,abs_returns_out,date_list_out
+	return pct_returns_out,abs_returns_out,date_list_out,lows_out
 	
+	
+def bar_plot(a_list,num_bins):
+	# x_vals=[x for x in range(num_days[0],num_days[1]+1,1)]
+	
+	fig = plt.figure()
+	ax = plt.subplot()
+	# ~ ax.plot(x_vals,a_list,color='b')
+	ax.hist(a_list,normed=False,bins=num_bins)
+	ax.set_ylabel('Number of months')
+	ax.set_xlabel('% Returns')
+	
+	# loc=plticker.MultipleLocator(base=1)
+	# ax.xaxis.set_major_locator(loc)
+	# ~ ax.set_xlim(num_days[0],num_days[1])
+	
+	ax.grid(which='major', axis='both')
+	plt.show()
+	
+	
+	return
 	
 	
 	
@@ -240,199 +266,75 @@ def main():
 	
 	# this function generates the actual returns for each period over the given time frame
 	# as if you bought and sold at the beginning and end.
-	pct_rtns,abs_rtns,dates=tot_returns(df,start_date,end_date,start_day,end_day)
+	pct_rtns,abs_rtns,dates,lows=tot_returns(df,start_date,end_date,start_day,end_day)
 	
 	# print(len(dates))
 	# ~ print(sc_pct_returns)
 	# ~ print(pct_rtns[320:])
-	# ~ return
-	
 	
 	#####
-	# provide statistics on returns
+	# Print histogram of the returns over period
+	#####
+	
+	# bar_plot(pct_rtns,12)
+	
+	#####
+	# Find lowest low and average low corresponding to three bins:
+	# losing months <-3%, -3% to +0.1%, >0.1%
 	#####
 	'''
-	mean_sc_returns=round(np.mean(sc_pct_returns),2)
-	std_dev_sc_returns=round(np.std(sc_pct_returns),2)
+	Notes: No month with a <-3% return had a low higher than -3%, so these could have all been eliminated by capping the loss at -3%.
 	
-	mean_lc_returns=round(np.mean(lc_pct_returns),2)
-	std_dev_lc_returns=round(np.std(lc_pct_returns),2)
+	Could set stop loss at ~-3 to -4% and still have almost all winners.
 	
-	win_count=0
-	sc_minus_lc_wins=[]
-	sc_minus_lc_losses=[]
-	for r in range(len(lc_pct_returns)):
-		sc_minus_lc=round(sc_pct_returns[r]-lc_pct_returns[r],1)
-		if sc_pct_returns[r] > lc_pct_returns[r]:
-			win_count=win_count+1
-			sc_minus_lc_wins.append(sc_minus_lc)
-		if sc_pct_returns[r] <= lc_pct_returns[r]:
-			sc_minus_lc_losses.append(sc_minus_lc)
-		
-	bankroll=10000
-	edge=sum(sc_minus_lc_wins)-sum(sc_minus_lc_losses)
-	odds=round(win_count/len(sc_pct_returns),1)
 	
+	
+	
+	'''
+	minus_three_bin=[]
+	big_winner_bin=[]
+	middle_pack_bin=[]
+	for x in range(len(pct_rtns)):
+		if pct_rtns[x]<=-3:
+			minus_three_bin.append(lows[x])
+		elif -3 < pct_rtns[x] <= 0.:
+			middle_pack_bin.append(lows[x])
+		else:
+			big_winner_bin.append(lows[x])
+	
+	
+	print('Big Winner Bin (>0% return): '+str(len(big_winner_bin))+' entries')
+	# print(big_winner_bin)
+	print('Mean low: '+str(round(np.mean(big_winner_bin),2)))
+	print('Lowest Low: '+str(min(big_winner_bin)))
 	print()
-	print('Period under consideration: '+start_date+' to '+end_date)
-	print('Mean small cap returns: '+str(mean_sc_returns)+', std_dev: '+str(std_dev_sc_returns))
-	print('Mean large cap returns: '+str(mean_lc_returns)+', std_dev: '+str(std_dev_lc_returns))
-	print('Number of years tested: '+str(len(sc_pct_returns)))
+	
+	print('Middle of the road bin (>-3%, <0% return): '+str(len(middle_pack_bin))+' entries')
+	# print(middle_pack_bin)
+	print('Mean low: '+str(round(np.mean(middle_pack_bin),2)))
+	print('Lowest Low: '+str(min(middle_pack_bin)))
 	print()
-	print('Number of years sc > lc: '+str(win_count)+', odds of win '+str(odds))
-	print('Expected edge: '+str(edge))
-	print('Current bankroll: '+str(bankroll)+', bet size: '+str(bankroll*edge/odds))
-	'''
 	
-	#####
-	# Look at returns of strategy
-	#####
-	'''
-	worst_case_return=min(pct_rtns)
-	mean_return=round(np.mean(pct_rtns),2)
-	std_dev_return=round(np.std(pct_rtns),2)
-	
-	print()
-	print('Testing from '+start_date+' to '+end_date)
-	print('Purchase on day '+str(start_day)+', sell on day '+str(end_day))
-	print('Mean returns: '+str(mean_return)+', std_dev: '+str(std_dev_return)+', worst case return: '+str(worst_case_return))
-	print()
-	# ~ print(yearly_abs_return)
-	
-	'''
-	#####
-	# Plot equity curve
-	#####
-	
-	
-	
-	#####
-	# Plot sum of total returns over the given period for the following time frames:
-	# 6mo, 1yr, 2yr, 5yr, 10yr
-	# So at each point in time you can see how successful the strategy has been
-	# historically in short term and long term durations. The idea is that this is helpful to find out
-	# if a strategy is becoming less effective. We can use this to look through historical periods
-	# where it has been shown that a given strategy that was once effective has become ineffective.
-	# Will this early warning system help us to know when to stop using this strategy?
-	#####
-	# Total return over a period is defined as the sum of all gains minus all losses in % terms
-	'''
-	# Need to start 10yrs after start_date, 120 months
-	six_mo_rtns=[]
-	one_yr_rtns=[]
-	two_yr_rtns=[]
-	five_yr_rtns=[]
-	ten_yr_rtns=[]
-	for idx in range(120,len(pct_rtns)):
-		ten_yr_rtns.append(sum(pct_rtns[idx-120:idx]))
-		five_yr_rtns.append(sum(pct_rtns[idx-60:idx]))
-		two_yr_rtns.append(sum(pct_rtns[idx-24:idx]))
-		one_yr_rtns.append(sum(pct_rtns[idx-12:idx]))
-		six_mo_rtns.append(sum(pct_rtns[idx-6:idx]))
-		# ~ if idx==326:
-			# ~ print(idx)
-			# ~ print(sum(pct_rtns[idx-6:idx]))
-			# ~ print(dates[idx])
-	
-	# ~ print(pct_rtns[320:326])
-	# ~ print(sum(pct_rtns[320:326]))
-	# print(len(ten_yr_rtns))
-	# print(len(six_mo_rtns))
-	# print(len(dates[120:]))
-	# ~ return
+	print('Big loser bin (<-3% return): '+str(len(minus_three_bin))+' entries')
+	# print(minus_three_bin)
+	print('Mean low: '+str(round(np.mean(minus_three_bin),2)))
+	print('Lowest Low: '+str(min(minus_three_bin)))
 	
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))
 	print()
-	
-	
-	# Plot returns over dates
+	'''
+	# Plot a histogram of any set of lows
 	fig = plt.figure()
 	ax = plt.subplot()
-	
-	ax.plot(dates[120:],ten_yr_rtns,color='b',label='10yr Returns')
-	ax.plot(dates[120:],five_yr_rtns,color='r',label='5yr Returns')
-	ax.plot(dates[120:],two_yr_rtns,color='g',label='2yr Returns')
-	ax.plot(dates[120:],one_yr_rtns,color='k',label='1yr Returns')
-	ax.plot(dates[120:],six_mo_rtns,color='c',label='6mo Returns')
-	
-	ax.set_ylabel('Returns')
-	ax.set_xlabel('Date')
-	
-	
-	ax.grid()
-	plt.legend()
-	plt.title('TOM effect, 1987 to 2019, -4 to +1')
+	ax.hist(middle_pack_bin,normed=False,bins=10)
+	ax.set_ylabel('Number of months')
+	ax.set_xlabel('% lowest low')
+	ax.grid(which='major', axis='both')
+	plt.title('Lowest lows in months with <-3% return histogram')
 	plt.show()
 	'''
-	
-	#####
-	# Another method to look at historical returns to see if strategy is effective:
-	# Plot MEAN of total returns over the given period for the following time frames:
-	# 6mo, 1yr, 2yr, 5yr, 10yr
-	# So at each point in time you can see how successful the strategy has been
-	# historically in short term and long term durations. The idea is that this is helpful to find out
-	# if a strategy is becoming less effective. We can use this to look through historical periods
-	# where it has been shown that a given strategy that was once effective has become ineffective.
-	# Will this early warning system help us to know when to stop using this strategy?
-	#
-	# Using the mean, it averages out the gains from longer term market rising and you are able to see in just
-	# averaged terms if the strategy has been effective.
-	#####
-	# Total return over a period is defined as the sum of all gains minus all losses in % terms
-	
-	# Need to start 10yrs after start_date, 120 months
-	six_mo_rtns=[]
-	one_yr_rtns=[]
-	two_yr_rtns=[]
-	five_yr_rtns=[]
-	ten_yr_rtns=[]
-	for idx in range(120,len(pct_rtns)):
-		ten_yr_rtns.append(np.mean(pct_rtns[idx-120:idx]))
-		five_yr_rtns.append(np.mean(pct_rtns[idx-60:idx]))
-		two_yr_rtns.append(np.mean(pct_rtns[idx-24:idx]))
-		one_yr_rtns.append(np.mean(pct_rtns[idx-12:idx]))
-		six_mo_rtns.append(np.mean(pct_rtns[idx-6:idx]))
-		# ~ if idx==326:
-			# ~ print(idx)
-			# ~ print(sum(pct_rtns[idx-6:idx]))
-			# ~ print(dates[idx])
-	
-	# ~ print(pct_rtns[320:326])
-	# ~ print(sum(pct_rtns[320:326]))
-	# print(len(ten_yr_rtns))
-	# print(len(six_mo_rtns))
-	# print(len(dates[120:]))
-	# ~ return
-	
-	print()
-	print('%f seconds to run script' % (time.time() - start_time))
-	print()
-	
-	
-	# Plot returns over dates
-	fig = plt.figure()
-	ax = plt.subplot()
-	
-	ax.plot(dates[120:],ten_yr_rtns,color='b',label='10yr Returns')
-	ax.plot(dates[120:],five_yr_rtns,color='r',label='5yr Returns')
-	# ax.plot(dates[120:],two_yr_rtns,color='g',label='2yr Returns')
-	# ax.plot(dates[120:],one_yr_rtns,color='k',label='1yr Returns')
-	# ax.plot(dates[120:],six_mo_rtns,color='c',label='6mo Returns')
-	
-	ax.set_ylabel('Returns')
-	ax.set_xlabel('Date')
-	
-	
-	ax.grid()
-	plt.legend()
-	plt.show()
-	
-	
-	
-
-	
 	
 	return
-
+	
 main()
