@@ -291,6 +291,7 @@ def main():
 	
 	
 	'''
+	'''
 	minus_three_bin=[]
 	big_winner_bin=[]
 	middle_pack_bin=[]
@@ -301,6 +302,7 @@ def main():
 			middle_pack_bin.append(lows[x])
 		else:
 			big_winner_bin.append(lows[x])
+			
 	
 	
 	print('Big Winner Bin (>0% return): '+str(len(big_winner_bin))+' entries')
@@ -319,6 +321,26 @@ def main():
 	# print(minus_three_bin)
 	print('Mean low: '+str(round(np.mean(minus_three_bin),2)))
 	print('Lowest Low: '+str(min(minus_three_bin)))
+	
+	'''
+	####
+	# Get data on ammt won/lost
+	####
+	
+	winner_bin=[]
+	loser_bin=[]
+	for x in range(len(pct_rtns)):
+		if pct_rtns[x]<=0:
+			loser_bin.append(pct_rtns[x])
+		else:
+			winner_bin.append(pct_rtns[x])
+			
+	
+	avg_pct_win=round(np.mean(winner_bin),2)
+	avg_pct_loss=round(np.mean(loser_bin),2)
+	print()
+	print('Average % of win: '+str(avg_pct_win))
+	print('Average % of loss: '+str(avg_pct_loss))
 	
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))
