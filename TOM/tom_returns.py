@@ -1,6 +1,6 @@
 '''
 This script looks at the TOM effect over a given period and generates the 
-expected return, as well as best and worst case and plots the equity curve
+expected return, and plots the equity curve
 
 The purpose is to compare different start and end dates around tom.
 
@@ -8,13 +8,21 @@ Input: daily OHLC data for desired trading symbol
 
 Output: returns over period and plot of equity
 
-What we want to calculate is the average(mean) of the % daily returns over a given period.
+
+8/3/19
+Want to include a monte carlo simulation aspect to this strategy in order to find
+the possiblity of total ruin
+
+Notes:
+In order to calculate the average(mean) of the % daily returns over a given period.
 For a single TOM, this is the mean of the daily returns on that particular TOM.
 For extended periods, you would take the mean of each TOM's mean over the given period.
 
 For example, for a 2 year period, you first calculate the mean of the % daily returns
 around the TOM of each month in that period. Then you take the mean of all of the means
 over that given period.
+
+This script uses actual returns and determines a buy and sell price based on actual data
 
 
 pandas version: 0.18.1
@@ -66,9 +74,9 @@ def slice_df(df,start_date,end_date):
 	return df[startidx:endidx],startidx,endidx
 
 
-def start_date_detect(df,index_l,index_h,month):
+def start_date_detect_one_mo(df,index_l,index_h,month):
 	#return a list of the index of the first day of the desired month over
-	#the given period
+	#the given period. This function uses a single month as the input
 	
 	index_locations=[]
 	for idx in range(index_l+1,index_h-1):
@@ -90,6 +98,37 @@ def start_date_detect(df,index_l,index_h,month):
 			
 	return index_locations
 
+def start_date_detect_mo_list(df,index_l,index_h,months):
+	#return a list of the index of the first day of the desired month over
+	#the given period. this function takes a list of months as the input
+	#and finds the index of all of those months start dates. This is done to
+	#help reduce processing time when checking for multiple months so you can
+	#only cycle through the dataframe once.
+	
+	index_locations=[]
+	idx=index_l+1
+	while idx < index_h-1:
+	# ~ for idx in range(index_l+1,index_h-1):
+		
+		cur_date=df['Date'][idx]
+		prev_date=df['Date'][idx+1]
+		next_date=df['Date'][idx-1]
+		
+		# get the month value from the current, previous and next date
+		cur_date_mo=re.findall(r'-(.+?)-',cur_date)[0]
+		prev_date_mo=re.findall(r'-(.+?)-',prev_date)[0]
+		next_date_mo=re.findall(r'-(.+?)-',next_date)[0]
+		
+		#if current date has month in it and prev date doesnt,append
+		# advance the counter by 15 days to move through df faster
+		if cur_date_mo != prev_date_mo:
+			if cur_date_mo in months:
+				index_locations.append(idx)
+				idx+=15
+		else:
+			idx+=1
+	return index_locations
+
 
 
 def tot_returns(df,start_date,end_date,start_day,end_day):
@@ -102,7 +141,6 @@ def tot_returns(df,start_date,end_date,start_day,end_day):
 	#
 	# Is this method of calculation more accurate than taking the mean of each days returns over the given period?
 	
-	
 	fields = ['Date','Open','High','Low','Close']
 	
 	#get the low and high index of the dataframe based on the start and end dates
@@ -111,17 +149,49 @@ def tot_returns(df,start_date,end_date,start_day,end_day):
 	
 	#create a list of the index of the first trading day of the desired month in each year in the new dataframe
 	months=['01','02','03','04','05','06','07','08','09','10','11','12']
-	start_points_1=[]
-	for mo in months:
-		start_points_1.append(start_date_detect(df_2,idxl,idxh,mo))
+	
+	
+	# generate start points cycling through months
+	# ~ for mo in months:
+		# ~ start_points_1.append(start_date_detect_one_mo(df_2,idxl,idxh,mo))
+	# create one list with indexes in order
+	# ~ start_points_2=[item for sublist in start_points_1 for item in sublist]
+	# ~ start_points=sorted(start_points_2)
+	
+	# generate start points using faster method
+	start_points=[]
+	start_points=start_date_detect_mo_list(df_2,idxl,idxh,months)
+	
 	# print(start_points)
 	
-	# create one list with indexes in order
-	start_points_2=[item for sublist in start_points_1 for item in sublist]
-	start_points=sorted(start_points_2)
-
 	# print(df.loc[[start_points[4]-1]])
 	# return
+	
+	
+	'''
+	# Compare two methods of generating the monthly starting points:
+	test_1_time=time.time()
+	start_points_test1=[]
+	for mo in months:
+		start_points_test1.append(start_date_detect_one_mo(df_2,idxl,idxh,mo))
+	print()
+	print('%f seconds for test 1' % (time.time() - test_1_time))
+	print()
+	test_2_time=time.time()
+	start_points_test2=[]
+	start_points_test2=start_date_detect_mo_list(df_2,idxl,idxh,months)
+	print()
+	print('%f seconds for test 2' % (time.time() - test_2_time))
+	print()
+	start_points_test_11=[item for sublist in start_points_test1 for item in sublist]
+	start_points_test_12=sorted(start_points_test_11)
+	# ~ print(start_points_test_12[10:50])
+	print()
+	# ~ print(start_points_test2[10:50])
+	print('The two lists are the same: '+str(start_points_test_12==start_points_test2))
+	'''
+	
+	
 	
 	# next adjust those indexes by the start_day factor
 	# moving down in index (ex: from 4786 to 4785) increases the date
@@ -145,14 +215,22 @@ def tot_returns(df,start_date,end_date,start_day,end_day):
 	abs_returns=[]
 	pct_returns=[]
 	dates=[]
+	pct_low=[]
+	trade_open=[]
 	for idx in adj_start_points:
 		start_val=df_2['Open'][idx]
+		trade_open.append(start_val)
 		end_val=df_2['Open'][idx-hold_days]
 		# ~ print('start date: '+df_2['Date'][idx]+', value: '+str(round(start_val,2))+', end date: '+df_2['Date'][idx-num_days]+', value: '+str(round(end_val,2)))
 		abs_returns.append(end_val-start_val)
 		pct_returns.append(round(100*(end_val-start_val)/start_val,2))
 		# Generate list of dates for plotting purposes
 		dates.append(df_2['Date'][idx])
+		curr_lows=[]
+		for idx_l in range(idx-hold_days,idx):
+			curr_lows.append(df_2['Low'][idx_l])
+		# get the largest percent decline from the opening value of this months trade
+		pct_low.append(round(-100*(start_val-min(curr_lows))/start_val,2))
 	
 	#print the start date and returns of analysis
 	# ~ for x in range(len(adj_start_points)):
@@ -167,8 +245,10 @@ def tot_returns(df,start_date,end_date,start_day,end_day):
 	date_list_out=date_list_r[::-1]
 	pct_returns_out=pct_returns[::-1]
 	abs_returns_out=abs_returns[::-1]
+	pct_low_out=pct_low[::-1]
+	trade_open_out=trade_open[::-1]
 	
-	return pct_returns_out,abs_returns_out,date_list_out
+	return pct_returns_out,abs_returns_out,date_list_out,pct_low_out,trade_open_out
 	
 	
 	
@@ -181,10 +261,10 @@ def main():
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	# path = '/Users/Marlowe/gitsite/transfer/TOM/'
+	path = '/Users/Marlowe/gitsite/transfer/TOM/'
 	
 	# Data location for PC:
-	path = 'C:\\Python\\transfer\\TOM\\'
+	# ~ path = 'C:\\Python\\transfer\\TOM\\'
 	
 	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
 	fields = ['Date','Open','High','Low','Close']
@@ -234,17 +314,30 @@ def main():
 	end_day=1
 	
 	
+	
+	# ~ start_date_yr=int(re.findall(r'(.+?)-',start_date)[0])
+	# ~ end_date_yr=int(re.findall(r'(.+?)-',end_date)[0])
+	# ~ start_date_mo=int(re.findall(r'-(.+?)-',start_date)[0])
+	# ~ end_date_mo=int(re.findall(r'-(.+?)-',end_date)[0])
+	# ~ tot_months=12*(end_date_yr-start_date_yr)+(end_date_mo-start_date_mo)
+	# ~ print(start_date_yr,start_date_mo)
+	# ~ print(end_date_yr,end_date_mo)
+	# ~ print(tot_months)
+	# ~ return
+	
+	
 	#####
 	# generate a list of returns over the desired period
 	#####
 	
 	# this function generates the actual returns for each period over the given time frame
 	# as if you bought and sold at the beginning and end.
-	pct_rtns,abs_rtns,dates=tot_returns(df,start_date,end_date,start_day,end_day)
+	pct_rtns,abs_rtns,dates,pct_low,trade_open=tot_returns(df,start_date,end_date,start_day,end_day)
+	
 	
 	# print(len(dates))
-	# ~ print(sc_pct_returns)
-	# ~ print(pct_rtns[320:])
+	# ~ print(pct_rtns[20:50])
+	# ~ print(pct_low[20:50])
 	# ~ return
 	
 	
@@ -285,7 +378,7 @@ def main():
 	'''
 	
 	#####
-	# Look at returns of strategy
+	# Look at possible returns of strategy
 	#####
 	'''
 	worst_case_return=min(pct_rtns)
@@ -300,137 +393,144 @@ def main():
 	# ~ print(yearly_abs_return)
 	
 	'''
+	
+	#####
+	# Generate EV of strategy
+	#####
+	'''
+	# This output represents the expected value of this strategy in percent terms
+	num_wins=245
+	num_loss=135
+	
+	win_prob=num_wins/(num_wins+num_loss)
+	loss_prob=1.-win_prob
+	
+	avg_pct_win=1.73
+	avg_pct_loss=1.5
+	
+	edge=avg_pct_win*win_prob-avg_pct_loss*loss_prob
+	print()
+	print('Trading edge(gain expectancy) is '+str(round(edge,2)))
+	print()
+	'''
+	
 	#####
 	# Plot equity curve
 	#####
 	
+	# Simple normalized equity curve, purchase 1 unit each trade (no position sizing),
+	# no stop loss
+	# ~ start_equity=10000
+	# leverage factor is $ per point
+	# ~ levg_fact=5
+	# ~ basic_equity=[start_equity]
+	# ~ for i in range(len(abs_rtns)):
+		# ~ basic_equity.append(equity[i]+levg_fact*abs_rtns[i])
+	# ~ basic_equity=equity[1:]
+	
+	# Calculate CAGR
+	# ~ tot_months=len(abs_rtns)
+	# ~ tot_yrs=tot_months/12
+	# ~ cagr=round(100*((basic_equity[-1]/start_equity)**(1/tot_yrs)-1),1)
+	# ~ print()
+	# ~ print('The CAGR of this strategy is '+str(cagr))
 	
 	
-	#####
-	# Plot sum of total returns over the given period for the following time frames:
-	# 6mo, 1yr, 2yr, 5yr, 10yr
-	# So at each point in time you can see how successful the strategy has been
-	# historically in short term and long term durations. The idea is that this is helpful to find out
-	# if a strategy is becoming less effective. We can use this to look through historical periods
-	# where it has been shown that a given strategy that was once effective has become ineffective.
-	# Will this early warning system help us to know when to stop using this strategy?
-	#####
-	# Total return over a period is defined as the sum of all gains minus all losses in % terms
-	'''
-	# Need to start 10yrs after start_date, 120 months
-	six_mo_rtns=[]
-	one_yr_rtns=[]
-	two_yr_rtns=[]
-	five_yr_rtns=[]
-	ten_yr_rtns=[]
-	for idx in range(120,len(pct_rtns)):
-		ten_yr_rtns.append(sum(pct_rtns[idx-120:idx]))
-		five_yr_rtns.append(sum(pct_rtns[idx-60:idx]))
-		two_yr_rtns.append(sum(pct_rtns[idx-24:idx]))
-		one_yr_rtns.append(sum(pct_rtns[idx-12:idx]))
-		six_mo_rtns.append(sum(pct_rtns[idx-6:idx]))
-		# ~ if idx==326:
-			# ~ print(idx)
-			# ~ print(sum(pct_rtns[idx-6:idx]))
-			# ~ print(dates[idx])
+	# Equity curve with stop loss, purchase 1 unit each trade (no position sizing)
+	# set stop loss to 9% drop
+	# ~ stop_loss=9
+	# ~ start_equity=10000
+	# leverage factor is $ per point
+	# ~ levg_fact=5
+	# ~ stopped_equity=[start_equity]
+	# ~ for i in range(len(abs_rtns)):
+		# ~ if pct_low[i]<-stop_loss:
+			# ~ stopped_equity.append(stopped_equity[i]-levg_fact*stop_loss/100*trade_open[i])
+		# ~ else:
+			# ~ stopped_equity.append(stopped_equity[i]+levg_fact*abs_rtns[i])
+	# ~ stopped_equity=stopped_equity[1:]
 	
-	# ~ print(pct_rtns[320:326])
-	# ~ print(sum(pct_rtns[320:326]))
-	# print(len(ten_yr_rtns))
-	# print(len(six_mo_rtns))
-	# print(len(dates[120:]))
+	# Calculate CAGR
+	# ~ tot_months=len(abs_rtns)
+	# ~ tot_yrs=tot_months/12
+	# ~ cagr=round(100*((stopped_equity[-1]/start_equity)**(1/tot_yrs)-1),1)
+	# ~ print()
+	# ~ print('The CAGR of this strategy is '+str(cagr))
+	
+	
+	
+	# Equity curve with stop loss, and Kelly position sizing
+	# Optimum strategy seems to be around 5x leverage $/point and 1/2 Kelly
+	# I will want to run this strategy through some more monte carlo type testing
+	# set stop loss to 3% drop
+	stop_loss=3
+	start_equity=10000
+	# leverage factor is $ per point
+	levg_fact=5
+	
+	# input ratios for calculating kelly position sizing
+	num_wins=245
+	num_loss=135
+	win_prob=num_wins/(num_wins+num_loss)
+	loss_prob=1.-win_prob
+	# payoff calculated by avg profit/stop loss
+	avg_win=1.75
+	payoff=avg_win/stop_loss
+	# kelly_fraction is the fraction of full kelly to use for smoother returns
+	kelly_fraction=0.5
+	
+	print()
+	kelly_equity=[start_equity]
+	for i in range(len(abs_rtns)):
+		# kelly = the percentage of equity to bet on this trade
+		kelly=kelly_fraction*kelly_equity[i]*(payoff*win_prob-loss_prob)/payoff
+		# bet_size = the factor to multiply by the absolute win
+		# (i.e. this represents the number of contracts. Using fractional contracts)
+		bet_size=kelly/(levg_fact*trade_open[i]*(stop_loss/100))
+		if pct_low[i]<-stop_loss:
+			kelly_equity.append(kelly_equity[i]-levg_fact*stop_loss/100*trade_open[i])
+		else:
+			kelly_equity.append(kelly_equity[i]+bet_size*levg_fact*abs_rtns[i])
+		# ~ if i==20:
+			# ~ print('previous equity: '+str(kelly_equity[i])+', equity to risk based on kelly: '+str(kelly)+
+					# ~ ', open price of trade: '+str(trade_open[i])+', stop loss: '+str(trade_open[i]*(stop_loss/100))+
+					# ~ ', bet_size: '+str(bet_size)+
+					# ~ ', absolute points return: '+str(abs_rtns[i])+', ammt won: '+str(bet_size*levg_fact*abs_rtns[i]))
+	kelly_equity=kelly_equity[1:]
+	
+	# Calculate CAGR
+	tot_months=len(abs_rtns)
+	tot_yrs=tot_months/12
+	cagr=round(100*((kelly_equity[-1]/start_equity)**(1/tot_yrs)-1),1)
+	print()
+	print('The CAGR of this strategy is '+str(cagr))
+	
+	
 	# ~ return
+	
+	
 	
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))
 	print()
 	
-	
-	# Plot returns over dates
-	fig = plt.figure()
-	ax = plt.subplot()
-	
-	ax.plot(dates[120:],ten_yr_rtns,color='b',label='10yr Returns')
-	ax.plot(dates[120:],five_yr_rtns,color='r',label='5yr Returns')
-	ax.plot(dates[120:],two_yr_rtns,color='g',label='2yr Returns')
-	ax.plot(dates[120:],one_yr_rtns,color='k',label='1yr Returns')
-	ax.plot(dates[120:],six_mo_rtns,color='c',label='6mo Returns')
-	
-	ax.set_ylabel('Returns')
-	ax.set_xlabel('Date')
-	
-	
-	ax.grid()
-	plt.legend()
-	plt.title('TOM effect, 1987 to 2019, -4 to +1')
-	plt.show()
-	'''
-	
-	#####
-	# Another method to look at historical returns to see if strategy is effective:
-	# Plot MEAN of total returns over the given period for the following time frames:
-	# 6mo, 1yr, 2yr, 5yr, 10yr
-	# So at each point in time you can see how successful the strategy has been
-	# historically in short term and long term durations. The idea is that this is helpful to find out
-	# if a strategy is becoming less effective. We can use this to look through historical periods
-	# where it has been shown that a given strategy that was once effective has become ineffective.
-	# Will this early warning system help us to know when to stop using this strategy?
-	#
-	# Using the mean, it averages out the gains from longer term market rising and you are able to see in just
-	# averaged terms if the strategy has been effective.
-	#####
-	# Total return over a period is defined as the sum of all gains minus all losses in % terms
-	
-	# Need to start 10yrs after start_date, 120 months
-	six_mo_rtns=[]
-	one_yr_rtns=[]
-	two_yr_rtns=[]
-	five_yr_rtns=[]
-	ten_yr_rtns=[]
-	for idx in range(120,len(pct_rtns)):
-		ten_yr_rtns.append(np.mean(pct_rtns[idx-120:idx]))
-		five_yr_rtns.append(np.mean(pct_rtns[idx-60:idx]))
-		two_yr_rtns.append(np.mean(pct_rtns[idx-24:idx]))
-		one_yr_rtns.append(np.mean(pct_rtns[idx-12:idx]))
-		six_mo_rtns.append(np.mean(pct_rtns[idx-6:idx]))
-		# ~ if idx==326:
-			# ~ print(idx)
-			# ~ print(sum(pct_rtns[idx-6:idx]))
-			# ~ print(dates[idx])
-	
-	# ~ print(pct_rtns[320:326])
-	# ~ print(sum(pct_rtns[320:326]))
-	# print(len(ten_yr_rtns))
-	# print(len(six_mo_rtns))
-	# print(len(dates[120:]))
 	# ~ return
 	
-	print()
-	print('%f seconds to run script' % (time.time() - start_time))
-	print()
-	
-	
 	# Plot returns over dates
 	fig = plt.figure()
 	ax = plt.subplot()
 	
-	ax.plot(dates[120:],ten_yr_rtns,color='b',label='10yr Returns')
-	ax.plot(dates[120:],five_yr_rtns,color='r',label='5yr Returns')
-	# ax.plot(dates[120:],two_yr_rtns,color='g',label='2yr Returns')
-	# ax.plot(dates[120:],one_yr_rtns,color='k',label='1yr Returns')
-	# ax.plot(dates[120:],six_mo_rtns,color='c',label='6mo Returns')
+	# ~ ax.plot(dates,basic_equity,color='b',label='Basic Equity')
+	# ~ ax.plot(dates,stopped_equity,color='c',label='Equity with Stop Losses')
+	ax.plot(dates,kelly_equity,color='r',label='Equity using Kelly')
 	
-	ax.set_ylabel('Returns')
+	ax.set_ylabel('Equity')
 	ax.set_xlabel('Date')
 	
 	
 	ax.grid()
 	plt.legend()
 	plt.show()
-	
-	
-	
-
 	
 	
 	return

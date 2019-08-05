@@ -5,7 +5,7 @@ Kelly formula is edge/odds
 
 (payoff*win_prob-loss_prob)/payoff
 
-Input: 
+Inputs: get number of wins/losses and avg payoff from stop_analysis.py
 
 Output: 
 

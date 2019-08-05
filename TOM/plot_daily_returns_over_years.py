@@ -390,7 +390,7 @@ def main():
 	# num days is a range [start,end] so like [-1,4] or [-10,10]
 	# note compared to ziemba, my-1 = ziemba-1, my+3 = ziemba+4
 	num_days=[-1,3]
-	print()
+	# ~ print()
 	
 	# input the month, which is the two digit month if we want to test a specific month.
 	# If we want to test all months, set month to 00

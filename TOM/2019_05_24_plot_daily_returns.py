@@ -11,8 +11,6 @@ Inputs:
 Output:
 -plot of daily returns around that date
 
-*For notes/observations, see the bottom of the script
-
 
 Per:
 "The Turn-of-the-Month Effect in the U.S. Stock index Futures Markets, 1982-1992"
@@ -69,11 +67,11 @@ def slice_df(df,start_date,end_date):
 def bar_plot(a_list,num_days):
 	x_vals=[x for x in range(num_days[0],num_days[1]+1,1)]
 	
-	fig = plt.figure()
+	fig = plt.figure('May2009_April2019')
 	ax = plt.subplot()
 	# ~ ax.plot(x_vals,a_list,color='b')
 	ax.bar(x_vals,a_list,align='center',color='gray')
-	ax.set_ylabel('Daily Avg Percent Return')
+	ax.set_ylabel('Daily Percent Return')
 	ax.set_xlabel('Day')
 	
 	loc=plticker.MultipleLocator(base=1)
@@ -154,8 +152,7 @@ def start_of_month_detect(df,index_l,index_h,month):
 	#the given period. if month is 00, test all months.
 	
 	index_locations=[]
-	idx=index_l+1
-	while idx < index_h-1:
+	for idx in range(index_l+1,index_h-1):
 		
 		cur_date=df['Date'][idx]
 		prev_date=df['Date'][idx+1]
@@ -173,9 +170,6 @@ def start_of_month_detect(df,index_l,index_h,month):
 				index_locations.append(idx-1)
 			elif next_date_mo == month:
 				index_locations.append(idx-1)
-			idx+=15
-		else:
-			idx+=1
 	
 	#test the dates
 	# ~ for idx in index_locations:
@@ -193,11 +187,10 @@ def avg_returns(df,start_date,end_date,num_days,month):
 	df_2,idxl,idxh=slice_df(df,start_date,end_date)
 	
 	#create a list of the index of the first trading day of each month in the new dataframe
-	
+	start_idxs=[]
 	start_idxs=start_of_month_detect(df_2,idxl,idxh,month)
 	
 	# ~ print('Number of months tested: '+str(len(start_idxs)))
-	# ~ print(start_idxs)
 	
 	# cycle through the start indexes and get the returns +/- num_days over each period
 	# result will be a list of lists
@@ -257,10 +250,11 @@ def main():
 	#####
 	
 	#input file names of interest
-	# ~ file_name='^RUT.csv'
-	file_name='^GSPC.csv'
+	small_cap_file_name='^RUT.csv'
+	large_cap_file_name='^GSPC.csv'
 	
-	in_file= os.path.join(path,file_name)
+	SC_in_file= os.path.join(path,small_cap_file_name)
+	LC_in_file= os.path.join(path,large_cap_file_name)
 	
 	
 	# add a header to the file if no header exists
@@ -271,23 +265,19 @@ def main():
 	
 	
 	# create dataframe from the data
-	df=import_data(in_file,fields)
+	sc_df=import_data(SC_in_file,fields)
+	lc_df=import_data(LC_in_file,fields)
 	
 	#####
 	# input the date range of interest for overall analysis
 	#####
 	
 	#first date in russell: 1987-09-10
-	#first date in GSPC: 1950-01-05
-	# ~ start_date='1950-01-05'
-	start_date='1970-01-05'
 	# ~ start_date='1987-09-10'
 	# ~ start_date='1988-01-08'
 	# ~ start_date='2000-09-11'
 	
-	# ~ end_date='1970-04-08'
-	# ~ end_date='1982-04-08'
-	end_date='1995-01-05'
+	# ~ end_date='1995-01-05'
 	# ~ end_date='2000-09-11'
 	# ~ end_date='2001-10-12'
 	# ~ end_date='2019-04-10'
@@ -296,8 +286,8 @@ def main():
 	# Input date range per Ziemba study, May 1982-April 1992
 	# Use ^GSPC for cash market data (lc_df)
 	#####
-	# ~ start_date='1982-04-08'
-	# ~ end_date='1992-04-22'
+	start_date='1982-04-08'
+	end_date='1992-04-22'
 	
 	#####
 	# Test last 10 years, May 2009-April 2019
@@ -319,7 +309,7 @@ def main():
 	# input number of days to analyze before and after
 	# num days is a range [start,end] so like [-1,4] or [-10,10]
 	# note compared to ziemba, my-1 = ziemba-1, my+3 = ziemba+4
-	num_days=[-10,10]
+	num_days=[-1,3]
 	print()
 	#####
 	# get the daily returns on the days around given date
@@ -342,7 +332,7 @@ def main():
 	# num_days is the range around the FOM day we want to test, month is the two digit month
 	# if we want to test a specific month. If we want to test all months, set month to 00
 	month='00'
-	tot_mean_rtns,all_rtns=avg_returns(df,start_date,end_date,num_days,month)
+	tot_mean_rtns,all_rtns=avg_returns(lc_df,start_date,end_date,num_days,month)
 	
 	
 	# plot the returns
@@ -350,45 +340,17 @@ def main():
 	
 	# get the average daily returns based on start and end around TOM
 	# ex avg daily return over period for -1 to +4
-	# ~ avg_daily_rtn=np.mean(tot_mean_rtns)
-	# ~ print(round(avg_daily_rtn,4))
+	avg_daily_rtn=np.mean(tot_mean_rtns)
+	print(round(avg_daily_rtn,4))
 	
 	
 	return
 
-
+'''
+5/24/19
+I want to plot the TOM avg daily return for -1 to 4 over the years doing 10 year
+historical data analysis. The point of this is to see if the TOM effect has become
+less profitable over time
+'''
 
 main()
-'''
-Notes and observations:
--For period from 1982-04-08 to 1992-04-22 the -4 to +2 had a positive average
-day 1 was largest avg return, day -1 second largest
-
--For period from '1987-09-10' to '2019-05-10' the -4 to +2 had a positive average
-the -4 day was second largest avg return, day 0 was largest
-
--For entire period from 1950-01-05 to 2019-05-10 the -4 to +2 had consistently positive average
-the -4 day was second largest avg return, day 0 was largest
-
--For period from 1950-01-05 to 1982-04-08 the -1 to +7 had consistently positive average
-the -1 day was the second largest avg return, day +2 was largest
-day 0 were minimal as were days -4 to -2
-Was this the norm to have higher avg returns on days -1 to +3 because the idea of taking
-advantage of this type of trade was not considered yet? People just bought at the turn of the
-month without thinking about it?
-
--For period from 1950-01-05 to 1970-04-08 the -2 to +3 had consistently positive average
-day -1 was the largest
-
--For period from 1970-01-05 to 1995-04-08 the -4 to +2 had consistently positive average
-day -1 was the largest, +1 second largest
-
-
-
-
-
-
-It is looking like we want to capture the entire day -4 and entire +1 day
-
-
-'''
