@@ -1,0 +1,168 @@
+.subckt ngspice_top a b c angle h1 h2 h3 i_sns_a i_sns_b i_sns_c p_28v target w clk
+XX1 a b c angle h1 h2 h3 i_sns_a i_sns_b i_sns_c p_28v target w clk usa13030_x1_ng_cont params: stop_gain=-1k gear_rat=793.08 angle0=0 deg_range=15
+.ends ngspice_top
+
+******************************************************************************************************************
+* STEPS TO GET FROM LTSPICE NETLIST TO THIS NGSPICE NETLIST:
+* Remove control_cont_nohalladv subcircuit here (function performed by Python)
+* Delete everything that's not a subcircuit (including end of file top-level statements such as .tran, .end); This file is only a collection of subcircuits, not a complete SPICE netlist.
+* Add parameters to each subckt line (just copy from any instantiation of said subcircuit; do not include "params:")
+* Change unicode 'mu' to 'u'
+* Replace any dash in any subcircuit name with an underscore 
+* Add top subcircuit ngspice_top using instantiation line for XX1 in original top-level netlist
+******************************************************************************************************************
+
+.subckt usa13030_x1_ng_cont a b c angle h1 h2 h3 i_sns_a i_sns_b i_sns_c p_28v target w clk stop_gain=-1k gear_rat=793.08 angle0=0 deg_range=15
+V2 p_28v_1 p_28v 0
+B1 p_28v_1 0 I=3*I(V2)+13.1/0.85/28
+B2 t_in 0 V=V(t_stop)+V(t_pwl)+V(t_pulsefact)*V(t_pulse)
+V5 t_pwl 0 0 dc 0 PWL(0 0 50m 0 50.001m 400m 80m 400m 80.001m 0 110m 0 110.001m -400m 140m -400m 140.001m 0 200m 0 200.001m 150m 300m 150m 500m 400m 500.001m 0)
+V6 t_pulse 0 0 dc 0 PULSE(400m -400m 0 1u 1u 27.1m 54.2m)
+B3 0 t_stop I={stop_gain}*(min(max(0,V(angle)-{deg_range}*180/pi*{gear_rat}),100k)+min(max(-100k,V(angle)+{deg_range}*180/pi*{gear_rat}),0))
+R7 t_stop 0 1
+V3 t_pulsefact 0 0 dc 0 PWL(0 0 500m 0 700m 1)
+C3 t_stop 0 1n
+V_Itot N002 p_28v_1 0
+V_A N004 phase_a 0
+V_B N005 phase_b 0
+V_C N007 phase_c 0
+V1 vbus_ss N008 28
+V4 N008 N009 dc 0 SINE(0 6 13)
+V7 N009 0 dc 0 SINE(0 0 20k)
+V8 vbus_pwl 0 dc 0 PWL(0 1 1m 1)
+V9 trgt_sin 0 dc 0 SINE(0 1 10)
+V10 trgt_pwl 0 dc 0 PWL(0 0 100m 0 150m 0 300m 0)
+B4 target 0 V=2.5+2.5/{deg_range}*(V(trgt_pwl)+V(trgt_sin))
+B6 N001 N003 V=V(Vbus_ss)*V(Vbus_pwl)
+V11 clk 0 dc 0 PULSE(0 1 0 0 0 16u 32u)
+XX4 0 0 phase_a phase_b phase_c t_in angle h1 h2 h3 NC_01 w bldc_scd00914 params: Jm=565n Dm=100u Tfs=0 Tfk=1m w0=0 Angle0=0 Ke=9m sin_trap=1 fb=10 fc=10m tfs=5m tfk=4.5m i0_a=0 i0_b=0 i0_c=0 Ra=168m Rb=168m Rc=168m La=90u Lb=90u Lc=90u Ph=0 Npp=2 Hall_Hyst=34.9m gHall=200k VDD_Hall=5
+XX1 a i_sns_a N004 usa13030_x1_ng_cont_out_fltr
+XX2 b i_sns_b N005 usa13030_x1_ng_cont_out_fltr
+XX3 c i_sns_c N007 usa13030_x1_ng_cont_out_fltr
+XX5 N001 N003 N002 0 usa13030_x1_ng_cont_in_fltr
+R1 p_28v N006 720u
+C1 N006 0 17u
+C2 p_28v 0 100n
+.ends usa13030_x1_ng_cont
+
+.subckt bldc_scd00914 damp jload phase_a phase_b phase_c t_in angle h1 h2 h3 t_out w Jm=565n Dm=100u Tfs=0 Tfk=1m w0=0 Angle0=0 Ke=9m sin_trap=1 fb=10 fc=10m tfs=5m tfk=4.5m i0_a=0 i0_b=0 i0_c=0 Ra=168m Rb=168m Rc=168m La=90u Lb=90u Lc=90u Ph=0 Npp=2 Hall_Hyst=34.9m gHall=200k VDD_Hall=5
+B1 0 accel I=V(ttot)/({Jm}+abs(V(jload)))
+R1 accel 0 1
+C1 accel 0 1n
+B2 0 h1 I={VDD_Hall}*(0.5*tanh({gHall}*sin({Npp}*(V(Angle)+0+{Ph})+((V(H1)/{VDD_Hall}-0.5)*{Hall_Hyst}/2/pi)))+0.5)
+R2 h1 0 1
+B3 0 h2 I={VDD_Hall}*(0.5*tanh({gHall}*sin({Npp}*(V(Angle)+2*pi/3+{Ph})+((V(H1)/{VDD_Hall}-0.5)*{Hall_Hyst}/2/pi)))+0.5)
+R3 h2 0 1
+B4 0 h3 I={VDD_Hall}*(0.5*tanh({gHall}*sin({Npp}*(V(Angle)+4*pi/3+{Ph})+((V(H1)/{VDD_Hall}-0.5)*{Hall_Hyst}/2/pi)))+0.5)
+R4 h3 0 1
+C2 h1 0 3n
+C3 h2 0 3n
+C4 h3 0 3n
+R5 phase_a common 10Meg
+R7 common 0 30Meg
+B8 0 i_phs_a I=V(didt_a)
+C7 i_phs_a 0 1 IC={i0_a}
+R10 i_phs_a 0 1Meg
+B9 didt_a 0 V=(-V(w)*V(ke_shaped_a)+V(phase_a,common)-I(V_a)*{Ra})/{La}
+B11 ke_shaped_a 0 V={sin_trap}*V(ke_sin_a)+(1-{sin_trap})*V(ke_trap_a)
+B12 e_angle_a 0 V=V(npp_angle)+0.523598775598299
+B5 npp_angle 0 V={Npp}*V(Angle)
+B10 ke_sin_a 0 V={Ke}*sin(V(e_angle_a))
+B13 ke_trap_a 0 V={Ke}*(uramp(V(e_angle_mod_a)/0.523598775598299)-uramp((V(e_angle_mod_a)-0.523598775598299)/0.523598775598299)-uramp((V(e_angle_mod_a)-2.61799387799149)/0.523598775598299)+uramp((V(e_angle_mod_a)-3.66519142918809)/0.523598775598299)+uramp((V(e_angle_mod_a)-5.75958653158129)/523.599m))
+B6 e_angle_mod_a 0 V=(V(e_rot_a)-floor(V(e_rot_a)))*2*pi
+B14 e_rot_a 0 V=V(e_angle_a)/2/pi
+G_a phase_a N001 i_phs_a 0 1
+B7 t_a 0 V=V(ke_shaped_a)*V(i_phs_a)
+B15 t_out 0 V=V(t_a)+V(t_b)+V(t_c)
+B16 tx 0 V=V(t_in)+V(t_out)
+R6 w 0 1G
+R8 tx 0 1G
+B17 tf0 0 V=abs(V(tx))*{fb}/({fb}+{fc}+abs(V(w)))
+B18 tf1 0 V={tfk}*(1-1/(1+{tfk}*abs(v(w))))
+B19 tf2 0 V=V(tf0)+V(tf1)
+B20 tf 0 V=-(2*u(V(w))/2)*((0.5+tanh(10meg*(V(tf2)-{tfs}))/2)*{tfs}+(0.5+tanh(10meg*(-V(tf2)+{tfs}))/2)*V(tf2))
+B21 ttot 0 V=V(tf)+V(tx)-(abs(V(damp))+{dm})*V(w)
+B22 0 w I=V(accel)
+C5 w 0 1 IC={w0}
+R9 w 0 1Meg
+B23 0 angle I=V(w)
+C6 angle 0 1 IC={angle0}
+R11 angle 0 1Meg
+R12 phase_b common 10Meg
+B24 0 i_phs_b I=V(didt_b)
+C8 i_phs_b 0 1 IC={i0_b}
+R13 i_phs_b 0 1Meg
+B25 didt_b 0 V=(-V(w)*V(ke_shaped_b)+V(phase_b,common)-I(V_b)*{Rb})/{Lb}
+B26 ke_shaped_b 0 V={sin_trap}*V(ke_sin_b)+(1-{sin_trap})*V(ke_trap_b)
+B27 e_angle_b 0 V=V(npp_angle)-1.5707963267949
+B28 ke_sin_b 0 V={Ke}*sin(V(e_angle_b))
+B29 ke_trap_b 0 V={Ke}*(uramp(V(e_angle_mod_b)/0.523598775598299)-uramp((V(e_angle_mod_b)-0.523598775598299)/0.523598775598299)-uramp((V(e_angle_mod_b)-2.61799387799149)/0.523598775598299)+uramp((V(e_angle_mod_b)-3.66519142918809)/0.523598775598299)+uramp((V(e_angle_mod_b)-5.75958653158129)/523.599m))
+B30 e_angle_mod_b 0 V=(V(e_rot_b)-floor(V(e_rot_b)))*2*pi
+B31 e_rot_b 0 V=V(e_angle_b)/2/pi
+G_b phase_b N002 i_phs_b 0 1
+B32 t_b 0 V=V(ke_shaped_b)*V(i_phs_b)
+R14 phase_c common 10Meg
+B33 0 i_phs_c I=V(didt_c)
+C9 i_phs_c 0 1 IC={i0_c}
+R15 i_phs_c 0 1Meg
+B34 didt_c 0 V=(-V(w)*V(ke_shaped_c)+V(phase_c,common)-I(V_c)*{Rc})/{Lc}
+B35 ke_shaped_c 0 V={sin_trap}*V(ke_sin_c)+(1-{sin_trap})*V(ke_trap_c)
+B36 e_angle_c 0 V=V(npp_angle)+2.61799387799149
+B37 ke_sin_c 0 V={Ke}*sin(V(e_angle_c))
+B38 ke_trap_c 0 V={Ke}*(uramp(V(e_angle_mod_c)/0.523598775598299)-uramp((V(e_angle_mod_c)-0.523598775598299)/0.523598775598299)-uramp((V(e_angle_mod_c)-2.61799387799149)/0.523598775598299)+uramp((V(e_angle_mod_c)-3.66519142918809)/0.523598775598299)+uramp((V(e_angle_mod_c)-5.75958653158129)/523.599m))
+B39 e_angle_mod_c 0 V=(V(e_rot_c)-floor(V(e_rot_c)))*2*pi
+B40 e_rot_c 0 V=V(e_angle_c)/2/pi
+G_c phase_c N003 i_phs_c 0 1
+B41 t_c 0 V=V(ke_shaped_c)*V(i_phs_c)
+V_a N001 common 0V
+V_b N002 common 0V
+V_c N003 common 0V
+.ends bldc_scd00914
+
+.subckt usa13030_x1_ng_cont_out_fltr pwmsmooth i_sns phs
+L1 pL1 sw 2.2u
+L2 pL2 pR1 220n
+C1 tC1 0 19.6u
+C2 tC2 0 8.4u
+R1 pR1 pL1 3.75m
+R2 pR2 pL2 1.25m
+R3 pR1 tC1 0.92m
+R4 pR2 tC2 2.3m
+R6 0 viL4rc 1
+C4 viL4rc 0 1.59u
+R7 viL4rcr viL4rc 100
+L5 i_sns viL4rcr 100u
+C5 i_sns 0 10n
+R5 sw pwmsmooth 4m
+B1 0 viL4rc I=min(max(0,I(V4)/31*2.5+2.5),5)
+V4 N001 phs 0
+C3 pR1 0 100n
+C6 pR2 0 100n
+C7 sw 0 10p
+R8 N001 pR2 5m
+C90 pL1 N002 100p
+R90 N002 0 10m
+.ends usa13030_x1_ng_cont_out_fltr
+
+.subckt usa13030_x1_ng_cont_in_fltr in+ in- out+ out-
+L3 N002 N001 250n
+L4 N004 N003 250n
+C39 N006 out- 7.37u
+C40 N007 out- 28.6u
+C41 N008 out- 1000u
+R3 N003 N007 204m
+R4 out+ N005 130m
+L5 N005 N008 35n
+R5 N003 N002 0.165m
+R6 out+ N004 0.165m
+R7 N003 N006 1.84m
+R11 N004 N003 5k
+R12 N002 N001 5k
+C44 N002 N001 1.126p
+C45 N004 N003 1.126p
+C46 N002 0 10p
+C47 N004 0 10p
+C48 out+ out- 100n
+R8 N001 in+ 100u
+R1 out- in- 100u
+.ends usa13030_x1_ng_cont_in_fltr

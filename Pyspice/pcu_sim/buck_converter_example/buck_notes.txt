@@ -1,0 +1,2 @@
+Notes on buck:
+-We need a p-channel mosfet for the buck converter, not n-channel

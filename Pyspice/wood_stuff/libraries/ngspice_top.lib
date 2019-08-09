@@ -1,0 +1,3 @@
+.subckt ngspice_top a b c angle h1 h2 h3 i_sns_a i_sns_b i_sns_c p_28v target w clk
+XX1 a b c angle h1 h2 h3 i_sns_a i_sns_b i_sns_c p_28v target w clk usa13030_x1_ng_cont params: stop_gain=-1k gear_rat=793.08 angle0=0 deg_range=15
+.ends

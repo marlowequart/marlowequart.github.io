@@ -1,0 +1,24 @@
+Questionable use of curly braces in ".model sir870adp vdmos(rg=3 vto=2.9 rd=3.2m rs=1.5m rb={m} kp=100 mtriode=1.85 cgdmax=1.4n cgdmin=70p cgs=2.9n cjo=3.6n m=.4 a=.7 vj=.7 lambda=20m is=3p ksubthres=.08 mfg=siliconix vds=100 ron=5.5m qg=53.5n)"
+    Error: undefined symbol in: "[m]"
+Circuit: * C:\Python\pcu_sim\pyspice_examples\ltspice_sch\buck_sch_2019_08_07.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Thu Aug 08 10:44:32 2019
+Total elapsed time: 1.622 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 221365
+traniter = 221359
+tranpoints = 64344
+accept = 49146
+rejected = 15198
+matrix size = 15
+fillins = 0
+solver = Alternate
+Matrix Compiler1: 860 bytes object code size  0.6/0.4/[0.2]
+Matrix Compiler2: 1.21 KB object code size  0.4/0.6/[0.4]
+
+
