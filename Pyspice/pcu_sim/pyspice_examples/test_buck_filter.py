@@ -97,25 +97,25 @@ plt.show()
 # fsamp of 20MHz and 100k samps gives total dt of: 
 
 
-fsamp=6000
-Kdc=15
-wr=3275
-wp=12500
-Q=1500
+# fsamp=6000
+# Kdc=15
+# wr=3275
+# wp=12500
+# Q=1500
 
-b = [0.07967, 0.1135, 0.0796]
-a = [1, -0.8285, 0.3]
+# b = [0.07967, 0.1135, 0.0796]
+# a = [1, -0.8285, 0.3]
 
-b0=Kdc*(wp/(2*fsamp+wp))*((2*fsamp/(wr*wr))+1/(wr*Q)+1/(2*fsamp))
-b1=Kdc*(wp/(2*fsamp+wp))*((-4*fsamp/(wr*wr))+1/fsamp)
-b2=Kdc*(wp/(2*fsamp+wp))*((2*fsamp/(wr*wr))-1/(wr*Q)+1/(2*fsamp))
-a1=-4*fsamp/(2*fsamp+wp)
-a2=-wp*((2*fsamp-wp)/(2*fsamp+wp))
-print('b0='+str(b0))
-print('b1='+str(b1))
-print('b2='+str(b2))
-print('a1='+str(a1))
-print('a2='+str(a2))
+# b0=Kdc*(wp/(2*fsamp+wp))*((2*fsamp/(wr*wr))+1/(wr*Q)+1/(2*fsamp))
+# b1=Kdc*(wp/(2*fsamp+wp))*((-4*fsamp/(wr*wr))+1/fsamp)
+# b2=Kdc*(wp/(2*fsamp+wp))*((2*fsamp/(wr*wr))-1/(wr*Q)+1/(2*fsamp))
+# a1=-4*fsamp/(2*fsamp+wp)
+# a2=-wp*((2*fsamp-wp)/(2*fsamp+wp))
+# print('b0='+str(b0))
+# print('b1='+str(b1))
+# print('b2='+str(b2))
+# print('a1='+str(a1))
+# print('a2='+str(a2))
 
 
 # Coefficients generated from C2000 software 1/21/17
@@ -169,8 +169,22 @@ print('a2='+str(a2))
 
 # online example
 
-b = [0.0976, 0.1952, 0.0976]
-a = [1, -0.9429, -0.3334]
+# b = [0.01, 0.5, 0.9]
+# a = [1, -0.5, -0.9]
+'''
+Observations:
+want 
+making b0 smaller:
+making b0 larger:
+
+cant have a1 be smaller than a2
+
+At higher frequencies, z becomes larger, and you end up with b0/a0
+at lower frequencies, z is smaller, you get b2/a2
+
+At DC, 
+
+'''
 
 # b0=0.007967
 # b1=-0.01135
@@ -182,8 +196,13 @@ a = [1, -0.9429, -0.3334]
 # b = [0.07967, 0.1135, 0.0796]
 # a = [1, -0.8285, 0.3]
 
-Fs = 4000
-N = 1000  # number of frequency points
+
+b = [1, 1, 0]
+a = [21.8269, -43,21.2206 ]
+
+
+Fs = 2000
+N = 10000  # number of frequency points
 df = (Fs/2) / N  # distance between two frequency points
 
 
@@ -194,11 +213,12 @@ for n in range(N):
 
     num = b[0] + b[1]/z + b[2]/z**2
     denom = a[0] + a[1]/z + a[2]/z**2
+    # denom = a[0] + a[1]/z
     H[n]=abs(num/denom)
 
 # Now just do the plotting
 f = arange(0,Fs/2,df)
-plt.plot(f, 20*log10(H))
-# plt.ylim((-30,5))
+plt.semilogx(f, 20*log10(H))
+# plt.ylim((-20,20))
 plt.grid(True)
 plt.show()

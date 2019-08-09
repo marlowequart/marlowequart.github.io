@@ -98,8 +98,8 @@ class MyNgSpiceShared(NgSpiceShared):
             # duty = min(abs(duty_raw),1) #Clip raw duty to get duty
             
             self.clk_cycls+=1
-            # print()
-            # print('clk_cycls= '+str(self.clk_cycls))
+            print()
+            print('clk_cycls= '+str(self.clk_cycls))
             
             
             # PWM output stage
@@ -126,41 +126,97 @@ class MyNgSpiceShared(NgSpiceShared):
             
 
             ################################################################
+            # 2p2z filter
             """ 
             Filter b = [0.0976, 0.1952, 0.0976] a = [1, -0.9429, -0.3334]
             """
             
-            b10 = 0.1795978
-            b11 = 0.25263921
-            b12 = 0.1795978
-            a10 = 1.
-            a11 = -0.39029624
-            a12 = 0.25226106
-            b20 = 1.
-            b21 = 0.35147428
-            b22 = 1.
-            a20 = 1.
-            a21 =-0.06669631
-            a22 = 0.83470697
-    
-            mid_filt = ovr_i_pz*b10 + self.inz1*b11 + self.inz2*b12 - self.midz1*a11 - self.midz2*a12
-            out_filt = mid_filt*b20 + self.midz1*b21 + self.midz2*b22 - self.outz1*a21 - self.outz2*a22
+            # the input is the error, so subtract ideal reference
+            self.err_in=self.v_sns-2.5
+            print('v_sense is: '+str(round(self.v_sns,3))+', error is: '+str(round(self.err_in,4)))
+            
+            b0 = 0.0975
+            b1 = 0.1952
+            b2 = 0.0976
+            a0 = 1.
+            a1 = -0.9429
+            a2 = 0.3334
+            
+            # note all addition, negative signs included in coefficients
+            mid_filt = self.err_in*b0 + self.inz1*b1 + self.inz2*b2
+            out_filt = mid_filt*a0 + self.outz1*a1 + self.outz2*a2
+            
+			print('filter output before bounds is: '+str(round(out_filt,4)))
+			print('filter midpoint before bounds is: '+str(round(mid_filt,4)))
 			
-			
+            # bound filter output
+            if out_filt > 1000:
+                out_filt = 1000
+            elif out_filt < -1000:
+                out_filt = -1000
+            
+            print('filter output after bounds is: '+str(round(out_filt,4)))
+            # inz2 is the z-2 delayed input to the filter
             self.inz2 = self.inz1
-			# z1 is the input to the filter
-            self.inz1 = ovr_i_pz
-            self.midz2 = self.midz1
-            self.midz1 = mid_filt
+            # inz1 is the z-1 delayed input to the filter
+            self.inz1 = self.err_in
+            
+            # outz2 is the z-2 delayed output to the filter
             self.outz2 = self.outz1
+            # outz1 is the z-1 delayed output to the filter
             self.outz1 = out_filt
             
-            ########################### END of elliptic filter##############
+            ########################### END of 2p2z filter##############
             
-			# Set the duty cycle based on the filter results
-			# each integer value of 1 represents 1%
-			self.dc_pct = 17 # 20% duty cycle
-			
+            ################################################################
+            # PID filter
+            """ 
+            Filter b = [0.0976, 0.1952, 0.0976] a = [1, -0.9429, -0.3334]
+            """
+            '''
+            # the input is the error, so subtract ideal reference
+            self.err_in=self.v_sns-2.5
+            print('v_sense is: '+str(round(self.v_sns,3))+', error is: '+str(round(self.err_in,4)))
+            
+            b0 = 0.0975
+            b1 = 0.1952
+            b2 = 0.0976
+            a0 = 1.
+            a1 = -0.9429
+            a2 = 0.3334
+            
+            # note all addition, negative signs included in coefficients
+            mid_filt = self.err_in*b0 + self.inz1*b1 + self.inz2*b2
+            out_filt = mid_filt*a0 + self.outz1*a1 + self.outz2*a2
+            
+            print('filter output is: '+str(round(out_filt,4)))
+            # inz2 is the z-2 delayed input to the filter
+            self.inz2 = self.inz1
+            # inz1 is the z-1 delayed input to the filter
+            self.inz1 = self.err_in
+            
+            # outz2 is the z-2 delayed output to the filter
+            self.outz2 = self.outz1
+            # outz1 is the z-1 delayed output to the filter
+            self.outz1 = out_filt
+            '''
+            ########################### END of PID filter##############
+            
+            # Set the duty cycle based on the filter results
+            # each integer value of 1 represents 1%
+            if out_filt >=0:
+                self.dc_pct -= 1
+            else:
+                self.dc_pct += 1
+            print('duty cycle = '+str(self.dc_pct))
+            # self.dc_pct = 17 # 20% duty cycle
+            
+            # bound the duty cycle to 99% or 1%
+            if self.dc_pct > 99:
+                self.dc_pct = 99
+            elif self.dc_pct < 1:
+                self.dc_pct = 1
+            
             # duty = min(self.outz1, duty)   # cannot use out_filt here (it's not remembered)
             # if self.i_pol == -1:
                 # d_scaled = self.outz1 # no feed forward needed for reverse current regulation; better to use full bus voltage (not 22V max). Also need to override positional loop (use self.outz1 instead of duty here); active high instead of just open-drain output for outz1 when regulating reverse current.
@@ -282,12 +338,12 @@ circuit.PulseVoltageSource('clk', 'clk', circuit.gnd, 0@u_V, 1@u_V, 0.05@u_us, 0
 # Add a step load
 #####
 # ~ circuit.PulseVoltageSource('name', n1, n2, v_low, v_high, t_high, t_period, t_delay,t_rise,t_fall)
-# circuit.PulseVoltageSource('load_sw', 'gate_drive2', circuit.gnd, 0@u_V, 10@u_V, 1@u_s,1@u_s,0.8@u_ms,10@u_ns)
+circuit.PulseVoltageSource('load_sw', 'gate_drive2', circuit.gnd, 0@u_V, 10@u_V, 1@u_s,1@u_s,0.8@u_ms,10@u_ns)
 
 # load switch
-# circuit.X('Q2', 'irf150', 'out', 'gate2', 'source2')
-# circuit.R('gate2', 'gate2', 'gate_drive2', 1@u_Ohm)
-# circuit.R('load_on','source2', circuit.gnd,Rload)
+circuit.X('Q2', 'irf150', 'out', 'gate2', 'source2')
+circuit.R('gate2', 'gate2', 'gate_drive2', 1@u_Ohm)
+circuit.R('load_on','source2', circuit.gnd,Rload)
 
 #####
 # Simulation parameters
