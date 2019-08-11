@@ -166,10 +166,10 @@ class MyNgSpiceShared(NgSpiceShared):
             # print(duty, gate_drive1)
                 
         ################### Outputs below go from Python to NGspice####################################################            
-        if node == 'vgate_drive1':
-            voltage[0]=self.gate_drive1
-        # elif node == 'vb':
-            # voltage[0]=self.vb_val          
+        if node == 'vgate_drivehs':
+            voltage[0]=self.gate_drivehs
+        elif node == 'vgate_drivels':
+            voltage[0]=self.gate_drivels          
         # elif node == 'vc':
             # voltage[0]=self.vc_val
         
@@ -202,3 +202,114 @@ circuit = Circuit('Buck Converter')
 
 circuit.include(spice_library['1N5822']) # Schottky diode
 circuit.include(spice_library['irf150'])
+
+# analog stimulus that goes nowhere below; just used to probe Python "net" inside digital controller
+
+# Real analog stimuli below:
+# ~ circuit.V('gate_drivehs', 'gate_drivehs_net', circuit.gnd, 'dc 0 external')
+# ~ circuit.V('gate_drivels', 'gate_drivels_net', circuit.gnd, 'dc 0 external')
+
+
+
+# parameters on input to buck
+circuit.V('input', 'input', circuit.gnd, 12@u_V)
+circuit.C('input', 'input', circuit.gnd, 22@u_uF)
+
+
+# Buck switch
+# p-channel buck switch
+# ~ circuit.X('Q', 'DMG4435SSS', 'pch_drain', 'p_gate_drive', 'input')
+# circuit.R('gate', 'gate', 'gate_drive1_net', 1@u_Ohm)
+# circuit.PulseVoltageSource('pulse', 'gate_drive', circuit.gnd, 0@u_V, 10@u_V, duty_cycle, period)
+
+# resistor from p-channel gate to Vin to bring pchan gate back to Vin when off
+# ~ circuit.R('pgate', 'input', 'p_gate_drive', 1@u_Ohm)
+# nchannel mosfet to pull pchannel gate to ground to turn it on
+# ~ circuit.X('Q3', 'irf150', 'p_gate_drive', 'nchan_sw_drive', circuit.gnd)
+# resistor to drive nch fet, drive comes from controller
+# ~ circuit.R('pgate_nch', 'nchan_sw_drive', 'gate_drive1_net', 1@u_Ohm)
+
+
+
+# Buck LC output and diode
+circuit.X('D', '1N5822', circuit.gnd, 'pch_drain')
+circuit.L(1, 'pch_drain', 1, 150@u_uH)
+circuit.R('L', 1, 'out', 2@u_Ohm)
+circuit.C(1, 'out', circuit.gnd, 22@u_uF) # , initial_condition=0@u_V
+circuit.R('load', 'out', circuit.gnd, 1@u_Ohm)
+
+
+# Voltage Feedback for controller
+# ~ circuit.R(2, 'out', 'v_sns', 10@u_kOhm)
+# ~ circuit.R(3, 'v_sns', circuit.gnd, 10@u_kOhm)
+
+
+# This clock is used for NGspice mixed signal simulation.
+# The python code runs every clock edge, both positive and negative
+# clock speed: 20MHz
+# clock cycle length: 50ns
+# ~ circuit.PulseVoltageSource('clk', 'clk', circuit.gnd, 0@u_V, 1@u_V, 0.05@u_us, 0.1@u_us)
+# circuit.R(4, 'gate_drive1', circuit.gnd, 10@u_kOhm)
+
+
+
+#####
+# Simulation parameters
+#####
+# Python block input constants
+# ~ amplitude = 10@u_V
+
+# Call the MyNgSpiceShared
+# ~ ngspice_shared = MyNgSpiceShared(amplitude=amplitude, send_data=True)
+
+# ~ simulator = circuit.simulator(temperature=25, nominal_temperature=25,simulator='ngspice-shared',ngspice_shared=ngspice_shared)
+
+# ~ simulator.initial_condition(clk=0)
+# record 10ms of data from t=30ms to t=40ms
+# ~ analysis = simulator.transient(step_time=.05E-6, end_time=40ms, )
+
+
+# Run a simple simulation on the basic circuit
+print()
+simulator = circuit.simulator(temperature=25, nominal_temperature=25)
+analysis = simulator.transient(step_time=5E-6, end_time=40E-3)
+
+
+
+# ~ simulator = circuit.simulator(temperature=25, nominal_temperature=25)
+# ~ analysis = simulator.transient(step_time=period/300, end_time=period*150)
+
+# ~ analysis = simulator.transient(step_time=.05E-6, end_time=40E-3, start_time=30E-3)
+
+# Print the time to run simulation
+sim_end_time = datetime.datetime.now()
+print()
+print('Simulation End Time =', sim_end_time)
+elapsed = sim_end_time - sim_start_time
+print('Total Simulation Time =', elapsed)
+print()
+
+#####
+# Plotting
+#####
+
+#plots of circuit components
+figure = plt.figure(1, (10, 5))
+axe = plt.subplot(111)
+
+plot(analysis.out, axis=axe)
+# plot(analysis['source'], axis=axe)
+# plot(analysis.gate_drive1_net, axis=axe)
+# plot(analysis.sw_drive, axis=axe)
+# plot(analysis.r_top/circuit['R1'].resistance,axis=axe)
+# plot(analysis['source'] - analysis['out'], axis=axe)
+# plot(analysis['gate'], axis=axe)
+# ~ plt.axhline(y=float(Vout), color='red')
+# plt.legend(('Vout [V]', 'Vsource [V]'), loc=(.8,.8))
+plt.grid()
+plt.xlabel('t [s]')
+plt.ylabel('[V]')
+
+plt.tight_layout()
+plt.show()
+

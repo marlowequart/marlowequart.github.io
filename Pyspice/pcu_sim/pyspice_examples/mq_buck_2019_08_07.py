@@ -146,9 +146,9 @@ class MyNgSpiceShared(NgSpiceShared):
             mid_filt = self.err_in*b0 + self.inz1*b1 + self.inz2*b2
             out_filt = mid_filt*a0 + self.outz1*a1 + self.outz2*a2
             
-			print('filter output before bounds is: '+str(round(out_filt,4)))
-			print('filter midpoint before bounds is: '+str(round(mid_filt,4)))
-			
+            print('filter output before bounds is: '+str(round(out_filt,4)))
+            print('filter midpoint before bounds is: '+str(round(mid_filt,4)))
+            
             # bound filter output
             if out_filt > 1000:
                 out_filt = 1000

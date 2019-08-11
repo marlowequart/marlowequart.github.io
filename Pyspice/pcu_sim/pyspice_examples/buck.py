@@ -19,6 +19,7 @@ from PySpice.Unit import *
 
 libraries_path = find_libraries()
 spice_library = SpiceLibrary(libraries_path)
+print('libraries_path = '+libraries_path)
 
 ####################################################################################################
 import datetime
@@ -84,8 +85,8 @@ print('L =', L)
 print('Cout =', Cout)
 print('Cint =', Cin)
 
-circuit.V('in', 'in', circuit.gnd, Vin)
-circuit.C('in', 'in', circuit.gnd, Cin)
+circuit.V('input', 'input', circuit.gnd, Vin)
+circuit.C('input', 'input', circuit.gnd, Cin)
 
 # Fixme: out drop from 12V to 4V
 # circuit.VCS('switch', 'gate', circuit.gnd, 'in', 'source', model='Switch', initial_state='off')
@@ -93,7 +94,7 @@ circuit.C('in', 'in', circuit.gnd, Cin)
 # circuit.model('Switch', 'SW', ron=1@u_mÎ©, roff=10@u_MÎ©)
 
 # Fixme: Vgate => Vout ???
-circuit.X('Q', 'irf150', 'in', 'gate', 'source')
+circuit.X('Q', 'irf150', 'input', 'gate', 'source')
 # circuit.PulseVoltageSource('pulse', 'gate', 'source', 0@u_V, Vin, duty_cycle, period)
 circuit.R('gate', 'gate', 'clock', 1@u_Ohm)
 circuit.PulseVoltageSource('pulse', 'clock', circuit.gnd, 0@u_V, 2.*Vin, duty_cycle, period)
@@ -108,6 +109,7 @@ circuit.R('load', 'out', circuit.gnd, Rload)
 # Simulation parameters
 #####
 
+print()
 simulator = circuit.simulator(temperature=25, nominal_temperature=25)
 analysis = simulator.transient(step_time=period/300, end_time=period*150)
 
