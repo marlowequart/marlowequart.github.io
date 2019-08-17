@@ -64,6 +64,10 @@ class MyNgSpiceShared(NgSpiceShared):
         self.dir = 0.0
         self.i = 0.0
         self.tri = 0.0
+        self.tri_ref_mcu = 0.0
+        self.sin_ref = 0.0
+        self.vgate_drivehs = 0.0
+        self.vgate_drivels = 0.0
         
     
     #########
@@ -98,8 +102,8 @@ class MyNgSpiceShared(NgSpiceShared):
             # duty = min(abs(duty_raw),1) #Clip raw duty to get duty
             
             self.clk_cycls+=1
-            print()
-            print('clk_cycls= '+str(self.clk_cycls))
+            # print()
+            # print('clk_cycls= '+str(self.clk_cycls))
             
             
             # PWM output stage
@@ -122,29 +126,29 @@ class MyNgSpiceShared(NgSpiceShared):
             # Create triangle wave
             tri_peak = 10
             self.i += 1
-            print('i= '+str(self.i)+', tri= '+str(self.tri)+', tri_peak= '+str(tri_peak))
-            if self.i < tri_peak:
+            # print('i= '+str(self.i)+', tri= '+str(self.tri)+', tri_peak= '+str(tri_peak))
+            if self.i <= tri_peak:
                 self.tri += 1
-            if self.i >= tri_peak:
-                self.dir = 0
+            if self.i > tri_peak:
+                # self.dir = 0
                 self.tri -= 1
             if self.i >= tri_peak*2:
                 self.i=0
                 self.tri = 0
-                print('tri_dc_complete')
+                # print('tri_dc_complete')
             
             # Check if reference is above triangle
             # if so, set pwmhs to high, and ls to low
-            self.tri_ref = self.tri/tri_peak    # normalize triangle ref to 1
-            print('sin ref: '+str(self.sin_ref)+', tri_ref: '+str(self.tri_ref))
-            if self.sin_ref > self.tri_ref:
+            self.tri_ref_mcu = self.tri/tri_peak    # normalize triangle ref to 1
+            # print('sin ref: '+str(self.sin_ref)+', tri_ref: '+str(self.tri_ref_mcu))
+            if self.sin_ref > self.tri_ref_mcu:
                 hs_drive=1
                 ls_drive=0
-                print('hs high, ls low')
+                # print('hs high, ls low')
             else:
                 hs_drive=0
                 ls_drive=1
-                print('ls high, hs low')
+                # print('ls high, hs low')
 
             ################################################################
             """ 
@@ -188,16 +192,18 @@ class MyNgSpiceShared(NgSpiceShared):
             # print(duty, gate_drive1)
                 
         ################### Outputs below go from Python to NGspice####################################################            
-        if node == 'vgate_drivehs':
-            voltage[0]=self.gate_drivehs
-        elif node == 'vgate_drivels':
-            voltage[0]=self.gate_drivels          
+        if node == 'vgate_drivehs_mcu':
+            voltage[0]=self.vgate_drivehs
+        elif node == 'vgate_drivels_mcu':
+            voltage[0]=self.vgate_drivels          
         # elif node == 'vc':
             # voltage[0]=self.vc_val
         
-        # Dummy outputs below are just for probing.  They are no-connects in NGspice    
-        elif node == 'tri_ref_mcu': # this can be used to probe various "nets" inside the Python (not NGspice)
-            voltage[0]=self.tri_ref #output of elliptic filter
+        # Dummy outputs below are just for probing.  They are no-connects in NGspice. Note must add v in front of source name
+        elif node == 'vtri_ref_mcu': # this can be used to probe various "nets" inside the Python (not NGspice)
+            voltage[0]=self.tri_ref_mcu #output of elliptic filter
+        elif node == 'vsin_ref_mcu': # this can be used to probe various "nets" inside the Python (not NGspice)
+            voltage[0]=self.sin_ref
             
         # send the data
         # self.send_data(self, number_of_vectors=2,ngspice_id=ngspice_id)
@@ -227,53 +233,54 @@ circuit.include(spice_library['1N5822']) # Schottky diode
 
 # analog stimulus that goes nowhere below; just used to probe Python "net" inside digital controller
 circuit.V('tri_ref_mcu', 'tri_ref_mcu_net', circuit.gnd, 'dc 0 external')
+circuit.V('sin_ref_mcu', 'sin_ref_mcu_net', circuit.gnd, 'dc 0 external')
 
 # Real analog stimuli from mcu code below:
-# ~ circuit.V('gate_drivehs_mcu', 'gate_drivehs_mcu_net', 'sw_node', 'dc 0 external')
-# ~ circuit.V('gate_drivels_mcu', 'gate_drivels_mcu_net', '_mfilm_p', 'dc 0 external')
+circuit.V('gate_drivehs_mcu', 'gate_drivehs_mcu_net', 'sw_node', 'dc 0 external')
+circuit.V('gate_drivels_mcu', 'gate_drivels_mcu_net', '_mfilm_p', 'dc 0 external')
 
-circuit.V('gate_drivehs_mcu', 'gate_drivehs_mcu_net', circuit.gnd, 'dc 0 external')
-circuit.V('gate_drivels_mcu', 'gate_drivels_mcu_net', circuit.gnd, 'dc 0 external')
+# circuit.V('gate_drivehs_mcu', 'gate_drivehs_mcu_net', circuit.gnd, 'dc 0 external')
+# circuit.V('gate_drivels_mcu', 'gate_drivels_mcu_net', circuit.gnd, 'dc 0 external')
 
 
-'''
+Vinput = 100@u_V
 # Supply input parameters
-circuit.V('input_p', 'input_p_out', circuit.gnd, 100@u_V) # use just this line for more stable source and faster sim time
-# ~ circuit.V('input_p', 'input_p_net', circuit.gnd, 100@u_V)
-# ~ circuit.R('input_p', 'input_p_net', 'input_p_net_R', 5@u_mOhm)
-# ~ circuit.L('input_p', 'input_p_net_R', 'input_p_out', 50@u_nH)
+circuit.V('input_p', 'input_p_out', circuit.gnd, Vinput) # use just this line for more stable source and faster sim time
+# ~ circuit.V('input_p', 'input_p_net', circuit.gnd, Vinput)
+# ~ circuit.R('input_p', 'input_p_net', 'input_p_net_R', 25.4@u_mOhm)
+# ~ circuit.L('input_p', 'input_p_net_R', 'input_p_out', 900@u_nH)
 
 
-circuit.V('input_m', circuit.gnd, 'input_m_out', 100@u_V) # use just this line for more stable source and faster sim time
-# ~ circuit.V('input_m', circuit.gnd, 'input_m_net', 100@u_V)
-# ~ circuit.R('input_m', 'input_m_net', 'input_m_net_R', 5@u_mOhm)
-# ~ circuit.L('input_m', 'input_m_net_R', 'input_m_out', 50@u_nH)
+circuit.V('input_m', circuit.gnd, 'input_m_out', Vinput) # use just this line for more stable source and faster sim time
+# ~ circuit.V('input_m', circuit.gnd, 'input_m_net', Vinput)
+# ~ circuit.R('input_m', 'input_m_net', 'input_m_net_R', 25.4@u_mOhm)
+# ~ circuit.L('input_m', 'input_m_net_R', 'input_m_out', 900@u_nH)
 
 # Supply cables input parameters
-circuit.R('in_cable_p', 'input_p_out', 'in_p_cable_L', 10@u_mOhm)
-circuit.L('in_cable_p', 'in_p_cable_L', '_pALE_p', 10@u_nH)
+circuit.R('in_cable_p', 'input_p_out', 'in_p_cable_L', 5@u_mOhm)
+circuit.L('in_cable_p', 'in_p_cable_L', '_pALE_p', 20@u_nH)
 
-circuit.R('in_cable_m', 'input_m_out', 'in_m_cable_L', 10@u_mOhm)
-circuit.L('in_cable_m', 'in_m_cable_L', '_mALE_p', 10@u_nH)
+circuit.R('in_cable_m', 'input_m_out', 'in_m_cable_L', 5@u_mOhm)
+circuit.L('in_cable_m', 'in_m_cable_L', '_mALE_p', 20@u_nH)
 
 
 #ALE caps
-circuit.R('_pALE_fuse', '_pALE_p', '_pfuse_m', 5@u_mOhm)
+circuit.R('_pALE_fuse', '_pALE_p', '_pfuse_m', 0.6@u_mOhm)
 circuit.L('_pALE_ESL', '_pfuse_m', '_pALE_ESR', 500@u_nH)
-circuit.R('_pALE_ESR', '_pALE_ESR', '_pALE_CAP', 100@u_mOhm)
+circuit.R('_pALE_ESR', '_pALE_ESR', '_pALE_CAP', 12.5@u_mOhm)
 circuit.C('_pALE', '_pALE_CAP', circuit.gnd, 10000@u_uF)
 
-circuit.R('_mALE_fuse', '_mALE_p', '_mfuse_m', 5@u_mOhm)
+circuit.R('_mALE_fuse', '_mALE_p', '_mfuse_m', 0.6@u_mOhm)
 circuit.L('_mALE_ESL', '_mfuse_m', '_mALE_ESR', 500@u_nH)
-circuit.R('_mALE_ESR', '_mALE_ESR', '_mALE_CAP', 100@u_mOhm)
+circuit.R('_mALE_ESR', '_mALE_ESR', '_mALE_CAP', 12.5@u_mOhm)
 circuit.C('_mALE', '_mALE_CAP', circuit.gnd, 10000@u_uF)
 
 # fuses to Hbridge parameters
-circuit.R('hfuse_p', '_pALE_p', '_pfuseESL', 5@u_mOhm)
-circuit.L('hfuse_p', '_pfuseESL', '_pfilm_p', 50@u_nH)
+circuit.R('hfuse_p', '_pALE_p', '_pfuseESL', 1.1@u_mOhm)
+circuit.L('hfuse_p', '_pfuseESL', '_pfilm_p', 120@u_nH)
 
-circuit.R('hfuse_m', '_mALE_p', '_mfuseESL', 5@u_mOhm)
-circuit.L('hfuse_m', '_mfuseESL', '_mfilm_p', 50@u_nH)
+circuit.R('hfuse_m', '_mALE_p', '_mfuseESL', 1.1@u_mOhm)
+circuit.L('hfuse_m', '_mfuseESL', '_mfilm_p', 120@u_nH)
 
 
 #Film caps
@@ -293,9 +300,9 @@ circuit.X('Qhs', 'irf150', '_pfilm_p', 'nchan_sw_drive_hs', 'sw_node')
 # ~ circuit.VoltageControlledSwitch(input_plus='nchan_sw_drive_hs',input_minus='sw_node',output_plus='hs_fet',output_minus='sw_node',name='switchhs',model=None)
 
 # resistor to drive hs nch fet, drive comes from comparator controller
-circuit.R('hs_drive', 'nchan_sw_drive_hs', 'ls_res1', 1@u_Ohm)
+# circuit.R('hs_drive', 'nchan_sw_drive_hs', 'ls_res1', 1@u_Ohm)
 # resistor to drive hs nch fet, drive comes from mcu
-# ~ circuit.R('hs_drive', 'nchan_sw_drive_hs', 'gate_drivehs_mcu_net', 1@u_Ohm)
+circuit.R('hs_drive', 'nchan_sw_drive_hs', 'gate_drivehs_mcu_net', 1@u_Ohm)
 
 
 # nchannel mosfet from switchnode to -VPWR
@@ -304,9 +311,11 @@ circuit.X('Qls', 'irf150', 'sw_node', 'nchan_sw_drive_ls', '_mfilm_p')
 # ~ circuit.R('ls_esr', 'sw_node', 'ls_fet', 15@u_mOhm)
 # ~ circuit.X('Dls', '1N5822', '_mfilm_p', 'sw_node')
 # ~ circuit.VoltageControlledSwitch(input_plus='nchan_sw_drive_ls',input_minus='_mfilm_p',output_plus='ls_fet',output_minus='_mfilm_p',name='switchls',model=None)
-# resistor to drive nch fet, drive comes from controller
-circuit.R('ls_drive', 'nchan_sw_drive_ls', 'ls_res2', 1@u_Ohm)
 
+# resistor to drive ls nch fet, drive comes from comparator controller
+# circuit.R('ls_drive', 'nchan_sw_drive_ls', 'ls_res2', 1@u_Ohm)
+# resistor to drive ls nch fet, drive comes from mcu
+circuit.R('ls_drive', 'nchan_sw_drive_ls', 'gate_drivels_mcu_net', 1@u_Ohm)
 
 
 
@@ -326,7 +335,7 @@ circuit.R('ls_drive', 'nchan_sw_drive_ls', 'ls_res2', 1@u_Ohm)
 circuit.R('load_esr', 'sw_node', 'load_l', 70@u_mOhm)
 circuit.L('load', 'load_l', circuit.gnd, 70@u_uH)
 
-'''
+
 
 '''
 # Simple controller comparing reference to triangle
@@ -433,16 +442,14 @@ print()
 #####
 # Plotting
 #####
-
+'''
 # basic plot
 figure = plt.figure(1, (10, 5))
 plot1 = plt.subplot(211)
-
-
 plt.grid()
 plt.xlabel('t [s]')
-plt.ylabel('[A]')
-plt.legend(('Load Current',''), loc=(.05,.1))
+plt.ylabel('[V]')
+# plt.legend(('Load Current',''), loc=(.05,.1))
 plot(analysis.gate_drivehs_mcu_net)
 plot(analysis.gate_drivels_mcu_net)
 # ~ plot(analysis.clk)
@@ -450,17 +457,17 @@ plot(analysis.gate_drivels_mcu_net)
 plot2 = plt.subplot(212)
 plt.grid()
 plt.xlabel('t [s]')
-plt.ylabel('[A]')
-plt.legend(('Load Current',''), loc=(.05,.1))
-plot(analysis.sin_ref)
+plt.ylabel('[V]')
+plot(analysis.sin_ref_mcu_net)
 plot(analysis.tri_ref_mcu_net)
+plt.legend(('mcu sin ref','mcu triangle ref'), loc=(.05,.1))
 
 plt.tight_layout()
 plt.show()
-
-
-
 '''
+
+
+
 NUMBER_PLOTS = '4'
 
 #plots of circuit components
@@ -469,8 +476,8 @@ plot1 = plt.subplot(int(NUMBER_PLOTS+'11'))
 
 # ~ plot(analysis.tri_ref, axis=axe)
 # ~ plot(analysis.sin_ref, axis=axe)
-plot(analysis._pfilm_p)
-# ~ plot(analysis._mfilm_p)
+# plot(analysis._pfilm_p)
+# plot(analysis._mfilm_p)
 plot(analysis._pfilm_p-analysis.sw_node, color='r')
 # plot(analysis['source'], axis=axe)
 # ~ plot(analysis.ls_res, axis=axe)
@@ -483,14 +490,15 @@ plot(analysis._pfilm_p-analysis.sw_node, color='r')
 plt.grid()
 plt.xlabel('t [s]')
 plt.ylabel('[V]')
-plt.legend(('+VPWR(film cap)','-VPWR(film cap)'), loc=(.05,.1))
+# plt.legend(('+VPWR(film cap)','-VPWR(film cap)'), loc=(.05,.1))
+plt.legend(('Vds HS MOSFET',''), loc=(.05,.1))
 
 
 plot2 = plt.subplot(int(NUMBER_PLOTS+'12'))
-# ~ plot(analysis.nchan_sw_drive_hs-analysis.sw_node, color='r')
-# ~ plot(analysis.nchan_sw_drive_ls-analysis._mfilm_p, color='b')
-plot(analysis.input_p_out)
-plot(analysis.input_m_out)
+plot(analysis.nchan_sw_drive_hs-analysis.sw_node, color='r')
+plot(analysis.nchan_sw_drive_ls-analysis._mfilm_p, color='b')
+# plot(analysis.input_p_out)
+# plot(analysis.input_m_out)
 plt.grid()
 plt.xlabel('t [s]')
 plt.ylabel('[V]')
@@ -520,4 +528,4 @@ plt.legend(('Load Current',''), loc=(.05,.1))
 
 plt.tight_layout()
 plt.show()
-'''
+

@@ -1,0 +1,14 @@
+Version 4
+SymbolType BLOCK
+RECTANGLE Normal -112 -40 128 40
+WINDOW 0 8 -40 Bottom 2
+WINDOW 1 10 50 Center 2
+PIN -112 0 LEFT 8
+PINATTR PinName pwmsmooth
+PINATTR SpiceOrder 1
+PIN 128 -16 RIGHT 8
+PINATTR PinName i_sns
+PINATTR SpiceOrder 2
+PIN 128 16 RIGHT 8
+PINATTR PinName phs
+PINATTR SpiceOrder 3
