@@ -207,10 +207,10 @@ def main():
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	# path = '/Users/Marlowe/gitsite/transfer/TOM/'
+	path = '/Users/Marlowe/gitsite/transfer/TOM/'
 	
 	# Data location for PC:
-	path = 'C:\\Python\\transfer\\TOM\\'
+	# ~ path = 'C:\\Python\\transfer\\TOM\\'
 	
 	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
 	fields = ['Date','Open','High','Low','Close']
@@ -245,8 +245,9 @@ def main():
 	#first date in russell: 1987-09-10
 	#first date in GSPC: 1950-01-04
 	
-	# start_date='1950-01-04'
-	start_date='1987-09-10'
+	# ~ start_date='1950-01-04'
+	start_date='1980-01-10'
+	# ~ start_date='1987-09-10'
 	# start_date='1999-09-10'
 	# ~ start_date='2000-09-11'
 	
@@ -276,7 +277,13 @@ def main():
 	# Print histogram of the returns over period
 	#####
 	
-	# bar_plot(pct_rtns,12)
+	# ~ bar_plot(pct_rtns,20)
+	
+	#####
+	# Generate statistics
+	#####
+	
+	print('Mean: '+str(round(np.mean(pct_rtns),2))+', std dev: '+str(round(np.std(pct_rtns),2)))
 	
 	#####
 	# Find lowest low and average low corresponding to three bins:
@@ -326,7 +333,7 @@ def main():
 	####
 	# Get data on ammt won/lost
 	####
-	
+	'''
 	winner_bin=[]
 	loser_bin=[]
 	for x in range(len(pct_rtns)):
@@ -345,6 +352,7 @@ def main():
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))
 	print()
+	'''
 	'''
 	# Plot a histogram of any set of lows
 	fig = plt.figure()
