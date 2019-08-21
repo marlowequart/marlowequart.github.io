@@ -1,0 +1,39 @@
+.subckt buck_netlist_simple_sw input_v gate_drive output_v N005 nch
+XX1 input_v gate_drive output_v N005 nch
+.ends buck_netlist_simple_sw
+
+
+******************************************************************************************************************
+* STEPS TO GET FROM LTSPICE NETLIST TO THIS NGSPICE NETLIST:
+* Delete everything that's not a subcircuit (including end of file top-level statements such as .tran, .end);
+* This file is only a collection of subcircuits, not a complete SPICE netlist.
+* Add parameters to each subckt line (just copy from any instantiation of said subcircuit; do not include "params:")
+* Change unicode 'mu' to 'u'
+* Replace any dash in any subcircuit name with an underscore 
+* Add top subcircuit ngspice_top using instantiation line for XX1 in original top-level netlist (see text before this note)
+*	It is important to include the XX1 instantiation as above otherwise the models below do not get connected
+******************************************************************************************************************
+
+.subckt buck_netlist_simple_sw input_v gate_drive output_v N005 nch
+
+*buck switch
+S1 output_v input_v gate_drive 0 myswitch
+
+
+R3 output_v esr 0.02
+C2 esr 0 22u
+
+* had to hard code the duty cycle because cannot yet pass time values to/from python code
+V2 gate_drive 0 PULSE(0 10 0 1n 1n 1.25u 2.5u 200)
+
+
+*R1 output_v input_v 10k
+R2 output_v 0 5
+
+
+.model myswitch SW(Ron=0.002 Roff=1Meg Vt=3.0)
+.model 4007PMOS PMOS(LEVEL=2 KP=1.0E-3 VTO=-1)
+*.model FDS6675 VDMOS(pchan Rg=3 Rd=8m Rs=6m Vto=-1 Kp=70 Cgdmax=1.2n Cgdmin=.15n Cgs=2n Cjo=.6n Is=60p Rb=10m Ron=20m Qg=30n)
+
+.ends buck_netlist_simple_sw
+

@@ -1,0 +1,45 @@
+.subckt buck_netlist_simple input_v gate_drive output_v N002
+XX1 input_v gate_drive output_v N002
+.ends buck_netlist_simple
+
+
+
+******************************************************************************************************************
+* STEPS TO GET FROM LTSPICE NETLIST TO THIS NGSPICE NETLIST:
+* Delete everything that's not a subcircuit (including end of file top-level statements such as .tran, .end);
+* This file is only a collection of subcircuits, not a complete SPICE netlist.
+* Add parameters to each subckt line (just copy from any instantiation of said subcircuit; do not include "params:")
+* Change unicode 'mu' to 'u'
+* Replace any dash in any subcircuit name with an underscore 
+* Add top subcircuit ngspice_top using instantiation line for XX1 in original top-level netlist (see text before this note)
+*	It is important to include the XX1 instantiation as above otherwise the models below do not get connected
+******************************************************************************************************************
+
+.subckt buck_netlist_simple input_v gate_drive output_v N002
+*input cap
+R1 input_v P001 20m
+C1 P001 0 10u
+*buck switch
+S1 N002 input_v gate_drive 0 myswitch
+*body diode
+D1 N002 input_v 1N5819
+*output L
+R3 N002 N001 20m
+L1 N001 output_v 150u
+*flyback diode
+D2 0 N002 1N5819
+*output cap
+C2 N003 0 22u
+R2 output_v N003 100m
+*Load
+R4 output_v 0 5
+
+* had to hard code the duty cycle because cannot yet pass time values to/from python code
+V2 gate_drive 0 PULSE(0 10 0 1n 1n 1.25u 2.5u 200)
+
+.model 1N5819 D(Is=31.7u Rs=.051 N=1.373 Cjo=110p M=.35 Eg=.69 Xti=2 Iave=1 Vpk=40 mfg=OnSemi type=Schottky)
+.model myswitch SW(Ron=0.002 Roff=1Meg Vt=3.0)
+
+.ends buck_netlist_simple
+
+
