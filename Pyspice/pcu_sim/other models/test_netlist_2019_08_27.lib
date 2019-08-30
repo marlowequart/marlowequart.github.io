@@ -1,0 +1,71 @@
+.subckt test_netlist gate_drive1 sw_node_hs1 gate_drive2 sw_node_hs2 gate_drive3 sw_node_hs3 sin_ref tri_ref
+XX1 gate_drive1 sw_node_hs1 gate_drive2 sw_node_hs2 gate_drive3 sw_node_hs3 sin_ref tri_ref
+.ends test_netlist
+
+
+
+******************************************************************************************************************
+* STEPS TO GET FROM LTSPICE NETLIST TO THIS NGSPICE NETLIST:
+* Delete everything that's not a subcircuit (including end of file top-level statements such as .tran, .end);
+* This file is only a collection of subcircuits, not a complete SPICE netlist.
+* Add parameters to each subckt line (just copy from any instantiation of said subcircuit; do not include "params:")
+* Change unicode 'mu' to 'u'
+* Replace any dash in any subcircuit name with an underscore 
+* Add top subcircuit ngspice_top using instantiation line for XX1 in original top-level netlist (see text before this note)
+*	It is important to include the XX1 instantiation as above otherwise the models below do not get connected
+******************************************************************************************************************
+
+.subckt test_netlist gate_drive1 sw_node_hs1 gate_drive2 sw_node_hs2 gate_drive3 sw_node_hs3 sin_ref tri_ref
+
+
+
+* Test circuit 1
+V1 N200 0 100
+R1 N200 sw_node_hs1 1
+S1 sw_node_hs1 0 gate_drive1 0 myswitch
+V2 gate_drive1 0 PULSE(0 10 0 1n 1n 25u 50u 200)
+*output load
+R23 0 sw_node_hs1 1
+
+
+
+
+* Test circuit 2
+V3 N201 0 100
+R3 N201 sw_node_hs2 1
+S5 sw_node_hs2 0 gate_drive2 0 myswitch
+V4 N101 0 PULSE(0 10 0 1n 1n 30u 60u 200)
+B1 gate_drive2 0 V=V(N101)
+*output load
+R26 0 sw_node_hs2 1
+
+
+* Test circuit 3
+V5 N301 0 100
+R4 N301 sw_node_hs3 1
+S6 sw_node_hs3 0 gate_drive3 0 myswitch
+V6 gate_drive3 0 PULSE(0 10 0 50u 50u 1n 100u 200)
+*B2 gate_drive3 0 V=V(tri_ref)
+*B2 gate_drive3 0 V=V(N102)
+*output load
+R27 0 sw_node_hs3 1
+
+* driver comparing sin to tri references
+* high side comparator
+*V4 N100 0 10
+*R24 N100 N102 1
+*S10 N102 0 sin_ref tri_ref myswitch
+*B2 hs_drive 0 V=V(N101)
+* drive circuit with deadband
+*R18 hs_drive N023 10
+*R19 hs_drive 0 10
+*C5 N023 0 10n
+
+
+
+
+.model myswitch SW(Ron=0.002 Roff=1000000 Vt=3.0)
+
+.ends test_netlist
+
+

@@ -1,0 +1,30 @@
+
+.title test_ckt
+
+* Test circuit 1
+V1 N200 0 100
+R1 N200 sw_node_hs1 1
+S1 sw_node_hs1 0 gate_drive1 0 myswitch
+V2 N102 0 PULSE(0 10 0 1n 1n 50u 100u 200)
+B2 gate_drive1 0 V=V(N102)
+*output load
+R23 0 sw_node_hs1 1
+
+
+* Test circuit 2
+V3 N201 0 100
+R3 N201 sw_node_hs2 1
+S5 sw_node_hs2 0 gate_drive2 0 myswitch
+V4 N101 0 PULSE(0 10 0 50u 50u 1n 100u 200)
+B1 gate_drive2 0 V=V(N101)
+*output load
+R26 0 sw_node_hs2 1
+
+.end
+
+Commands:
+source test.cir
+
+tran .005u 2.5m
+
+plot gate_drive1 gate_drive2 sw_node_hs1 sw_node_hs2
