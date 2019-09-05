@@ -1,0 +1,2 @@
+2019_09_05
+It does not seem to work to create PWM by comparator in a netlist. However it might work to input the PWM.
