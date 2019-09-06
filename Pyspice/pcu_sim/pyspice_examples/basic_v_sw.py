@@ -36,12 +36,12 @@ spice_library = SpiceLibrary(libraries_path)
 circuit = Circuit('Basic Switch')
 
 
-circuit.PulseVoltageSource('pulse', 'sw_drive', circuit.gnd, 0@u_V, 10@u_V, 1@u_ms, 2@u_ms,)
+circuit.PulseVoltageSource('pulse', 'sw_drive', circuit.gnd, 0@u_V, 15@u_V, 1@u_ms, 2@u_ms,)
 
-circuit.V('input', 'input', circuit.gnd, 20@u_V)
+circuit.V('input', 'input', circuit.gnd, 200@u_V)
 circuit.R('load', circuit.gnd, 'sw_node', 5@u_Ohm)
-circuit.VoltageControlledSwitch('input','sw_node','sw_drive',circuit.gnd,'sw1',model=None)
-
+circuit.VoltageControlledSwitch(input_plus='sw_drive',input_minus=circuit.gnd,output_plus='input',output_minus='sw_node',name='sw1',model='SW')
+circuit.model('SW','SW', Ron=1E6@u_Ohm, Roff=.002@u_Ohm, Vt=3.0@u_V)
 
 
 #####
