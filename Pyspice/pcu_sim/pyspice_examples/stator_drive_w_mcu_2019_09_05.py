@@ -298,8 +298,10 @@ circuit.C('_mfilm', '_mfilm_CAP', circuit.gnd, 100@u_uF)
 # ~ circuit.R('hs_esr', '_pfilm_p', 'hs_fet', 15@u_mOhm)
 # ~ circuit.X('Dhs', '1N5822', 'sw_node', '_pfilm_p')
 # ~ circuit.VoltageControlledSwitch(input_plus='nchan_sw_drive_hs',input_minus='sw_node',output_plus='hs_fet',output_minus='sw_node',name='switchhs',model=None)
+
 circuit.VoltageControlledSwitch(input_plus='nchan_sw_drive_hs',input_minus='sw_node',output_plus='_pfilm_p',output_minus='sw_node',name='sw1',model='SW')
-circuit.model('SW','SW', Ron=1E6@u_Ohm, Roff=.002@u_Ohm, Vt=3.0@u_V)
+circuit.model('SW','SW', Ron=.002@u_Ohm, Roff=1E6@u_Ohm, Vt=3.0@u_V)
+circuit.X('Dhs', '1N5822', 'sw_node', '_pfilm_p')
 
 #####
 # This switch above works? 2019_09_05

@@ -68,7 +68,7 @@ def start_of_month_detect(df_in,start_date,end_date,month):
 	#get the low and high index of the dataframe based on the start and end dates
 	df,index_l,index_h=slice_df(df_in,start_date,end_date)
 	
-	index_locations=[]
+	index_locations_day0=[]
 	idx=index_l+1
 	while idx < index_h-1:
 		
@@ -85,9 +85,9 @@ def start_of_month_detect(df_in,start_date,end_date,month):
 		
 		if cur_date_mo != next_date_mo:
 			if month == '00':
-				index_locations.append(idx-1)
+				index_locations_day0.append(idx-1)
 			elif next_date_mo == month:
-				index_locations.append(idx-1)
+				index_locations_day0.append(idx-1)
 			idx+=15
 		else:
 			idx+=1
@@ -98,14 +98,27 @@ def start_of_month_detect(df_in,start_date,end_date,month):
 	
 	# For each index location and date, return the day of the week
 	# the integer value 0 is monday, 6 is sunday
-	day_of_week=[]
-	for indx in index_locations:
-		the_date=datetime.datetime.strptime(df['Date'][indx],'%Y-%m-%d')
-		weekday=datetime.datetime.weekday(the_date)
-		day_of_week.append(weekday)
+	day_of_week_day0=[]
+	day_of_week_day1=[]
+	day_of_week_daym1=[]
+	for indx in index_locations_day0:
+		daym1_date=datetime.datetime.strptime(df['Date'][indx+1],'%Y-%m-%d')
+		day0_date=datetime.datetime.strptime(df['Date'][indx],'%Y-%m-%d')
+		day1_date=datetime.datetime.strptime(df['Date'][indx-1],'%Y-%m-%d')
+		
+		# weekday_daym1=datetime.datetime.weekday(daym1_date)
+		# weekday_day0=datetime.datetime.weekday(day0_date)
+		# weekday_day1=datetime.datetime.weekday(day1_date)
+		
+		day_of_week_daym1.append(datetime.datetime.weekday(daym1_date))
+		day_of_week_day0.append(datetime.datetime.weekday(day0_date))
+		day_of_week_day1.append(datetime.datetime.weekday(day1_date))
+		
+	# Create indexes for daym1 and day1
+	index_locations_daym1=[idx+1 for idx in index_locations_day0]
+	index_locations_day1=[idx-1 for idx in index_locations_day0]
 	
-	
-	return index_locations,df,day_of_week
+	return index_locations_day0,index_locations_daym1,index_locations_day1,day_of_week_day0,day_of_week_daym1,day_of_week_day1,df
 
 
 def get_returns(df,idx_list):
@@ -135,10 +148,10 @@ def main():
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	path = '/Users/Marlowe/gitsite/TOM/'
+	# path = '/Users/Marlowe/gitsite/TOM/'
 	
 	# Data location for PC:
-	# ~ path = 'C:\\Python\\transfer\\TOM\\'
+	path = 'C:\\Python\\transfer\\'
 	
 	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
 	fields = ['Date','Open','High','Low','Close']
@@ -192,53 +205,60 @@ def main():
 	#####
 	
 	# generate a list of indexes of first days of all months in test period
-	idx_list_day0,df_sliced,weekdays=start_of_month_detect(df,start_date,end_date,'00')
+	idx_list_day0,idx_list_daym1,idx_list_day1,weekdays_day0,weekdays_daym1,weekdays_day1,df_sliced=start_of_month_detect(df,start_date,end_date,'00')
 	
 	
 	# first check all day 0 returns
 	all_day0_rtns=get_returns(df_sliced,idx_list_day0)
-	print('Mean return of all day 0 returns: '+str(round(np.mean(all_day0_rtns),2))+', number of days: '+str(len(all_day0_rtns)))
+	# print('Mean return of all day 0 returns: '+str(round(np.mean(all_day0_rtns),2))+', number of days: '+str(len(all_day0_rtns)))
 	
 	# next get all day 1 returns
 	# shift idx_list, increasing index is going backwards in time, decreasing is going forwards
-	idx_list_day1=[idx-1 for idx in idx_list_day0]
 	all_day1_rtns=get_returns(df_sliced,idx_list_day1)
-	print('Mean return of all day 1 returns: '+str(round(np.mean(all_day1_rtns),2))+', number of days: '+str(len(all_day1_rtns)))
+	# print('Mean return of all day 1 returns: '+str(round(np.mean(all_day1_rtns),2))+', number of days: '+str(len(all_day1_rtns)))
 	
 	
 	
-	# next get all day 0 and day 1 returns that fall on a monday
+	# next get all day 0 and day 1 returns that fall on a monday or tuesday
 	day0_monday_idxs=[]
 	day0_tuesday_idxs=[]
 	day1_monday_idxs=[]
+	day1_tuesday_idxs=[]
 	for i in range(len(idx_list_day0)):
 		# create list of indexes where day 0 falls on monday
-		if weekdays[i]==0:
+		if weekdays_day0[i]==0:
 			day0_monday_idxs.append(idx_list_day0[i])
+		# create list of indexes where day 0 falls on tuesday
+		if weekdays_day0[i]==1:
+			day0_tuesday_idxs.append(idx_list_day0[i])
 		# create list of indexes where day 1 falls on monday
-		if weekdays[i]==4:
-			day1_monday_idxs.append(idx_list_day0[i]-1)
+		if weekdays_day1[i]==0:
+			day1_monday_idxs.append(idx_list_day1[i])
+		# create list of indexes where day 1 falls on tuesday
+		if weekdays_day1[i]==1:
+			day1_tuesday_idxs.append(idx_list_day1[i])
 	
+	# day 0 on monday returns
 	all_day0_monday_rtns=get_returns(df_sliced,day0_monday_idxs)
-	print('Mean return of day 0 on Monday: '+str(round(np.mean(all_day0_monday_rtns),2))+', number of days: '+str(len(all_day0_monday_rtns)))
+	# print('Mean return of day 0 on Monday: '+str(round(np.mean(all_day0_monday_rtns),2))+', number of days: '+str(len(all_day0_monday_rtns)))
+	# day 1 on monday returns
 	all_day1_monday_rtns=get_returns(df_sliced,day1_monday_idxs)
-	print('Mean return of day 1 on Monday: '+str(round(np.mean(all_day1_monday_rtns),2))+', number of days: '+str(len(all_day1_monday_rtns)))
+	# print('Mean return of day 1 on Monday: '+str(round(np.mean(all_day1_monday_rtns),2))+', number of days: '+str(len(all_day1_monday_rtns)))
 	
-	# get day 0 returns on a tuesday
-	idx_list_day0_tuesday=[idx-1 for idx in day0_monday_idxs]
-	all_day1_tuesday_rtns=get_returns(df_sliced,idx_list_day1_tuesday)
-	print('Mean return of day 1 on Tuesday: '+str(round(np.mean(all_day1_tuesday_rtns),2))+', number of days: '+str(len(all_day1_tuesday_rtns)))
-	
+	# get day 0 on a tuesday returns
+	all_day0_tuesday_rtns=get_returns(df_sliced,day0_tuesday_idxs)
+	# print('Mean return of day 0 on Tuesday: '+str(round(np.mean(all_day0_tuesday_rtns),2))+', number of days: '+str(len(all_day0_tuesday_rtns)))
 	# get day 1 returns on a tuesday
-	idx_list_day1_tuesday=[idx-1 for idx in day0_monday_idxs]
-	all_day1_tuesday_rtns=get_returns(df_sliced,idx_list_day1_tuesday)
-	print('Mean return of day 1 on Tuesday: '+str(round(np.mean(all_day1_tuesday_rtns),2))+', number of days: '+str(len(all_day1_tuesday_rtns)))
-	
-	# ~ pct_rtns,abs_rtns,dates=tot_returns(df_sliced,start_date,end_date,start_day,end_day)
-	
-	# input a list of indexes and get the average returns of those dates
+	all_day1_tuesday_rtns=get_returns(df_sliced,day1_tuesday_idxs)
+	# print('Mean return of day 1 on Tuesday: '+str(round(np.mean(all_day1_tuesday_rtns),2))+', number of days: '+str(len(all_day1_tuesday_rtns)))
 	
 	
+	day1_holiday=[] # check for gap day between day1 and day0
+	day0_holiday=[] # check for gap day between day0 and day-1
+	for i in range(len(idx_list_day0)):
+		if (weekdays_day0[i]==4) & (weekdays_day1[i]!=0):
+			print('index location '+str(idx_list_day0[i])+' is a holiday. day0: '+str(df_sliced['Date'][idx_list_day0[i]])+', day1: '+str(df_sliced['Date'][idx_list_day0[i]-1]))
+			print('weekdays_day0: '+str(weekdays_day0[i])+', weekdays_day1: '+str(weekdays_day1[i]))
 	
 	
 	
