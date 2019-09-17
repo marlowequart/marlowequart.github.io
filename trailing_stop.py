@@ -9,6 +9,8 @@ Output:
 
 
 Notes:
+periods that end on Friday and Monday are the most profitable
+
 
 
 pandas version: 0.18.1
@@ -183,10 +185,10 @@ def main():
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	# path = '/Users/Marlowe/gitsite/TOM/'
+	path = '/Users/Marlowe/gitsite/transfer/'
 	
 	# Data location for PC:
-	path = 'C:\\Python\\transfer\\'
+	# ~ path = 'C:\\Python\\transfer\\'
 	
 	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
 	fields = ['Date','Open','High','Low','Close']
@@ -223,7 +225,7 @@ def main():
 	#first date in russell: 1987-09-10
 	#first date in GSPC: 1950-01-04
 	
-	# start_date='1950-01-04'
+	# ~ start_date='1950-01-04'
 	start_date='1987-09-10'
 	# start_date='1999-09-10'
 	# ~ start_date='2000-09-11'
@@ -243,15 +245,15 @@ def main():
 	idx_list_day0,idx_list_daym1,idx_list_day1,weekdays_day0,weekdays_daym1,weekdays_day1,df_sliced=start_of_month_detect(df,start_date,end_date,'00')
 	
 	
-	print('Single trading day returns:')
+	# ~ print('Single trading day returns:')
 	# first check all day 0 returns
 	all_day0_rtns=get_returns_sing_day(df_sliced,idx_list_day0)
-	print('Mean return of all day 0 returns: '+str(round(np.mean(all_day0_rtns),2))+', number of days: '+str(len(all_day0_rtns)))
+	# ~ print('Mean return of all day 0 returns: '+str(round(np.mean(all_day0_rtns),2))+', number of days: '+str(len(all_day0_rtns)))
 	
 	# next get all day 1 returns
 	# shift idx_list, increasing index is going backwards in time, decreasing is going forwards
 	all_day1_rtns=get_returns_sing_day(df_sliced,idx_list_day1)
-	print('Mean return of all day 1 returns: '+str(round(np.mean(all_day1_rtns),2))+', number of days: '+str(len(all_day1_rtns)))
+	# ~ print('Mean return of all day 1 returns: '+str(round(np.mean(all_day1_rtns),2))+', number of days: '+str(len(all_day1_rtns)))
 
 	
 	day1_mon_idx0=[]
@@ -282,12 +284,96 @@ def main():
 	print()
 	# print('Single trading day returns:')
 	print('For trades that end on Monday(total num trades: '+str(len(day1_mon_idx0))+'):')
+	all_rtns_mon_day1=get_returns_full_trade(df_sliced,day1_mon_idx0,-4,1)
+	print('Total mean return of all trades with day 1 on Monday: '+str(round(np.mean(all_rtns_mon_day1),2)))
 	# day 0 on monday returns
 	mon_end_daym4_rtns=get_returns_sing_day(df_sliced,[idx+4 for idx in day1_mon_idx0])
-	print('Mean return of day m4, day1 on mon: '+str(round(np.mean(mon_end_daym4_rtns),2))+', tot # <-3%:'+', tot # >0.7%:')
+	print('Mean return of day m4, day1 on mon: '+str(round(np.mean(mon_end_daym4_rtns),2))+', tot # <-3%:'+str(sum(1 for x in mon_end_daym4_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in mon_end_daym4_rtns if x > 0.7)))
+	mon_end_daym3_rtns=get_returns_sing_day(df_sliced,[idx+3 for idx in day1_mon_idx0])
+	print('Mean return of day m3, day1 on mon: '+str(round(np.mean(mon_end_daym3_rtns),2))+', tot # <-3%:'+str(sum(1 for x in mon_end_daym3_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in mon_end_daym3_rtns if x > 0.7)))
+	mon_end_daym2_rtns=get_returns_sing_day(df_sliced,[idx+2 for idx in day1_mon_idx0])
+	print('Mean return of day m2, day1 on mon: '+str(round(np.mean(mon_end_daym2_rtns),2))+', tot # <-3%:'+str(sum(1 for x in mon_end_daym2_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in mon_end_daym2_rtns if x > 0.7)))
+	mon_end_daym1_rtns=get_returns_sing_day(df_sliced,[idx+1 for idx in day1_mon_idx0])
+	print('Mean return of day m1, day1 on mon: '+str(round(np.mean(mon_end_daym1_rtns),2))+', tot # <-3%:'+str(sum(1 for x in mon_end_daym1_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in mon_end_daym1_rtns if x > 0.7)))
+	mon_end_day0_rtns=get_returns_sing_day(df_sliced,[idx for idx in day1_mon_idx0])
+	print('Mean return of day 0, day1 on mon: '+str(round(np.mean(mon_end_day0_rtns),2))+', tot # <-3%:'+str(sum(1 for x in mon_end_day0_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in mon_end_day0_rtns if x > 0.7)))
+	mon_end_day1_rtns=get_returns_sing_day(df_sliced,[idx-1 for idx in day1_mon_idx0])
+	print('Mean return of day 1, day1 on mon: '+str(round(np.mean(mon_end_day1_rtns),2))+', tot # <-3%:'+str(sum(1 for x in mon_end_day1_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in mon_end_day1_rtns if x > 0.7)))
+	
+	print()
+	print('For trades that end on Tuesday(total num trades: '+str(len(day1_tue_idx0))+'):')
+	all_rtns_tues_day1=get_returns_full_trade(df_sliced,day1_tue_idx0,-4,1)
+	print('Total mean return of all trades with day 1 on Tuesday: '+str(round(np.mean(all_rtns_tues_day1),2)))
+	# day 0 on tuesday returns
+	tue_end_daym4_rtns=get_returns_sing_day(df_sliced,[idx+4 for idx in day1_tue_idx0])
+	print('Mean return of day m4, day1 on tue: '+str(round(np.mean(tue_end_daym4_rtns),2))+', tot # <-3%:'+str(sum(1 for x in tue_end_daym4_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in tue_end_daym4_rtns if x > 0.7)))
+	tue_end_daym3_rtns=get_returns_sing_day(df_sliced,[idx+3 for idx in day1_tue_idx0])
+	print('Mean return of day m3, day1 on tue: '+str(round(np.mean(tue_end_daym3_rtns),2))+', tot # <-3%:'+str(sum(1 for x in tue_end_daym3_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in tue_end_daym3_rtns if x > 0.7)))
+	tue_end_daym2_rtns=get_returns_sing_day(df_sliced,[idx+2 for idx in day1_tue_idx0])
+	print('Mean return of day m2, day1 on tue: '+str(round(np.mean(tue_end_daym2_rtns),2))+', tot # <-3%:'+str(sum(1 for x in tue_end_daym2_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in tue_end_daym2_rtns if x > 0.7)))
+	tue_end_daym1_rtns=get_returns_sing_day(df_sliced,[idx+1 for idx in day1_tue_idx0])
+	print('Mean return of day m1, day1 on tue: '+str(round(np.mean(tue_end_daym1_rtns),2))+', tot # <-3%:'+str(sum(1 for x in tue_end_daym1_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in tue_end_daym1_rtns if x > 0.7)))
+	tue_end_day0_rtns=get_returns_sing_day(df_sliced,[idx for idx in day1_tue_idx0])
+	print('Mean return of day 0, day1 on tue: '+str(round(np.mean(tue_end_day0_rtns),2))+', tot # <-3%:'+str(sum(1 for x in tue_end_day0_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in tue_end_day0_rtns if x > 0.7)))
+	tue_end_day1_rtns=get_returns_sing_day(df_sliced,[idx-1 for idx in day1_tue_idx0])
+	print('Mean return of day 1, day1 on tue: '+str(round(np.mean(tue_end_day1_rtns),2))+', tot # <-3%:'+str(sum(1 for x in tue_end_day1_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in tue_end_day1_rtns if x > 0.7)))
+	
+	print()
+	print('For trades that end on Wednesday(total num trades: '+str(len(day1_wed_idx0))+'):')
+	all_rtns_wed_day1=get_returns_full_trade(df_sliced,day1_wed_idx0,-4,1)
+	print('Total mean return of all trades with day 1 on Wednesday: '+str(round(np.mean(all_rtns_wed_day1),2)))
+	# day 0 on wedsday returns
+	wed_end_daym4_rtns=get_returns_sing_day(df_sliced,[idx+4 for idx in day1_wed_idx0])
+	print('Mean return of day m4, day1 on wed: '+str(round(np.mean(wed_end_daym4_rtns),2))+', tot # <-3%:'+str(sum(1 for x in wed_end_daym4_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in wed_end_daym4_rtns if x > 0.7)))
+	wed_end_daym3_rtns=get_returns_sing_day(df_sliced,[idx+3 for idx in day1_wed_idx0])
+	print('Mean return of day m3, day1 on wed: '+str(round(np.mean(wed_end_daym3_rtns),2))+', tot # <-3%:'+str(sum(1 for x in wed_end_daym3_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in wed_end_daym3_rtns if x > 0.7)))
+	wed_end_daym2_rtns=get_returns_sing_day(df_sliced,[idx+2 for idx in day1_wed_idx0])
+	print('Mean return of day m2, day1 on wed: '+str(round(np.mean(wed_end_daym2_rtns),2))+', tot # <-3%:'+str(sum(1 for x in wed_end_daym2_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in wed_end_daym2_rtns if x > 0.7)))
+	wed_end_daym1_rtns=get_returns_sing_day(df_sliced,[idx+1 for idx in day1_wed_idx0])
+	print('Mean return of day m1, day1 on wed: '+str(round(np.mean(wed_end_daym1_rtns),2))+', tot # <-3%:'+str(sum(1 for x in wed_end_daym1_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in wed_end_daym1_rtns if x > 0.7)))
+	wed_end_day0_rtns=get_returns_sing_day(df_sliced,[idx for idx in day1_wed_idx0])
+	print('Mean return of day 0, day1 on wed: '+str(round(np.mean(wed_end_day0_rtns),2))+', tot # <-3%:'+str(sum(1 for x in wed_end_day0_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in wed_end_day0_rtns if x > 0.7)))
+	wed_end_day1_rtns=get_returns_sing_day(df_sliced,[idx-1 for idx in day1_wed_idx0])
+	print('Mean return of day 1, day1 on wed: '+str(round(np.mean(wed_end_day1_rtns),2))+', tot # <-3%:'+str(sum(1 for x in wed_end_day1_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in wed_end_day1_rtns if x > 0.7)))
+	
+	print()
+	print('For trades that end on Thursday(total num trades: '+str(len(day1_thu_idx0))+'):')
+	all_rtns_thu_day1=get_returns_full_trade(df_sliced,day1_thu_idx0,-4,1)
+	print('Total mean return of all trades with day 1 on Thursday: '+str(round(np.mean(all_rtns_thu_day1),2)))
+	# day 0 on thusday returns
+	thu_end_daym4_rtns=get_returns_sing_day(df_sliced,[idx+4 for idx in day1_thu_idx0])
+	print('Mean return of day m4, day1 on thu: '+str(round(np.mean(thu_end_daym4_rtns),2))+', tot # <-3%:'+str(sum(1 for x in thu_end_daym4_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in thu_end_daym4_rtns if x > 0.7)))
+	thu_end_daym3_rtns=get_returns_sing_day(df_sliced,[idx+3 for idx in day1_thu_idx0])
+	print('Mean return of day m3, day1 on thu: '+str(round(np.mean(thu_end_daym3_rtns),2))+', tot # <-3%:'+str(sum(1 for x in thu_end_daym3_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in thu_end_daym3_rtns if x > 0.7)))
+	thu_end_daym2_rtns=get_returns_sing_day(df_sliced,[idx+2 for idx in day1_thu_idx0])
+	print('Mean return of day m2, day1 on thu: '+str(round(np.mean(thu_end_daym2_rtns),2))+', tot # <-3%:'+str(sum(1 for x in thu_end_daym2_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in thu_end_daym2_rtns if x > 0.7)))
+	thu_end_daym1_rtns=get_returns_sing_day(df_sliced,[idx+1 for idx in day1_thu_idx0])
+	print('Mean return of day m1, day1 on thu: '+str(round(np.mean(thu_end_daym1_rtns),2))+', tot # <-3%:'+str(sum(1 for x in thu_end_daym1_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in thu_end_daym1_rtns if x > 0.7)))
+	thu_end_day0_rtns=get_returns_sing_day(df_sliced,[idx for idx in day1_thu_idx0])
+	print('Mean return of day 0, day1 on thu: '+str(round(np.mean(thu_end_day0_rtns),2))+', tot # <-3%:'+str(sum(1 for x in thu_end_day0_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in thu_end_day0_rtns if x > 0.7)))
+	thu_end_day1_rtns=get_returns_sing_day(df_sliced,[idx-1 for idx in day1_thu_idx0])
+	print('Mean return of day 1, day1 on thu: '+str(round(np.mean(thu_end_day1_rtns),2))+', tot # <-3%:'+str(sum(1 for x in thu_end_day1_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in thu_end_day1_rtns if x > 0.7)))
+	
+	print()
+	print('For trades that end on Friday(total num trades: '+str(len(day1_fri_idx0))+'):')
+	all_rtns_fri_day1=get_returns_full_trade(df_sliced,day1_fri_idx0,-4,1)
+	print('Total mean return of all trades with day 1 on Friday: '+str(round(np.mean(all_rtns_fri_day1),2)))
+	# day 0 on frisday returns
+	fri_end_daym4_rtns=get_returns_sing_day(df_sliced,[idx+4 for idx in day1_fri_idx0])
+	print('Mean return of day m4, day1 on fri: '+str(round(np.mean(fri_end_daym4_rtns),2))+', tot # <-3%:'+str(sum(1 for x in fri_end_daym4_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in fri_end_daym4_rtns if x > 0.7)))
+	fri_end_daym3_rtns=get_returns_sing_day(df_sliced,[idx+3 for idx in day1_fri_idx0])
+	print('Mean return of day m3, day1 on fri: '+str(round(np.mean(fri_end_daym3_rtns),2))+', tot # <-3%:'+str(sum(1 for x in fri_end_daym3_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in fri_end_daym3_rtns if x > 0.7)))
+	fri_end_daym2_rtns=get_returns_sing_day(df_sliced,[idx+2 for idx in day1_fri_idx0])
+	print('Mean return of day m2, day1 on fri: '+str(round(np.mean(fri_end_daym2_rtns),2))+', tot # <-3%:'+str(sum(1 for x in fri_end_daym2_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in fri_end_daym2_rtns if x > 0.7)))
+	fri_end_daym1_rtns=get_returns_sing_day(df_sliced,[idx+1 for idx in day1_fri_idx0])
+	print('Mean return of day m1, day1 on fri: '+str(round(np.mean(fri_end_daym1_rtns),2))+', tot # <-3%:'+str(sum(1 for x in fri_end_daym1_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in fri_end_daym1_rtns if x > 0.7)))
+	fri_end_day0_rtns=get_returns_sing_day(df_sliced,[idx for idx in day1_fri_idx0])
+	print('Mean return of day 0, day1 on fri: '+str(round(np.mean(fri_end_day0_rtns),2))+', tot # <-3%:'+str(sum(1 for x in fri_end_day0_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in fri_end_day0_rtns if x > 0.7)))
+	fri_end_day1_rtns=get_returns_sing_day(df_sliced,[idx-1 for idx in day1_fri_idx0])
+	print('Mean return of day 1, day1 on fri: '+str(round(np.mean(fri_end_day1_rtns),2))+', tot # <-3%:'+str(sum(1 for x in fri_end_day1_rtns if x < -3.0))+', tot # >0.7%:'+str(sum(1 for x in fri_end_day1_rtns if x > 0.7)))
 	
 	
-	
+	'''
 	print()
 	print('Full trading period returns:')
 	all_rtns_mon_day1=get_returns_full_trade(df_sliced,day1_mon_idx0,-4,1)
@@ -300,7 +386,7 @@ def main():
 	print('Mean return of all trades with day 1 on Thursday: '+str(round(np.mean(all_rtns_thu_day1),2))+', number of trades: '+str(len(all_rtns_thu_day1)))
 	all_rtns_fri_day1=get_returns_full_trade(df_sliced,day1_fri_idx0,-4,1)
 	print('Mean return of all trades with day 1 on Friday: '+str(round(np.mean(all_rtns_fri_day1),2))+', number of trades: '+str(len(all_rtns_fri_day1)))
-
+	'''
 	
 	
 	print()
