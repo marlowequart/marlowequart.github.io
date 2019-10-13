@@ -30,9 +30,10 @@ import os
 import numpy as np
 import re
 import datetime
-import matplotlib.pyplot as plt
-import matplotlib.ticker as plticker
+# ~ import matplotlib.pyplot as plt
+# ~ import matplotlib.ticker as plticker
 import time
+from operator import itemgetter
 
 
 #open csv file, return the data in a pandas dataframe
@@ -150,12 +151,18 @@ def get_returns_full_trade(df,idx_list,start,end):
 		trade_low=min(min_vals)
 		# abs_returns.append(days_close-days_open)
 		# print((trade_open-trade_low)/trade_open)
+		
+		# the following section includes a stop loss of 3%
+		'''
 		if ((trade_open-trade_low)/trade_open) < -0.03:
 			pct_returns.append(-3.0)
 		elif ((trade_close-trade_open)/trade_open) < -0.03:
 			pct_returns.append(-3.0)
 		else:
 			pct_returns.append(round(100*(trade_close-trade_open)/trade_open,2))
+		'''
+		#use this section for no stop loss
+		pct_returns.append(round(100*(trade_close-trade_open)/trade_open,2))
 	
 	
 	return pct_returns
@@ -168,10 +175,10 @@ def main():
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	# path = '/Users/Marlowe/gitsite/transfer/'
+	path = '/Users/Marlowe/gitsite/transfer/'
 	
 	# Data location for PC:
-	path = 'C:\\Python\\transfer\\'
+	# ~ path = 'C:\\Python\\transfer\\'
 	
 	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
 	fields = ['Date','Open','High','Low','Close']
@@ -209,11 +216,11 @@ def main():
 	#first date in GSPC: 1950-01-04
 	
 	# ~ start_date='1950-01-04'
-	start_date='1987-09-10'
-	# start_date='1999-09-10'
+	# ~ start_date='1987-09-10'
+	start_date='1999-09-10'
 	# ~ start_date='2000-09-11'
 	
-	# end_date='2000-09-11'
+	# ~ end_date='2000-09-11'
 	end_date='2019-05-10'
 	
 	
@@ -229,52 +236,39 @@ def main():
 	
 	
 	# Generate a dictionary of all trading returns
-	# dict contains: dict[days_idx,days_%_rtn,day_0_idx,overall_trade_rtn]
+	# dict contains: dict key(days_idx):day_0_idx,day_of_trade,days_%_rtn,overall_trade_rtn
 	
-	# get list of overall trade rtns for every day 0 idx
-	all_trade_rtns=get_returns_full_trade(df_sliced,idx_list_day0,-4,1)
-	
-	print(all_trade_rtns[0:15])
-	
-	
-
-	'''
-	stop_loss=2.5
-	
-
-	print()
-	print('For trades that end on Friday(total num trades: '+str(len(day1_fri_idx0))+'):')
-	all_rtns_fri_day1=get_returns_full_trade(df_sliced,day1_fri_idx0,-4,1)
-	print('Total mean return of all trades with day 1 on Friday: '+str(round(np.mean(all_rtns_fri_day1),2)))
-	# day 0 on frisday returns
-	fri_end_daym4_rtns=get_returns_sing_day(df_sliced,[idx+4 for idx in day1_fri_idx0])
-	print('Mean return of day m4, day1 on fri: '+str(round(np.mean(fri_end_daym4_rtns),2))+', tot # <-'+str(stop_loss)+'%:'+str(sum(1 for x in fri_end_daym4_rtns if x < -stop_loss))+', tot # >0.7%:'+str(sum(1 for x in fri_end_daym4_rtns if x > 0.7)))
-	fri_end_daym3_rtns=get_returns_sing_day(df_sliced,[idx+3 for idx in day1_fri_idx0])
-	print('Mean return of day m3, day1 on fri: '+str(round(np.mean(fri_end_daym3_rtns),2))+', tot # <-'+str(stop_loss)+'%:'+str(sum(1 for x in fri_end_daym3_rtns if x < -stop_loss))+', tot # >0.7%:'+str(sum(1 for x in fri_end_daym3_rtns if x > 0.7)))
-	fri_end_daym2_rtns=get_returns_sing_day(df_sliced,[idx+2 for idx in day1_fri_idx0])
-	print('Mean return of day m2, day1 on fri: '+str(round(np.mean(fri_end_daym2_rtns),2))+', tot # <-'+str(stop_loss)+'%:'+str(sum(1 for x in fri_end_daym2_rtns if x < -stop_loss))+', tot # >0.7%:'+str(sum(1 for x in fri_end_daym2_rtns if x > 0.7)))
-	fri_end_daym1_rtns=get_returns_sing_day(df_sliced,[idx+1 for idx in day1_fri_idx0])
-	print('Mean return of day m1, day1 on fri: '+str(round(np.mean(fri_end_daym1_rtns),2))+', tot # <-'+str(stop_loss)+'%:'+str(sum(1 for x in fri_end_daym1_rtns if x < -stop_loss))+', tot # >0.7%:'+str(sum(1 for x in fri_end_daym1_rtns if x > 0.7)))
-	fri_end_day0_rtns=get_returns_sing_day(df_sliced,[idx for idx in day1_fri_idx0])
-	print('Mean return of day 0, day1 on fri: '+str(round(np.mean(fri_end_day0_rtns),2))+', tot # <-'+str(stop_loss)+'%:'+str(sum(1 for x in fri_end_day0_rtns if x < -stop_loss))+', tot # >0.7%:'+str(sum(1 for x in fri_end_day0_rtns if x > 0.7)))
-	fri_end_day1_rtns=get_returns_sing_day(df_sliced,[idx-1 for idx in day1_fri_idx0])
-	print('Mean return of day 1, day1 on fri: '+str(round(np.mean(fri_end_day1_rtns),2))+', tot # <-'+str(stop_loss)+'%:'+str(sum(1 for x in fri_end_day1_rtns if x < -stop_loss))+', tot # >0.7%:'+str(sum(1 for x in fri_end_day1_rtns if x > 0.7)))
+	#create list of all indexes
+	return_dict={}
+	for item in idx_list_day0:
+		full_trade_rtn=get_returns_full_trade(df_sliced,[item],-4,1)
+		
+		sing_day_m4_rtn=get_returns_sing_day(df_sliced,[item+4])
+		return_dict[item+4]=[item,-4,sing_day_m4_rtn[0],full_trade_rtn[0]]
+		sing_day_m3_rtn=get_returns_sing_day(df_sliced,[item+3])
+		return_dict[item+3]=[item,-3,sing_day_m3_rtn[0],full_trade_rtn[0]]
+		sing_day_m2_rtn=get_returns_sing_day(df_sliced,[item+2])
+		return_dict[item+2]=[item,-2,sing_day_m2_rtn[0],full_trade_rtn[0]]
+		sing_day_m1_rtn=get_returns_sing_day(df_sliced,[item+1])
+		return_dict[item+1]=[item,-1,sing_day_m1_rtn[0],full_trade_rtn[0]]
+		sing_day_0_rtn=get_returns_sing_day(df_sliced,[item])
+		return_dict[item]=[item,0,sing_day_0_rtn[0],full_trade_rtn[0]]
+		sing_day_p1_rtn=get_returns_sing_day(df_sliced,[item-1])
+		return_dict[item-1]=[item,1,sing_day_p1_rtn[0],full_trade_rtn[0]]
 	
 	
 	
-	print()
-	print('Full trading period returns:')
-	all_rtns_mon_day1=get_returns_full_trade(df_sliced,day1_mon_idx0,-4,1)
-	print('Mean return of all trades with day 1 on Monday: '+str(round(np.mean(all_rtns_mon_day1),2))+', number of trades: '+str(len(all_rtns_mon_day1)))
-	all_rtns_tues_day1=get_returns_full_trade(df_sliced,day1_tue_idx0,-4,1)
-	print('Mean return of all trades with day 1 on Tuesday: '+str(round(np.mean(all_rtns_tues_day1),2))+', number of trades: '+str(len(all_rtns_tues_day1)))
-	all_rtns_wed_day1=get_returns_full_trade(df_sliced,day1_wed_idx0,-4,1)
-	print('Mean return of all trades with day 1 on Wednesday: '+str(round(np.mean(all_rtns_wed_day1),2))+', number of trades: '+str(len(all_rtns_wed_day1)))
-	all_rtns_thu_day1=get_returns_full_trade(df_sliced,day1_thu_idx0,-4,1)
-	print('Mean return of all trades with day 1 on Thursday: '+str(round(np.mean(all_rtns_thu_day1),2))+', number of trades: '+str(len(all_rtns_thu_day1)))
-	all_rtns_fri_day1=get_returns_full_trade(df_sliced,day1_fri_idx0,-4,1)
-	print('Mean return of all trades with day 1 on Friday: '+str(round(np.mean(all_rtns_fri_day1),2))+', number of trades: '+str(len(all_rtns_fri_day1)))
-	'''
+	
+	# create list of single day losses by rank, and associated overall trade loss
+	losses_un_sorted=[]
+	for key in return_dict:
+		losses_un_sorted.append([return_dict[key][2],return_dict[key][3]])
+	
+	losses_sorted=sorted(losses_un_sorted,key=itemgetter(0))
+	for item in losses_sorted:
+		if item[0] < 0:
+			print(item)
+	
 	
 	
 	print()
