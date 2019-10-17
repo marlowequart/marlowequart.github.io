@@ -175,10 +175,10 @@ def main():
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	path = '/Users/Marlowe/gitsite/transfer/'
+	# path = '/Users/Marlowe/gitsite/transfer/'
 	
 	# Data location for PC:
-	# ~ path = 'C:\\Python\\transfer\\'
+	path = 'C:\\Python\\transfer\\'
 	
 	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
 	fields = ['Date','Open','High','Low','Close']
@@ -216,8 +216,8 @@ def main():
 	#first date in GSPC: 1950-01-04
 	
 	# ~ start_date='1950-01-04'
-	# ~ start_date='1987-09-10'
-	start_date='1999-09-10'
+	start_date='1987-09-10'
+	# start_date='1999-09-10'
 	# ~ start_date='2000-09-11'
 	
 	# ~ end_date='2000-09-11'
@@ -265,11 +265,28 @@ def main():
 		losses_un_sorted.append([return_dict[key][2],return_dict[key][3]])
 	
 	losses_sorted=sorted(losses_un_sorted,key=itemgetter(0))
+	loss_below_0=[]
+	loss_below_m2_trade_results=[]
+	loss_below_m1_trade_results=[]
+	loss_below_0_trade_results=[]
 	for item in losses_sorted:
 		if item[0] < 0:
-			print(item)
+			loss_below_0.append(item)
+			# print(item)
+		
+		# create bins of data
+		if item[0] < -2.5:
+			loss_below_m2_trade_results.append(item[1])
+		elif item[0] < -1:
+			loss_below_m1_trade_results.append(item[1])
+		elif item[0] < 0:
+			loss_below_0_trade_results.append(item[1])
 	
-	
+	# plot histogram
+	print('For single day losses where:')
+	print('-1<loss<0,    %d of trades are wins and %d are losses, %d perct are losses' % (sum(x > 0 for x in loss_below_0_trade_results), sum(x <= 0 for x in loss_below_0_trade_results), round(100*sum(x <= 0 for x in loss_below_0_trade_results)/len(loss_below_0_trade_results),3)))
+	print('-2.5<loss<-1, %d of trades are wins and %d are losses, %d perct are losses' % (sum(x > 0 for x in loss_below_m1_trade_results), sum(x <= 0 for x in loss_below_m1_trade_results), round(100*sum(x <= 0 for x in loss_below_m1_trade_results)/len(loss_below_m1_trade_results),3)))
+	print('loss<-2.5,    %d of trades are wins and %d are losses, %d perct are losses' % (sum(x > 0 for x in loss_below_m2_trade_results), sum(x <= 0 for x in loss_below_m2_trade_results), round(100*sum(x <= 0 for x in loss_below_m2_trade_results)/len(loss_below_m2_trade_results),3)))
 	
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))
