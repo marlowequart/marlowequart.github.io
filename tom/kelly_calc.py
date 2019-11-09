@@ -10,7 +10,9 @@ Output: the modified kelly fraction
 
 
 Notes:
+11/4/19: I want to do more research into the high/low starting ranges and optimize this section alittle
 
+for more info on coumpound kelly fraction see: math.stackexchange.com/questions/662104/kelly-criterion-with-more-than-two-outcomes
 
 
 pandas version: 0.18.1
@@ -99,9 +101,10 @@ def start_of_month_detect(df_in,start_date,end_date,month):
 	
 		
 	# Create indexes for daym4
-	index_locations_daym4=[idx+4 for idx in index_locations_day0]
+	# index_locations_daym4=[idx+4 for idx in index_locations_day0]
 	
-	return index_locations_day0,index_locations_daym4,df
+	# return index_locations_day0,index_locations_daym4,df
+	return index_locations_day0,df
 
 
 
@@ -147,6 +150,8 @@ def prev_move_filt(idx_list,high_low,num_days,df,pct_range):
 	# This function checks the num_days previous to each index in the idx_list
 	# and returns the indexes that are within pct_range of the num_days 
 	# previous range to the high_low side
+	# pct_range = [upper,lower], ex: pct_range=[5%,20%]
+	# for setting pct_range to 0, use 0.001% (input 0.00001)
 	
 	# pct_range=0.005
 	
@@ -171,21 +176,36 @@ def prev_move_filt(idx_list,high_low,num_days,df,pct_range):
 		# if the opening price is within pct_range of the period high/low
 		# add the start index to the new list
 		opening_val=df['Open'][idx]
+		range_10d=period_high-period_low
 		if high_low == 'high':
-			opening_range=period_high-pct_range*period_high
-			if opening_val >= opening_range:
+			opening_range_h=period_high-pct_range[0]*range_10d
+			opening_range_l=period_high-pct_range[1]*range_10d
+			if opening_range_h > opening_val >= opening_range_l:
 				idx_list_filt.append(idx)
 		if high_low == 'low':
-			opening_range=period_low+pct_range*period_low
-			if opening_val <= opening_range:
+			opening_range_h=period_low+pct_range[0]*range_10d
+			opening_range_l=period_low+pct_range[1]*range_10d
+			if opening_range_l < opening_val <= opening_range_h:
 				idx_list_filt.append(idx)
 			
 	idx_list_out=[idx-4 for idx in idx_list_filt]
 	# print(idx_list_out)
 	return idx_list_out
 	
-	
-	
+def kelly_results(rtns,kelly_fraction,equity,stop_loss):
+	wins=[rtn for rtn in rtns if rtn >= 0]
+	num_wins=len(wins)
+	num_loss=len(rtns)-len(wins)
+	win_prob=num_wins/(num_wins+num_loss)
+	loss_prob=1.-win_prob
+	avg_win=round(np.mean(wins),2)
+	payoff=avg_win/stop_loss
+	# kelly = the percentage of equity to bet on this trade
+	kelly_frac=(payoff*win_prob-loss_prob)/payoff
+	kelly=kelly_fraction*equity*kelly_frac
+	print('number of wins: '+str(len(wins))+', number of samples: '+str(len(rtns)))
+	print('mean of wins: '+str(avg_win)+', kelly fraction: '+str(round(kelly_frac,3))+', total equity to bet: '+str(round(kelly,2))+' of '+str(equity))
+	print()
 	
 def main():
 	start_time = time.time()
@@ -240,7 +260,11 @@ def main():
 	# ~ start_date='2000-09-11'
 	
 	# end_date='2000-09-11'
-	end_date='2019-05-10'
+	end_date='2019-04-25'
+	
+	#input the date of opening the trade
+	trade_date='2019-04-25'
+	trade_month='05'
 	
 	print()
 	
@@ -261,77 +285,145 @@ def main():
 	#####
 	
 	# generate a list of indexes of first days of all months in test period
-	idx_list_day0,idx_list_daym4,df_sliced=start_of_month_detect(df,start_date,end_date,'00')
+	# Remove daym4 11/4/19
+	idx_list_day0,df_sliced=start_of_month_detect(df,start_date,end_date,'00')
 	# get returns
 	all_rtns=get_returns_full_trade(df_sliced,idx_list_day0,-4,1,stop_loss)
 	# count wins and losses and mean return of wins
-	wins=[rtn for rtn in all_rtns if rtn >= 0]
-	
-	#calculate kelly
-	num_wins_tot=len(wins)
-	num_loss_tot=len(all_rtns)-len(wins)
-	win_prob_tot=num_wins_tot/(num_wins_tot+num_loss_tot)
-	loss_prob_tot=1.-win_prob_tot
-	avg_win_tot=round(np.mean(wins),2)
-	payoff_tot=avg_win_tot/stop_loss
-	# kelly = the percentage of equity to bet on this trade
-	kelly_frac_tot=(payoff_tot*win_prob_tot-loss_prob_tot)/payoff_tot
-	kelly_tot=kelly_fraction*equity*kelly_frac_tot
-	
-	# here we classify a win as >=0. We may consider making a win >= mean
-	print('number of wins: '+str(len(wins))+', number of samples: '+str(len(all_rtns)))
-	print('mean of wins: '+str(avg_win_tot)+', kelly fraction: '+str(round(kelly_frac_tot,3))+', total equity to bet: '+str(round(kelly_tot,2))+' of '+str(equity))
-	
-	return
+	print('Kelly results for overall:')
+	kelly_results(all_rtns,kelly_fraction,equity,stop_loss)
+	# return
 	
 	#####
 	# Generate kelly based on 10d high/low nearness
 	#####
 	
-	# divide the range between 10d high and low into quartiles.
+	# divide the range between 10d high and low into 5 ranges.
 	# develop a unique probability based on which section of that range we start
 	# the bet in.
 	
-	
-	#Set the percentage closeness to the high or low
-	pct_close=0.005
-	# Find index locations occuring at 5d and 10d highs and get returns
-	idx_list_5d_high=prev_move_filt(idx_list_day0,'high',5,df_sliced,pct_close)
-	idx_list_10d_high=prev_move_filt(idx_list_day0,'high',10,df_sliced,pct_close)
-	
-	
-	# Find index locations occuring at 5d and 10d lows and get returns
-	idx_list_5d_low=prev_move_filt(idx_list_day0,'low',5,df_sliced,pct_close)
-	idx_list_10d_low=prev_move_filt(idx_list_day0,'low',10,df_sliced,pct_close)
-	
-	# get overall returns
-	
-	rtns_5d_high=get_returns_full_trade(df_sliced,idx_list_5d_high,-4,1)
-	rtns_5d_low=get_returns_full_trade(df_sliced,idx_list_5d_low,-4,1)
-	rtns_10d_high=get_returns_full_trade(df_sliced,idx_list_10d_high,-4,1)
-	rtns_10d_low=get_returns_full_trade(df_sliced,idx_list_10d_low,-4,1)
+	# range 1 is within 5% of 10 day high
+	pct_close=[0.00001,0.05]
+	idx_list_range1=prev_move_filt(idx_list_day0,'high',10,df_sliced,pct_close)
+	rtns_range1=get_returns_full_trade(df_sliced,idx_list_range1,-4,1,stop_loss)
+	# range 2 is between 5%-20% of 10 day high
+	pct_close=[0.05,0.2]
+	idx_list_range2=prev_move_filt(idx_list_day0,'high',10,df_sliced,pct_close)
+	rtns_range2=get_returns_full_trade(df_sliced,idx_list_range2,-4,1,stop_loss)
+	# range 4 is between 5%-20% of 10 low
+	pct_close=[0.2,0.05]
+	idx_list_range4=prev_move_filt(idx_list_day0,'low',10,df_sliced,pct_close)
+	rtns_range4=get_returns_full_trade(df_sliced,idx_list_range4,-4,1,stop_loss)
+	# range 5 is within 5% of 10 day low
+	pct_close=[0.05,0.00001]
+	idx_list_range5=prev_move_filt(idx_list_day0,'low',10,df_sliced,pct_close)
+	rtns_range5=get_returns_full_trade(df_sliced,idx_list_range5,-4,1,stop_loss)
 	
 	
-	print('Mean return of tom: '+str(round(np.mean(all_rtns),2))+', num samps: '+str(len(idx_list_day0)))
-	print('Max return of tom: '+str(max(all_rtns)))
-	print()
-	print('Mean return of 5d high start: '+str(round(np.mean(rtns_5d_high),2))+', num samps: '+str(len(idx_list_5d_high)))
-	print('Max return of 5d high start: '+str(max(rtns_5d_high)))
-	print('Number of rtns > tom mean: '+str(len([rtn for rtn in rtns_5d_high if (rtn > np.mean(all_rtns))])))
-	print('Mean return of 10d high start: '+str(round(np.mean(rtns_10d_high),2))+', num samps: '+str(len(idx_list_10d_high)))
-	print()
-	print('Mean return of 5d low start: '+str(round(np.mean(rtns_5d_low),2))+', num samps: '+str(len(idx_list_5d_low)))
-	print('Mean return of 10d low start: '+str(round(np.mean(rtns_10d_low),2))+', num samps: '+str(len(idx_list_10d_low)))
+	# range 3 is between 20%-80% of 10 day high/low
+	idx_list_range3=[idx for idx in idx_list_day0]
+	# print(len(idx_list_range3))
+	for idx in idx_list_range1:
+		if idx in idx_list_range3:
+			idx_list_range3.remove(idx)
+	# print(len(idx_list_range3))
+	for idx in idx_list_range2:
+		if idx in idx_list_range3:
+			idx_list_range3.remove(idx)
+	# print(len(idx_list_range3))
+	for idx in idx_list_range4:
+		if idx in idx_list_range3:
+			idx_list_range3.remove(idx)
+	# print(len(idx_list_range3))
+	for idx in idx_list_range5:
+		if idx in idx_list_range3:
+			idx_list_range3.remove(idx)
+	# print(len(idx_list_range3))
+	rtns_range3=get_returns_full_trade(df_sliced,idx_list_range3,-4,1,stop_loss)
+	
+	# print('Mean return of tom: '+str(round(np.mean(all_rtns),2))+', num samps: '+str(len(idx_list_day0)))
+	# print('Mean return of range1: '+str(round(np.mean(rtns_range1),2))+', num samps: '+str(len(idx_list_range1)))
+	# print('Mean return of range2: '+str(round(np.mean(rtns_range2),2))+', num samps: '+str(len(idx_list_range2)))
+	# print('Mean return of range3: '+str(round(np.mean(rtns_range3),2))+', num samps: '+str(len(idx_list_range3)))
+	# print('Mean return of range4: '+str(round(np.mean(rtns_range4),2))+', num samps: '+str(len(idx_list_range4)))
+	# print('Mean return of range5: '+str(round(np.mean(rtns_range5),2))+', num samps: '+str(len(idx_list_range5)))
+	# print('number of samples ignored: '+str(len(idx_list_day0)-len(idx_list_range1)-len(idx_list_range2)-len(idx_list_range3)-len(idx_list_range4)-len(idx_list_range5)))
+	# return
 	
 	
-	# consider returns without starting on 10d high
-	idx_list_m10d_high=[idx for idx in idx_list_day0]
-	for idx in idx_list_10d_high:
-		if idx in idx_list_m10d_high:
-			idx_list_m10d_high.remove(idx)
-	rtns_m10d_high=get_returns_full_trade(df_sliced,idx_list_m10d_high,-4,1)
-	print()
-	print('Mean return of tom minus starts on 10d high: '+str(round(np.mean(rtns_m10d_high),2))+', num samps: '+str(len(idx_list_m10d_high)))
+	
+	# calculate kelly range1
+	print('Kelly results for range 1:')
+	kelly_results(rtns_range1,kelly_fraction,equity,stop_loss)
+	# calculate kelly range2
+	print('Kelly results for range 2:')
+	kelly_results(rtns_range2,kelly_fraction,equity,stop_loss)
+	# calculate kelly range3
+	print('Kelly results for range 3:')
+	kelly_results(rtns_range3,kelly_fraction,equity,stop_loss)
+	# calculate kelly range4
+	print('Kelly results for range 4:')
+	kelly_results(rtns_range4,kelly_fraction,equity,stop_loss)
+	# calculate kelly range5
+	print('Kelly results for range 5:')
+	kelly_results(rtns_range5,kelly_fraction,equity,stop_loss)
+	
+	# return
+	
+	# find the previous 10 day range and where we currently fall in that range.
+	# next calculate the probability of win and mean win based on that range location.
+	
+	#####
+	# Generate kelly based on month of trade
+	#####
+	
+	
+	
+	# generate a list of indexes of first days of all months in test period
+	months=['01','02','03','04','05','06','07','08','09','10','11','12']
+	month_lists=[]
+	month_rtns=[]
+	for month in months:
+		idxs,df_sliced=start_of_month_detect(df,start_date,end_date,month)
+		month_lists.append(idxs)
+		months_rtns=get_returns_full_trade(df_sliced,idxs,-4,1,stop_loss)
+		month_rtns.append(months_rtns)
+		num_gt_1=len([rtn for rtn in months_rtns if (rtn > 2.0)])
+		kelly_results(months_rtns,kelly_fraction,equity,stop_loss)
+		# print('Mean return of month '+month+' is '+str(round(np.mean(get_returns_full_trade(df_sliced,idxs,-4,1,stop_loss)),2)))
+		# print('Number above 2%: '+str(num_gt_1)+', pct of total: '+str(round(100*num_gt_1/len(idxs),1)))
+		# print('Max return: '+str(max(months_rtns)))
+	
+	# output the probability of win and the mean win
+	
+	#####
+	# Combined mean: xc=(m*xa+n*xb)/(m+n), where m=mean1, n=mean2, xa=sample num1, xb=sample num2
+	# I think the conclusion I have come to is that finding the probability there is not enough info to put
+	# the two probabilities together and come up with a better probability.
+	#####
+	
+	return
+	#####
+	# Create compound kelly fraction
+	# want to maximize SUM(pi*log(1+bi*x)) where x is the overall kelly fraction and pi=[p1,p2,p3], bi=[b1,b2,b3]
+	# where pi is the probability of win and bi is the payoff of the win.
+	# want to find the maximum of SUM(pi*bi/(1+bix))=0
+	#####
+	
+	probs=[0.75,0.9,0.6]
+	payoffs=[1.3,0.7,1.2]
+	error=100
+	frac=1
+	while abs(error) > 0.001:
+		price=put_opt_price(S,K,r,t,v)
+		# ~ price=call_opt_price(S,K,r,t,v)
+		error=P-price
+		if error > 0:
+			v=v+v*(1/n)
+		else:
+			v=v-v*(1/n)
+		# print('vol: '+str(round(100*v,2))+', price: '+str(round(price,2))+', error: '+str(round(error,2)))
+		n += 1
 	
 	
 	print()
@@ -341,52 +433,41 @@ def main():
 	
 	return
 	
+def main2():
+	#####
+	# Create compound kelly fraction
+	# want to maximize SUM(pi*log(1+bi*x)) where x is the overall kelly fraction and pi=[p1,p2,p3], bi=[b1,b2,b3]
+	# where pi is the probability of win and bi is the payoff of the win.
+	# want to find the maximum of SUM(pi*bi/(1+bix))=0
+	#####
 	
+	probs=[0.69,0.31]
+	payoffs=[1.93,-2.5]
 	
-	# Equity curve with stop loss, and Kelly position sizing
-	# Optimum strategy seems to be around 5x leverage $/point and 1/2 Kelly
-	# I will want to run this strategy through some more monte carlo type testing
-	# set stop loss to 3% drop
-	stop_loss=3
-	start_equity=10000
-	# leverage factor is $ per point
-	levg_fact=5
+	threshold=0.00001
+	initial_frac=0.8
 	
-	# input ratios for calculating kelly position sizing
-	num_wins=245
-	num_loss=135
-	win_prob=num_wins/(num_wins+num_loss)
-	loss_prob=1.-win_prob
-	# payoff calculated by avg profit/stop loss
-	avg_win=1.75
-	payoff=avg_win/stop_loss
-	# kelly_fraction is the fraction of full kelly to use for smoother returns
-	kelly_fraction=0.5
+	val_past=0
+	val_next=initial_frac
 	
-	print()
-	kelly_equity=[start_equity]
-	for i in range(len(abs_rtns)):
-		# kelly = the percentage of equity to bet on this trade
-		kelly=kelly_fraction*kelly_equity[i]*(payoff*win_prob-loss_prob)/payoff
-		# bet_size = the factor to multiply by the absolute win
-		# (i.e. this represents the number of contracts. Using fractional contracts)
-		bet_size=kelly/(levg_fact*trade_open[i]*(stop_loss/100))
-		if pct_low[i]<-stop_loss:
-			kelly_equity.append(kelly_equity[i]-levg_fact*stop_loss/100*trade_open[i])
-		else:
-			kelly_equity.append(kelly_equity[i]+bet_size*levg_fact*abs_rtns[i])
-		# ~ if i==20:
-			# ~ print('previous equity: '+str(kelly_equity[i])+', equity to risk based on kelly: '+str(kelly)+
-					# ~ ', open price of trade: '+str(trade_open[i])+', stop loss: '+str(trade_open[i]*(stop_loss/100))+
-					# ~ ', bet_size: '+str(bet_size)+
-					# ~ ', absolute points return: '+str(abs_rtns[i])+', ammt won: '+str(bet_size*levg_fact*abs_rtns[i]))
-	kelly_equity=kelly_equity[1:]
-	
-	# Calculate CAGR
-	tot_months=len(abs_rtns)
-	tot_yrs=tot_months/12
-	cagr=round(100*((kelly_equity[-1]/start_equity)**(1/tot_yrs)-1),1)
-	print()
-	print('The CAGR of this strategy is '+str(cagr))
+	bump=0
+	while abs(val_past-val_next) > threshold:
+		val_past=val_next
+		num=0
+		denom=0
+		for i in range(len(probs)):
+			num=num+((probs[i]*payoffs[i])/(1+payoffs[i]*val_past))
+			denom=denom+(-payoffs[i]**2*probs[i]/((1+payoffs[i]*val_past)**2))
+		
+		val_next=val_past-(num/denom)
+		print('val_next: '+str(round(val_next,3))+', val_past: '+str(round(val_past,3))+', num/den: '+str(round(num/denom,3)))
+		if val_next < 0 & bump==0:
+			val_next=0
+			bump=1
+		if val_next > 1000:
+			print('exponential')
+			break
+		
+	fraction=val_next
 	
 main()
