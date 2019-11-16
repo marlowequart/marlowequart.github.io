@@ -33,6 +33,7 @@ import datetime
 import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
 import time
+from yahoofinancials import YahooFinancials as yf
 
 #open csv file, return the data in a pandas dataframe
 def import_data(file_name,fields):
@@ -50,6 +51,33 @@ def import_data(file_name,fields):
 	# ~ print(data.head(5))
 	
 	return data
+	
+def update_data(file_name):
+	# first check data if most recent date is updated
+	
+	
+	#Update the each companies data
+	print('now updating data')
+
+	
+
+	#use below to update all rows
+	print('updating data for symbol '+str(file_name))
+	sym=file_name
+	#pull data from yahoo finance
+	data=yf(sym)
+	historical_prices = data.get_historical_price_data(symbol_list[i][1], symbol_list[i][2], 'daily')
+	#create pandas dataframe with the date and price
+	df = pd.DataFrame(historical_prices[sym]['prices'])
+	df = df[['formatted_date','close']]
+	# ~ print(df.head())
+	#create filename
+	filename=sym+'_prices_'+symbol_list[i][1]+'_'+symbol_list[i][2]+'.csv'
+	#save data to csv file
+	# ~ print('saving data')
+	save_data(filename,df)
+		
+	print('Complete!')
 
 def slice_df(df,start_date,end_date):
 	start_day_df=df.loc[df['Date'] == start_date]
@@ -192,7 +220,7 @@ def prev_move_filt(idx_list,high_low,num_days,df,pct_range):
 	# print(idx_list_out)
 	return idx_list_out
 	
-def kelly_results(rtns,kelly_fraction,equity,stop_loss):
+def kelly_results(rtns,kelly_fraction,equity,stop_loss,yes_print):
 	wins=[rtn for rtn in rtns if rtn >= 0]
 	num_wins=len(wins)
 	num_loss=len(rtns)-len(wins)
@@ -203,9 +231,12 @@ def kelly_results(rtns,kelly_fraction,equity,stop_loss):
 	# kelly = the percentage of equity to bet on this trade
 	kelly_frac=(payoff*win_prob-loss_prob)/payoff
 	kelly=kelly_fraction*equity*kelly_frac
-	print('number of wins: '+str(len(wins))+', number of samples: '+str(len(rtns)))
-	print('mean of wins: '+str(avg_win)+', kelly fraction: '+str(round(kelly_frac,3))+', total equity to bet: '+str(round(kelly,2))+' of '+str(equity))
-	print()
+	if yes_print:
+		print('Win probability: '+str(round(win_prob,2))+', mean of wins: '+str(avg_win))
+		print('Kelly fraction: '+str(round(kelly_frac,3))+', total equity to bet: '+str(round(kelly,2))+' of '+str(equity))
+		# print('kelly frac: '+str(round(kelly_frac,3))+', win prob: '+str(win_prob))
+		print()
+	return win_prob,avg_win
 	
 def main():
 	start_time = time.time()
@@ -232,6 +263,12 @@ def main():
 	#input file names of interest
 	# file_name='^RUT.csv'
 	file_name='^GSPC.csv'
+	
+	####
+	# Update GSPC file
+	# Check first if date is most recent
+	# other wise update
+	####
 	
 	
 	in_file= os.path.join(path,file_name)
@@ -263,8 +300,13 @@ def main():
 	end_date='2019-04-25'
 	
 	#input the date of opening the trade
-	trade_date='2019-04-25'
-	trade_month='05'
+	trade_date='2019-02-25'
+	trade_month='03'
+	
+	# option to input data for open price
+	# if trade_open=0, then default to previous close
+	trade_open=0
+	open_price=2790
 	
 	print()
 	
@@ -278,7 +320,7 @@ def main():
 	# kelly_fraction is the fraction of full kelly to use for smoother returns
 	kelly_fraction=0.5
 	# input current equity size
-	equity=100000
+	equity=30000
 	
 	#####
 	# Generate overall tom kelly info
@@ -291,7 +333,7 @@ def main():
 	all_rtns=get_returns_full_trade(df_sliced,idx_list_day0,-4,1,stop_loss)
 	# count wins and losses and mean return of wins
 	print('Kelly results for overall:')
-	kelly_results(all_rtns,kelly_fraction,equity,stop_loss)
+	kelly_results(all_rtns,kelly_fraction,equity,stop_loss,1)
 	# return
 	
 	#####
@@ -318,6 +360,7 @@ def main():
 	pct_close=[0.05,0.00001]
 	idx_list_range5=prev_move_filt(idx_list_day0,'low',10,df_sliced,pct_close)
 	rtns_range5=get_returns_full_trade(df_sliced,idx_list_range5,-4,1,stop_loss)
+	
 	
 	
 	# range 3 is between 20%-80% of 10 day high/low
@@ -353,20 +396,25 @@ def main():
 	
 	
 	# calculate kelly range1
-	print('Kelly results for range 1:')
-	kelly_results(rtns_range1,kelly_fraction,equity,stop_loss)
+	# print('Kelly results for range 1:')
+	rng1_prob,rng1_avg_win=kelly_results(rtns_range1,kelly_fraction,equity,stop_loss,0)
+	rng1_samps=len(rtns_range1)
 	# calculate kelly range2
-	print('Kelly results for range 2:')
-	kelly_results(rtns_range2,kelly_fraction,equity,stop_loss)
+	# print('Kelly results for range 2:')
+	rng2_prob,rng2_avg_win=kelly_results(rtns_range2,kelly_fraction,equity,stop_loss,0)
+	rng2_samps=len(rtns_range2)
 	# calculate kelly range3
-	print('Kelly results for range 3:')
-	kelly_results(rtns_range3,kelly_fraction,equity,stop_loss)
+	# print('Kelly results for range 3:')
+	rng3_prob,rng3_avg_win=kelly_results(rtns_range3,kelly_fraction,equity,stop_loss,0)
+	rng3_samps=len(rtns_range3)
 	# calculate kelly range4
-	print('Kelly results for range 4:')
-	kelly_results(rtns_range4,kelly_fraction,equity,stop_loss)
+	# print('Kelly results for range 4:')
+	rng4_prob,rng4_avg_win=kelly_results(rtns_range4,kelly_fraction,equity,stop_loss,0)
+	rng4_samps=len(rtns_range4)
 	# calculate kelly range5
-	print('Kelly results for range 5:')
-	kelly_results(rtns_range5,kelly_fraction,equity,stop_loss)
+	# print('Kelly results for range 5:')
+	rng5_prob,rng5_avg_win=kelly_results(rtns_range5,kelly_fraction,equity,stop_loss,0)
+	rng5_samps=len(rtns_range5)
 	
 	# return
 	
@@ -376,7 +424,7 @@ def main():
 	#####
 	# Generate kelly based on month of trade
 	#####
-	
+	print('Kelly results modified for trade month and 10d range:')
 	
 	
 	# generate a list of indexes of first days of all months in test period
@@ -389,7 +437,8 @@ def main():
 		months_rtns=get_returns_full_trade(df_sliced,idxs,-4,1,stop_loss)
 		month_rtns.append(months_rtns)
 		num_gt_1=len([rtn for rtn in months_rtns if (rtn > 2.0)])
-		kelly_results(months_rtns,kelly_fraction,equity,stop_loss)
+		# print('Data on month '+month)
+		# kelly_results(months_rtns,kelly_fraction,equity,stop_loss,1)
 		# print('Mean return of month '+month+' is '+str(round(np.mean(get_returns_full_trade(df_sliced,idxs,-4,1,stop_loss)),2)))
 		# print('Number above 2%: '+str(num_gt_1)+', pct of total: '+str(round(100*num_gt_1/len(idxs),1)))
 		# print('Max return: '+str(max(months_rtns)))
@@ -400,30 +449,135 @@ def main():
 	# Combined mean: xc=(m*xa+n*xb)/(m+n), where m=mean1, n=mean2, xa=sample num1, xb=sample num2
 	# I think the conclusion I have come to is that finding the probability there is not enough info to put
 	# the two probabilities together and come up with a better probability.
+	# Try averaging the two probabilities together to find a reasonable approximation
 	#####
 	
-	return
 	#####
-	# Create compound kelly fraction
-	# want to maximize SUM(pi*log(1+bi*x)) where x is the overall kelly fraction and pi=[p1,p2,p3], bi=[b1,b2,b3]
-	# where pi is the probability of win and bi is the payoff of the win.
-	# want to find the maximum of SUM(pi*bi/(1+bix))=0
+	# Generate Kelly data for month
 	#####
 	
-	probs=[0.75,0.9,0.6]
-	payoffs=[1.3,0.7,1.2]
-	error=100
-	frac=1
-	while abs(error) > 0.001:
-		price=put_opt_price(S,K,r,t,v)
-		# ~ price=call_opt_price(S,K,r,t,v)
-		error=P-price
-		if error > 0:
-			v=v+v*(1/n)
-		else:
-			v=v-v*(1/n)
-		# print('vol: '+str(round(100*v,2))+', price: '+str(round(price,2))+', error: '+str(round(error,2)))
-		n += 1
+	mo_idx=months.index(trade_month)
+	mo_prob,mo_avg_win=kelly_results(month_rtns[mo_idx],kelly_fraction,equity,stop_loss,0)
+	mo_samps=len(month_rtns[mo_idx])
+	
+	print('Win probability of trade month '+trade_month+' is '+str(round(mo_prob,2))+', mean of wins: '+str(mo_avg_win))
+	print()
+	
+	#####
+	# Generate Kelly data for 10 day range
+	#####
+	
+	#Get 10d high and low
+	trade_date_df=df.loc[df['Date'] == trade_date]
+	trade_date_idx=trade_date_df.index[0].tolist()
+	
+	period_high=0
+	period_low=1000000
+	for i in range(1,10):
+		idx_ut=trade_date_idx+i
+		day_high=df['High'][idx_ut]
+		day_low=df['Low'][idx_ut]
+		if period_high < day_high:
+			period_high=day_high
+		if period_low > day_low:
+			period_low=day_low
+	
+
+	#Get previous close
+	if trade_open==0:
+		opening_val=df['Close'][trade_date_idx+1]
+		# print(opening_val)
+	else:
+		opening_val=open_price
+	
+	#See where we are in the range
+	# range 1 is within 5% of 10 day high
+	# range 2 is between 5%-20% of 10 day high
+	# range 3 is between 20%-80% of 10 day high/low
+	# range 4 is between 5%-20% of 10 low
+	# range 5 is within 5% of 10 day low
+	range_10d=period_high-period_low
+	high_dist=abs(period_high-opening_val)
+	low_dist=abs(period_low-opening_val)
+	dist_to_low=round(100*low_dist/range_10d,2)
+	dist_to_high=round(100*high_dist/range_10d,2)
+	
+	# print('open is close of '+str(opening_val)+' on date '+df['Date'][end_date_idx+1])
+	# print('10d high is '+str(period_high)+', 10d low is '+str(period_low))
+	# print('open is within '+str(dist_to_high)+'% of high and within '+str(dist_to_low)+'% of low')
+	# print()
+	
+	#return probability and avg win based on that range
+	rng_prob=0
+	rng_avg_win=0
+	rng_samps=0
+	#range1
+	if dist_to_high < 5:
+		print('open is within '+str(dist_to_high)+'% of high')
+		print('Win prob of range1: '+str(round(rng1_prob,2))+', mean of wins range1: '+str(rng1_avg_win))
+		rng_prob=rng1_prob
+		rng_avg_win=rng1_avg_win
+		rng_samps=rng1_samps
+
+	#range2
+	elif 5<dist_to_high<20:
+		print('open is within '+str(dist_to_high)+'% of high')
+		print('Win prob of range2: '+str(round(rng2_prob,2))+', mean of wins range2: '+str(rng2_avg_win))
+		rng_prob=rng2_prob
+		rng_avg_win=rng2_avg_win
+		rng_samps=rng2_samps
+
+	#range5
+	elif dist_to_low < 5:
+		print('open is within '+str(dist_to_low)+'% of low')
+		print('Win prob of range5: '+str(round(rng5_prob,2))+', mean of wins range5: '+str(rng5_avg_win))
+		rng_prob=rng5_prob
+		rng_avg_win=rng5_avg_win
+		rng_samps=rng5_samps
+	
+	#range4
+	elif 5<dist_to_low<20:
+		print('open is within '+str(dist_to_low)+'% of low')
+		print('Win prob of range4: '+str(round(rng4_prob,2))+', mean of wins range4: '+str(rng4_avg_win))
+		rng_prob=rng4_prob
+		rng_avg_win=rng4_avg_win
+		rng_samps=rng4_samps
+	
+	#range3
+	else:
+		print('open is in the middle, within '+str(dist_to_high)+'% of high and within '+str(dist_to_low)+'% of low')
+		print('Win prob of range3: '+str(round(rng3_prob,2))+', mean of wins range3: '+str(rng3_avg_win))
+		rng_prob=rng3_prob
+		rng_avg_win=rng3_avg_win
+		rng_samps=rng3_samps
+	
+	#####
+	# compound probability and avg win
+	#####
+	overall_prob_win=(rng_prob*rng_samps+mo_prob*mo_samps)/(rng_samps+mo_samps)
+	overall_prob_loss=1-overall_prob_win
+	overall_avg_win=(rng_avg_win*rng_samps+mo_avg_win*mo_samps)/(rng_samps+mo_samps)
+	payoff=overall_avg_win/stop_loss
+	# kelly = the percentage of equity to bet on this trade
+	overall_kelly_frac=(payoff*overall_prob_win-overall_prob_loss)/payoff
+	overall_kelly=kelly_fraction*equity*overall_kelly_frac
+	print()
+	print('Modified Kelly:')
+	print('Win probability: '+str(round(overall_prob_win,2))+', mean of wins: '+str(round(overall_avg_win,2)))
+	print('Kelly fraction: '+str(round(overall_kelly_frac,3))+', total equity to bet: '+str(round(overall_kelly,2))+' of '+str(equity))
+	
+	micro_lvg=5
+	mini_lvg=50
+	stop_set=round(opening_val-opening_val*stop_loss,2)
+	potential_loss=round(opening_val-stop_set,2)
+	num_contracts_nolvg=round(overall_kelly/potential_loss,2)
+	num_contracts_micro=round(num_contracts_nolvg/micro_lvg,2)
+	num_contracts_mini=round(num_contracts_nolvg/mini_lvg,2)
+	print()
+	print('Opening price of '+str(round(opening_val,2))+' set stop loss to '+str(stop_set))
+	print('Purchase '+str(num_contracts_mini)+' mini contracts or '+str(num_contracts_micro)+' micro contracts')
+	
+	
 	
 	
 	print()
