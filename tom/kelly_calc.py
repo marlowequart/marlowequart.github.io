@@ -34,6 +34,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
 import time
 from yahoofinancials import YahooFinancials as yf
+from datetime import timedelta
 
 #open csv file, return the data in a pandas dataframe
 def import_data(file_name,fields):
@@ -45,39 +46,59 @@ def import_data(file_name,fields):
 	#open the file using pandas, use the first row as the header
 	data = pd.read_csv(file_name,header=0,usecols=fields)
 	
+	#get the last date in the csv file
+	last_day=data['Date'].iloc[-1]
+	
+	#get yesterdays date
+	today=datetime.datetime.today() - timedelta(1)
+	today_str=datetime.datetime.strftime(today,'%Y-%m-%d')
+	
 	#change the order to most recent date on top if necessary
-	data=data.sort_values(fields[0],ascending=0)
-	data=data.reset_index(drop=True)
+	# ~ data=data.sort(fields[0],ascending=0)
+	# ~ data=data.reset_index(drop=True)
 	# ~ print(data.head(5))
 	
-	return data
+	return last_day,today_str,data
 	
-def update_data(file_name):
+def update_data(sym,recent_date,today_date,df,location,fields):
 	# first check data if most recent date is updated
-	
-	
-	#Update the each companies data
-	print('now updating data')
-
-	
-
-	#use below to update all rows
-	print('updating data for symbol '+str(file_name))
-	sym=file_name
-	#pull data from yahoo finance
-	data=yf(sym)
-	historical_prices = data.get_historical_price_data(symbol_list[i][1], symbol_list[i][2], 'daily')
-	#create pandas dataframe with the date and price
-	df = pd.DataFrame(historical_prices[sym]['prices'])
-	df = df[['formatted_date','close']]
-	# ~ print(df.head())
-	#create filename
-	filename=sym+'_prices_'+symbol_list[i][1]+'_'+symbol_list[i][2]+'.csv'
-	#save data to csv file
-	# ~ print('saving data')
-	save_data(filename,df)
+	if recent_date==today_date:
+		print('data is already updated')
+		final_df2=df
+	else:
 		
-	print('Complete!')
+		#Update the each companies data
+		print('now updating data')
+		
+		
+		#pull data from yahoo finance
+		data=yf(sym)
+		historical_prices = data.get_historical_price_data(recent_date, today_date, 'daily')
+		#create pandas dataframe with the date and price
+		new_data_df=pd.DataFrame(historical_prices[sym]['prices'])
+		new_data_df=new_data_df[['formatted_date','open','high','low','close','adjclose','volume']]
+		new_data_df=new_data_df.rename(index=str,columns={'formatted_date':'Date','open':'Open','high':'High','low':'Low','close':'Close','adjclose':'Adj Close','volume':'Volume'})
+		
+		#need to make this part better, can get repeated dates on here
+		final_df=df.append(new_data_df[1:],sort=False)
+		final_df2=final_df
+		
+		#create filename
+		file_name=sym+'.csv'
+		#save data to csv file
+		
+		print(str(len(new_data_df)-1)+' rows added to file. Old num rows = '+str(len(df))+'. New num rows = '+str(len(final_df)))
+		print('Old end date: '+str(df['Date'].iloc[-1])+'. New end date: '+str(final_df['Date'].iloc[-1]))
+		final_df.to_csv(location+file_name, index=False, float_format='%.5f')
+		
+		print('Complete!')
+	
+	
+	#change the order to most recent date on top if necessary
+	final_df2=final_df2.sort_values(fields[0],ascending=0)
+	final_df2=final_df2.reset_index(drop=True)
+	
+	return final_df2
 
 def slice_df(df,start_date,end_date):
 	start_day_df=df.loc[df['Date'] == start_date]
@@ -227,7 +248,7 @@ def kelly_results(rtns,kelly_fraction,equity,stop_loss,yes_print):
 	win_prob=num_wins/(num_wins+num_loss)
 	loss_prob=1.-win_prob
 	avg_win=round(np.mean(wins),2)
-	payoff=avg_win/stop_loss
+	payoff=avg_win/(stop_loss*100)
 	# kelly = the percentage of equity to bet on this trade
 	kelly_frac=(payoff*win_prob-loss_prob)/payoff
 	kelly=kelly_fraction*equity*kelly_frac
@@ -246,11 +267,11 @@ def main():
 	
 	# Data location for mac:
 	# path = '/Users/Marlowe/Marlowe/Securities_Trading/_Ideas/Data/'
-	# path = '/Users/Marlowe/gitsite/TOM/'
+	path = '/Users/Marlowe/gitsite/transfer/'
 	
 	# Data location for PC:
 	# ~ path = 'C:\\Python\\transfer\\TOM\\'
-	path = 'C:\\Python\\transfer\\'
+	# ~ path = 'C:\\Python\\transfer\\'
 	
 	# input the names of the fields if they are different from ['Date','Open','High','Low','Close'], use that order
 	fields = ['Date','Open','High','Low','Close']
@@ -263,12 +284,8 @@ def main():
 	#input file names of interest
 	# file_name='^RUT.csv'
 	file_name='^GSPC.csv'
+	sym='^GSPC'
 	
-	####
-	# Update GSPC file
-	# Check first if date is most recent
-	# other wise update
-	####
 	
 	
 	in_file= os.path.join(path,file_name)
@@ -280,10 +297,27 @@ def main():
 	#use csv module to pull out proper data
 	#file_noblanks=remove_blanks(in_file)
 	
+	#####
+	# Dont update data
+	#####
+	# ~ recent_date,today_date,df=import_data(in_file,fields)
 	
+	
+	####
+	# Update GSPC file
+	# Check first if date is most recent
+	# other wise update
+	####
 	# create dataframe from the data
-	df=import_data(in_file,fields)
+	recent_date,today_date,df_in=import_data(in_file,fields)
 	
+	df=update_data(sym,recent_date,today_date,df_in,path,fields)
+	
+	# ~ print()
+	# ~ print('New num rows = '+str(len(df)))
+	# ~ print('New end date: '+str(df['Date'].iloc[-1]))
+	
+	# ~ return
 	#####
 	# input the date range of interest for overall analysis
 	#####
@@ -297,16 +331,22 @@ def main():
 	# ~ start_date='2000-09-11'
 	
 	# end_date='2000-09-11'
-	end_date='2019-04-25'
+	end_date='2019-11-21'
 	
 	#input the date of opening the trade
-	trade_date='2019-02-25'
-	trade_month='03'
+	# need to put last trade date since no data for opening date
+	trade_date='2019-11-22'
+	trade_month='12'
 	
 	# option to input data for open price
 	# if trade_open=0, then default to previous close
-	trade_open=0
-	open_price=2790
+	trade_open=1
+	open_price=3120
+	
+	
+	use_my_range=1
+	period_high_my=3132.25
+	period_low_my=3077.25
 	
 	print()
 	
@@ -320,7 +360,7 @@ def main():
 	# kelly_fraction is the fraction of full kelly to use for smoother returns
 	kelly_fraction=0.5
 	# input current equity size
-	equity=30000
+	equity=19096
 	
 	#####
 	# Generate overall tom kelly info
@@ -482,7 +522,17 @@ def main():
 		if period_low > day_low:
 			period_low=day_low
 	
-
+	
+	###
+	# input my own 10d range here
+	###
+	if use_my_range==1:
+		period_high=period_high_my
+		period_low=period_low_my
+	
+	print('10d high: '+str(period_high)+', 10d low: '+str(period_low))
+	print()
+	
 	#Get previous close
 	if trade_open==0:
 		opening_val=df['Close'][trade_date_idx+1]
@@ -557,7 +607,7 @@ def main():
 	overall_prob_win=(rng_prob*rng_samps+mo_prob*mo_samps)/(rng_samps+mo_samps)
 	overall_prob_loss=1-overall_prob_win
 	overall_avg_win=(rng_avg_win*rng_samps+mo_avg_win*mo_samps)/(rng_samps+mo_samps)
-	payoff=overall_avg_win/stop_loss
+	payoff=overall_avg_win/(stop_loss*100)
 	# kelly = the percentage of equity to bet on this trade
 	overall_kelly_frac=(payoff*overall_prob_win-overall_prob_loss)/payoff
 	overall_kelly=kelly_fraction*equity*overall_kelly_frac
