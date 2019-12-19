@@ -140,7 +140,7 @@ datasets=[stocks,irate,corp_net_worth,corp_market_val,volatility]
 def put_greeks_k(S:'Current underlying price',
 		delta,r:'risk-free interest rate',
 		t:'time to maturity(in days)',v:'volatility') -> 'strike price':
-	t/=252
+	t/=365
 	# calculate standard normal cumulative distribution
 	nd1=delta/math.exp(-r*t) + 1
 	delta=math.exp(-r*t)*(nd1-1)
@@ -299,21 +299,23 @@ def sell_stocks(cash,this_trade_day):
 def buy_options():
 	print('Buying options right now')
 	vol_current=get_for_date.volatility(this_trade_day)
-	print('current vol for ',this_trade_day,' : ',round(vol_current,3),' underlying: ',round(get_for_date.market_price(this_trade_day),2))
+	print('current vol for ',this_trade_day,' : ',round(vol_current,3),' underlying: ',round(get_for_date.market_price(this_trade_day),2),' risk free rate ',round(get_for_date.irate(this_trade_day),4))
 	# compute how much money to spend to fullfil the option fraction
 	trade_value=get_net_worth(equity, this_trade_day)*(OPT_FRACTION)
 	# compute number of days before desired expiry date
 	days_to_expire=get_days_to_expire(get_DT_obj(this_trade_day))
 	# compute expiry date
 	expire_date=get_DT_str(get_DT_obj(this_trade_day)+datetime.timedelta(days_to_expire))
+	
 	# compute option price
 	options_price=round(get_for_date.put_opt_price(this_trade_day,this_trade_day,expire_date)['price'],2)
 	option_strike=round(get_for_date.put_opt_price(this_trade_day,this_trade_day,expire_date)['K'],2)
+	
 	# compute how many options to buy accounting for the commission
 	options_vol=trade_value//(options_price+COMM_PER_OPT/LEVERAGE_FACTOR)
 	# compute option trade cost
 	trade_cost=options_vol*options_price+TRADING_COST_OPTION(options_vol)
-	print("new options price is ",options_price,' expiration date: ',expire_date,' Strike: ',option_strike,' number purchased: ',options_vol) # DEBUG
+	print("new options price is ",options_price,' expiration date: ',expire_date,' days to expire: ',days_to_expire,' Strike: ',option_strike,' number purchased: ',options_vol) # DEBUG
 	print('cost of options: ',round(trade_cost,2),' net worth ',round(get_net_worth(equity, this_trade_day),2))
 	# find out how much cash needed
 	missing_cash=trade_cost-equity['cash']
@@ -328,7 +330,7 @@ def buy_options():
 	# add options to equity
 	equity['options']['count']=options_vol
 	equity['options']['bought']=this_trade_day
-	equity['options']['expire']=expire_date
+	equity['options']['expire']=expire_date	#expire date is a string
 #	#print('we bought options ',options_price*options_vol) # DEBUG
 	# calculate cash spent on options
 	spent_cash=round(options_price*options_vol+TRADING_COST_OPTION(options_vol),2)
@@ -344,7 +346,7 @@ def buy_options():
 def sell_options():
 	print('Selling options right now')
 	vol_current=get_for_date.volatility(this_trade_day)
-	print('current vol for ',this_trade_day,' : ',round(vol_current,3),' underlying: ',round(get_for_date.market_price(this_trade_day),2))
+	print('current vol for ',this_trade_day,' : ',round(vol_current,3),' underlying: ',round(get_for_date.market_price(this_trade_day),2),' risk free rate: ',round(get_for_date.irate(this_trade_day),4))
 	# compute how much previous options cost today
 	oldOptPrice=get_for_date.put_opt_price(equity['options']['bought'],this_trade_day,equity['options']['expire'])['price']
 	old_option_strike=round(get_for_date.put_opt_price(equity['options']['bought'],this_trade_day,equity['options']['expire'])['K'],2)
@@ -480,7 +482,8 @@ while get_DT_obj(this_trade_day)<LAST_VALID_DATE:
 		while q != this_trade_day:
 			q=idayf(q)
 			opt_current_price=get_holding_opt_price(q)
-			print('now testing date ',q,' volatility: ',round(get_for_date.volatility(q),3),' opt price: ',round(opt_current_price,2),' underlying: ',round(get_for_date.market_price(q),2))
+			days_to_expire=(get_DT_obj(equity['options']['expire'])-get_DT_obj(q)).days	#equity['options']['expire] is a string
+			print('now testing date ',q,' volatility: ',round(get_for_date.volatility(q),3),' opt price: ',round(opt_current_price,2),' underlying: ',round(get_for_date.market_price(q),2),' days to expiry: ',days_to_expire,' risk free rate ',round(get_for_date.irate(q),4))
 			if opt_current_price>opt_start_price*EXIT_THRESHOLD:
 				print('hit an exit threshold on date ',q)
 				print("opt_current_price:",round(opt_current_price,2))

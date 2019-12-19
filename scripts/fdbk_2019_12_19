@@ -1,0 +1,10 @@
+Looking at outfile date 2018-11-09, gives price of 7.94
+S= 2794.1
+K= 2032.32
+t= 370
+r=  0.0294
+v= .171
+When I calculate using the function put_opt_price, I get 1.262
+Using t=365 I get 3.85
+
+one problem might be that the way we are counting days is including weekends. So time delta for 1yr is 365, but t should be 252 trading days
