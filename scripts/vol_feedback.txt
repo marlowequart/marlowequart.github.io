@@ -1,0 +1,1 @@
+The volatility script looks OK, for the final version I would like to set a variable to specify what time period to set as the interval for the std dev. In this case you set it to 30days. That is OK, but typically 1 month interval is 21 days because of weekends. 1 month interval is OK, but I may want to use this script in the future to calculate the vol over different intervals.

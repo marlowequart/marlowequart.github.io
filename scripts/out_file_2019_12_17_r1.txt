@@ -1,0 +1,1618 @@
+
+loop restarting here, todays date:  1988-06-10
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  1988-06-10  :  0.17217062959668417
+Date: 1988-06-10 ; Faustmann ratio: 0.49671941114323764 ; Net worth: 99238.6
+current equity:  {'cash': 148.1, 'stocks': 361.0, 'options': {'count': 1063.0, 'expire': '1989-06-16', 'bought': '1988-06-10'}}
+{'cash': 148.1, 'stocks': 361.0, 'options': {'count': 1063.0, 'expire': '1989-06-16', 'bought': '1988-06-10'}}
+option_start_price: 0.4343265579542166
+1988-06-10 1988-10-11
+
+loop restarting here, todays date:  1988-10-11
+ROLL OPTIONS
+Selling options right now
+current vol for  1988-10-11  :  0.12393122632990063
+Buying options right now
+current vol for  1988-10-11  :  0.12393122632990063
+Date: 1988-10-11 ; Faustmann ratio: 0.4871499451734549 ; Net worth: 100468.06
+current equity:  {'cash': 159.06, 'stocks': 359.0, 'options': {'count': 1933.0, 'expire': '1989-10-20', 'bought': '1988-10-11'}}
+{'cash': 159.06, 'stocks': 359.0, 'options': {'count': 1933.0, 'expire': '1989-10-20', 'bought': '1988-10-11'}}
+option_start_price: 0.2177160503228146
+1988-10-11 1989-02-10
+
+loop restarting here, todays date:  1989-02-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1989-02-10  :  0.0923210693608381
+Buying options right now
+current vol for  1989-02-10  :  0.0923210693608381
+Date: 1989-02-10 ; Faustmann ratio: 0.48754500720882427 ; Net worth: 106243.26
+current equity:  {'cash': 137.1, 'stocks': 357.0, 'options': {'count': 3323.0, 'expire': '1990-02-16', 'bought': '1989-02-10'}}
+{'cash': 137.1, 'stocks': 357.0, 'options': {'count': 3323.0, 'expire': '1990-02-16', 'bought': '1989-02-10'}}
+option_start_price: 0.1242057209372569
+1989-02-10 1989-06-12
+
+loop restarting here, todays date:  1989-06-12
+ROLL OPTIONS
+Selling options right now
+current vol for  1989-06-12  :  0.11655770960260169
+Buying options right now
+current vol for  1989-06-12  :  0.11655770960260169
+Date: 1989-06-12 ; Faustmann ratio: 0.5170315390092063 ; Net worth: 116732.44
+current equity:  {'cash': 260.2, 'stocks': 355.0, 'options': {'count': 2246.0, 'expire': '1990-06-15', 'bought': '1989-06-12'}}
+{'cash': 260.2, 'stocks': 355.0, 'options': {'count': 2246.0, 'expire': '1990-06-15', 'bought': '1989-06-12'}}
+option_start_price: 0.22141327418173518
+1989-06-12 1989-10-10
+
+loop restarting here, todays date:  1989-10-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1989-10-10  :  0.10774228160268061
+Buying options right now
+current vol for  1989-10-10  :  0.10774228160268061
+Date: 1989-10-10 ; Faustmann ratio: 0.575504373125453 ; Net worth: 128019.19
+current equity:  {'cash': 252.25, 'stocks': 353.0, 'options': {'count': 2562.0, 'expire': '1990-10-19', 'bought': '1989-10-10'}}
+{'cash': 252.25, 'stocks': 353.0, 'options': {'count': 2562.0, 'expire': '1990-10-19', 'bought': '1989-10-10'}}
+option_start_price: 0.20750211459352474
+1989-10-10 1990-02-12
+hit an exit threshold on date  1989-10-31
+opt_current_price: 6.224464065250942
+Selling options right now
+current vol for  1989-10-31  :  0.19413323146255076
+New equity:  {'cash': 16095.33, 'stocks': 353.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  1989-10-31
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  1989-10-31  :  0.19413323146255076
+Date: 1989-10-31 ; Faustmann ratio: 0.575504373125453 ; Net worth: 136294.89
+current equity:  {'cash': 327.53, 'stocks': 397.0, 'options': {'count': 947.0, 'expire': '1990-10-19', 'bought': '1989-10-31'}}
+{'cash': 327.53, 'stocks': 397.0, 'options': {'count': 947.0, 'expire': '1990-10-19', 'bought': '1989-10-31'}}
+option_start_price: 0.6820969275018385
+1989-10-31 1990-02-12
+
+loop restarting here, todays date:  1990-02-12
+ROLL OPTIONS
+Selling options right now
+current vol for  1990-02-12  :  0.15636713556038043
+Buying options right now
+current vol for  1990-02-12  :  0.15636713556038043
+Date: 1990-02-12 ; Faustmann ratio: 0.5532261576740144 ; Net worth: 132756.24
+current equity:  {'cash': 36.79, 'stocks': 396.0, 'options': {'count': 1412.0, 'expire': '1991-02-15', 'bought': '1990-02-12'}}
+{'cash': 36.79, 'stocks': 396.0, 'options': {'count': 1412.0, 'expire': '1991-02-15', 'bought': '1990-02-12'}}
+option_start_price: 0.4291313490911932
+1990-02-12 1990-06-11
+
+loop restarting here, todays date:  1990-06-11
+ROLL OPTIONS
+Selling options right now
+current vol for  1990-06-11  :  0.11322179491411752
+Buying options right now
+current vol for  1990-06-11  :  0.11322179491411752
+Date: 1990-06-11 ; Faustmann ratio: 0.5751065410616498 ; Net worth: 143080.05
+current equity:  {'cash': 340.94, 'stocks': 393.0, 'options': {'count': 2651.0, 'expire': '1991-06-21', 'bought': '1990-06-11'}}
+{'cash': 340.94, 'stocks': 393.0, 'options': {'count': 2651.0, 'expire': '1991-06-21', 'bought': '1990-06-11'}}
+option_start_price: 0.2333152492270436
+1990-06-11 1990-10-10
+hit an exit threshold on date  1990-08-22
+opt_current_price: 4.337487768792592
+Selling options right now
+current vol for  1990-08-22  :  0.15300167164428766
+New equity:  {'cash': 11731.62, 'stocks': 393.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  1990-08-22
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  1990-08-22  :  0.15300167164428766
+Date: 1990-08-22 ; Faustmann ratio: 0.48496580970399117 ; Net worth: 138991.59
+current equity:  {'cash': 272.04, 'stocks': 426.0, 'options': {'count': 1617.0, 'expire': '1991-08-16', 'bought': '1990-08-22'}}
+{'cash': 272.04, 'stocks': 426.0, 'options': {'count': 1617.0, 'expire': '1991-08-16', 'bought': '1990-08-22'}}
+option_start_price: 0.39063201669894276
+1990-08-22 1990-12-10
+
+loop restarting here, todays date:  1990-12-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1990-12-10  :  0.19247204423505881
+Buying options right now
+current vol for  1990-12-10  :  0.19247204423505881
+Date: 1990-12-10 ; Faustmann ratio: 0.5355514579385371 ; Net worth: 141617.83
+current equity:  {'cash': 154.53, 'stocks': 428.0, 'options': {'count': 997.0, 'expire': '1991-12-20', 'bought': '1990-12-10'}}
+{'cash': 154.53, 'stocks': 428.0, 'options': {'count': 997.0, 'expire': '1991-12-20', 'bought': '1990-12-10'}}
+option_start_price: 0.6661408731864329
+1990-12-10 1991-04-10
+
+loop restarting here, todays date:  1991-04-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1991-04-10  :  0.15088756031348116
+Buying options right now
+current vol for  1991-04-10  :  0.15088756031348116
+Date: 1991-04-10 ; Faustmann ratio: 0.6050385138752404 ; Net worth: 160472.13
+current equity:  {'cash': 58.42, 'stocks': 426.0, 'options': {'count': 1672.0, 'expire': '1992-04-17', 'bought': '1991-04-10'}}
+{'cash': 58.42, 'stocks': 426.0, 'options': {'count': 1672.0, 'expire': '1992-04-17', 'bought': '1991-04-10'}}
+option_start_price: 0.44026891183117645
+1991-04-10 1991-08-12
+
+loop restarting here, todays date:  1991-08-12
+ROLL OPTIONS
+Selling options right now
+current vol for  1991-08-12  :  0.12189517968208459
+Buying options right now
+current vol for  1991-08-12  :  0.12189517968208459
+Date: 1991-08-12 ; Faustmann ratio: 0.6478940331152011 ; Net worth: 165274.84
+current equity:  {'cash': 343.14, 'stocks': 423.0, 'options': {'count': 2583.0, 'expire': '1992-08-21', 'bought': '1991-08-12'}}
+{'cash': 343.14, 'stocks': 423.0, 'options': {'count': 2583.0, 'expire': '1992-08-21', 'bought': '1991-08-12'}}
+option_start_price: 0.2848556674078253
+1991-08-12 1991-12-10
+
+loop restarting here, todays date:  1991-12-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1991-12-10  :  0.14699143685228513
+Buying options right now
+current vol for  1991-12-10  :  0.14699143685228513
+Date: 1991-12-10 ; Faustmann ratio: 0.7416264073302009 ; Net worth: 163082.64
+current equity:  {'cash': 266.51, 'stocks': 427.0, 'options': {'count': 1812.0, 'expire': '1992-12-18', 'bought': '1991-12-10'}}
+{'cash': 266.51, 'stocks': 427.0, 'options': {'count': 1812.0, 'expire': '1992-12-18', 'bought': '1991-12-10'}}
+option_start_price: 0.40824464145378325
+1991-12-10 1992-04-10
+
+loop restarting here, todays date:  1992-04-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1992-04-10  :  0.09422530731096432
+Buying options right now
+current vol for  1992-04-10  :  0.09422530731096432
+Date: 1992-04-10 ; Faustmann ratio: 0.7426103350738689 ; Net worth: 172991.34
+current equity:  {'cash': 131.92, 'stocks': 425.0, 'options': {'count': 4123.0, 'expire': '1993-04-16', 'bought': '1992-04-10'}}
+{'cash': 131.92, 'stocks': 425.0, 'options': {'count': 4123.0, 'expire': '1993-04-16', 'bought': '1992-04-10'}}
+option_start_price: 0.1657573022303902
+1992-04-10 1992-08-10
+
+loop restarting here, todays date:  1992-08-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1992-08-10  :  0.09419505248323565
+Buying options right now
+current vol for  1992-08-10  :  0.09419505248323565
+Date: 1992-08-10 ; Faustmann ratio: 0.7679466070434218 ; Net worth: 178168.84
+current equity:  {'cash': 33.8, 'stocks': 423.0, 'options': {'count': 4246.0, 'expire': '1993-08-20', 'bought': '1992-08-10'}}
+{'cash': 33.8, 'stocks': 423.0, 'options': {'count': 4246.0, 'expire': '1993-08-20', 'bought': '1992-08-10'}}
+option_start_price: 0.16966093976396213
+1992-08-10 1992-12-10
+
+loop restarting here, todays date:  1992-12-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1992-12-10  :  0.07376252728822477
+Buying options right now
+current vol for  1992-12-10  :  0.07376252728822477
+Date: 1992-12-10 ; Faustmann ratio: 0.8508735972916758 ; Net worth: 183911.73
+current equity:  {'cash': 244.84, 'stocks': 420.0, 'options': {'count': 6576.0, 'expire': '1993-12-17', 'bought': '1992-12-10'}}
+{'cash': 244.84, 'stocks': 420.0, 'options': {'count': 6576.0, 'expire': '1993-12-17', 'bought': '1992-12-10'}}
+option_start_price: 0.104880217312326
+1992-12-10 1993-04-12
+
+loop restarting here, todays date:  1993-04-12
+ROLL OPTIONS
+Selling options right now
+current vol for  1993-04-12  :  0.12163846545864758
+Buying options right now
+current vol for  1993-04-12  :  0.12163846545864758
+Date: 1993-04-12 ; Faustmann ratio: 0.8687519439854345 ; Net worth: 193540.35
+current equity:  {'cash': 332.59, 'stocks': 429.0, 'options': {'count': 2766.0, 'expire': '1994-04-15', 'bought': '1993-04-12'}}
+{'cash': 332.59, 'stocks': 429.0, 'options': {'count': 2766.0, 'expire': '1994-04-15', 'bought': '1993-04-12'}}
+option_start_price: 0.30984539330182237
+1993-04-12 1993-08-10
+
+loop restarting here, todays date:  1993-08-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1993-08-10  :  0.08710682719009814
+Buying options right now
+current vol for  1993-08-10  :  0.08710682719009814
+Date: 1993-08-10 ; Faustmann ratio: 0.8830733050142486 ; Net worth: 193391.25
+current equity:  {'cash': 154.32, 'stocks': 427.0, 'options': {'count': 5094.0, 'expire': '1994-08-19', 'bought': '1993-08-10'}}
+{'cash': 154.32, 'stocks': 427.0, 'options': {'count': 5094.0, 'expire': '1994-08-19', 'bought': '1993-08-10'}}
+option_start_price: 0.15385959486925493
+1993-08-10 1993-12-10
+
+loop restarting here, todays date:  1993-12-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1993-12-10  :  0.0833356653971146
+Buying options right now
+current vol for  1993-12-10  :  0.0833356653971146
+Date: 1993-12-10 ; Faustmann ratio: 0.9086708773109723 ; Net worth: 198293.71
+current equity:  {'cash': 395.36, 'stocks': 424.0, 'options': {'count': 5513.0, 'expire': '1994-12-16', 'bought': '1993-12-10'}}
+{'cash': 395.36, 'stocks': 424.0, 'options': {'count': 5513.0, 'expire': '1994-12-16', 'bought': '1993-12-10'}}
+option_start_price: 0.14392687010673288
+1993-12-10 1994-04-11
+
+loop restarting here, todays date:  1994-04-11
+ROLL OPTIONS
+Selling options right now
+current vol for  1994-04-11  :  0.07588441154591913
+Buying options right now
+current vol for  1994-04-11  :  0.07588441154591913
+Date: 1994-04-11 ; Faustmann ratio: 0.8227929255938077 ; Net worth: 191122.07
+current equity:  {'cash': 377.85, 'stocks': 422.0, 'options': {'count': 5980.0, 'expire': '1995-04-21', 'bought': '1994-04-11'}}
+{'cash': 377.85, 'stocks': 422.0, 'options': {'count': 5980.0, 'expire': '1995-04-21', 'bought': '1994-04-11'}}
+option_start_price: 0.11718126192834077
+1994-04-11 1994-08-10
+hit an exit threshold on date  1994-04-21
+opt_current_price: 1.9381007869587457
+Selling options right now
+current vol for  1994-04-21  :  0.12301375463436531
+New equity:  {'cash': 11727.69, 'stocks': 422.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  1994-04-21
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  1994-04-21  :  0.12301375463436531
+Date: 1994-04-21 ; Faustmann ratio: 0.8227929255938077 ; Net worth: 201097.13
+current equity:  {'cash': 344.2, 'stocks': 445.0, 'options': {'count': 2719.0, 'expire': '1995-04-21', 'bought': '1994-04-21'}}
+{'cash': 344.2, 'stocks': 445.0, 'options': {'count': 2719.0, 'expire': '1995-04-21', 'bought': '1994-04-21'}}
+option_start_price: 0.32571720462708953
+1994-04-21 1994-08-10
+
+loop restarting here, todays date:  1994-08-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1994-08-10  :  0.09006974953850659
+Buying options right now
+current vol for  1994-08-10  :  0.09006974953850659
+Date: 1994-08-10 ; Faustmann ratio: 0.8522055679155651 ; Net worth: 204974.18
+current equity:  {'cash': 128.97, 'stocks': 443.0, 'options': {'count': 4884.0, 'expire': '1995-08-18', 'bought': '1994-08-10'}}
+{'cash': 128.97, 'stocks': 443.0, 'options': {'count': 4884.0, 'expire': '1995-08-18', 'bought': '1994-08-10'}}
+option_start_price: 0.174563005696303
+1994-08-10 1994-12-12
+
+loop restarting here, todays date:  1994-12-12
+ROLL OPTIONS
+Selling options right now
+current vol for  1994-12-12  :  0.10500036304047837
+Buying options right now
+current vol for  1994-12-12  :  0.10500036304047837
+Date: 1994-12-12 ; Faustmann ratio: 0.8321257798529911 ; Net worth: 200664.11
+current equity:  {'cash': 232.95, 'stocks': 444.0, 'options': {'count': 3585.0, 'expire': '1995-12-15', 'bought': '1994-12-12'}}
+{'cash': 232.95, 'stocks': 444.0, 'options': {'count': 3585.0, 'expire': '1995-12-15', 'bought': '1994-12-12'}}
+option_start_price: 0.2404573553090037
+1994-12-12 1995-04-10
+
+loop restarting here, todays date:  1995-04-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1995-04-10  :  0.0693273624390552
+Buying options right now
+current vol for  1995-04-10  :  0.0693273624390552
+Date: 1995-04-10 ; Faustmann ratio: 0.9343292196960232 ; Net worth: 224901.08
+current equity:  {'cash': 476.32, 'stocks': 441.0, 'options': {'count': 7506.0, 'expire': '1996-04-19', 'bought': '1995-04-10'}}
+{'cash': 476.32, 'stocks': 441.0, 'options': {'count': 7506.0, 'expire': '1996-04-19', 'bought': '1995-04-10'}}
+option_start_price: 0.1110242008776905
+1995-04-10 1995-08-10
+
+loop restarting here, todays date:  1995-08-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1995-08-10  :  0.09808338231132538
+Buying options right now
+current vol for  1995-08-10  :  0.09808338231132538
+Date: 1995-08-10 ; Faustmann ratio: 0.9853010929683911 ; Net worth: 247671.91
+current equity:  {'cash': 471.43, 'stocks': 439.0, 'options': {'count': 4272.0, 'expire': '1996-08-16', 'bought': '1995-08-10'}}
+{'cash': 471.43, 'stocks': 439.0, 'options': {'count': 4272.0, 'expire': '1996-08-16', 'bought': '1995-08-10'}}
+option_start_price: 0.2537252289030354
+1995-08-10 1995-12-11
+
+loop restarting here, todays date:  1995-12-11
+ROLL OPTIONS
+Selling options right now
+current vol for  1995-12-11  :  0.08214713666026813
+Buying options right now
+current vol for  1995-12-11  :  0.08214713666026813
+Date: 1995-12-11 ; Faustmann ratio: 1.026627480156902 ; Net worth: 272640.76
+current equity:  {'cash': 173.0, 'stocks': 437.0, 'options': {'count': 5932.0, 'expire': '1996-12-20', 'bought': '1995-12-11'}}
+{'cash': 173.0, 'stocks': 437.0, 'options': {'count': 5932.0, 'expire': '1996-12-20', 'bought': '1995-12-11'}}
+option_start_price: 0.1912423204459044
+1995-12-11 1996-04-10
+
+loop restarting here, todays date:  1996-04-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1996-04-10  :  0.1487118071968858
+Buying options right now
+current vol for  1996-04-10  :  0.1487118071968858
+Date: 1996-04-10 ; Faustmann ratio: 1.0886651888693792 ; Net worth: 290725.97
+current equity:  {'cash': 97.14, 'stocks': 450.0, 'options': {'count': 1913.0, 'expire': '1997-04-18', 'bought': '1996-04-10'}}
+{'cash': 97.14, 'stocks': 450.0, 'options': {'count': 1913.0, 'expire': '1997-04-18', 'bought': '1996-04-10'}}
+option_start_price: 0.7202410748902182
+1996-04-10 1996-08-12
+
+loop restarting here, todays date:  1996-08-12
+ROLL OPTIONS
+Selling options right now
+current vol for  1996-08-12  :  0.13621643817412252
+Buying options right now
+current vol for  1996-08-12  :  0.13621643817412252
+Date: 1996-08-12 ; Faustmann ratio: 1.0897794749568668 ; Net worth: 299637.31
+current equity:  {'cash': 634.58, 'stocks': 447.0, 'options': {'count': 2305.0, 'expire': '1997-08-15', 'bought': '1996-08-12'}}
+{'cash': 634.58, 'stocks': 447.0, 'options': {'count': 2305.0, 'expire': '1997-08-15', 'bought': '1996-08-12'}}
+option_start_price: 0.6089052546367792
+1996-08-12 1996-12-10
+
+loop restarting here, todays date:  1996-12-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1996-12-10  :  0.07554661535436441
+Buying options right now
+current vol for  1996-12-10  :  0.07554661535436441
+Date: 1996-12-10 ; Faustmann ratio: 1.0856853776841244 ; Net worth: 337060.76
+current equity:  {'cash': 356.17, 'stocks': 445.0, 'options': {'count': 7333.0, 'expire': '1997-12-19', 'bought': '1996-12-10'}}
+{'cash': 356.17, 'stocks': 445.0, 'options': {'count': 7333.0, 'expire': '1997-12-19', 'bought': '1996-12-10'}}
+option_start_price: 0.19476896001128274
+1996-12-10 1997-04-10
+hit an exit threshold on date  1997-04-01
+opt_current_price: 3.773791164520027
+Selling options right now
+current vol for  1997-04-01  :  0.1467647246864085
+New equity:  {'cash': 27735.38, 'stocks': 445.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  1997-04-01
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  1997-04-01  :  0.1467647246864085
+Date: 1997-04-01 ; Faustmann ratio: 1.1729818898707713 ; Net worth: 366454.92
+current equity:  {'cash': 706.61, 'stocks': 478.0, 'options': {'count': 2182.0, 'expire': '1998-03-20', 'bought': '1997-04-01'}}
+{'cash': 706.61, 'stocks': 478.0, 'options': {'count': 2182.0, 'expire': '1998-03-20', 'bought': '1997-04-01'}}
+option_start_price: 0.804807721539305
+1997-04-01 1997-08-11
+
+loop restarting here, todays date:  1997-08-11
+ROLL OPTIONS
+Selling options right now
+current vol for  1997-08-11  :  0.16347124571977364
+Buying options right now
+current vol for  1997-08-11  :  0.16347124571977364
+Date: 1997-08-11 ; Faustmann ratio: 1.234202229907412 ; Net worth: 449160.04
+current equity:  {'cash': 261.65, 'stocks': 476.0, 'options': {'count': 1676.0, 'expire': '1998-08-21', 'bought': '1997-08-11'}}
+{'cash': 261.65, 'stocks': 476.0, 'options': {'count': 1676.0, 'expire': '1998-08-21', 'bought': '1997-08-11'}}
+option_start_price: 1.29617794321533
+1997-08-11 1997-12-10
+
+loop restarting here, todays date:  1997-12-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1997-12-10  :  0.30782616841664845
+Buying options right now
+current vol for  1997-12-10  :  0.30782616841664845
+Date: 1997-12-10 ; Faustmann ratio: 1.1799845930027952 ; Net worth: 482611.1
+current equity:  {'cash': 142.94, 'stocks': 492.0, 'options': {'count': 657.0, 'expire': '1998-06-19', 'bought': '1997-12-10'}}
+{'cash': 142.94, 'stocks': 492.0, 'options': {'count': 657.0, 'expire': '1998-06-19', 'bought': '1997-12-10'}}
+option_start_price: 3.6292051818610886
+1997-12-10 1998-02-10
+
+loop restarting here, todays date:  1998-02-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1998-02-10  :  0.17742472221820582
+Buying options right now
+current vol for  1998-02-10  :  0.17742472221820582
+Date: 1998-02-10 ; Faustmann ratio: 1.279450050673818 ; Net worth: 502950.21
+current equity:  {'cash': 661.35, 'stocks': 489.0, 'options': {'count': 1470.0, 'expire': '1999-02-19', 'bought': '1998-02-10'}}
+{'cash': 661.35, 'stocks': 489.0, 'options': {'count': 1470.0, 'expire': '1999-02-19', 'bought': '1998-02-10'}}
+option_start_price: 1.671770589286016
+1998-02-10 1998-06-10
+
+loop restarting here, todays date:  1998-06-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1998-06-10  :  0.12648876147749075
+Buying options right now
+current vol for  1998-06-10  :  0.12648876147749075
+Date: 1998-06-10 ; Faustmann ratio: 1.306464043364668 ; Net worth: 551088.78
+current equity:  {'cash': 95.49, 'stocks': 487.0, 'options': {'count': 2995.0, 'expire': '1999-06-18', 'bought': '1998-06-10'}}
+{'cash': 95.49, 'stocks': 487.0, 'options': {'count': 2995.0, 'expire': '1999-06-18', 'bought': '1998-06-10'}}
+option_start_price: 0.8785619230423407
+1998-06-10 1998-10-13
+hit an exit threshold on date  1998-09-01
+opt_current_price: 16.864123976288
+Selling options right now
+current vol for  1998-09-01  :  0.18297843735997044
+New equity:  {'cash': 50483.54, 'stocks': 487.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  1998-09-01
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  1998-09-01  :  0.18297843735997044
+Date: 1998-09-01 ; Faustmann ratio: 1.1526020273725839 ; Net worth: 537663.56
+current equity:  {'cash': 666.33, 'stocks': 534.0, 'options': {'count': 1563.0, 'expire': '1999-08-20', 'bought': '1998-09-01'}}
+{'cash': 666.33, 'stocks': 534.0, 'options': {'count': 1563.0, 'expire': '1999-08-20', 'bought': '1998-09-01'}}
+option_start_price: 1.6750339520430018
+1998-09-01 1999-01-11
+hit an exit threshold on date  1998-10-01
+opt_current_price: 26.063983952546465
+Selling options right now
+current vol for  1998-10-01  :  0.36303265331367507
+New equity:  {'cash': 41340.34, 'stocks': 534.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  1998-10-01
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  1998-10-01  :  0.36303265331367507
+Date: 1998-10-01 ; Faustmann ratio: 1.3321332952018572 ; Net worth: 584322.92
+current equity:  {'cash': 714.27, 'stocks': 571.0, 'options': {'count': 574.0, 'expire': '1999-03-19', 'bought': '1998-10-01'}}
+{'cash': 714.27, 'stocks': 571.0, 'options': {'count': 574.0, 'expire': '1999-03-19', 'bought': '1998-10-01'}}
+option_start_price: 5.045183528403889
+1998-10-01 1998-12-10
+
+loop restarting here, todays date:  1998-12-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1998-12-10  :  0.15491156907457948
+Buying options right now
+current vol for  1998-12-10  :  0.15491156907457948
+Date: 1998-12-10 ; Faustmann ratio: 1.3321332952018572 ; Net worth: 676517.08
+current equity:  {'cash': 852.05, 'stocks': 568.0, 'options': {'count': 2333.0, 'expire': '1999-12-17', 'bought': '1998-12-10'}}
+{'cash': 852.05, 'stocks': 568.0, 'options': {'count': 2333.0, 'expire': '1999-12-17', 'bought': '1998-12-10'}}
+option_start_price: 1.4074851522541643
+1998-12-10 1999-04-12
+
+loop restarting here, todays date:  1999-04-12
+ROLL OPTIONS
+Selling options right now
+current vol for  1999-04-12  :  0.19692742123088805
+Buying options right now
+current vol for  1999-04-12  :  0.19692742123088805
+Date: 1999-04-12 ; Faustmann ratio: 1.452024751206002 ; Net worth: 773183.9
+current equity:  {'cash': 354.04, 'stocks': 566.0, 'options': {'count': 1370.0, 'expire': '2000-04-21', 'bought': '1999-04-12'}}
+{'cash': 354.04, 'stocks': 566.0, 'options': {'count': 1370.0, 'expire': '2000-04-21', 'bought': '1999-04-12'}}
+option_start_price: 2.7820067270970057
+1999-04-12 1999-08-10
+
+loop restarting here, todays date:  1999-08-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1999-08-10  :  0.14574722956875918
+Buying options right now
+current vol for  1999-08-10  :  0.14574722956875918
+Date: 1999-08-10 ; Faustmann ratio: 1.3598244785515778 ; Net worth: 735412.59
+current equity:  {'cash': 722.05, 'stocks': 563.0, 'options': {'count': 2571.0, 'expire': '2000-08-18', 'bought': '1999-08-10'}}
+{'cash': 722.05, 'stocks': 563.0, 'options': {'count': 2571.0, 'expire': '2000-08-18', 'bought': '1999-08-10'}}
+option_start_price: 1.387586110462955
+1999-08-10 1999-12-10
+
+loop restarting here, todays date:  1999-12-10
+ROLL OPTIONS
+Selling options right now
+current vol for  1999-12-10  :  0.19718699182154245
+Buying options right now
+current vol for  1999-12-10  :  0.19718699182154245
+Date: 1999-12-10 ; Faustmann ratio: 1.5935747970855523 ; Net worth: 803927.93
+current equity:  {'cash': 1036.94, 'stocks': 562.0, 'options': {'count': 1344.0, 'expire': '2000-12-15', 'bought': '1999-12-10'}}
+{'cash': 1036.94, 'stocks': 562.0, 'options': {'count': 1344.0, 'expire': '2000-12-15', 'bought': '1999-12-10'}}
+option_start_price: 2.948698426543494
+1999-12-10 2000-04-10
+
+loop restarting here, todays date:  2000-04-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2000-04-10  :  0.2635708214560396
+Buying options right now
+current vol for  2000-04-10  :  0.2635708214560396
+Date: 2000-04-10 ; Faustmann ratio: 1.5960277655202997 ; Net worth: 863622.19
+current equity:  {'cash': 1063.65, 'stocks': 562.0, 'options': {'count': 1055.0, 'expire': '2000-10-20', 'bought': '2000-04-10'}}
+{'cash': 1063.65, 'stocks': 562.0, 'options': {'count': 1055.0, 'expire': '2000-10-20', 'bought': '2000-04-10'}}
+option_start_price: 4.054781785409261
+2000-04-10 2000-06-12
+
+loop restarting here, todays date:  2000-06-12
+ROLL OPTIONS
+Selling options right now
+current vol for  2000-06-12  :  0.3097825405149666
+Buying options right now
+current vol for  2000-06-12  :  0.3097825405149666
+Date: 2000-06-12 ; Faustmann ratio: 1.5960277655202997 ; Net worth: 829670.79
+current equity:  {'cash': 466.43, 'stocks': 564.0, 'options': {'count': 752.0, 'expire': '2000-12-15', 'bought': '2000-06-12'}}
+{'cash': 466.43, 'stocks': 564.0, 'options': {'count': 752.0, 'expire': '2000-12-15', 'bought': '2000-06-12'}}
+option_start_price: 5.4678342636507224
+2000-06-12 2000-08-10
+
+loop restarting here, todays date:  2000-08-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2000-08-10  :  0.14892123365651558
+Buying options right now
+current vol for  2000-08-10  :  0.14892123365651558
+Date: 2000-08-10 ; Faustmann ratio: 1.4767874691366059 ; Net worth: 832307.58
+current equity:  {'cash': 692.44, 'stocks': 561.0, 'options': {'count': 2448.0, 'expire': '2001-08-17', 'bought': '2000-08-10'}}
+{'cash': 692.44, 'stocks': 561.0, 'options': {'count': 2448.0, 'expire': '2001-08-17', 'bought': '2000-08-10'}}
+option_start_price: 1.6568541931575567
+2000-08-10 2000-12-11
+hit an exit threshold on date  2000-12-01
+opt_current_price: 26.503586578875343
+Selling options right now
+current vol for  2000-12-01  :  0.24460997790401573
+New equity:  {'cash': 65475.22, 'stocks': 561.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2000-12-01
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2000-12-01  :  0.24460997790401573
+Date: 2000-12-01 ; Faustmann ratio: 1.1965055605362702 ; Net worth: 814076.57
+current equity:  {'cash': 1252.82, 'stocks': 606.0, 'options': {'count': 1459.0, 'expire': '2001-05-18', 'bought': '2000-12-01'}}
+{'cash': 1252.82, 'stocks': 606.0, 'options': {'count': 1459.0, 'expire': '2001-05-18', 'bought': '2000-12-01'}}
+option_start_price: 2.750996227757078
+2000-12-01 2001-02-12
+
+loop restarting here, todays date:  2001-02-12
+ROLL OPTIONS
+Selling options right now
+current vol for  2001-02-12  :  0.2546923158327464
+Buying options right now
+current vol for  2001-02-12  :  0.2546923158327464
+Date: 2001-02-12 ; Faustmann ratio: 1.05016857643978 ; Net worth: 808864.47
+current equity:  {'cash': 975.18, 'stocks': 604.0, 'options': {'count': 1263.0, 'expire': '2001-08-17', 'bought': '2001-02-12'}}
+{'cash': 975.18, 'stocks': 604.0, 'options': {'count': 1263.0, 'expire': '2001-08-17', 'bought': '2001-02-12'}}
+option_start_price: 3.158732371501273
+2001-02-12 2001-04-10
+
+loop restarting here, todays date:  2001-04-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2001-04-10  :  0.24107943208558497
+Buying options right now
+current vol for  2001-04-10  :  0.24107943208558497
+Date: 2001-04-10 ; Faustmann ratio: 1.1253062223054997 ; Net worth: 716222.04
+current equity:  {'cash': 124.04, 'stocks': 607.0, 'options': {'count': 1410.0, 'expire': '2001-10-19', 'bought': '2001-04-10'}}
+{'cash': 124.04, 'stocks': 607.0, 'options': {'count': 1410.0, 'expire': '2001-10-19', 'bought': '2001-04-10'}}
+option_start_price: 2.502505213725428
+2001-04-10 2001-06-11
+
+loop restarting here, todays date:  2001-06-11
+ROLL OPTIONS
+Selling options right now
+current vol for  2001-06-11  :  0.19821363793635727
+Buying options right now
+current vol for  2001-06-11  :  0.19821363793635727
+Date: 2001-06-11 ; Faustmann ratio: 1.1253062223054997 ; Net worth: 767871.88
+current equity:  {'cash': 54.82, 'stocks': 604.0, 'options': {'count': 1459.0, 'expire': '2002-06-21', 'bought': '2001-06-11'}}
+{'cash': 54.82, 'stocks': 604.0, 'options': {'count': 1459.0, 'expire': '2002-06-21', 'bought': '2001-06-11'}}
+option_start_price: 2.5916701446088126
+2001-06-11 2001-10-10
+
+loop restarting here, todays date:  2001-10-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2001-10-10  :  0.250374361883708
+Buying options right now
+current vol for  2001-10-10  :  0.250374361883708
+Date: 2001-10-10 ; Faustmann ratio: 1.0661843191847735 ; Net worth: 677603.9
+current equity:  {'cash': 424.2, 'stocks': 623.0, 'options': {'count': 1349.0, 'expire': '2002-04-19', 'bought': '2001-10-10'}}
+{'cash': 424.2, 'stocks': 623.0, 'options': {'count': 1349.0, 'expire': '2002-04-19', 'bought': '2001-10-10'}}
+option_start_price: 2.468824274440152
+2001-10-10 2001-12-10
+
+loop restarting here, todays date:  2001-12-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2001-12-10  :  0.17142484937050292
+Buying options right now
+current vol for  2001-12-10  :  0.17142484937050292
+Date: 2001-12-10 ; Faustmann ratio: 1.0661843191847735 ; Net worth: 721914.22
+current equity:  {'cash': 232.67, 'stocks': 620.0, 'options': {'count': 2086.0, 'expire': '2002-12-20', 'bought': '2001-12-10'}}
+{'cash': 232.67, 'stocks': 620.0, 'options': {'count': 2086.0, 'expire': '2002-12-20', 'bought': '2001-12-10'}}
+option_start_price: 1.6919033673058799
+2001-12-10 2002-04-10
+
+loop restarting here, todays date:  2002-04-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2002-04-10  :  0.17004043916189684
+Buying options right now
+current vol for  2002-04-10  :  0.17004043916189684
+Date: 2002-04-10 ; Faustmann ratio: 0.9163249853865264 ; Net worth: 703188.91
+current equity:  {'cash': 332.03, 'stocks': 618.0, 'options': {'count': 2105.0, 'expire': '2003-04-18', 'bought': '2002-04-10'}}
+{'cash': 332.03, 'stocks': 618.0, 'options': {'count': 2105.0, 'expire': '2003-04-18', 'bought': '2002-04-10'}}
+option_start_price: 1.6290730316825481
+2002-04-10 2002-08-12
+hit an exit threshold on date  2002-07-22
+opt_current_price: 31.39496651085065
+Selling options right now
+current vol for  2002-07-22  :  0.19599279403572684
+New equity:  {'cash': 66332.43, 'stocks': 618.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2002-07-22
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2002-07-22  :  0.19599279403572684
+Date: 2002-07-22 ; Faustmann ratio: 0.7581744327414757 ; Net worth: 593967.89
+current equity:  {'cash': 8.63, 'stocks': 692.0, 'options': {'count': 1789.0, 'expire': '2003-07-18', 'bought': '2002-07-22'}}
+{'cash': 8.63, 'stocks': 692.0, 'options': {'count': 1789.0, 'expire': '2003-07-18', 'bought': '2002-07-22'}}
+option_start_price: 1.6217421106033498
+2002-07-22 2002-11-12
+hit an exit threshold on date  2002-09-05
+opt_current_price: 24.468780307506137
+Selling options right now
+current vol for  2002-09-05  :  0.41653258066966553
+New equity:  {'cash': 43711.28, 'stocks': 692.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2002-09-05
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2002-09-05  :  0.41653258066966553
+Date: 2002-09-05 ; Faustmann ratio: 0.7581744327414757 ; Net worth: 661823.37
+current equity:  {'cash': 111.59, 'stocks': 737.0, 'options': {'count': 717.0, 'expire': '2002-12-20', 'bought': '2002-09-05'}}
+{'cash': 111.59, 'stocks': 737.0, 'options': {'count': 717.0, 'expire': '2002-12-20', 'bought': '2002-09-05'}}
+option_start_price: 4.568995777362488
+2002-09-05 2002-10-10
+
+loop restarting here, todays date:  2002-10-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2002-10-10  :  0.2793359502007008
+Buying options right now
+current vol for  2002-10-10  :  0.2793359502007008
+Date: 2002-10-10 ; Faustmann ratio: 0.7983138799314677 ; Net worth: 594787.61
+current equity:  {'cash': 689.99, 'stocks': 733.0, 'options': {'count': 1260.0, 'expire': '2003-04-18', 'bought': '2002-10-10'}}
+{'cash': 689.99, 'stocks': 733.0, 'options': {'count': 1260.0, 'expire': '2003-04-18', 'bought': '2002-10-10'}}
+option_start_price: 2.322046035975486
+2002-10-10 2002-12-10
+
+loop restarting here, todays date:  2002-12-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2002-12-10  :  0.2687788885418516
+Buying options right now
+current vol for  2002-12-10  :  0.2687788885418516
+Date: 2002-12-10 ; Faustmann ratio: 0.7983138799314677 ; Net worth: 664014.78
+current equity:  {'cash': 138.84, 'stocks': 730.0, 'options': {'count': 1355.0, 'expire': '2003-06-20', 'bought': '2002-12-10'}}
+{'cash': 138.84, 'stocks': 730.0, 'options': {'count': 1355.0, 'expire': '2003-06-20', 'bought': '2002-12-10'}}
+option_start_price: 2.4077007867693645
+2002-12-10 2003-02-10
+
+loop restarting here, todays date:  2003-02-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2003-02-10  :  0.20229288363411382
+Buying options right now
+current vol for  2003-02-10  :  0.20229288363411382
+Date: 2003-02-10 ; Faustmann ratio: 0.7500622096683655 ; Net worth: 611540.12
+current equity:  {'cash': 817.82, 'stocks': 726.0, 'options': {'count': 2527.0, 'expire': '2003-08-15', 'bought': '2003-02-10'}}
+{'cash': 817.82, 'stocks': 726.0, 'options': {'count': 2527.0, 'expire': '2003-08-15', 'bought': '2003-02-10'}}
+option_start_price: 1.1650824342029011
+2003-02-10 2003-04-10
+
+loop restarting here, todays date:  2003-04-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2003-04-10  :  0.25565030979521564
+Buying options right now
+current vol for  2003-04-10  :  0.25565030979521564
+Date: 2003-04-10 ; Faustmann ratio: 0.8573737782733499 ; Net worth: 635857.28
+current equity:  {'cash': 702.3, 'stocks': 725.0, 'options': {'count': 1514.0, 'expire': '2003-10-17', 'bought': '2003-04-10'}}
+{'cash': 702.3, 'stocks': 725.0, 'options': {'count': 1514.0, 'expire': '2003-10-17', 'bought': '2003-04-10'}}
+option_start_price: 2.0571040258906237
+2003-04-10 2003-06-10
+
+loop restarting here, todays date:  2003-06-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2003-06-10  :  0.1695726437913791
+Buying options right now
+current vol for  2003-06-10  :  0.1695726437913791
+Date: 2003-06-10 ; Faustmann ratio: 0.8573737782733499 ; Net worth: 714531.35
+current equity:  {'cash': 14.34, 'stocks': 722.0, 'options': {'count': 2552.0, 'expire': '2004-06-18', 'bought': '2003-06-10'}}
+{'cash': 14.34, 'stocks': 722.0, 'options': {'count': 2552.0, 'expire': '2004-06-18', 'bought': '2003-06-10'}}
+option_start_price: 1.3567838736710343
+2003-06-10 2003-10-10
+
+loop restarting here, todays date:  2003-10-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2003-10-10  :  0.12752993289482245
+Buying options right now
+current vol for  2003-10-10  :  0.12752993289482245
+Date: 2003-10-10 ; Faustmann ratio: 0.9844171732719837 ; Net worth: 751222.45
+current equity:  {'cash': 315.69, 'stocks': 718.0, 'options': {'count': 4638.0, 'expire': '2004-10-15', 'bought': '2003-10-10'}}
+{'cash': 315.69, 'stocks': 718.0, 'options': {'count': 4638.0, 'expire': '2004-10-15', 'bought': '2003-10-10'}}
+option_start_price: 0.7726744789612496
+2003-10-10 2004-02-10
+
+loop restarting here, todays date:  2004-02-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2004-02-10  :  0.0859585283009793
+Buying options right now
+current vol for  2004-02-10  :  0.0859585283009793
+Date: 2004-02-10 ; Faustmann ratio: 0.9737760230980038 ; Net worth: 823245.74
+current equity:  {'cash': 591.14, 'stocks': 714.0, 'options': {'count': 10045.0, 'expire': '2005-02-18', 'bought': '2004-02-10'}}
+{'cash': 591.14, 'stocks': 714.0, 'options': {'count': 10045.0, 'expire': '2005-02-18', 'bought': '2004-02-10'}}
+option_start_price: 0.36658121444112624
+2004-02-10 2004-06-10
+hit an exit threshold on date  2004-05-10
+opt_current_price: 6.3826725708898095
+Selling options right now
+current vol for  2004-05-10  :  0.14298942981494533
+New equity:  {'cash': 64303.09, 'stocks': 714.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2004-05-10
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2004-05-10  :  0.14298942981494533
+Date: 2004-05-10 ; Faustmann ratio: 0.9461510830936457 ; Net worth: 848510.83
+current equity:  {'cash': 620.68, 'stocks': 768.0, 'options': {'count': 3823.0, 'expire': '2005-05-20', 'bought': '2004-05-10'}}
+{'cash': 620.68, 'stocks': 768.0, 'options': {'count': 3823.0, 'expire': '2005-05-20', 'bought': '2004-05-10'}}
+option_start_price: 1.069472205083862
+2004-05-10 2004-09-10
+
+loop restarting here, todays date:  2004-09-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2004-09-10  :  0.12257941611174208
+Buying options right now
+current vol for  2004-09-10  :  0.12257941611174208
+Date: 2004-09-10 ; Faustmann ratio: 0.8800581404083349 ; Net worth: 864571.95
+current equity:  {'cash': 774.01, 'stocks': 764.0, 'options': {'count': 5273.0, 'expire': '2005-09-16', 'bought': '2004-09-10'}}
+{'cash': 774.01, 'stocks': 764.0, 'options': {'count': 5273.0, 'expire': '2005-09-16', 'bought': '2004-09-10'}}
+option_start_price: 0.777410862328269
+2004-09-10 2005-01-10
+
+loop restarting here, todays date:  2005-01-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2005-01-10  :  0.09436931089283383
+Buying options right now
+current vol for  2005-01-10  :  0.09436931089283383
+Date: 2005-01-10 ; Faustmann ratio: 0.9328939197822533 ; Net worth: 913000.94
+current equity:  {'cash': 769.08, 'stocks': 760.0, 'options': {'count': 8782.0, 'expire': '2006-01-20', 'bought': '2005-01-10'}}
+{'cash': 769.08, 'stocks': 760.0, 'options': {'count': 8782.0, 'expire': '2006-01-20', 'bought': '2005-01-10'}}
+option_start_price: 0.47814162535491
+2005-01-10 2005-05-10
+
+loop restarting here, todays date:  2005-05-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2005-05-10  :  0.1265536144461855
+Buying options right now
+current vol for  2005-05-10  :  0.1265536144461855
+Date: 2005-05-10 ; Faustmann ratio: 0.9187174238517429 ; Net worth: 910277.07
+current equity:  {'cash': 551.41, 'stocks': 768.0, 'options': {'count': 4894.0, 'expire': '2006-05-19', 'bought': '2005-05-10'}}
+{'cash': 551.41, 'stocks': 768.0, 'options': {'count': 4894.0, 'expire': '2006-05-19', 'bought': '2005-05-10'}}
+option_start_price: 0.8942714771609364
+2005-05-10 2005-09-12
+
+loop restarting here, todays date:  2005-09-12
+ROLL OPTIONS
+Selling options right now
+current vol for  2005-09-12  :  0.08281345406464463
+Buying options right now
+current vol for  2005-09-12  :  0.08281345406464463
+Date: 2005-09-12 ; Faustmann ratio: 0.928315475974534 ; Net worth: 954163.26
+current equity:  {'cash': 543.48, 'stocks': 764.0, 'options': {'count': 11365.0, 'expire': '2006-09-15', 'bought': '2005-09-12'}}
+{'cash': 543.48, 'stocks': 764.0, 'options': {'count': 11365.0, 'expire': '2006-09-15', 'bought': '2005-09-12'}}
+option_start_price: 0.37601400096629867
+2005-09-12 2006-01-10
+
+loop restarting here, todays date:  2006-01-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2006-01-10  :  0.07327603870917573
+Buying options right now
+current vol for  2006-01-10  :  0.07327603870917573
+Date: 2006-01-10 ; Faustmann ratio: 0.9400526910818007 ; Net worth: 985181.53
+current equity:  {'cash': 359.51, 'stocks': 760.0, 'options': {'count': 14083.0, 'expire': '2007-01-19', 'bought': '2006-01-10'}}
+{'cash': 359.51, 'stocks': 760.0, 'options': {'count': 14083.0, 'expire': '2007-01-19', 'bought': '2006-01-10'}}
+option_start_price: 0.3059008230849525
+2006-01-10 2006-05-10
+
+loop restarting here, todays date:  2006-05-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2006-05-10  :  0.08557138739415102
+Buying options right now
+current vol for  2006-05-10  :  0.08557138739415102
+Date: 2006-05-10 ; Faustmann ratio: 0.8734292418631493 ; Net worth: 1008828.94
+current equity:  {'cash': 777.45, 'stocks': 757.0, 'options': {'count': 10512.0, 'expire': '2007-05-18', 'bought': '2006-05-10'}}
+{'cash': 777.45, 'stocks': 757.0, 'options': {'count': 10512.0, 'expire': '2007-05-18', 'bought': '2006-05-10'}}
+option_start_price: 0.4414394374288122
+2006-05-10 2006-09-11
+hit an exit threshold on date  2006-06-14
+opt_current_price: 6.659806289838485
+Selling options right now
+current vol for  2006-06-14  :  0.10795281148763461
+New equity:  {'cash': 70363.33, 'stocks': 757.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2006-06-14
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2006-06-14  :  0.10795281148763461
+Date: 2006-06-14 ; Faustmann ratio: 0.8734292418631493 ; Net worth: 1002184.8
+current equity:  {'cash': 1209.21, 'stocks': 809.0, 'options': {'count': 7060.0, 'expire': '2007-06-15', 'bought': '2006-06-14'}}
+{'cash': 1209.21, 'stocks': 809.0, 'options': {'count': 7060.0, 'expire': '2007-06-15', 'bought': '2006-06-14'}}
+option_start_price: 0.6691897581775059
+2006-06-14 2006-10-10
+
+loop restarting here, todays date:  2006-10-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2006-10-10  :  0.07620704611579458
+Buying options right now
+current vol for  2006-10-10  :  0.07620704611579458
+Date: 2006-10-10 ; Faustmann ratio: 0.9043541374036215 ; Net worth: 1095946.18
+current equity:  {'cash': 850.34, 'stocks': 805.0, 'options': {'count': 14057.0, 'expire': '2007-10-19', 'bought': '2006-10-10'}}
+{'cash': 850.34, 'stocks': 805.0, 'options': {'count': 14057.0, 'expire': '2007-10-19', 'bought': '2006-10-10'}}
+option_start_price: 0.3514763917760124
+2006-10-10 2007-02-12
+
+loop restarting here, todays date:  2007-02-12
+ROLL OPTIONS
+Selling options right now
+current vol for  2007-02-12  :  0.07108208833968527
+Buying options right now
+current vol for  2007-02-12  :  0.07108208833968527
+Date: 2007-02-12 ; Faustmann ratio: 0.9141087254633672 ; Net worth: 1158153.24
+current equity:  {'cash': 283.84, 'stocks': 801.0, 'options': {'count': 16094.0, 'expire': '2008-02-15', 'bought': '2007-02-12'}}
+{'cash': 283.84, 'stocks': 801.0, 'options': {'count': 16094.0, 'expire': '2008-02-15', 'bought': '2007-02-12'}}
+option_start_price: 0.31951647418748763
+2007-02-12 2007-06-11
+hit an exit threshold on date  2007-03-15
+opt_current_price: 11.088795986669652
+Selling options right now
+current vol for  2007-03-15  :  0.12187723207544594
+New equity:  {'cash': 178102.92, 'stocks': 801.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2007-03-15
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2007-03-15  :  0.12187723207544594
+Date: 2007-03-15 ; Faustmann ratio: 0.9141087254633672 ; Net worth: 1295567.36
+current equity:  {'cash': 1099.77, 'stocks': 923.0, 'options': {'count': 6291.0, 'expire': '2008-03-21', 'bought': '2007-03-15'}}
+{'cash': 1099.77, 'stocks': 923.0, 'options': {'count': 6291.0, 'expire': '2008-03-21', 'bought': '2007-03-15'}}
+option_start_price: 0.986936959502696
+2007-03-15 2007-07-10
+
+loop restarting here, todays date:  2007-07-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2007-07-10  :  0.12316177912703545
+Buying options right now
+current vol for  2007-07-10  :  0.12316177912703545
+Date: 2007-07-10 ; Faustmann ratio: 0.9368027779631685 ; Net worth: 1414674.02
+current equity:  {'cash': 93.34, 'stocks': 919.0, 'options': {'count': 6098.0, 'expire': '2008-07-18', 'bought': '2007-07-10'}}
+{'cash': 93.34, 'stocks': 919.0, 'options': {'count': 6098.0, 'expire': '2008-07-18', 'bought': '2007-07-10'}}
+option_start_price: 1.1168499291486143
+2007-07-10 2007-11-13
+hit an exit threshold on date  2007-08-27
+opt_current_price: 17.47299079363745
+Selling options right now
+current vol for  2007-08-27  :  0.2022165356983636
+New equity:  {'cash': 106399.64, 'stocks': 919.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2007-08-27
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2007-08-27  :  0.2022165356983636
+Date: 2007-08-27 ; Faustmann ratio: 0.9368027779631685 ; Net worth: 1465660.78
+current equity:  {'cash': 1300.13, 'stocks': 985.0, 'options': {'count': 3575.0, 'expire': '2008-02-15', 'bought': '2007-08-27'}}
+{'cash': 1300.13, 'stocks': 985.0, 'options': {'count': 3575.0, 'expire': '2008-02-15', 'bought': '2007-08-27'}}
+option_start_price: 2.011484837278225
+2007-08-27 2007-10-10
+
+loop restarting here, todays date:  2007-10-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2007-10-10  :  0.19232114953423465
+Buying options right now
+current vol for  2007-10-10  :  0.19232114953423465
+Date: 2007-10-10 ; Faustmann ratio: 0.892539307167872 ; Net worth: 1543589.97
+current equity:  {'cash': 293.52, 'stocks': 981.0, 'options': {'count': 2547.0, 'expire': '2008-10-17', 'bought': '2007-10-10'}}
+{'cash': 293.52, 'stocks': 981.0, 'options': {'count': 2547.0, 'expire': '2008-10-17', 'bought': '2007-10-10'}}
+option_start_price: 2.991515282067283
+2007-10-10 2008-02-11
+
+loop restarting here, todays date:  2008-02-11
+ROLL OPTIONS
+Selling options right now
+current vol for  2008-02-11  :  0.21037243422116178
+Buying options right now
+current vol for  2008-02-11  :  0.21037243422116178
+Date: 2008-02-11 ; Faustmann ratio: 0.8468426435212918 ; Net worth: 1349985.2
+current equity:  {'cash': 628.01, 'stocks': 1001.0, 'options': {'count': 3245.0, 'expire': '2008-08-15', 'bought': '2008-02-11'}}
+{'cash': 628.01, 'stocks': 1001.0, 'options': {'count': 3245.0, 'expire': '2008-08-15', 'bought': '2008-02-11'}}
+option_start_price: 2.0387567448320603
+2008-02-11 2008-04-10
+
+loop restarting here, todays date:  2008-04-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2008-04-10  :  0.2563827891372468
+Buying options right now
+current vol for  2008-04-10  :  0.2563827891372468
+Date: 2008-04-10 ; Faustmann ratio: 0.8661209455983312 ; Net worth: 1374716.24
+current equity:  {'cash': 679.6, 'stocks': 1000.0, 'options': {'count': 2089.0, 'expire': '2008-10-17', 'bought': '2008-04-10'}}
+{'cash': 679.6, 'stocks': 1000.0, 'options': {'count': 2089.0, 'expire': '2008-10-17', 'bought': '2008-04-10'}}
+option_start_price: 3.2535405927913317
+2008-04-10 2008-06-10
+
+loop restarting here, todays date:  2008-06-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2008-06-10  :  0.15460306454974213
+Buying options right now
+current vol for  2008-06-10  :  0.15460306454974213
+Date: 2008-06-10 ; Faustmann ratio: 0.8661209455983312 ; Net worth: 1367277.94
+current equity:  {'cash': 589.05, 'stocks': 995.0, 'options': {'count': 4220.0, 'expire': '2009-06-19', 'bought': '2008-06-10'}}
+{'cash': 589.05, 'stocks': 995.0, 'options': {'count': 4220.0, 'expire': '2009-06-19', 'bought': '2008-06-10'}}
+option_start_price: 1.5836775335391415
+2008-06-10 2008-10-10
+hit an exit threshold on date  2008-09-30
+opt_current_price: 25.210951765255317
+Selling options right now
+current vol for  2008-09-30  :  0.22820690200331056
+New equity:  {'cash': 106809.27, 'stocks': 995.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2008-09-30
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2008-09-30  :  0.22820690200331056
+Date: 2008-09-30 ; Faustmann ratio: 0.7660324677192876 ; Net worth: 1268701.87
+current equity:  {'cash': 1010.77, 'stocks': 1080.0, 'options': {'count': 3065.0, 'expire': '2009-03-20', 'bought': '2008-09-30'}}
+{'cash': 1010.77, 'stocks': 1080.0, 'options': {'count': 3065.0, 'expire': '2009-03-20', 'bought': '2008-09-30'}}
+option_start_price: 2.028927635882809
+2008-09-30 2008-11-10
+hit an exit threshold on date  2008-10-09
+opt_current_price: 33.08514377839998
+Selling options right now
+current vol for  2008-10-09  :  0.34317389500991796
+New equity:  {'cash': 102292.74, 'stocks': 1080.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2008-10-09
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2008-10-09  :  0.34317389500991796
+Date: 2008-10-09 ; Faustmann ratio: 0.6440757655979203 ; Net worth: 1187721.12
+current equity:  {'cash': 663.99, 'stocks': 1175.0, 'options': {'count': 1280.0, 'expire': '2009-04-17', 'bought': '2008-10-09'}}
+{'cash': 663.99, 'stocks': 1175.0, 'options': {'count': 1280.0, 'expire': '2009-04-17', 'bought': '2008-10-09'}}
+option_start_price: 4.60029640371949
+2008-10-09 2008-12-10
+hit an exit threshold on date  2008-11-13
+opt_current_price: 71.35602781206316
+Selling options right now
+current vol for  2008-11-13  :  0.7884771753669262
+New equity:  {'cash': 91947.71, 'stocks': 1175.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2008-11-13
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2008-11-13  :  0.7884771753669262
+Date: 2008-11-13 ; Faustmann ratio: 0.6440757655979203 ; Net worth: 1164534.22
+current equity:  {'cash': 127.43, 'stocks': 1269.0, 'options': {'count': 289.0, 'expire': '2009-02-20', 'bought': '2008-11-13'}}
+{'cash': 127.43, 'stocks': 1269.0, 'options': {'count': 289.0, 'expire': '2009-02-20', 'bought': '2008-11-13'}}
+option_start_price: 20.05914158462727
+2008-11-13 2008-12-10
+
+loop restarting here, todays date:  2008-12-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2008-12-10  :  0.798425183259829
+Buying options right now
+current vol for  2008-12-10  :  0.798425183259829
+Date: 2008-12-10 ; Faustmann ratio: 0.6440757655979203 ; Net worth: 1156245.26
+current equity:  {'cash': 608.06, 'stocks': 1266.0, 'options': {'count': 279.0, 'expire': '2009-03-20', 'bought': '2008-12-10'}}
+{'cash': 608.06, 'stocks': 1266.0, 'options': {'count': 279.0, 'expire': '2009-03-20', 'bought': '2008-12-10'}}
+option_start_price: 20.671527690707265
+2008-12-10 2009-01-12
+
+loop restarting here, todays date:  2009-01-12
+ROLL OPTIONS
+Selling options right now
+current vol for  2009-01-12  :  0.6313704239135466
+Buying options right now
+current vol for  2009-01-12  :  0.6313704239135466
+Date: 2009-01-12 ; Faustmann ratio: 0.5922391406950731 ; Net worth: 1128878.73
+current equity:  {'cash': 467.74, 'stocks': 1261.0, 'options': {'count': 504.0, 'expire': '2009-04-17', 'bought': '2009-01-12'}}
+{'cash': 467.74, 'stocks': 1261.0, 'options': {'count': 504.0, 'expire': '2009-04-17', 'bought': '2009-01-12'}}
+option_start_price: 11.14397347830883
+2009-01-12 2009-02-10
+
+loop restarting here, todays date:  2009-02-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2009-02-10  :  0.3504226727633234
+Buying options right now
+current vol for  2009-02-10  :  0.3504226727633234
+Date: 2009-02-10 ; Faustmann ratio: 0.5922391406950731 ; Net worth: 1095053.37
+current equity:  {'cash': 224.57, 'stocks': 1255.0, 'options': {'count': 1303.0, 'expire': '2009-08-21', 'bought': '2009-02-10'}}
+{'cash': 224.57, 'stocks': 1255.0, 'options': {'count': 1303.0, 'expire': '2009-08-21', 'bought': '2009-02-10'}}
+option_start_price: 4.1642812218990635
+2009-02-10 2009-04-13
+
+loop restarting here, todays date:  2009-04-13
+ROLL OPTIONS
+Selling options right now
+current vol for  2009-04-13  :  0.4515200961383503
+Buying options right now
+current vol for  2009-04-13  :  0.4515200961383503
+Date: 2009-04-13 ; Faustmann ratio: 0.7251398886592069 ; Net worth: 1092358.23
+current equity:  {'cash': 503.16, 'stocks': 1257.0, 'options': {'count': 1090.0, 'expire': '2009-07-17', 'bought': '2009-04-13'}}
+{'cash': 503.16, 'stocks': 1257.0, 'options': {'count': 1090.0, 'expire': '2009-07-17', 'bought': '2009-04-13'}}
+option_start_price: 4.970095715167908
+2009-04-13 2009-05-11
+
+loop restarting here, todays date:  2009-05-11
+ROLL OPTIONS
+Selling options right now
+current vol for  2009-05-11  :  0.38101715061775354
+Buying options right now
+current vol for  2009-05-11  :  0.38101715061775354
+Date: 2009-05-11 ; Faustmann ratio: 0.7251398886592069 ; Net worth: 1160888.02
+current equity:  {'cash': 472.12, 'stocks': 1251.0, 'options': {'count': 1070.0, 'expire': '2009-11-20', 'bought': '2009-05-11'}}
+{'cash': 472.12, 'stocks': 1251.0, 'options': {'count': 1070.0, 'expire': '2009-11-20', 'bought': '2009-05-11'}}
+option_start_price: 5.3789029140191715
+2009-05-11 2009-07-10
+
+loop restarting here, todays date:  2009-07-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2009-07-10  :  0.2332903333620094
+Buying options right now
+current vol for  2009-07-10  :  0.2332903333620094
+Date: 2009-07-10 ; Faustmann ratio: 0.8619898532747431 ; Net worth: 1105696.27
+current equity:  {'cash': 260.05, 'stocks': 1245.0, 'options': {'count': 3196.0, 'expire': '2010-01-15', 'bought': '2009-07-10'}}
+{'cash': 260.05, 'stocks': 1245.0, 'options': {'count': 3196.0, 'expire': '2010-01-15', 'bought': '2009-07-10'}}
+option_start_price: 1.6869719683329976
+2009-07-10 2009-09-10
+
+loop restarting here, todays date:  2009-09-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2009-09-10  :  0.16837381498408813
+Buying options right now
+current vol for  2009-09-10  :  0.16837381498408813
+Date: 2009-09-10 ; Faustmann ratio: 0.8619898532747431 ; Net worth: 1299877.26
+current equity:  {'cash': 926.15, 'stocks': 1238.0, 'options': {'count': 4483.0, 'expire': '2010-09-17', 'bought': '2009-09-10'}}
+{'cash': 926.15, 'stocks': 1238.0, 'options': {'count': 4483.0, 'expire': '2010-09-17', 'bought': '2009-09-10'}}
+option_start_price: 1.4065971264385695
+2009-09-10 2010-01-11
+
+loop restarting here, todays date:  2010-01-11
+ROLL OPTIONS
+Selling options right now
+current vol for  2010-01-11  :  0.1249831843521164
+Buying options right now
+current vol for  2010-01-11  :  0.1249831843521164
+Date: 2010-01-11 ; Faustmann ratio: 0.9292467304953237 ; Net worth: 1423798.3
+current equity:  {'cash': 513.88, 'stocks': 1232.0, 'options': {'count': 8377.0, 'expire': '2011-01-21', 'bought': '2010-01-11'}}
+{'cash': 513.88, 'stocks': 1232.0, 'options': {'count': 8377.0, 'expire': '2011-01-21', 'bought': '2010-01-11'}}
+option_start_price: 0.8123132584368609
+2010-01-11 2010-05-10
+
+loop restarting here, todays date:  2010-05-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2010-05-10  :  0.08622097981205823
+Buying options right now
+current vol for  2010-05-10  :  0.08622097981205823
+Date: 2010-05-10 ; Faustmann ratio: 0.7917836410252013 ; Net worth: 1433320.72
+current equity:  {'cash': 1149.36, 'stocks': 1225.0, 'options': {'count': 17488.0, 'expire': '2011-05-20', 'bought': '2010-05-10'}}
+{'cash': 1149.36, 'stocks': 1225.0, 'options': {'count': 17488.0, 'expire': '2011-05-20', 'bought': '2010-05-10'}}
+option_start_price: 0.36911776284001974
+2010-05-10 2010-09-10
+hit an exit threshold on date  2010-05-19
+opt_current_price: 7.15577269189744
+Selling options right now
+current vol for  2010-05-19  :  0.1320082246032684
+New equity:  {'cash': 125589.51, 'stocks': 1225.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2010-05-19
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2010-05-19  :  0.1320082246032684
+Date: 2010-05-19 ; Faustmann ratio: 0.7917836410252013 ; Net worth: 1502289.09
+current equity:  {'cash': 942.47, 'stocks': 1329.0, 'options': {'count': 8167.0, 'expire': '2011-05-20', 'bought': '2010-05-19'}}
+{'cash': 942.47, 'stocks': 1329.0, 'options': {'count': 8167.0, 'expire': '2011-05-20', 'bought': '2010-05-19'}}
+option_start_price: 0.8805878783783356
+2010-05-19 2010-09-10
+hit an exit threshold on date  2010-05-26
+opt_current_price: 14.587164654716844
+Selling options right now
+current vol for  2010-05-26  :  0.22139445204916483
+New equity:  {'cash': 119747.84, 'stocks': 1329.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2010-05-26
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2010-05-26  :  0.22139445204916483
+Date: 2010-05-26 ; Faustmann ratio: 0.7917836410252013 ; Net worth: 1568975.39
+current equity:  {'cash': 441.61, 'stocks': 1431.0, 'options': {'count': 4287.0, 'expire': '2010-11-19', 'bought': '2010-05-26'}}
+{'cash': 441.61, 'stocks': 1431.0, 'options': {'count': 4287.0, 'expire': '2010-11-19', 'bought': '2010-05-26'}}
+option_start_price: 1.789253810033049
+2010-05-26 2010-07-12
+
+loop restarting here, todays date:  2010-07-12
+ROLL OPTIONS
+Selling options right now
+current vol for  2010-07-12  :  0.2630427861682514
+Buying options right now
+current vol for  2010-07-12  :  0.2630427861682514
+Date: 2010-07-12 ; Faustmann ratio: 0.8701143270708971 ; Net worth: 1556697.68
+current equity:  {'cash': 273.87, 'stocks': 1433.0, 'options': {'count': 2820.0, 'expire': '2011-01-21', 'bought': '2010-07-12'}}
+{'cash': 273.87, 'stocks': 1433.0, 'options': {'count': 2820.0, 'expire': '2011-01-21', 'bought': '2010-07-12'}}
+option_start_price: 2.7184477825233557
+2010-07-12 2010-09-10
+
+loop restarting here, todays date:  2010-09-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2010-09-10  :  0.18381068003178563
+Buying options right now
+current vol for  2010-09-10  :  0.18381068003178563
+Date: 2010-09-10 ; Faustmann ratio: 0.8701143270708971 ; Net worth: 1591915.88
+current equity:  {'cash': -0.87, 'stocks': 1426.0, 'options': {'count': 4326.0, 'expire': '2011-09-16', 'bought': '2010-09-10'}}
+{'cash': -0.87, 'stocks': 1426.0, 'options': {'count': 4326.0, 'expire': '2011-09-16', 'bought': '2010-09-10'}}
+option_start_price: 1.8034836840129564
+2010-09-10 2011-01-10
+
+loop restarting here, todays date:  2011-01-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2011-01-10  :  0.12910600459012916
+Buying options right now
+current vol for  2011-01-10  :  0.12910600459012916
+Date: 2011-01-10 ; Faustmann ratio: 0.9849289681592442 ; Net worth: 1812616.29
+current equity:  {'cash': 915.33, 'stocks': 1418.0, 'options': {'count': 9065.0, 'expire': '2012-01-20', 'bought': '2011-01-10'}}
+{'cash': 915.33, 'stocks': 1418.0, 'options': {'count': 9065.0, 'expire': '2012-01-20', 'bought': '2011-01-10'}}
+option_start_price: 0.9581436645056023
+2011-01-10 2011-05-10
+
+loop restarting here, todays date:  2011-05-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2011-05-10  :  0.11945547877133073
+Buying options right now
+current vol for  2011-05-10  :  0.11945547877133073
+Date: 2011-05-10 ; Faustmann ratio: 0.9668383927338722 ; Net worth: 1927968.86
+current equity:  {'cash': 539.01, 'stocks': 1411.0, 'options': {'count': 10713.0, 'expire': '2012-05-18', 'bought': '2011-05-10'}}
+{'cash': 539.01, 'stocks': 1411.0, 'options': {'count': 10713.0, 'expire': '2012-05-18', 'bought': '2011-05-10'}}
+option_start_price: 0.8643792208097842
+2011-05-10 2011-09-12
+hit an exit threshold on date  2011-08-09
+opt_current_price: 14.030370708911363
+Selling options right now
+current vol for  2011-08-09  :  0.15181729670074773
+New equity:  {'cash': 150416.37, 'stocks': 1411.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2011-08-09
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2011-08-09  :  0.15181729670074773
+Date: 2011-08-09 ; Faustmann ratio: 0.8374006177058914 ; Net worth: 1804815.73
+current equity:  {'cash': 404.52, 'stocks': 1531.0, 'options': {'count': 6997.0, 'expire': '2012-08-17', 'bought': '2011-08-09'}}
+{'cash': 404.52, 'stocks': 1531.0, 'options': {'count': 6997.0, 'expire': '2012-08-17', 'bought': '2011-08-09'}}
+option_start_price: 1.247953232354277
+2011-08-09 2011-12-12
+hit an exit threshold on date  2011-08-24
+opt_current_price: 18.990025841369402
+Selling options right now
+current vol for  2011-08-24  :  0.2779414390274455
+New equity:  {'cash': 132997.73, 'stocks': 1531.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2011-08-24
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2011-08-24  :  0.2779414390274455
+Date: 2011-08-24 ; Faustmann ratio: 0.8374006177058914 ; Net worth: 1937032.87
+current equity:  {'cash': 532.67, 'stocks': 1635.0, 'options': {'count': 2999.0, 'expire': '2012-02-17', 'bought': '2011-08-24'}}
+{'cash': 532.67, 'stocks': 1635.0, 'options': {'count': 2999.0, 'expire': '2012-02-17', 'bought': '2011-08-24'}}
+option_start_price: 3.1858952020411806
+2011-08-24 2011-10-11
+
+loop restarting here, todays date:  2011-10-11
+ROLL OPTIONS
+Selling options right now
+current vol for  2011-10-11  :  0.2980678908878473
+Buying options right now
+current vol for  2011-10-11  :  0.2980678908878473
+Date: 2011-10-11 ; Faustmann ratio: 0.9001546690105138 ; Net worth: 1965678.71
+current equity:  {'cash': -6.2, 'stocks': 1631.0, 'options': {'count': 2451.0, 'expire': '2012-04-20', 'bought': '2011-10-11'}}
+{'cash': -6.2, 'stocks': 1631.0, 'options': {'count': 2451.0, 'expire': '2012-04-20', 'bought': '2011-10-11'}}
+option_start_price: 3.9675599092768437
+2011-10-11 2011-12-12
+
+loop restarting here, todays date:  2011-12-12
+ROLL OPTIONS
+Selling options right now
+current vol for  2011-12-12  :  0.2749847951810724
+Buying options right now
+current vol for  2011-12-12  :  0.2749847951810724
+Date: 2011-12-12 ; Faustmann ratio: 0.9001546690105138 ; Net worth: 2047608.33
+current equity:  {'cash': 532.53, 'stocks': 1623.0, 'options': {'count': 2976.0, 'expire': '2012-06-15', 'bought': '2011-12-12'}}
+{'cash': 532.53, 'stocks': 1623.0, 'options': {'count': 2976.0, 'expire': '2012-06-15', 'bought': '2011-12-12'}}
+option_start_price: 3.40375309648514
+2011-12-12 2012-02-10
+
+loop restarting here, todays date:  2012-02-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2012-02-10  :  0.14252307531421746
+Buying options right now
+current vol for  2012-02-10  :  0.14252307531421746
+Date: 2012-02-10 ; Faustmann ratio: 0.9816752719525468 ; Net worth: 2193057.32
+current equity:  {'cash': 237.98, 'stocks': 1615.0, 'options': {'count': 8501.0, 'expire': '2013-02-15', 'bought': '2012-02-10'}}
+{'cash': 237.98, 'stocks': 1615.0, 'options': {'count': 8501.0, 'expire': '2013-02-15', 'bought': '2012-02-10'}}
+option_start_price: 1.2487065307883292
+2012-02-10 2012-06-11
+
+loop restarting here, todays date:  2012-06-11
+ROLL OPTIONS
+Selling options right now
+current vol for  2012-06-11  :  0.13241521470469453
+Buying options right now
+current vol for  2012-06-11  :  0.13241521470469453
+Date: 2012-06-11 ; Faustmann ratio: 0.9471114044148248 ; Net worth: 2157822.73
+current equity:  {'cash': 1266.99, 'stocks': 1607.0, 'options': {'count': 9810.0, 'expire': '2013-06-21', 'bought': '2012-06-11'}}
+{'cash': 1266.99, 'stocks': 1607.0, 'options': {'count': 9810.0, 'expire': '2013-06-21', 'bought': '2012-06-11'}}
+option_start_price: 1.0576013915699178
+2012-06-11 2012-10-10
+
+loop restarting here, todays date:  2012-10-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2012-10-10  :  0.09205692115012624
+Buying options right now
+current vol for  2012-10-10  :  0.09205692115012624
+Date: 2012-10-10 ; Faustmann ratio: 0.9678077381690476 ; Net worth: 2318152.84
+current equity:  {'cash': 801.11, 'stocks': 1599.0, 'options': {'count': 20705.0, 'expire': '2013-10-18', 'bought': '2012-10-10'}}
+{'cash': 801.11, 'stocks': 1599.0, 'options': {'count': 20705.0, 'expire': '2013-10-18', 'bought': '2012-10-10'}}
+option_start_price: 0.519788438124337
+2012-10-10 2013-02-11
+
+loop restarting here, todays date:  2013-02-11
+ROLL OPTIONS
+Selling options right now
+current vol for  2013-02-11  :  0.12018097736931412
+Buying options right now
+current vol for  2013-02-11  :  0.12018097736931412
+Date: 2013-02-11 ; Faustmann ratio: 1.064122957093124 ; Net worth: 2432428.31
+current equity:  {'cash': 508.17, 'stocks': 1594.0, 'options': {'count': 12043.0, 'expire': '2014-02-21', 'bought': '2013-02-11'}}
+{'cash': 508.17, 'stocks': 1594.0, 'options': {'count': 12043.0, 'expire': '2014-02-21', 'bought': '2013-02-11'}}
+option_start_price: 0.97433373113277
+2013-02-11 2013-06-10
+
+loop restarting here, todays date:  2013-06-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2013-06-10  :  0.12722502560337723
+Buying options right now
+current vol for  2013-06-10  :  0.12722502560337723
+Date: 2013-06-10 ; Faustmann ratio: 1.0437349944409309 ; Net worth: 2628073.65
+current equity:  {'cash': 554.91, 'stocks': 1586.0, 'options': {'count': 10598.0, 'expire': '2014-06-20', 'bought': '2013-06-10'}}
+{'cash': 554.91, 'stocks': 1586.0, 'options': {'count': 10598.0, 'expire': '2014-06-20', 'bought': '2013-06-10'}}
+option_start_price: 1.198008458119567
+2013-06-10 2013-10-10
+
+loop restarting here, todays date:  2013-10-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2013-10-10  :  0.10290078486988405
+Buying options right now
+current vol for  2013-10-10  :  0.10290078486988405
+Date: 2013-10-10 ; Faustmann ratio: 1.1313696251149261 ; Net worth: 2684023.55
+current equity:  {'cash': 326.9, 'stocks': 1578.0, 'options': {'count': 16571.0, 'expire': '2014-10-17', 'bought': '2013-10-10'}}
+{'cash': 326.9, 'stocks': 1578.0, 'options': {'count': 16571.0, 'expire': '2014-10-17', 'bought': '2013-10-10'}}
+option_start_price: 0.7746592322651935
+2013-10-10 2014-02-10
+
+loop restarting here, todays date:  2014-02-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2014-02-10  :  0.09641563903326426
+Buying options right now
+current vol for  2014-02-10  :  0.09641563903326426
+Date: 2014-02-10 ; Faustmann ratio: 1.156678721677807 ; Net worth: 2839293.06
+current equity:  {'cash': 1755.75, 'stocks': 1569.0, 'options': {'count': 18684.0, 'expire': '2015-02-20', 'bought': '2014-02-10'}}
+{'cash': 1755.75, 'stocks': 1569.0, 'options': {'count': 18684.0, 'expire': '2015-02-20', 'bought': '2014-02-10'}}
+option_start_price: 0.7188792250312481
+2014-02-10 2014-06-10
+
+loop restarting here, todays date:  2014-06-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2014-06-10  :  0.10692942141261152
+Buying options right now
+current vol for  2014-06-10  :  0.10692942141261152
+Date: 2014-06-10 ; Faustmann ratio: 1.1851700503247153 ; Net worth: 3061874.03
+current equity:  {'cash': 1812.34, 'stocks': 1561.0, 'options': {'count': 15160.0, 'expire': '2015-06-19', 'bought': '2014-06-10'}}
+{'cash': 1812.34, 'stocks': 1561.0, 'options': {'count': 15160.0, 'expire': '2015-06-19', 'bought': '2014-06-10'}}
+option_start_price: 0.9742244479679911
+2014-06-10 2014-10-10
+
+loop restarting here, todays date:  2014-10-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2014-10-10  :  0.06819324653668646
+Buying options right now
+current vol for  2014-10-10  :  0.06819324653668646
+Date: 2014-10-10 ; Faustmann ratio: 1.1823319786716233 ; Net worth: 3023263.22
+current equity:  {'cash': 1566.55, 'stocks': 1553.0, 'options': {'count': 36888.0, 'expire': '2015-10-16', 'bought': '2014-10-10'}}
+{'cash': 1566.55, 'stocks': 1553.0, 'options': {'count': 36888.0, 'expire': '2015-10-16', 'bought': '2014-10-10'}}
+option_start_price: 0.36778254896952767
+2014-10-10 2015-02-10
+hit an exit threshold on date  2014-10-24
+opt_current_price: 5.998106839743954
+Selling options right now
+current vol for  2014-10-24  :  0.11461407791091417
+New equity:  {'cash': 221348.72, 'stocks': 1553.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2014-10-24
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2014-10-24  :  0.11461407791091417
+Date: 2014-10-24 ; Faustmann ratio: 1.1823319786716233 ; Net worth: 3272656.8
+current equity:  {'cash': 385.12, 'stocks': 1657.0, 'options': {'count': 14232.0, 'expire': '2015-10-16', 'bought': '2014-10-24'}}
+{'cash': 385.12, 'stocks': 1657.0, 'options': {'count': 14232.0, 'expire': '2015-10-16', 'bought': '2014-10-24'}}
+option_start_price: 1.1115273100700769
+2014-10-24 2015-02-10
+
+loop restarting here, todays date:  2015-02-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2015-02-10  :  0.16982095219671722
+Buying options right now
+current vol for  2015-02-10  :  0.16982095219671722
+Date: 2015-02-10 ; Faustmann ratio: 1.1537949490910802 ; Net worth: 3457795.64
+current equity:  {'cash': 1047.27, 'stocks': 1661.0, 'options': {'count': 6003.0, 'expire': '2016-02-19', 'bought': '2015-02-10'}}
+{'cash': 1047.27, 'stocks': 1661.0, 'options': {'count': 6003.0, 'expire': '2016-02-19', 'bought': '2015-02-10'}}
+option_start_price: 2.840201166322281
+2015-02-10 2015-06-10
+
+loop restarting here, todays date:  2015-06-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2015-06-10  :  0.09591394330471478
+Buying options right now
+current vol for  2015-06-10  :  0.09591394330471478
+Date: 2015-06-10 ; Faustmann ratio: 1.1232652727163284 ; Net worth: 3502136.63
+current equity:  {'cash': 141.47, 'stocks': 1653.0, 'options': {'count': 19903.0, 'expire': '2016-06-17', 'bought': '2015-06-10'}}
+{'cash': 141.47, 'stocks': 1653.0, 'options': {'count': 19903.0, 'expire': '2016-06-17', 'bought': '2015-06-10'}}
+option_start_price: 0.8362891915323161
+2015-06-10 2015-10-13
+hit an exit threshold on date  2015-09-10
+opt_current_price: 25.109607991903005
+Selling options right now
+current vol for  2015-09-10  :  0.17483107737184814
+New equity:  {'cash': 499100.0, 'stocks': 1653.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2015-09-10
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2015-09-10  :  0.17483107737184814
+Date: 2015-09-10 ; Faustmann ratio: 1.0159814324635896 ; Net worth: 3746972.23
+current equity:  {'cash': 343.3, 'stocks': 1897.0, 'options': {'count': 6439.0, 'expire': '2016-09-16', 'bought': '2015-09-10'}}
+{'cash': 343.3, 'stocks': 1897.0, 'options': {'count': 6439.0, 'expire': '2016-09-16', 'bought': '2015-09-10'}}
+option_start_price: 2.869036195134754
+2015-09-10 2016-01-11
+
+loop restarting here, todays date:  2016-01-11
+ROLL OPTIONS
+Selling options right now
+current vol for  2016-01-11  :  0.16580705129307405
+Buying options right now
+current vol for  2016-01-11  :  0.16580705129307405
+Date: 2016-01-11 ; Faustmann ratio: 1.077502417483483 ; Net worth: 3675387.02
+current equity:  {'cash': 824.54, 'stocks': 1889.0, 'options': {'count': 7151.0, 'expire': '2017-01-20', 'bought': '2016-01-11'}}
+{'cash': 824.54, 'stocks': 1889.0, 'options': {'count': 7151.0, 'expire': '2017-01-20', 'bought': '2016-01-11'}}
+option_start_price: 2.5338543001313028
+2016-01-11 2016-05-10
+
+loop restarting here, todays date:  2016-05-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2016-05-10  :  0.09716252987762147
+Buying options right now
+current vol for  2016-05-10  :  0.09716252987762147
+Date: 2016-05-10 ; Faustmann ratio: 1.0765733890884455 ; Net worth: 3937972.49
+current equity:  {'cash': 1670.56, 'stocks': 1879.0, 'options': {'count': 22128.0, 'expire': '2017-05-19', 'bought': '2016-05-10'}}
+{'cash': 1670.56, 'stocks': 1879.0, 'options': {'count': 22128.0, 'expire': '2017-05-19', 'bought': '2016-05-10'}}
+option_start_price: 0.851002199788887
+2016-05-10 2016-09-12
+
+loop restarting here, todays date:  2016-09-12
+ROLL OPTIONS
+Selling options right now
+current vol for  2016-09-12  :  0.05330418337108645
+Buying options right now
+current vol for  2016-09-12  :  0.05330418337108645
+Date: 2016-09-12 ; Faustmann ratio: 1.0724941718462264 ; Net worth: 4062982.54
+current equity:  {'cash': 2069.56, 'stocks': 1869.0, 'options': {'count': 72600.0, 'expire': '2017-09-15', 'bought': '2016-09-12'}}
+{'cash': 2069.56, 'stocks': 1869.0, 'options': {'count': 72600.0, 'expire': '2017-09-15', 'bought': '2016-09-12'}}
+option_start_price: 0.24387314873229293
+2016-09-12 2017-01-10
+hit an exit threshold on date  2016-09-27
+opt_current_price: 5.316000198546192
+Selling options right now
+current vol for  2016-09-27  :  0.08706283889592735
+New equity:  {'cash': 385107.17, 'stocks': 1869.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2016-09-27
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2016-09-27  :  0.08706283889592735
+Date: 2016-09-27 ; Faustmann ratio: 1.0724941718462264 ; Net worth: 4422586.32
+current equity:  {'cash': 1742.16, 'stocks': 2036.0, 'options': {'count': 30724.0, 'expire': '2017-09-15', 'bought': '2016-09-27'}}
+{'cash': 1742.16, 'stocks': 2036.0, 'options': {'count': 30724.0, 'expire': '2017-09-15', 'bought': '2016-09-27'}}
+option_start_price: 0.6764652823628303
+2016-09-27 2017-01-10
+
+loop restarting here, todays date:  2017-01-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2017-01-10  :  0.0733129150926367
+Buying options right now
+current vol for  2017-01-10  :  0.0733129150926367
+Date: 2017-01-10 ; Faustmann ratio: 1.1193585192586613 ; Net worth: 4639559.37
+current equity:  {'cash': 105.35, 'stocks': 2026.0, 'options': {'count': 42192.0, 'expire': '2018-01-19', 'bought': '2017-01-10'}}
+{'cash': 105.35, 'stocks': 2026.0, 'options': {'count': 42192.0, 'expire': '2018-01-19', 'bought': '2017-01-10'}}
+option_start_price: 0.5132004889883817
+2017-01-10 2017-05-10
+
+loop restarting here, todays date:  2017-05-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2017-05-10  :  0.0748624293036516
+Buying options right now
+current vol for  2017-05-10  :  0.0748624293036516
+Date: 2017-05-10 ; Faustmann ratio: 1.1083724251989617 ; Net worth: 4858938.73
+current equity:  {'cash': 926.61, 'stocks': 2015.0, 'options': {'count': 39842.0, 'expire': '2018-05-18', 'bought': '2017-05-10'}}
+{'cash': 926.61, 'stocks': 2015.0, 'options': {'count': 39842.0, 'expire': '2018-05-18', 'bought': '2017-05-10'}}
+option_start_price: 0.5656351376976936
+2017-05-10 2017-09-11
+
+loop restarting here, todays date:  2017-09-11
+ROLL OPTIONS
+Selling options right now
+current vol for  2017-09-11  :  0.07985014532295591
+Buying options right now
+current vol for  2017-09-11  :  0.07985014532295591
+Date: 2017-09-11 ; Faustmann ratio: 1.125066021879101 ; Net worth: 5015137.84
+current equity:  {'cash': 953.28, 'stocks': 2005.0, 'options': {'count': 35326.0, 'expire': '2018-09-21', 'bought': '2017-09-11'}}
+{'cash': 953.28, 'stocks': 2005.0, 'options': {'count': 35326.0, 'expire': '2018-09-21', 'bought': '2017-09-11'}}
+option_start_price: 0.6748544479657816
+2017-09-11 2018-01-10
+
+loop restarting here, todays date:  2018-01-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2018-01-10  :  0.06556833568977304
+Buying options right now
+current vol for  2018-01-10  :  0.06556833568977304
+Date: 2018-01-10 ; Faustmann ratio: 1.1449668228565772 ; Net worth: 5512997.37
+current equity:  {'cash': 2201.13, 'stocks': 1994.0, 'options': {'count': 52027.0, 'expire': '2019-01-18', 'bought': '2018-01-10'}}
+{'cash': 2201.13, 'stocks': 1994.0, 'options': {'count': 52027.0, 'expire': '2019-01-18', 'bought': '2018-01-10'}}
+option_start_price: 0.4939923256591747
+2018-01-10 2018-05-10
+hit an exit threshold on date  2018-02-22
+opt_current_price: 34.41663452112971
+Selling options right now
+current vol for  2018-02-22  :  0.1570601922625247
+New equity:  {'cash': 1790713.37, 'stocks': 1994.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2018-02-22
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2018-02-22  :  0.1570601922625247
+Date: 2018-02-22 ; Faustmann ratio: 1.1449668228565772 ; Net worth: 7235112.18
+current equity:  {'cash': 2509.58, 'stocks': 2635.0, 'options': {'count': 11307.0, 'expire': '2019-02-15', 'bought': '2018-02-22'}}
+{'cash': 2509.58, 'stocks': 2635.0, 'options': {'count': 11307.0, 'expire': '2019-02-15', 'bought': '2018-02-22'}}
+option_start_price: 3.1602084632087397
+2018-02-22 2018-06-11
+
+loop restarting here, todays date:  2018-06-11
+ROLL OPTIONS
+Selling options right now
+current vol for  2018-06-11  :  0.10258396733054923
+Buying options right now
+current vol for  2018-06-11  :  0.10258396733054923
+Date: 2018-06-11 ; Faustmann ratio: 1.150346367351198 ; Net worth: 7353195.32
+current equity:  {'cash': 1561.28, 'stocks': 2622.0, 'options': {'count': 27037.0, 'expire': '2019-06-21', 'bought': '2018-06-11'}}
+{'cash': 1561.28, 'stocks': 2622.0, 'options': {'count': 27037.0, 'expire': '2019-06-21', 'bought': '2018-06-11'}}
+option_start_price: 1.3205431303559862
+2018-06-11 2018-10-10
+
+loop restarting here, todays date:  2018-10-10
+ROLL OPTIONS
+Selling options right now
+current vol for  2018-10-10  :  0.06676047662578281
+Buying options right now
+current vol for  2018-10-10  :  0.06676047662578281
+Date: 2018-10-10 ; Faustmann ratio: 1.034379945113511 ; Net worth: 7533810.33
+current equity:  {'cash': 137.05, 'stocks': 2609.0, 'options': {'count': 64966.0, 'expire': '2019-10-18', 'bought': '2018-10-10'}}
+{'cash': 137.05, 'stocks': 2609.0, 'options': {'count': 64966.0, 'expire': '2019-10-18', 'bought': '2018-10-10'}}
+option_start_price: 0.5442084158827392
+2018-10-10 2019-02-11
+hit an exit threshold on date  2018-10-26
+opt_current_price: 28.15634833429999
+Selling options right now
+current vol for  2018-10-26  :  0.10944477667935675
+New equity:  {'cash': 1826742.38, 'stocks': 2609.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2018-10-26
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2018-10-26  :  0.10944477667935675
+Date: 2018-10-26 ; Faustmann ratio: 1.034379945113511 ; Net worth: 8848682.74
+current equity:  {'cash': 1501.13, 'stocks': 3270.0, 'options': {'count': 30105.0, 'expire': '2019-10-18', 'bought': '2018-10-26'}}
+{'cash': 1501.13, 'stocks': 3270.0, 'options': {'count': 30105.0, 'expire': '2019-10-18', 'bought': '2018-10-26'}}
+option_start_price: 1.4316361127090147
+2018-10-26 2019-02-11
+hit an exit threshold on date  2018-11-19
+opt_current_price: 22.485605619830352
+Selling options right now
+current vol for  2018-11-19  :  0.19618166022798808
+New equity:  {'cash': 677224.29, 'stocks': 3270.0, 'options': {'count': 0, 'expire': '', 'bought': ''}}
+
+loop restarting here, todays date:  2018-11-19
+
+SELL STOCKS AND BUY OPTIONS
+
+Buying options right now
+current vol for  2018-11-19  :  0.19618166022798808
+Date: 2018-11-19 ; Faustmann ratio: 1.034379945113511 ; Net worth: 9613864.44
+current equity:  {'cash': 63.45, 'stocks': 3500.0, 'options': {'count': 9122.0, 'expire': '2019-11-15', 'bought': '2018-11-19'}}
+{'cash': 63.45, 'stocks': 3500.0, 'options': {'count': 9122.0, 'expire': '2019-11-15', 'bought': '2018-11-19'}}
+option_start_price: 5.233643969248774
+2018-11-19 2019-03-11
