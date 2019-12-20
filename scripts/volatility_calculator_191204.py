@@ -25,7 +25,7 @@ import numpy as np
 ## INPUT CONSTANTS ##
 TIME_WINDOW = 40 # days
 INPUT_CSV = 'data/^GSPC.csv'
-OUTPUT_CSV = 'data/volatility40.csv'
+OUTPUT_CSV = 'data/volatility40_2.csv'
 
 # Define helper functions
 ## to convert from string to datetime and vice-versa
@@ -51,7 +51,7 @@ with open(OUTPUT_CSV,'w') as f:
 		# Get the date from the last element of the subset
 		out_date=data[stop+1]['Date']
 		# Compute price changes from subset
-		price_changes = np.asarray([get_priceChange(data[_-1],data[_]) for _ in range(i,i+30)])
+		price_changes = np.asarray([get_priceChange(data[_-1],data[_]) for _ in range(i,i+TIME_WINDOW)])
 		# Compute annualized volatility from price changes
 		out_volatility= np.std(price_changes)*np.sqrt(252)*100 
 		# Write row to output CSV
