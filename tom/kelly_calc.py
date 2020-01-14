@@ -335,18 +335,18 @@ def main():
 	
 	#input the date of opening the trade
 	# need to put last trade date since no data for opening date
-	trade_date='2019-11-22'
-	trade_month='12'
+	trade_date='2019-12-24'
+	trade_month='01'
 	
 	# option to input data for open price
-	# if trade_open=0, then default to previous close
+	# if trade_open=0, then default to previous close, otherwise use open_price
 	trade_open=1
-	open_price=3120
+	open_price=3225.75
 	
-	
+	# if use_my_range=0, then default to range in study, otherwise use values input below
 	use_my_range=1
-	period_high_my=3132.25
-	period_low_my=3077.25
+	period_high_my=3233.75
+	period_low_my=3136.25
 	
 	print()
 	
@@ -563,43 +563,45 @@ def main():
 	rng_samps=0
 	#range1
 	if dist_to_high < 5:
-		print('open is within '+str(dist_to_high)+'% of high')
-		print('Win prob of range1: '+str(round(rng1_prob,2))+', mean of wins range1: '+str(rng1_avg_win))
 		rng_prob=rng1_prob
 		rng_avg_win=rng1_avg_win
 		rng_samps=rng1_samps
+		print('open is within '+str(dist_to_high)+'% of high, range 1 is 0%-5% of 10d high')
+		print('Win prob of range1: '+str(round(rng1_prob,2))+', mean of wins range1: '+str(rng1_avg_win)+', #samples: '+str(rng_samps))
+
 
 	#range2
 	elif 5<dist_to_high<20:
-		print('open is within '+str(dist_to_high)+'% of high')
-		print('Win prob of range2: '+str(round(rng2_prob,2))+', mean of wins range2: '+str(rng2_avg_win))
 		rng_prob=rng2_prob
 		rng_avg_win=rng2_avg_win
 		rng_samps=rng2_samps
+		print('open is within '+str(dist_to_high)+'% of high, range 2 is 5%-20% of 10d high')
+		print('Win prob of range2: '+str(round(rng2_prob,2))+', mean of wins range2: '+str(rng2_avg_win)+', #samples: '+str(rng_samps))
+
 
 	#range5
 	elif dist_to_low < 5:
-		print('open is within '+str(dist_to_low)+'% of low')
-		print('Win prob of range5: '+str(round(rng5_prob,2))+', mean of wins range5: '+str(rng5_avg_win))
 		rng_prob=rng5_prob
 		rng_avg_win=rng5_avg_win
 		rng_samps=rng5_samps
+		print('open is within '+str(dist_to_low)+'% of low, range 5 is 0%-5% of 10d low')
+		print('Win prob of range5: '+str(round(rng5_prob,2))+', mean of wins range5: '+str(rng5_avg_win)+', #samples: '+str(rng_samps))
 	
 	#range4
 	elif 5<dist_to_low<20:
-		print('open is within '+str(dist_to_low)+'% of low')
-		print('Win prob of range4: '+str(round(rng4_prob,2))+', mean of wins range4: '+str(rng4_avg_win))
 		rng_prob=rng4_prob
 		rng_avg_win=rng4_avg_win
 		rng_samps=rng4_samps
+		print('open is within '+str(dist_to_low)+'% of low, range 4 is 5%-20% of 10d low')
+		print('Win prob of range4: '+str(round(rng4_prob,2))+', mean of wins range4: '+str(rng4_avg_win)+', #samples: '+str(rng_samps))
 	
 	#range3
 	else:
-		print('open is in the middle, within '+str(dist_to_high)+'% of high and within '+str(dist_to_low)+'% of low')
-		print('Win prob of range3: '+str(round(rng3_prob,2))+', mean of wins range3: '+str(rng3_avg_win))
 		rng_prob=rng3_prob
 		rng_avg_win=rng3_avg_win
 		rng_samps=rng3_samps
+		print('open is in the middle, within '+str(dist_to_high)+'% of high and within '+str(dist_to_low)+'% of low')
+		print('Win prob of range3: '+str(round(rng3_prob,2))+', mean of wins range3: '+str(rng3_avg_win)+', #samples: '+str(rng_samps))
 	
 	#####
 	# compound probability and avg win
