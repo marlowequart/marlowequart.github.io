@@ -1,3 +1,24 @@
+'''
+The purpose of this script is to plot time series data for comparison to trading results
+
+
+Input: daily equity value and volatility
+
+Output: plots over different time frames
+
+
+Notes:
+
+
+pandas version: 0.23.4
+matplotlib version: 2.2.2
+numpy version: 1.11.3
+scipy version: 1.1.0
+
+python version: 3.5.5
+
+'''
+
 import csv
 from matplotlib import pyplot as plt
 import pandas as pd
@@ -7,14 +28,14 @@ import math
 
 sp_input_file='data/^GSPC.csv'
 vol_input_file='data/volatility40.csv'
-vol2_input_file='data/volatility40_2.csv'
-volmq_input_file='data/vixmq_dec08_to_nov18.csv'
+# ~ vol2_input_file='data/volatility40_2.csv'
+# ~ volmq_input_file='data/vixmq_dec08_to_nov18.csv'
 
 
 sp_data_df = pd.read_csv(sp_input_file,header=0)
 vol_data_df = pd.read_csv(vol_input_file,header=0)
-volmq_data_df = pd.read_csv(volmq_input_file,header=0)
-vol2_data_df = pd.read_csv(vol2_input_file,header=0)
+# ~ volmq_data_df = pd.read_csv(volmq_input_file,header=0)
+# ~ vol2_data_df = pd.read_csv(vol2_input_file,header=0)
 
 
 sp_date=sp_data_df['Date'].tolist()
@@ -23,11 +44,11 @@ sp_price=sp_data_df['Close'].tolist()
 vol_date=vol_data_df['Date'].tolist()
 vol_price=vol_data_df['Volatility'].tolist()
 
-vol2_date=vol2_data_df['Date'].tolist()
-vol2_price=vol2_data_df['Volatility'].tolist()
+# ~ vol2_date=vol2_data_df['Date'].tolist()
+# ~ vol2_price=vol2_data_df['Volatility'].tolist()
 
-volmq_date=volmq_data_df['Date'].tolist()
-volmq_price=volmq_data_df['Close'].tolist()
+# ~ volmq_date=volmq_data_df['Date'].tolist()
+# ~ volmq_price=volmq_data_df['Close'].tolist()
 
 
 #plot entire series
@@ -40,7 +61,7 @@ vol_end_idx=17420
 
 #plot 20 days around given date
 '''
-date='2018-11-15'
+date='2015-08-21'
 sp_date_idx=sp_date.index(date)
 vol_date_idx=vol_date.index(date)
 volmq_date_idx=volmq_date.index(date)
@@ -50,23 +71,23 @@ vol_start_idx=vol_date_idx-10
 vol_end_idx=vol_date_idx+10
 volmq_start_idx=volmq_date_idx-10
 volmq_end_idx=volmq_date_idx+10
-'''
 
+'''
 #plot 100 days around given date
 
-date='2018-02-01'
+date='1998-08-21'
 sp_date_idx=sp_date.index(date)
 vol_date_idx=vol_date.index(date)
-vol2_date_idx=vol2_date.index(date)
-volmq_date_idx=volmq_date.index(date)
+# ~ vol2_date_idx=vol2_date.index(date)
+# ~ volmq_date_idx=volmq_date.index(date)
 sp_start_idx=sp_date_idx-50
 sp_end_idx=sp_date_idx+50
 vol_start_idx=vol_date_idx-50
 vol_end_idx=vol_date_idx+50
-vol2_start_idx=vol2_date_idx-50
-vol2_end_idx=vol2_date_idx+50
-volmq_start_idx=volmq_date_idx-50
-volmq_end_idx=volmq_date_idx+50
+# ~ vol2_start_idx=vol2_date_idx-50
+# ~ vol2_end_idx=vol2_date_idx+50
+# ~ volmq_start_idx=volmq_date_idx-50
+# ~ volmq_end_idx=volmq_date_idx+50
 
 
 #plot 200 days around given date
@@ -102,8 +123,8 @@ volmq_end_idx=volmq_date.index(end_date)
 
 # remove extras
 
-volmq_date_plot=volmq_date[volmq_start_idx:volmq_end_idx]
-volmq_price_plot=volmq_price[volmq_start_idx:volmq_end_idx]
+# ~ volmq_date_plot=volmq_date[volmq_start_idx:volmq_end_idx]
+# ~ volmq_price_plot=volmq_price[volmq_start_idx:volmq_end_idx]
 '''
 volmq_range=np.arange(volmq_start_idx,volmq_end_idx)
 vol_range=np.arange(vol_start_idx,vol_end_idx)
@@ -143,8 +164,8 @@ plt.grid()
 #plot vol
 ax = fig.add_subplot(212)
 plt.plot(vol_date[vol_start_idx:vol_end_idx], vol_price[vol_start_idx:vol_end_idx],color='b')
-plt.plot(vol_date[vol_start_idx:vol_end_idx],volmq_price_plot ,color='r')
-plt.plot(vol2_date[vol2_start_idx:vol2_end_idx], vol2_price[vol2_start_idx:vol2_end_idx],color='g')
+# ~ plt.plot(vol_date[vol_start_idx:vol_end_idx],volmq_price_plot ,color='r')
+# ~ plt.plot(vol2_date[vol2_start_idx:vol2_end_idx], vol2_price[vol2_start_idx:vol2_end_idx],color='g')
 plt.ylabel('Vol')
 plt.xlabel(r'Date')
 plt.title(r'Volatility')

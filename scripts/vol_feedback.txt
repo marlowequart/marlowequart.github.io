@@ -1,7 +1,0 @@
-Looking at the volatility script, volatility_calculator_191204.py
-
-Line 54 you are setting the range from i to i+30. Should that be TIME_WINDOW instead of 30?
-
-After making this change I get a volatility40.csv(original file) and volatility40_2.csv(with change).
-I created this script to plot all of the data, and it seems like there might be a time lag on the files from the
-volatility script. Do you think we need to implement some sort of shift on the data?
