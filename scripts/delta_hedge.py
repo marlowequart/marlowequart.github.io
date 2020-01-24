@@ -376,6 +376,7 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 
 	## RUN SIMULATION ##
 	# dict to store equity curve
+	# format is [0:Date, 1:net_worth, 2:Faustmann_ratio, 3:option_returns, 4:number_of_S&P_index_held, 5:S&P_price_today, 6:num_options_held, 7:options_price]
 	equity_curve=[]
 	# set starting equity
 	equity={'stocks':0,
@@ -412,7 +413,8 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 			else:
 				if DEBUG: print('REMAIN AS IS')
 				buy_stocks(equity['cash'],this_trade_day)
-		equity_curve.append([this_trade_day,get_net_worth(equity, this_trade_day),faustmann_ratio,option_returns])
+		opt_current_price_1 = get_for_date.put_opt_price(equity['options']['bought'], this_trade_day, equity['options']['expire'])['price']
+		equity_curve.append([this_trade_day,get_net_worth(equity, this_trade_day),faustmann_ratio,option_returns,equity['stocks'],get_for_date.market_price(this_trade_day),equity['options']['count'],opt_current_price_1])
 		# Move on to the next date
 		last_trade_day=this_trade_day
 		this_trade_day=make_nxt_trade_date(last_trade_day)
@@ -449,11 +451,12 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 					# if so, then sell options on current day and re-run main loop now
 					this_trade_day = _
 					option_returns += sell_options()
-					equity_curve.append([this_trade_day,get_net_worth(equity, this_trade_day),faustmann_ratio,option_returns])
+					# Can use this next line to show dates where trades happen in equity curve. Otherwise comment out to not repeat days in equity curve
+					# equity_curve.append([this_trade_day,get_net_worth(equity, this_trade_day),faustmann_ratio,option_returns,equity['stocks'],get_for_date.market_price(this_trade_day),equity['options']['count'],opt_current_price])
 					break
 				# 1/21/19 adding this line for full equity output
 				else:
-					equity_curve.append([_,get_net_worth(equity, _),faustmann_ratio,option_returns])
+					equity_curve.append([_,get_net_worth(equity, _),faustmann_ratio,option_returns,equity['stocks'],get_for_date.market_price(_),equity['options']['count'],opt_current_price])
 	## Close output file
 	f.close()
 	return equity_curve
@@ -467,7 +470,7 @@ if __name__ == "__main__":
 	print(datetime.datetime.now())
 	
 	start_time = time.time()
-	start_date='2008-06-10'
+	# start_date='2008-06-10'
 	start_date='2015-06-08'
 	# ~ start_date='1988-06-10'
 	start_equity=100000
@@ -482,7 +485,7 @@ if __name__ == "__main__":
 		# Fraction at which to exit the option trade
 		EXIT_THRESHOLD=5,
 		SIM_NAME='Simulation 1',
-		DEBUG=True,
+		DEBUG=False,
 		OPT_HOLDING_PARAMS={
 			'L_VOL':[0,   12, 4],
 			'M_VOL':[0.2,  6, 3],
@@ -503,9 +506,18 @@ if __name__ == "__main__":
 	# Save equity curve to .csv
 	date_output1=[_[0] for _ in equity_curve1]
 	equity_curve1_output=[_[1] for _ in equity_curve1]
+	num_stocks1=[round(_[4],4) for _ in equity_curve1]
+	price_stocks1=[round(_[5],4) for _ in equity_curve1]
+	stocks_value1=[round(_[4]*_[5],4) for _ in equity_curve1]
+	options_value1=[round(_[1]-(_[4]*_[5]),4) for _ in equity_curve1]
+	num_options1=[_[6] for _ in equity_curve1]
+	options_value1_2=[_[7] for _ in equity_curve1]
 	
+	# Use this line for debugging:
+	# df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output, 'num_stocks':num_stocks1, 'price_stocks':price_stocks1, 'stocks_value':stocks_value1, 'options_value_calc':options_value1, 'num_options':num_options1, 'options_value_reported':options_value1_2})
+	# Use this line for output for analytics:
 	df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output})
-	df1.to_csv('_equity1_output.csv', sep=',', index=False)
+	df1.to_csv('_equity1_output_01_23_20.csv', sep=',', index=False)
 	
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))

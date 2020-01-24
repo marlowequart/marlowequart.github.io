@@ -1,5 +1,5 @@
 Start time to run script:
-2020-01-21 18:06:02.915099
+2020-01-23 13:40:53.391856
 
 Simulation 1  looping over date:  2015-06-08
 
@@ -1172,5 +1172,5 @@ now testing date  2019-03-07  volatility:  0.103  opt price:  0.0  underlying:  
 now testing date  2019-03-08  volatility:  0.103  opt price:  0.0  underlying:  2744.13  days to expiry:  105  risk free rate  0.0245
 now testing date  2019-03-11  volatility:  0.108  opt price:  0.0  underlying:  2784.0  days to expiry:  102  risk free rate  0.0247
 
-126.411664 seconds to run script
+20.006042 seconds to run script
 
