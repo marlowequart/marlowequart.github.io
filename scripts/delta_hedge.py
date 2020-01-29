@@ -120,7 +120,7 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 
 	# Collect data from CSVs
 	stocks=table('data/^GSPC.csv')
-	irate=table('data/DGS2clean.csv')
+	irate=table('data/risk_free_1yr_2yr_clean.csv')
 	corp_net_worth=table('data/corp_net_worth.csv')
 	corp_market_val=table('data/Corp_market_value.csv')
 	volatility=table('data/volatility40.csv')
@@ -471,19 +471,19 @@ if __name__ == "__main__":
 	
 	start_time = time.time()
 	# start_date='2008-06-10'
-	start_date='2015-06-08'
+	start_date='1959-07-15'
 	# ~ start_date='1988-06-10'
 	start_equity=100000
 	
 	equity_curve1=main(SIM_START_DATE=start_date,
 		OUTPUT_CSV='output_standalone1.csv',
 		STARTING_EQUITY=start_equity,
-		OPT_FRACTION_K=0.005,OPT_FRACTION_M=0,
+		OPT_FRACTION_K=0.03,OPT_FRACTION_M=0,
 		STRIKE_AT=0.8,
 		# The Faustmann ratio is market cap/net worth
 		FAUSTMANN_R_MIN=0,
 		# Fraction at which to exit the option trade
-		EXIT_THRESHOLD=5,
+		EXIT_THRESHOLD=10,
 		SIM_NAME='Simulation 1',
 		DEBUG=False,
 		OPT_HOLDING_PARAMS={
@@ -517,7 +517,7 @@ if __name__ == "__main__":
 	# df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output, 'num_stocks':num_stocks1, 'price_stocks':price_stocks1, 'stocks_value':stocks_value1, 'options_value_calc':options_value1, 'num_options':num_options1, 'options_value_reported':options_value1_2})
 	# Use this line for output for analytics:
 	df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output})
-	df1.to_csv('_equity1_output_01_23_20.csv', sep=',', index=False)
+	df1.to_csv('_equity1_output_01_29_20.csv', sep=',', index=False)
 	
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))

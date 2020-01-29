@@ -45,16 +45,16 @@ PRINT=True
 PLOT=False
 
 
-input_file='equity6_output.csv'
-risk_free_input='data/DGS2clean.csv'
+input_file='_equity1_output_01_29_20.csv'
+risk_free_input='data/risk_free_1yr_2yr_clean.csv'
 
 data_df = pd.read_csv(input_file,header=0)
 date=data_df['Date'].tolist()
 equity=data_df['Equity1'].tolist()
 
 rf_df = pd.read_csv(risk_free_input,header=0)
-rf_date=rf_df['DATE'].tolist()
-rf_rate=rf_df['DGS2'].tolist()
+rf_date=rf_df['Date'].tolist()
+rf_rate=rf_df['Rate'].tolist()
 
 
 
@@ -66,12 +66,12 @@ end_idx=17420
 
 #use date range
 
-start_date='1988-06-10'
+start_date='1959-07-15'
 end_date='2019-03-11'
 start_idx=date.index(start_date)
 end_idx=date.index(end_date)
 
-rf_start_date='1988-06-10'
+rf_start_date='1959-07-15'
 rf_end_date='2019-03-11'
 rf_start_idx=rf_date.index(rf_start_date)
 rf_end_idx=rf_date.index(rf_end_date)
