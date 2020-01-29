@@ -336,17 +336,17 @@ def main():
 	#input the date of opening the trade
 	# need to put last trade date since no data for opening date
 	trade_date='2019-12-24'
-	trade_month='01'
+	trade_month='02'
 	
 	# option to input data for open price
 	# if trade_open=0, then default to previous close, otherwise use open_price
 	trade_open=1
-	open_price=3225.75
+	open_price=3259.75
 	
 	# if use_my_range=0, then default to range in study, otherwise use values input below
 	use_my_range=1
-	period_high_my=3233.75
-	period_low_my=3136.25
+	period_high_my=3337.5
+	period_low_my=3233
 	
 	print()
 	
@@ -360,7 +360,7 @@ def main():
 	# kelly_fraction is the fraction of full kelly to use for smoother returns
 	kelly_fraction=0.5
 	# input current equity size
-	equity=19096
+	equity=30000
 	
 	#####
 	# Generate overall tom kelly info

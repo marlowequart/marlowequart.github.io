@@ -1,0 +1,17 @@
+{'AAPL': 
+	{'financialsData': 
+		{'quarterly': 
+			[{'earnings': 10714000000, 'date': '3Q2017', 'revenue': 52579000000}, {'earnings': 20065000000, 'date': 				'4Q2017', 'revenue': 88293000000}, {'earnings': 13822000000, 'date': '1Q2018', 'revenue': 61137000000}, 				{'earnings': 11519000000, 'date': '2Q2018', 'revenue': 53265000000}], 
+		'yearly': 
+			[{'earnings': 39510000000, 'date': 2014, 'revenue': 182795000000}, {'earnings': 53394000000, 'date': 2015, 			'revenue': 233715000000}, {'earnings': 45687000000, 'date': 2016, 'revenue': 215639000000}, {'earnings': 				48351000000, 'date': 2017, 'revenue': 229234000000}]
+		}, 
+
+	'financialCurrency': 'USD', 
+	'earningsData': 
+		{'currentQuarterEstimate': 2.76, 
+		'quarterly': 
+			[{'date': '3Q2017', 'actual': 2.07, 'estimate': 1.87}, {'date': '4Q2017', 'actual': 3.89, 'estimate': 3.86}, 			{'date': '1Q2018', 'actual': 2.73, 'estimate': 2.67}, {'date': '2Q2018', 'actual': 2.34, 'estimate': 2.18}], 		'currentQuarterEstimateDate': '3Q', 
+		'currentQuarterEstimateYear': 2018
+		}
+	}
+}

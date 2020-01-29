@@ -1,0 +1,1411 @@
+<!DOCTYPE doctype html>
+<html itemscope="" itemtype="http://schema.org/SearchResultsPage" lang="en">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="/images/branding/googleg/1x/googleg_standard_color_128dp.png" itemprop="image"/>
+  <link href="/images/branding/product/ico/googleg_lodp.ico" rel="shortcut icon"/>
+  <title>
+   AAPL - Google Search
+  </title>
+  <style>
+   #gbar,#guser{font-size:13px;padding-top:1px !important;}#gbar{height:22px}#guser{padding-bottom:7px !important;text-align:right}.gbh,.gbd{border-top:1px solid #c9d7f1;font-size:1px}.gbh{height:0;position:absolute;top:24px;width:100%}@media all{.gb1{height:22px;margin-right:.5em;vertical-align:top}#gbar{float:left}}a.gb1,a.gb4{text-decoration:underline !important}a.gb1,a.gb4{color:#00c !important}.gbi .gb4{color:#dd8e27 !important}.gbf .gb4{color:#900 !important}
+  </style>
+  <style>
+   .star{float:left;margin-top:1px;overflow:hidden}.ybhkme{font-size:11px}.j{width:34em}body,td,div,.p,a{font-family:arial,sans-serif;tap-highlight-color:rgba(255,255,255,0)}body{margin:0}a img{border:0}#gbar{float:left;height:22px;padding-left:2px;font-size:13px}.gsfi,.gsfs{font-size:17px}.w,.q:active,.q:visited,.tbotu{color:#11c}a.gl{text-decoration:none}#foot{padding:0 8px}#foot a{white-space:nowrap}h3{font-size:16px;font-weight:normal;margin:0;padding:0}#res h3{display:inline}.hd{height:1px;position:absolute;top:-1000em}.g,body,html,table,.std{font-size:13px}.g{margin-bottom:23px;margin-top:0;zoom:1}ol li,ul li{list-style:none}h1,ol,ul,li{margin:0;padding:0}.e{margin:2px 0 0.75em}#leftnav a{text-decoration:none}#leftnav h2{color:#767676;font-weight:normal;margin:0}#nav{border-collapse:collapse;margin-top:17px;text-align:left}#nav td{text-align:center}.nobr{white-space:nowrap}.ts{border-collapse:collapse}.s br{display:none}.csb{display:block;height:40px}.images_table td{line-height:17px;padding-bottom:16px}.images_table img{border:1px solid #ccc;padding:1px}#tbd,#abd{display:block;min-height:1px}#abd{padding-top:3px}#tbd li{display:inline}.TIrJXe,.UU5df{margin-bottom:8px}#tbd .tbt li{display:block;font-size:13px;line-height:1.2;padding-bottom:3px;padding-left:8px;text-indent:-8px}.tbos,.b{font-weight:bold}em{font-weight:bold;font-style:normal}.mime{color:#1a0dab;font-weight:bold;font-size:x-small}.soc a{text-decoration:none}.soc{color:#808080}.ul7Gbc{color:#e7711b}#Db7kif{border:1px solid #e0e0e0;margin-left:-8px;margin-right:-8px;padding:15px 20px 5px}.mrH1y{font-size:32px}.PZ6wOb{color:#777;font-size:16px;margin-top:5px}.gwrItc{color:#777;font-size:14px;margin-top:5px}.SVob4e{border:1px solid #e0e0e0;padding-left:20px}.mYu5Hb{border:1px solid #e0e0e0;padding:5px 20px}#vob{border:1px solid #e0e0e0;padding:15px 15px}#ZjIC2e{font-size:22px;line-height:22px;padding-bottom:5px}#vob_st{line-height:1.24}.DfLGHd{border-width:1px;border-style:solid;border-color:#eee;background-color:#fff;position:relative;margin-bottom:26px}.uRIxYb,.NjTIc,.PftIHd,.DXoZmb{font-family:Arial;font-weight:lighter}.uRIxYb{margin-bottom:5px}.uRIxYb{font-size:xx-large}.NjTIc{font-size:medium}.PftIHd{font-size:large}.DXoZmb{font-size:small}.DfLGHd{margin-left:-8px;margin-right:-15px;padding:20px 20px 24px}.ernfsc{border-spacing:0px 2px}.D3VFNd{max-width:380px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;padding-left:0px}.c1Ujmc{padding-left:15px;white-space:nowrap;color:#666}.EjZtie{padding-left:0px}.SFt5jb{color:#212121}.Pt7r9e{color:#878787}.bkcGhd{color:#093}.fIP9ce{color:#c00}.LDBB9d{padding:1px}.gssb_a{padding:0 10px !important}.gssb_c{left:132px !important;right:295px !important;top:78px !important;width:572px !important}.gssb_c table{font-size:16px !important}.gssb_e{border:1px solid #ccc !important;border-top-color:#d9d9d9 !important}.gssb_i{background:#eee !important}#res{padding:0 8px}#rhs_block{padding-top:43px}#MCN7mf{padding:0 8px}#subform_ctrl{font-size:11px;height:17px;margin:5px 3px 0 17px}.taf{padding-bottom:3px}.WIkLp{padding:20px 0 3px}.FuZzl{padding:20px 0 3px}#topstuff .e{padding-bottom:6px}.slk .sld{width:250px}.slk{margin-bottom:-3px}.slk .zaHRAf{padding-bottom:5px;width:250px}.ac,.st{line-height:1.24}.mfr,#ofr{font-size:16px;margin:1em 0;padding:0 8px}.tZz6cc{padding-bottom:25px}.s{color:#545454}.ac{color:#545454}a.fl,.A8ul6 a,.osl a{color:#1a0dab;text-decoration:none}a:link{color:#1a0dab;cursor:pointer}#tads a:link{color:#1a0dab}#tads .soc a:link{color:#808080}a:visited{color:#61C}.blg a{text-decoration:none}cite,cite a:link{color:#006621;font-style:normal}#tads cite{color:#006621}.hJND5c{font-size:15px}.kvs{margin-top:1px}.hJND5c,.kvs,.slp{display:block;margin-bottom:1px}.kt{border-spacing:2px 0;margin-top:1px}.f{color:#808080}.L4Zeue{color:#093}h4.r{display:inline;font-size:small;font-weight:normal}.g{line-height:1.2}.NpC9Hd{display:inline-block;vertical-align:top;overflow:hidden;position:relative}.COi8F{margin:0 0 2em 1.3em}.COi8F li{list-style-type:disc}.osl{color:#777;margin-top:4px}.r{font-size:16px;margin:0}.spell{font-size:16px}.spell_orig{font-size:13px}.spell_orig a{text-decoration:none}.spell_orig b i{font-style:normal;font-weight:normal}.th{border:1px solid #ebebeb}.ts td{padding:0}.videobox{padding-bottom:3px}.slk a{text-decoration:none}#leftnav a:hover,#leftnav .tbou a:hover,.slk h3 a,a:hover{text-decoration:underline}#mn{table-layout:fixed;width:100%}#leftnav a{color:#222;font-size:13px}#leftnav{padding:43px 4px 4px 0}.tbos{color:#dd4b39}.tbt{margin-bottom:28px}#tbd{padding:0 0 0 16px}.tbou a{color:#222}#center_col{border:0;padding:0 8px 0 0}#topstuff .e{padding-top:3px}#topstuff .sp_cnt{padding-top:6px}#ab_name{color:#dd4b39;font:20px "Arial";margin-left:15px}#resultStats{color:#999;font-size:13px;overflow:hidden;white-space:nowrap}.mslg>td{padding-right:1px;padding-top:2px}.slk .sld{margin-top:2px;padding:5px 0 5px 5px}.fmp{padding-top:3px}.close_btn{overflow:hidden}#fll a,#bfl a{color:#1a0dab !important;margin:0 12px;text-decoration:none !important}.ng{color:#dd4b39}#mss{margin:.33em 0 0;padding:0;display:table}.NYKCib{display:inline-block;float:left;white-space:nowrap;padding-right:16px}#mss p{margin:0;padding-top:5px}.tn{border-bottom:1px solid #ebebeb;display:block;float:left;height:59px;line-height:54px;min-width:980px;padding:0;position:relative;white-space:nowrap}.qrSWbe,a.qrSWbe{color:#777;cursor:pointer;display:inline-block;font-family:arial,sans-serif;font-size:small;height:54px;line-height:54px;margin:0 8px;padding:0 8px;text-decoration:none;white-space:nowrap}.tnuiC{border-bottom:3px solid #dd4b39;color:#dd4b39;font-weight:bold;margin:2px 8px 0}a.KDZjCd:hover{color:black;text-decoration:none;white-space:nowrap}body{margin:0;padding:0}.sFTC8c{display:inline-block;float:left;margin-top:2px}.pqkqJe,a.pqkqJe{margin-left:1px}.sd{line-height:43px;padding:0 8px 0 9px}a:active,.osl a:active,.tbou a:active,#leftnav a:active{color:#dd4b39}#bfl a:active{color:#dd4b39 !important}.csb{background:url(/images/nav_logo229.png) no-repeat;overflow:hidden}.close_btn{background:url(/images/nav_logo229.png) no-repeat -138px -84px;height:14px;width:14px;display:block}.star{background:url(/images/nav_logo229.png) no-repeat -94px -245px;height:13px;width:65px;display:block}.star div,.star span{background:url(/images/nav_logo229.png) no-repeat 0 -245px;height:13px;width:65px;display:block}.Pj9hGd{display:inline;margin:0 3px;outline-color:transparent;overflow:hidden;position:relative}.Pj9hGd>div{outline-color:transparent}.CiacGf{border-color:transparent;border-style:solid dashed dashed;border-top-color:green;border-width:4px 4px 0 4px;cursor:pointer;display:inline-block;font-size:0;height:0;left:4px;line-height:0;outline-color:transparent;position:relative;top:-3px;width:0}.CiacGf{margin-top:-4px}.am-dropdown-menu{display:block;background:#fff;border:1px solid #dcdcdc;font-size:13px;left:0;padding:0;position:absolute;right:auto;white-space:nowrap;z-index:3}.mUpfKd{list-style:none;white-space:nowrap}.mUpfKd:hover{background-color:#eee}a.imx0m{color:#333;cursor:pointer;display:block;padding:7px 18px;text-decoration:none}#tads a.imx0m{color:#333}.sfbgg{background:#f1f1f1;border-bottom:1px solid #e5e5e5;height:71px}#logocont{z-index:1;padding-left:4px;padding-top:4px}#logo{display:block;height:49px;margin-top:12px;margin-left:12px;overflow:hidden;position:relative;width:137px}#logo img{left:0;position:absolute;top:-41px}.lst-a{background:white;border:1px solid #d9d9d9;border-top-color:silver;width:570px}.lst-a:hover{border:1px solid #b9b9b9;border-top:1px solid #a0a0a0;box-shadow:inset 0 1px 2px rgba(0,0,0,0.1);-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.1);-moz-box-shadow:inset 0 1px 2px rgba(0,0,0,0.1)}.lst-td{border:none;padding:0}.tia input{border-right:none;padding-right:0}.tia{padding-right:0}.lst{background:none;border:none;color:#000;font:16px arial,sans-serif;float:left;height:22px;margin:0;padding:3px 6px 2px 9px;vertical-align:top;width:100%;word-break:break-all}.lst:focus{outline:none}.lst-b{background:none;border:none;height:26px;padding:0 6px 0 12px}.ds{border-right:1px solid #e7e7e7;position:relative;height:29px;margin-left:17px;z-index:100}.lsbb{background-image:-moz-linear-gradient(top,#4d90fe,#4787ed);background-image:-ms-linear-gradient(top,#4d90fe,#4787ed);background-image:-o-linear-gradient(top,#4d90fe,#4787ed);background-image:-webkit-gradient(linear,left top,left bottom,from(#4d90fe),to(#4787ed));background-image:-webkit-linear-gradient(top,#4d90fe,#4787ed);background-image:linear-gradient(top,#4d90fe,#4787ed);border:1px solid #3079ed;border-radius:2px;background-color:#4d90fe;height:27px;width:68px}.lsbb:hover{background-image:-moz-linear-gradient(top,#4d90fe,#357ae8);background-image:-ms-linear-gradient(top,#4d90fe,#357ae8);background-image:-o-linear-gradient(top,#4d90fe,#357ae8);background-image:-webkit-gradient(linear,left top,left bottom,from(#4d90fe),to(#357ae8));background-image:-webkit-linear-gradient(top,#4d90fe,#357ae8);background-color:#357ae8;background-image:linear-gradient(top,#4d90fe,#357ae8);border:1px solid #2f5bb7}.lsb{background:transparent;background-position:0 -343px;background-repeat:repeat-x;border:none;color:#000;cursor:default;font:15px arial,sans-serif;height:29px;margin:0;vertical-align:top;width:100%}.lsb:active{-moz-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3);box-shadow:inset 0 1px 2px rgba(0,0,0,0.3);background:transparent;color:transparent;overflow:hidden;position:relative;width:100%}.sbico{color:transparent;display:inline-block;height:15px;margin:0 auto;margin-top:2px;width:15px;overflow:hidden}
+  </style>
+  <script nonce="L7VA2iULhnHgL0gBt9d9Bg==">
+   (function(){window.google={kEI:'R4dzW8zfBMiK0wLi_57ADg',kEXPI:'0,1353747,57,1958,1017,280,2344,6,297,433,785,425,218,37,78,27,2338605,175,32,318990,10304,1294,12383,2349,2506,18500,14192,15247,867,6692,2240,1829,1402,6381,3335,2,2,6801,366,551,664,326,1776,1263,1051,3191,224,2218,130,130,5107,444,131,1119,2,578,728,310,296,1825,59,2,1,3,1297,1714,1374,505,730,2096,658,636,8,302,1268,773,1232,883,133,283,2,841,197,86,2139,1198,525,22,599,5,2,2,743,1556,125,2,65,3,931,656,45,327,118,5,447,509,1539,48,296,1344,69,335,109,92,404,108,3,335,128,630,480,78,156,386,8,804,199,81,7,1,2,25,463,620,29,402,581,6,282,124,458,62,80,489,1,1,1214,530,78,161,536,920,1074,2,95,354,164,8,477,180,77,330,129,41,2,263,24,602,557,837,39,77,535,44,2,38,4,68,87,7,329,235,49,999,63,222,1,506,83,2317403,3685998,2554,5997494,25117024',authuser:0,kscs:'c9c918f0_R4dzW8zfBMiK0wLi_57ADg',kGL:'US'};google.kHL='en';})();google.time=function(){return(new Date).getTime()};(function(){google.lc=[];google.li=0;google.getEI=function(a){for(var b;a&&(!a.getAttribute||!(b=a.getAttribute("eid")));)a=a.parentNode;return b||google.kEI};google.getLEI=function(a){for(var b=null;a&&(!a.getAttribute||!(b=a.getAttribute("leid")));)a=a.parentNode;return b};google.https=function(){return"https:"==window.location.protocol};google.ml=function(){return null};google.wl=function(a,b){try{google.ml(Error(a),!1,b)}catch(d){}};google.log=function(a,b,d,c,g){if(a=google.logUrl(a,b,d,c,g)){b=new Image;var e=google.lc,f=google.li;e[f]=b;b.onerror=b.onload=b.onabort=function(){delete e[f]};google.vel&&google.vel.lu&&google.vel.lu(a);b.src=a;google.li=f+1}};google.logUrl=function(a,b,d,c,g){var e="",f=google.ls||"";d||-1!=b.search("&ei=")||(e="&ei="+google.getEI(c),-1==b.search("&lei=")&&(c=google.getLEI(c))&&(e+="&lei="+c));c="";!d&&google.cshid&&-1==b.search("&cshid=")&&"slh"!=a&&(c="&cshid="+google.cshid);a=d||"/"+(g||"gen_204")+"?atyp=i&ct="+a+"&cad="+b+e+f+"&zx="+google.time()+c;/^http:/i.test(a)&&google.https()&&(google.ml(Error("a"),!1,{src:a,glmm:1}),a="");return a};}).call(this);(function(){google.y={};google.x=function(a,b){if(a)var c=a.id;else{do c=Math.random();while(google.y[c])}google.y[c]=[a,b];return!1};google.lm=[];google.plm=function(a){google.lm.push.apply(google.lm,a)};google.lq=[];google.load=function(a,b,c){google.lq.push([[a],b,c])};google.loadAll=function(a,b){google.lq.push([a,b])};}).call(this);google.f={};(function(){var b={gen204:"dcl",clearcut:4};var c=[function(){google.c&&google.tick("load",b)}];google.dclc=function(a){c.length?c.push(a):a()};function d(){for(var a;a=c.shift();)a()}window.addEventListener?(document.addEventListener("DOMContentLoaded",d,!1),window.addEventListener("load",d,!1)):window.attachEvent&&window.attachEvent("onload",d);}).call(this);
+  </script>
+  <script nonce="L7VA2iULhnHgL0gBt9d9Bg==" type="text/javascript">
+  </script>
+  <script nonce="L7VA2iULhnHgL0gBt9d9Bg==">
+   (function(){google.sham=function(c){for(var d=c.parentElement,a=null,b=0;b<d.childNodes.length;b++){var e=d.childNodes[b];-1<(" "+e.className+" ").indexOf(" am-dropdown-menu ")&&(a=e)}"none"==a.style.display?(a.style.display="",google.log("hpam","&ved="+c.getAttribute("data-ved"))):a.style.display="none"};}).call(this);(function(){var b=[];google.jsc={xx:b,x:function(a){b.push(a)},mm:[],m:function(a){google.jsc.mm=a}};}).call(this);
+  </script>
+ </head>
+ <body bgcolor="#ffffff" class="hsrp" marginheight="0" marginwidth="0" topmargin="0">
+  <div id="gbar">
+   <nobr>
+    <b class="gb1">
+     Search
+    </b>
+    <a class="gb1" href="https://www.google.com/search?hl=en&amp;tbm=isch&amp;source=og&amp;tab=wi">
+     Images
+    </a>
+    <a class="gb1" href="https://maps.google.com/maps?hl=en&amp;tab=wl">
+     Maps
+    </a>
+    <a class="gb1" href="https://play.google.com/?hl=en&amp;tab=w8">
+     Play
+    </a>
+    <a class="gb1" href="https://www.youtube.com/results?gl=US&amp;tab=w1">
+     YouTube
+    </a>
+    <a class="gb1" href="https://news.google.com/nwshp?hl=en&amp;tab=wn">
+     News
+    </a>
+    <a class="gb1" href="https://mail.google.com/mail/?tab=wm">
+     Gmail
+    </a>
+    <a class="gb1" href="https://drive.google.com/?tab=wo">
+     Drive
+    </a>
+    <a class="gb1" href="https://www.google.com/intl/en/options/" style="text-decoration:none">
+     <u>
+      More
+     </u>
+     »
+    </a>
+   </nobr>
+  </div>
+  <div id="guser" width="100%">
+   <nobr>
+    <span class="gbi" id="gbn">
+    </span>
+    <span class="gbf" id="gbf">
+    </span>
+    <span id="gbe">
+    </span>
+    <a class="gb4" href="http://www.google.com/history/optout?hl=en">
+     Web History
+    </a>
+    |
+    <a class="gb4" href="/preferences?hl=en">
+     Settings
+    </a>
+    |
+    <a class="gb4" href="https://accounts.google.com/ServiceLogin?hl=en&amp;passive=true&amp;continue=https://www.google.com/search%3Fq%3DAAPL" id="gb_70" target="_top">
+     Sign in
+    </a>
+   </nobr>
+  </div>
+  <div class="gbh" style="left:0">
+  </div>
+  <div class="gbh" style="right:0">
+  </div>
+  <table border="0" cellpadding="0" cellspacing="0" id="mn" style="position:relative">
+   <tr>
+    <th width="132">
+    </th>
+    <th width="573">
+    </th>
+    <th width="278">
+    </th>
+    <th>
+    </th>
+   </tr>
+   <tr>
+    <td class="sfbgg" valign="top">
+     <div id="logocont">
+      <h1>
+       <a href="/webhp?hl=en" id="logo" style="background-image:url(/images/nav_logo229.png);background-repeat:no-repeat;height:37px;width:95px;display:block;background-position:0 -41px" title="Go to Google Home">
+       </a>
+      </h1>
+     </div>
+    </td>
+    <td class="sfbgg" colspan="2" style="padding-left:0px" valign="top">
+     <form action="/search" id="tsf" method="GET" name="gs" style="display:block;margin:0;background:none">
+      <table border="0" cellpadding="0" cellspacing="0" style="margin-top:20px;position:relative">
+       <tr>
+        <td>
+         <div class="lst-a">
+          <table cellpadding="0" cellspacing="0">
+           <tr>
+            <td class="lst-td" valign="bottom" width="555">
+             <div style="position:relative;zoom:1">
+              <input autocomplete="off" class="lst" id="sbhost" maxlength="2048" name="q" title="Search" type="text" value="AAPL"/>
+             </div>
+            </td>
+           </tr>
+          </table>
+         </div>
+        </td>
+        <td>
+         <div class="ds">
+          <div class="lsbb">
+           <button class="lsb" name="btnG" type="submit" value="Search">
+            <span class="sbico" style="background-image:url(/images/nav_logo229.png);background-repeat:no-repeat;height:14px;width:13px;display:block;background-position:-36px -111px">
+            </span>
+           </button>
+          </div>
+         </div>
+        </td>
+       </tr>
+      </table>
+     </form>
+    </td>
+    <td class="sfbgg">
+    </td>
+   </tr>
+   <tr style="position:relative">
+    <td>
+     <div style="border-bottom:1px solid #ebebeb;height:59px">
+     </div>
+    </td>
+    <td colspan="2">
+     <div class="tn">
+      <div class="qrSWbe tnuiC sFTC8c pqkqJe">
+       All
+      </div>
+      <div class="sFTC8c">
+       <a class="qrSWbe KDZjCd" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ_AUIBQ">
+        Images
+       </a>
+      </div>
+      <div class="sFTC8c">
+       <a class="qrSWbe KDZjCd" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;source=lnms&amp;tbm=vid&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ_AUIBg">
+        Videos
+       </a>
+      </div>
+      <div class="sFTC8c">
+       <a class="qrSWbe KDZjCd" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;source=lnms&amp;tbm=nws&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ_AUIBw">
+        News
+       </a>
+      </div>
+      <div class="sFTC8c">
+       <a class="qrSWbe KDZjCd" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;source=lnms&amp;tbm=shop&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ_AUICA">
+        Shopping
+       </a>
+      </div>
+      <div class="sFTC8c">
+       <a class="qrSWbe KDZjCd" href="https://maps.google.com/maps?q=AAPL&amp;um=1&amp;ie=UTF-8&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ_AUICQ">
+        Maps
+       </a>
+      </div>
+      <div class="sFTC8c">
+       <a class="qrSWbe KDZjCd" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;source=lnms&amp;tbm=bks&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ_AUICg">
+        Books
+       </a>
+      </div>
+     </div>
+     <div style="border-bottom:1px solid #ebebeb;height:59px">
+     </div>
+    </td>
+    <td>
+     <div style="border-bottom:1px solid #ebebeb;height:59px">
+     </div>
+    </td>
+   </tr>
+   <tbody id="desktop-search">
+    <style>
+     .pCA4Bd,.pCA4Bd a:link,.pCA4Bd a:visited,a.pCA4Bd:link,a.pCA4Bd:visited{color:#808080}.AzrInc{color:#61C}.ellip{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.VBt9Dc{border:1px solid #e0e0e0;font-size:13px;margin-right:-2px;}.V7Q8V{margin:4px 10px}.AwJT2c{background:white;border-bottom:0;border-left:0;border-right:0;border-top:1px solid #e0e0e0;cursor:pointer;height:40px;outline:0;width:100%}.dxrUgb{color:#777;font-size:11px}.dxrUgb a{color:#777;text-decoration:none}.xpdclpsbtn{}.xpdxpndbtn{}.xpdclpsbtn .KMK5T{background:url(/images/nav_logo229.png) no-repeat -50px -79px;height:22px;width:64px}.xpdxpndbtn .KMK5T{background:url(/images/nav_logo229.png) no-repeat -50px -102px;height:22px;width:64px}.mraOPb{color:#222;font-size:15px;line-height:normal;margin:12px 0}.dXAUyb{margin:4px 0}.R8KuR{margin:10px;overflow:hidden;position:relative;white-space:nowrap;}.M1e9Oe{display:-moz-inline-stack;display:inline-block;position:relative;width:100%;z-index:0;}.OSMzvb{display:-moz-inline-stack;display:inline-block;max-width:100%;overflow:hidden;}.JKXCdf{position:absolute;right:0;z-index:1;}.FSP1Dd{border-top:1px solid #e0e0e0;color:#000;font-size:22px;margin-top:-5px;padding-top:10px}.CB9G1b{color:#000;font-size:14px}.F7uZG{color:#777;margin:4px 0;overflow:hidden}.Rlw09{margin-bottom:20px}.cC4Myd{color:#212121}.A1t5ne{color:#777}.cC4Myd{font-weight:bold}.xKoZHf{margin-left:10px}.B27ELd.ty7XEe{margin-right:10px}.x32fhf{color:#222;font-size:18px;margin:20px 0 8px 0}.lHETUb{color:#222;font-size:18px;margin:20px 10px 8px 10px}.B27ELd{display:-moz-inline-stack;display:inline-block;margin-bottom:10px;margin-right:21px;text-align:left;vertical-align:top;}.tQOFN{overflow:hidden}.czonVc{color:#777;overflow:hidden;text-overflow:ellipsis;white-space:normal;word-wrap:break-word}.brYqc{margin:6px 0 0 8px;overflow:hidden;text-overflow:ellipsis;white-space:normal;word-wrap:break-word}.u6RhQc{margin:4px 10px}#k2fPW{border:1px solid #e0e0e0;font-size:13px;margin-right:-2px;}.C6ZAab{color:#000}.NWncrd{border-spacing:0;line-height:20px;table-layout:fixed;width:100%}.NWncrd a:hover,.NWncrd a:active{text-decoration:none}.JYQZge{color:#1a0dab}a:hover .JYQZge,a:active .JYQZge{text-decoration:underline}.TyXs8d{border-top:1px solid #e0e0e0;margin:0 -10px;padding:0 10px}.DBHfJe{display:block;margin:auto}.rNjNwd{padding-top:8px;padding-bottom:8px}.vrQIef{max-width:198px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    </style>
+    <tr>
+     <td id="leftnav" valign="top">
+      <div>
+       <h2 class="hd">
+        Search Options
+       </h2>
+       <ul class="med" id="tbd">
+        <li>
+         <ul class="tbt">
+          <li class="tbos" id="qdr_">
+           Any time
+          </li>
+          <li class="tbou" id="qdr_h">
+           <a class="q" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;source=lnt&amp;tbs=qdr:h&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQpwUIDw">
+            Past hour
+           </a>
+          </li>
+          <li class="tbou" id="qdr_d">
+           <a class="q" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;source=lnt&amp;tbs=qdr:d&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQpwUIDw">
+            Past 24 hours
+           </a>
+          </li>
+          <li class="tbou" id="qdr_w">
+           <a class="q" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;source=lnt&amp;tbs=qdr:w&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQpwUIDw">
+            Past week
+           </a>
+          </li>
+          <li class="tbou" id="qdr_m">
+           <a class="q" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;source=lnt&amp;tbs=qdr:m&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQpwUIDw">
+            Past month
+           </a>
+          </li>
+          <li class="tbou" id="qdr_y">
+           <a class="q" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;source=lnt&amp;tbs=qdr:y&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQpwUIDw">
+            Past year
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li>
+         <ul class="tbt">
+          <li class="tbos" id="li_">
+           All results
+          </li>
+          <li class="tbou" id="li_1">
+           <a class="q" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;source=lnt&amp;tbs=li:1&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQpwUIDw">
+            Verbatim
+           </a>
+          </li>
+         </ul>
+        </li>
+       </ul>
+      </div>
+     </td>
+     <td valign="top">
+      <div id="center_col">
+       <div class="sd" id="resultStats">
+        About 6,380,000 results
+       </div>
+       <div id="res">
+        <div id="topstuff">
+        </div>
+        <div id="search">
+         <div id="ires">
+          <ol>
+           <div class="g">
+            <div class="e">
+             <div>
+              <h3 class="r">
+               <a class="fl" href="http://www.google.com/finance?q=NASDAQ:AAPL&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQowEIFDAA">
+                <b>
+                 AAPL
+                </b>
+               </a>
+               <span>
+                - Apple Inc. (NASDAQ)
+               </span>
+              </h3>
+             </div>
+             <div style="margin-top:5px">
+              <a href="http://www.google.com/finance?q=NASDAQ:AAPL&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ2AEIFTAA">
+               <img alt="chart" height="116" src="/finance/chart?q=NASDAQ:AAPL&amp;tkr=1&amp;tlf=12" style="float:left;padding-right:20px" width="212"/>
+              </a>
+              <table border="0" style="display:inline-table;margin-top:-5px;padding-bottom:0" width="1%">
+               <tr>
+                <td colspan="3">
+                 <span style="font-size:157%">
+                  <b>
+                   209.75
+                  </b>
+                  <cite style="color:#008000">
+                   <b>
+                    +0.88
+                   </b>
+                   (0.42%)
+                  </cite>
+                 </span>
+                 <br/>
+                 <span class="f">
+                  Aug 14, 4:00 PM EDT
+                 </span>
+                 -
+                 <a class="fl" href="/intl/en_us/googlefinance/disclaimer/?sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1AEIFjAA">
+                  Disclaimer
+                 </a>
+                 <br/>
+                 <span>
+                  <b>
+                   209.85
+                  </b>
+                  <cite style="color:#008000">
+                   <b>
+                    +0.10
+                   </b>
+                   (0.05%)
+                  </cite>
+                  <span class="f">
+                   After hours
+                  </span>
+                 </span>
+                </td>
+               </tr>
+               <tr>
+                <td>
+                 <table border="0" cellpadding="2" cellspacing="0">
+                  <tr>
+                   <td nowrap="true" style="padding-left:0">
+                    <b>
+                     Open:
+                    </b>
+                   </td>
+                   <td align="right" nowrap="true">
+                    210.16
+                   </td>
+                  </tr>
+                  <tr>
+                   <td nowrap="true" style="padding-left:0">
+                    <b>
+                     High:
+                    </b>
+                   </td>
+                   <td align="right" nowrap="true">
+                    210.56
+                   </td>
+                  </tr>
+                  <tr>
+                   <td nowrap="true" style="padding-left:0">
+                    <b>
+                     Low:
+                    </b>
+                   </td>
+                   <td align="right" nowrap="true">
+                    208.26
+                   </td>
+                  </tr>
+                 </table>
+                </td>
+                <td width="20">
+                </td>
+                <td>
+                 <table border="0" cellpadding="2" cellspacing="0">
+                  <tr>
+                   <td nowrap="true" style="padding-left:0">
+                    <b>
+                     Volume:
+                    </b>
+                   </td>
+                   <td align="right" nowrap="true">
+                    20,748,010
+                   </td>
+                  </tr>
+                  <tr>
+                   <td nowrap="true" style="padding-left:0">
+                    <b>
+                     Avg Vol:
+                    </b>
+                   </td>
+                   <td align="right" nowrap="true">
+                    23,505,466
+                   </td>
+                  </tr>
+                  <tr>
+                   <td nowrap="true" style="padding-left:0">
+                    <b>
+                     Mkt Cap:
+                    </b>
+                   </td>
+                   <td align="right" nowrap="true">
+                    1.02T
+                   </td>
+                  </tr>
+                 </table>
+                </td>
+               </tr>
+              </table>
+              <br style="clear:both"/>
+             </div>
+             <div class="A8ul6" style="padding-bottom:3px">
+              <a href="/url?q=http://www.google.com/finance%3Fq%3DNASDAQ:AAPL&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1wEIFygAMAA&amp;usg=AOvVaw22Qsg3bXk41gXkEHB1SwSv">
+               Google Finance
+              </a>
+              -
+              <a href="/url?q=http://finance.yahoo.com/q%3Fs%3DAAPL&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1wEIGCgBMAA&amp;usg=AOvVaw1GYMWvG0aLfy3NSJvGL7Dp">
+               Yahoo Finance
+              </a>
+              -
+              <a href="/url?q=http://investing.money.msn.com/investments/stock-price%3Fsymbol%3DUS:AAPL&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1wEIGSgCMAA&amp;usg=AOvVaw2WTMouWGqdt7KUKzhJcZA2">
+               MSN Money
+              </a>
+              -
+              <a href="/url?q=http://www.dailyfinance.com/usw/quotes/quotesandnews%3Fexch%3DUSA%26sym%3DAAPL&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1wEIGigDMAA&amp;usg=AOvVaw0FPh3OhgQrsliW7ZSHLwiV">
+               DailyFinance
+              </a>
+              -
+              <a href="/url?q=http://money.cnn.com/quote/quote.html%3Fsymb%3DAAPL&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1wEIGygEMAA&amp;usg=AOvVaw3qZC45hC_LwpCDXZg3c3au">
+               CNN Money
+              </a>
+              -
+              <a href="/url?q=http://www.reuters.com/finance/stocks/overview%3Fsymbol%3DAAPL.O&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1wEIHCgFMAA&amp;usg=AOvVaw1SZRucA16Yvk7a0mMzfUnX">
+               Reuters
+              </a>
+             </div>
+            </div>
+           </div>
+           <div class="g">
+            <div>
+             <h3 class="r">
+              <a href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;source=univ&amp;tbm=nws&amp;tbo=u&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQqAIIHg">
+               News for
+               <b>
+                AAPL
+               </b>
+              </a>
+             </h3>
+             <table class="ts">
+              <tr>
+               <td style="font-size:78%;line-height:normal;padding:7px 8px 0 0;text-align:center" valign="top">
+                <a href="/url?q=https://seekingalpha.com/article/4199013-apple-cheap-make-sense&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQpwIIHw&amp;usg=AOvVaw2_cNTgCTg5SRyr4VmvWPgI">
+                 <img border="1" class="th" height="100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwuusFWFRCrNpopwBRkpJcLpmSwLPfSfeeRQ1ygMjGq5L9ciBXuFALq1pkf5VDDLedLA" width="100"/>
+                 <br/>
+                </a>
+                <span class="L4Zeue ybhkme">
+                 Seeking Alpha
+                </span>
+               </td>
+               <td valign="top">
+                <div style="margin-top:5px">
+                 <a href="/url?q=https://seekingalpha.com/article/4199013-apple-cheap-make-sense&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQqQIIITAB&amp;usg=AOvVaw3FYTbkHhQ8qaXjplvmUxEi">
+                  Apple: Cheap Doesn't Make Sense - Apple Inc. (NASDAQ:AAPL)
+                 </a>
+                 <div style="padding-top:2px">
+                  <cite>
+                   Seeking Alpha
+                  </cite>
+                  <span class="f">
+                   -
+                   <span class="nobr">
+                    9 hours ago
+                   </span>
+                   <span class="nobr">
+                   </span>
+                  </span>
+                 </div>
+                 <div class="j" style="margin-top:1px;margin-bottom:4px">
+                  <span class="st">
+                   Next month, Apple (
+                   <b>
+                    AAPL
+                   </b>
+                   ) is expected to launch three new versions of its flagship
+                   <br/>
+                   iPhone. There is plenty of talk about this year featuring a ...
+                  </span>
+                 </div>
+                </div>
+                <div style="margin-top:4px">
+                 <a href="/url?q=https://seekingalpha.com/article/4198941-apple-iphone-just-got-lapped-time-rethink-apple&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQqQIIIzAC&amp;usg=AOvVaw1PX1-AoE4iXnQg2xH5fw2a">
+                  The Apple iPhone Just Got Lapped By Whom? Time To Rethink What Apple Is, And Isn't
+                 </a>
+                 <div style="padding-top:2px">
+                  <cite>
+                   Seeking Alpha
+                  </cite>
+                  <span class="f">
+                   -
+                   <span class="nobr">
+                    11 hours ago
+                   </span>
+                   <span class="nobr">
+                   </span>
+                  </span>
+                 </div>
+                </div>
+                <div style="margin-top:4px">
+                 <a href="/url?q=https://seekingalpha.com/article/4198672-apple-phasing-older-models-lift-margins&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQqQIIJTAD&amp;usg=AOvVaw0naKniro19NSBAvq8dqcnp">
+                  Apple Is Phasing Out Older Models To Lift Margins
+                 </a>
+                 <div style="padding-top:2px">
+                  <cite>
+                   Seeking Alpha
+                  </cite>
+                  <span class="f">
+                   -
+                   <span class="nobr">
+                    1 day ago
+                   </span>
+                   <span class="nobr">
+                   </span>
+                  </span>
+                 </div>
+                </div>
+               </td>
+              </tr>
+             </table>
+            </div>
+           </div>
+           <div class="g">
+            <h3 class="r">
+             <a href="/url?q=https://finance.yahoo.com/quote/AAPL/&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQFggnMAQ&amp;usg=AOvVaw2cSuxzZwcp8NL0ffIPzlvw">
+              <b>
+               AAPL
+              </b>
+              : Summary for Apple Inc. - Yahoo Finance
+             </a>
+            </h3>
+            <div class="s">
+             <div class="hJND5c" style="margin-bottom:2px">
+              <cite>
+               https://finance.yahoo.com/quote/
+               <b>
+                AAPL
+               </b>
+               /
+              </cite>
+              <div class="Pj9hGd">
+               <div aria-expanded="false" aria-haspopup="true" data-ved="0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ7B0IKDAE" onclick="google.sham(this);" style="display:inline" tabindex="0">
+                <span class="CiacGf">
+                </span>
+               </div>
+               <div class="am-dropdown-menu" role="menu" style="display:none" tabindex="-1">
+                <ul>
+                 <li class="mUpfKd">
+                  <a class="imx0m" href="/url?q=http://webcache.googleusercontent.com/search%3Fq%3Dcache:tUck68p8xy4J:https://finance.yahoo.com/quote/AAPL/%252BAAPL%26hl%3Den%26ct%3Dclnk&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQIAgqMAQ&amp;usg=AOvVaw2ipsG3aYqQoVTgx72L5ea2">
+                   Cached
+                  </a>
+                 </li>
+                 <li class="mUpfKd">
+                  <a class="imx0m" href="/search?ie=UTF-8&amp;q=related:https://finance.yahoo.com/quote/AAPL/+AAPL&amp;tbo=1&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQHwgrMAQ">
+                   Similar
+                  </a>
+                 </li>
+                </ul>
+               </div>
+              </div>
+             </div>
+             <span class="st">
+              Yahoo Finance Video.
+              <br/>
+              ... Trade tensions continue to escalate as Turkey retaliates against U.S. sanctions, Yahoo Finance's Seana Smith, Rick Newman, Dion Rabouin and Paul Schatz, President, Heritage Capitol discuss.
+              <br/>
+              ... President Tayyip Erdogan said on Tuesday that Turkey would boycott ...
+             </span>
+             <br/>
+            </div>
+           </div>
+           <div class="g">
+            <h3 class="r">
+             <a href="/url?q=https://seekingalpha.com/article/4198941-apple-iphone-just-got-lapped-time-rethink-apple&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQFggtMAU&amp;usg=AOvVaw0aaUvWSP9_7aMZ0d5lPb8P">
+              The Apple iPhone Just Got Lapped By Whom? Time To Rethink ...
+             </a>
+            </h3>
+            <div class="s">
+             <div class="hJND5c" style="margin-bottom:2px">
+              <cite>
+               https://seekingalpha.com/.../4198941-apple-iphone-just-got-lapped-time- rethink-apple
+              </cite>
+              <div class="Pj9hGd">
+               <div aria-expanded="false" aria-haspopup="true" data-ved="0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ7B0ILjAF" onclick="google.sham(this);" style="display:inline" tabindex="0">
+                <span class="CiacGf">
+                </span>
+               </div>
+               <div class="am-dropdown-menu" role="menu" style="display:none" tabindex="-1">
+                <ul>
+                 <li class="mUpfKd">
+                  <a class="imx0m" href="/url?q=http://webcache.googleusercontent.com/search%3Fq%3Dcache:kboPevRqAw4J:https://seekingalpha.com/article/4198941-apple-iphone-just-got-lapped-time-rethink-apple%252BAAPL%26hl%3Den%26ct%3Dclnk&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQIAgwMAU&amp;usg=AOvVaw0pc3KPmUrAodIX_Pjv8fhS">
+                   Cached
+                  </a>
+                 </li>
+                </ul>
+               </div>
+              </div>
+             </div>
+             <span class="st">
+              10 hours ago
+              <b>
+               ...
+              </b>
+              And, shortly after the end of every quarter I take something of a brow-beating for
+              <br/>
+              pointing out the fact that Apple (NASDAQ:
+              <b>
+               AAPL
+              </b>
+              ) is slowly but ...
+             </span>
+             <br/>
+            </div>
+           </div>
+           <div class="g">
+            <h3 class="r">
+             <a href="/url?q=https://stocktwits.com/symbol/AAPL&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQFggzMAY&amp;usg=AOvVaw1u9-xV2q7zP9cDGWTUMvOZ">
+              <b>
+               AAPL
+              </b>
+              Apple Inc. stock and investing information on StockTwits (
+              <b>
+               AAPL
+              </b>
+              )
+             </a>
+            </h3>
+            <div class="s">
+             <div class="hJND5c" style="margin-bottom:2px">
+              <cite>
+               https://stocktwits.com/symbol/
+               <b>
+                AAPL
+               </b>
+              </cite>
+              <div class="Pj9hGd">
+               <div aria-expanded="false" aria-haspopup="true" data-ved="0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ7B0INDAG" onclick="google.sham(this);" style="display:inline" tabindex="0">
+                <span class="CiacGf">
+                </span>
+               </div>
+               <div class="am-dropdown-menu" role="menu" style="display:none" tabindex="-1">
+                <ul>
+                 <li class="mUpfKd">
+                  <a class="imx0m" href="/url?q=http://webcache.googleusercontent.com/search%3Fq%3Dcache:NZtTJfPcprEJ:https://stocktwits.com/symbol/AAPL%252BAAPL%26hl%3Den%26ct%3Dclnk&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQIAg2MAY&amp;usg=AOvVaw0VpNoVYNcjc3jPPR53bP1p">
+                   Cached
+                  </a>
+                 </li>
+                 <li class="mUpfKd">
+                  <a class="imx0m" href="/search?ie=UTF-8&amp;q=related:https://stocktwits.com/symbol/AAPL+AAPL&amp;tbo=1&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQHwg3MAY">
+                   Similar
+                  </a>
+                 </li>
+                </ul>
+               </div>
+              </div>
+             </div>
+             <span class="st">
+              Real-time trade and investing ideas on Apple Inc.
+              <b>
+               AAPL
+              </b>
+              from the largest
+              <br/>
+              community of traders and investors.
+             </span>
+             <br/>
+            </div>
+           </div>
+           <div class="g">
+            <h3 class="r">
+             <a href="/url?q=https://www.marketwatch.com/investing/stock/aapl&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQFgg5MAc&amp;usg=AOvVaw0PcQExg4AygUKaXb1P48W2">
+              <b>
+               AAPL
+              </b>
+              Stock Price - Apple Inc. Stock Quote (U.S.: Nasdaq ...
+             </a>
+            </h3>
+            <div class="s">
+             <div class="hJND5c" style="margin-bottom:2px">
+              <cite>
+               https://www.marketwatch.com/investing/stock/
+               <b>
+                aapl
+               </b>
+              </cite>
+             </div>
+             <span class="st">
+              Apple Inc. stock price, stock quotes and financial overviews from MarketWatch.
+             </span>
+             <br/>
+            </div>
+           </div>
+           <div class="g">
+            <h3 class="r">
+             <a href="/url?q=https://www.nasdaq.com/symbol/aapl&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQFgg7MAg&amp;usg=AOvVaw2Ga8Tk1Vw77ev68eDsqu3o">
+              <b>
+               AAPL
+              </b>
+              Stock Quote - Apple Inc. Common Stock Price - Nasdaq
+             </a>
+            </h3>
+            <div class="s">
+             <div class="hJND5c" style="margin-bottom:2px">
+              <cite>
+               https://www.nasdaq.com/symbol/
+               <b>
+                aapl
+               </b>
+              </cite>
+              <div class="Pj9hGd">
+               <div aria-expanded="false" aria-haspopup="true" data-ved="0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ7B0IPDAI" onclick="google.sham(this);" style="display:inline" tabindex="0">
+                <span class="CiacGf">
+                </span>
+               </div>
+               <div class="am-dropdown-menu" role="menu" style="display:none" tabindex="-1">
+                <ul>
+                 <li class="mUpfKd">
+                  <a class="imx0m" href="/url?q=http://webcache.googleusercontent.com/search%3Fq%3Dcache:YGckK2kkOeUJ:https://www.nasdaq.com/symbol/aapl%252BAAPL%26hl%3Den%26ct%3Dclnk&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQIAg-MAg&amp;usg=AOvVaw1iLkzJagwoVfIb4AUgWXOs">
+                   Cached
+                  </a>
+                 </li>
+                </ul>
+               </div>
+              </div>
+             </div>
+             <span class="st">
+              Stock quote for Apple Inc. Common Stock Common Stock (
+              <b>
+               AAPL
+              </b>
+              ) with real-time
+              <br/>
+              last sale and extended hours stock prices, company news, charts, and research ...
+             </span>
+             <br/>
+            </div>
+           </div>
+           <div class="g">
+            <h3 class="r">
+             <a href="/url?q=https://www.tipranks.com/stocks/aapl/price-target&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQFghAMAk&amp;usg=AOvVaw1l2ZNeOZt5Omu0IsZSdjg5">
+              <b>
+               AAPL
+              </b>
+              Price Target | Apple Ratings - TipRanks
+             </a>
+            </h3>
+            <div class="s">
+             <div class="hJND5c" style="margin-bottom:2px">
+              <cite>
+               https://www.tipranks.com/stocks/
+               <b>
+                aapl
+               </b>
+               /price-target
+              </cite>
+              <div class="Pj9hGd">
+               <div aria-expanded="false" aria-haspopup="true" data-ved="0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ7B0IQTAJ" onclick="google.sham(this);" style="display:inline" tabindex="0">
+                <span class="CiacGf">
+                </span>
+               </div>
+               <div class="am-dropdown-menu" role="menu" style="display:none" tabindex="-1">
+                <ul>
+                 <li class="mUpfKd">
+                  <a class="imx0m" href="/url?q=http://webcache.googleusercontent.com/search%3Fq%3Dcache:b_glCguShzcJ:https://www.tipranks.com/stocks/aapl/price-target%252BAAPL%26hl%3Den%26ct%3Dclnk&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQIAhDMAk&amp;usg=AOvVaw2GSehoDQJz4YnM5Jg7pcGj">
+                   Cached
+                  </a>
+                 </li>
+                </ul>
+               </div>
+              </div>
+             </div>
+             <div class="f slp">
+              <div class="star">
+               <div style="width:52px">
+               </div>
+              </div>
+              Rating: 4 - Review by TipRanks
+             </div>
+             <span class="st">
+              See
+              <b>
+               AAPL
+              </b>
+              price target based on 28 analysts offering 12 month price targets for
+              <br/>
+              Apple (
+              <b>
+               AAPL
+              </b>
+              ) in the last 3 months.
+              <b>
+               AAPL's
+              </b>
+              price target is $213.38 with a high ...
+             </span>
+             <br/>
+            </div>
+           </div>
+           <div class="g">
+            <h3 class="r">
+             <a href="/url?q=https://www.barrons.com/quote/stock/us/xnas/aapl&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQFghGMAo&amp;usg=AOvVaw3G4vv_rLicjmcCmKSEbgt4">
+              <b>
+               AAPL
+              </b>
+              Stock Price &amp; News - Apple Inc. - Barron's
+             </a>
+            </h3>
+            <div class="s">
+             <div class="hJND5c" style="margin-bottom:2px">
+              <cite>
+               https://www.barrons.com/quote/stock/us/xnas/
+               <b>
+                aapl
+               </b>
+              </cite>
+             </div>
+             <span class="st">
+              View the latest
+              <b>
+               AAPL
+              </b>
+              stock price with Barron's. Including historical share prices,
+              <br/>
+              analysis, earnings, cash flow and market valuation for Apple Inc.
+             </span>
+             <br/>
+            </div>
+           </div>
+           <div class="g">
+            <h3 class="r">
+             <a href="/url?q=http://www.google.com/finance%3Fq%3DNASDAQ:AAPL&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQFghIMAs&amp;usg=AOvVaw0rnhBwuYBzHeOSZfHGSwXa">
+              nasdaq:
+              <b>
+               aapl
+              </b>
+              - Google
+             </a>
+            </h3>
+            <div class="s">
+             <div class="hJND5c" style="margin-bottom:2px">
+              <cite>
+               www.google.com/finance?q=NASDAQ:
+               <b>
+                AAPL
+               </b>
+              </cite>
+             </div>
+             <span class="st">
+             </span>
+             <br/>
+            </div>
+           </div>
+           <div class="g">
+            <h3 class="r">
+             <a href="/url?q=https://money.cnn.com/quote/quote.html%3Fsymb%3DAAPL&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQFghKMAw&amp;usg=AOvVaw3PmJUkQqbSGjOQIICWmDJb">
+              <b>
+               AAPL
+              </b>
+              - Apple Inc Stock quote - CNNMoney.com
+             </a>
+            </h3>
+            <div class="s">
+             <div class="hJND5c" style="margin-bottom:2px">
+              <cite>
+               https://money.cnn.com/quote/quote.html?symb=
+               <b>
+                AAPL
+               </b>
+              </cite>
+              <div class="Pj9hGd">
+               <div aria-expanded="false" aria-haspopup="true" data-ved="0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ7B0ISzAM" onclick="google.sham(this);" style="display:inline" tabindex="0">
+                <span class="CiacGf">
+                </span>
+               </div>
+               <div class="am-dropdown-menu" role="menu" style="display:none" tabindex="-1">
+                <ul>
+                 <li class="mUpfKd">
+                  <a class="imx0m" href="/url?q=http://webcache.googleusercontent.com/search%3Fq%3Dcache:DyDQqKkf6JwJ:https://money.cnn.com/quote/quote.html%3Fsymb%253DAAPL%252BAAPL%26hl%3Den%26ct%3Dclnk&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQIAhNMAw&amp;usg=AOvVaw3UJy0--zxj333EGken-Tbb">
+                   Cached
+                  </a>
+                 </li>
+                 <li class="mUpfKd">
+                  <a class="imx0m" href="/search?ie=UTF-8&amp;q=related:https://money.cnn.com/quote/quote.html%3Fsymb%3DAAPL+AAPL&amp;tbo=1&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQHwhOMAw">
+                   Similar
+                  </a>
+                 </li>
+                </ul>
+               </div>
+              </div>
+             </div>
+             <span class="st">
+              Apple Inc (NASDAQ:
+              <b>
+               AAPL
+              </b>
+              ). Add to Watch List. Set Alert. 208.87. Delayed ...
+              <br/>
+              News. Chart. Latest
+              <b>
+               AAPL
+              </b>
+              News | Press Releases ... See All
+              <b>
+               AAPL
+              </b>
+              News. Today's
+              <br/>
+              ...
+             </span>
+             <br/>
+            </div>
+           </div>
+          </ol>
+         </div>
+        </div>
+       </div>
+       <div style="clear:both;margin-bottom:17px;overflow:hidden">
+        <div style="font-size:16px;padding:0 8px 1px">
+         Searches related to
+         <b>
+          AAPL
+         </b>
+        </div>
+        <table border="0" cellpadding="0" cellspacing="0">
+         <tr>
+          <td valign="top">
+           <p class="aw5cc" style="margin:3px 8px">
+            <a href="/search?ie=UTF-8&amp;q=aapl+earnings&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1QIIUSgA">
+             aapl
+             <b>
+              earnings
+             </b>
+            </a>
+           </p>
+          </td>
+          <td style="padding-left:10px" valign="top">
+           <p class="aw5cc" style="margin:3px 8px">
+            <a href="/search?ie=UTF-8&amp;q=amzn&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1QIIUigB">
+             <b>
+              amzn
+             </b>
+            </a>
+           </p>
+          </td>
+         </tr>
+         <tr>
+          <td valign="top">
+           <p class="aw5cc" style="margin:3px 8px">
+            <a href="/search?ie=UTF-8&amp;q=aapl+dividend&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1QIIUygC">
+             aapl
+             <b>
+              dividend
+             </b>
+            </a>
+           </p>
+          </td>
+          <td style="padding-left:10px" valign="top">
+           <p class="aw5cc" style="margin:3px 8px">
+            <a href="/search?ie=UTF-8&amp;q=facebook+stock+price&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1QIIVCgD">
+             <b>
+              facebook stock price
+             </b>
+            </a>
+           </p>
+          </td>
+         </tr>
+         <tr>
+          <td valign="top">
+           <p class="aw5cc" style="margin:3px 8px">
+            <a href="/search?ie=UTF-8&amp;q=nasdaq:aapl&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1QIIVSgE">
+             <b>
+              nasdaq:aapl
+             </b>
+            </a>
+           </p>
+          </td>
+          <td style="padding-left:10px" valign="top">
+           <p class="aw5cc" style="margin:3px 8px">
+            <a href="/search?ie=UTF-8&amp;q=goog+stock&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1QIIVigF">
+             <b>
+              goog stock
+             </b>
+            </a>
+           </p>
+          </td>
+         </tr>
+         <tr>
+          <td valign="top">
+           <p class="aw5cc" style="margin:3px 8px">
+            <a href="/search?ie=UTF-8&amp;q=fb+stock&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1QIIVygG">
+             <b>
+              fb stock
+             </b>
+            </a>
+           </p>
+          </td>
+          <td style="padding-left:10px" valign="top">
+           <p class="aw5cc" style="margin:3px 8px">
+            <a href="/search?ie=UTF-8&amp;q=amazon+stock+price&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ1QIIWCgH">
+             <b>
+              amazon stock price
+             </b>
+            </a>
+           </p>
+          </td>
+         </tr>
+        </table>
+       </div>
+      </div>
+      <div id="foot">
+       <table align="center" border="0" cellpadding="0" cellspacing="0" id="nav">
+        <tr valign="top">
+         <td align="left" class="b">
+          <span class="csb" style="background-position:-24px 0;width:28px">
+          </span>
+          <b>
+          </b>
+         </td>
+         <td>
+          <span class="csb" style="background-position:-53px 0;width:20px">
+          </span>
+          <b>
+           1
+          </b>
+         </td>
+         <td>
+          <a class="fl" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;ei=R4dzW8zfBMiK0wLi_57ADg&amp;start=10&amp;sa=N">
+           <span class="csb" style="background-position:-74px 0;width:20px">
+           </span>
+           2
+          </a>
+         </td>
+         <td>
+          <a class="fl" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;ei=R4dzW8zfBMiK0wLi_57ADg&amp;start=20&amp;sa=N">
+           <span class="csb" style="background-position:-74px 0;width:20px">
+           </span>
+           3
+          </a>
+         </td>
+         <td>
+          <a class="fl" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;ei=R4dzW8zfBMiK0wLi_57ADg&amp;start=30&amp;sa=N">
+           <span class="csb" style="background-position:-74px 0;width:20px">
+           </span>
+           4
+          </a>
+         </td>
+         <td>
+          <a class="fl" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;ei=R4dzW8zfBMiK0wLi_57ADg&amp;start=40&amp;sa=N">
+           <span class="csb" style="background-position:-74px 0;width:20px">
+           </span>
+           5
+          </a>
+         </td>
+         <td>
+          <a class="fl" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;ei=R4dzW8zfBMiK0wLi_57ADg&amp;start=50&amp;sa=N">
+           <span class="csb" style="background-position:-74px 0;width:20px">
+           </span>
+           6
+          </a>
+         </td>
+         <td>
+          <a class="fl" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;ei=R4dzW8zfBMiK0wLi_57ADg&amp;start=60&amp;sa=N">
+           <span class="csb" style="background-position:-74px 0;width:20px">
+           </span>
+           7
+          </a>
+         </td>
+         <td>
+          <a class="fl" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;ei=R4dzW8zfBMiK0wLi_57ADg&amp;start=70&amp;sa=N">
+           <span class="csb" style="background-position:-74px 0;width:20px">
+           </span>
+           8
+          </a>
+         </td>
+         <td>
+          <a class="fl" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;ei=R4dzW8zfBMiK0wLi_57ADg&amp;start=80&amp;sa=N">
+           <span class="csb" style="background-position:-74px 0;width:20px">
+           </span>
+           9
+          </a>
+         </td>
+         <td>
+          <a class="fl" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;ei=R4dzW8zfBMiK0wLi_57ADg&amp;start=90&amp;sa=N">
+           <span class="csb" style="background-position:-74px 0;width:20px">
+           </span>
+           10
+          </a>
+         </td>
+         <td class="b" style="text-align:left">
+          <a class="fl" href="/search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz&amp;ei=R4dzW8zfBMiK0wLi_57ADg&amp;start=10&amp;sa=N" style="text-align:left">
+           <span class="csb" style="background-position:-96px 0;width:71px">
+           </span>
+           <span style="display:block;margin-left:53px">
+            Next
+           </span>
+          </a>
+         </td>
+        </tr>
+       </table>
+       <p class="A8ul6" id="bfl" style="margin:19px 0 0;text-align:center">
+        <a href="/advanced_search?q=AAPL&amp;ie=UTF-8&amp;prmd=ivnsz">
+         Advanced search
+        </a>
+        <a href="/support/websearch/bin/answer.py?answer=134479&amp;hl=en">
+         Search Help
+        </a>
+        <a href="/tools/feedback/survey/html?productId=196&amp;query=AAPL&amp;hl=en">
+         Send feedback
+        </a>
+       </p>
+       <div class="A8ul6" id="fll" style="margin:19px auto 19px auto;text-align:center">
+        <a href="/">
+         Google Home
+        </a>
+        <a href="/intl/en/ads">
+         Advertising Programs
+        </a>
+        <a href="/services">
+         Business Solutions
+        </a>
+        <a href="/intl/en/policies/privacy/">
+         Privacy
+        </a>
+        <a href="/intl/en/policies/terms/">
+         Terms
+        </a>
+        <a href="/intl/en/about.html">
+         About Google
+        </a>
+       </div>
+      </div>
+     </td>
+     <td id="rhs_block" valign="top">
+      <ol>
+       <div class="g">
+        <div class="VBt9Dc hp-xpdbox">
+         <div class="R8KuR" style="float:right">
+          <div class="OSMzvb" style="height:86px;width:86px">
+           <a href="/url?q=http://t1.gstatic.com/images%3Fq%3Dtbn:ANd9GcSjoU2lZ2eJX3aCMfiFDt39uRNcDu9W7pTKcyZymE2iKa7IOVaI&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQndQBCGIwDQ&amp;usg=AOvVaw2722_SxMP_dowkdXpI9Bdi">
+            <img alt="Image result for AAPL" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoxFBOZPf3hhmbECvkkyXdUgAC77uLAb_FLLZdnVBnAYT0_lqXw5CtQw" style="margin-left:0px;margin-right:0px" title="http://t1.gstatic.com/images?q=tbn:ANd9GcSjoU2lZ2eJX3aCMfiFDt39uRNcDu9W7pTKcyZymE2iKa7IOVaI"/>
+           </a>
+          </div>
+         </div>
+         <div class="V7Q8V">
+          <div>
+           <div class="FSP1Dd">
+            Apple
+           </div>
+           <div class="F7uZG Rlw09">
+            Technology company
+           </div>
+          </div>
+         </div>
+         <div class="V7Q8V">
+          <div class="mraOPb">
+           <span>
+            Apple Inc. is an American multinational technology company headquartered in Cupertino, California, that designs, develops, and sells consumer electronics, computer software, and online services.
+            <a class="fl" href="/url?q=https://en.wikipedia.org/wiki/Apple_Inc.&amp;sa=U&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmhMIaCgAMA8&amp;usg=AOvVaw1EVsqpQMQ_jR0r7WgUltLv">
+             Wikipedia
+            </a>
+           </span>
+          </div>
+         </div>
+         <div class="V7Q8V" style="display:none">
+         </div>
+         <div class="V7Q8V">
+          <span class="cC4Myd">
+           Products:
+          </span>
+          <span class="A1t5ne">
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=iPhone&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuICMYzMc_KqirU0M8qt9JPzc3JSk0sy8_OAzLzi0tzUovjk_NyCxLzM1GKrgqL8lNLkEgAe_5Y5QgAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIbCgAMBE">
+            iPhone
+           </a>
+           ,
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=Apple+Watch&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuIGMQwNi3OTTIy0NDPKrfST83NyUpNLMvPzgMy84tLc1KL45PzcgsS8zNRiq4Ki_JTS5BIARL1zKkMAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIbSgBMBE">
+            Apple Watch
+           </a>
+           ,
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=Macintosh&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUgIzqlLMtDQzyq30k_NzclKTSzLz84DMvOLS3NSi-OT83ILEvMzUYquCovyU0uQSACuSf_M_AAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIbigCMBE">
+            Macintosh
+           </a>
+           ,
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=macOS&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuIAMUxNK4u0NDPKrfST83NyUpNLMvPzgMy84tLc1KL45PzcgsS8zNRiq4Ki_JTS5BIAx69xx0AAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIbygDMBE">
+            macOS
+           </a>
+           ,
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=iPod&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuIAMXKTK4y0NDPKrfST83NyUpNLMvPzgMy84tLc1KL45PzcgsS8zNRiq4Ki_JTS5BIAYpei1EAAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIcCgEMBE">
+            iPod
+           </a>
+           ,
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=iOS&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuICMYzLk3IMTbQ0M8qt9JPzc3JSk0sy8_OAzLzi0tzUovjk_NyCxLzM1GKrgqL8lNLkEgD9uvXsQgAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIcSgFMBE">
+            iOS
+           </a>
+          </span>
+          <span>
+           ,
+           <a class="fl" href="/search?ie=UTF-8&amp;q=apple+products&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLao0tLMKLfST87PyUlNLsnMzwMy84pLc1OL4pPzcwsS8zJTi60KivJTSpNLAIeSLOM2AAAA">
+            More
+           </a>
+          </span>
+         </div>
+         <div class="V7Q8V">
+         </div>
+         <div class="V7Q8V">
+         </div>
+         <div class="V7Q8V">
+          <span class="cC4Myd">
+           Founded:
+          </span>
+          <span class="A1t5ne">
+           April 1, 1976,
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=Cupertino+California&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuIAMYrMzC21VLOTrfTzi9IT8zKrEksy8_NQOFZp-aV5KakpAAMNX-Q8AAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIdCgAMBQ">
+            Cupertino, CA
+           </a>
+          </span>
+         </div>
+         <div class="V7Q8V">
+          <span class="cC4Myd">
+           Headquarters:
+          </span>
+          <span class="A1t5ne">
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=Cupertino+California&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuIAMYrMzC21tLKTrfTzi9IT8zKrEksy8_NQOFYZqYkphaWJRSWpRcUAN9X3O0EAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIdygAMBU">
+            Cupertino, CA
+           </a>
+          </span>
+         </div>
+         <div class="V7Q8V">
+          <span class="cC4Myd">
+           Founders:
+          </span>
+          <span class="A1t5ne">
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=Steve+Jobs&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuIAMcwqjYu01LOTrfSTSosz81KLi-GM-PyC1KLEksz8PKu0_NK8lNQiAN4yiRI-AAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIeigAMBY">
+            Steve Jobs
+           </a>
+           ,
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=Steve+Wozniak&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuIAMcwqDXO01LOTrfSTSosz81KLi-GM-PyC1KLEksz8PKu0_NK8lNQiABeUdPY-AAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIeygBMBY">
+            Steve Wozniak
+           </a>
+           ,
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=Ronald+Wayne&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuIEMYyqTCzNtNSzk630k0qLM_NSi4vhjPj8gtSixJLM_DyrtPzSvJTUIgAnkLHKPwAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIfCgCMBY">
+            Ronald Wayne
+           </a>
+          </span>
+         </div>
+         <div class="V7Q8V">
+          <span class="cC4Myd">
+           Subsidiaries:
+          </span>
+          <span class="A1t5ne">
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=Beats+Electronics&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuICMSzLzI2KSrQ0M8qt9JPzc3JSk0sy8_P084vSE_MyqxJBnGKr4tKk4syUzMSizNRiANBPmXFCAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIfygAMBc">
+            Beats Electronics
+           </a>
+           ,
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=Apple+Store&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuIEMYwyyotytDQzyq30k_NzclKTSzLz8_Tzi9IT8zKrEkGcYqvi0qTizJTMxKLM1GIA5R9BqEEAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIgAEoATAX">
+            Apple Store
+           </a>
+           ,
+           <a class="A1t5ne fl" href="/search?ie=UTF-8&amp;q=FileMaker+Inc.&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLaoUuIEMZItDLNKtDQzyq30k_NzclKTSzLz8_Tzi9IT8zKrEkGcYqvi0qTizJTMxKLM1GIAEFIWokEAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQmxMIgQEoAjAX">
+            FileMaker Inc.
+           </a>
+          </span>
+          <span>
+           ,
+           <a class="fl" href="/search?ie=UTF-8&amp;q=apple+subsidiaries&amp;stick=H4sIAAAAAAAAAOPgE2LXz9U3yLao0tLMKLfST87PyUlNLsnMz9PPL0pPzMusSgRxiq2KS5OKM1MyE4syU4sBS_oD7TYAAAA">
+            More
+           </a>
+          </span>
+         </div>
+         <div class="V7Q8V">
+          <span class="cC4Myd">
+           Did you know:
+          </span>
+          <span class="A1t5ne">
+           Apple Inc. is the world's largest information technology company by revenue.
+          </span>
+         </div>
+         <div class="dXAUyb">
+          <div class="lHETUb">
+           People also search for
+          </div>
+          <div class="xKoZHf B27ELd" style="width:72px">
+           <div class="tQOFN" style="height:72px">
+            <a class="FEM55" href="/search?ie=UTF-8&amp;q=Samsung&amp;stick=H4sIAAAAAAAAAONgFmLXz9U3yLaoUuIEMczTy8yNtPid83MLEvMqgzNTUssTK4sBOHFoWScAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQsQ4IhwEwGQ">
+             <img alt="Samsung Group" height="38px" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcReawhM3vTuSuhKzNXwQh5d44aW4fm_pG65ny1cHq7mZHdj0--yfSgS" style="margin-top:17px" title="Samsung Group" width="72px"/>
+            </a>
+           </div>
+           <div class="brYqc">
+            <a class="fl" href="/search?ie=UTF-8&amp;q=Samsung&amp;stick=H4sIAAAAAAAAAONgFmLXz9U3yLaoUuIEMczTy8yNtPid83MLEvMqgzNTUssTK4sBOHFoWScAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQxA0IiAEwGQ" title="Samsung Group">
+             Samsung Group
+            </a>
+            <div class="czonVc" title="Samsung Group">
+            </div>
+           </div>
+          </div>
+          <div class="B27ELd" style="width:72px">
+           <div class="tQOFN" style="height:72px">
+            <a class="FEM55" href="/search?ie=UTF-8&amp;q=Microsoft&amp;stick=H4sIAAAAAAAAAONgFmLXz9U3yLaoUuIAMUyKy0y0-J3zcwsS8yqDM1NSyxMriwG9FCc5JgAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQsQ4IigEwGQ">
+             <img alt="Microsoft Corporation" height="42px" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRMx1eAeeev5nlhXteviXHk7-hco51jw3qFdI201RLpw-PRC8CsU4-B" style="margin-top:15px" title="Microsoft Corporation" width="72px"/>
+            </a>
+           </div>
+           <div class="brYqc">
+            <a class="fl" href="/search?ie=UTF-8&amp;q=Microsoft&amp;stick=H4sIAAAAAAAAAONgFmLXz9U3yLaoUuIAMUyKy0y0-J3zcwsS8yqDM1NSyxMriwG9FCc5JgAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQxA0IiwEwGQ" title="Microsoft Corporation">
+             Microsoft Corporati...
+            </a>
+            <div class="czonVc" title="Microsoft Corporation">
+            </div>
+           </div>
+          </div>
+          <div class="ty7XEe B27ELd" style="width:72px">
+           <div class="tQOFN" style="height:72px">
+            <a class="FEM55" href="/search?ie=UTF-8&amp;q=Amazon&amp;stick=H4sIAAAAAAAAAONgFmLXz9U3yLaoUuIAMXLTs9O1-J3zcwsS8yqDM1NSyxMriwEb2-DIJgAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQsQ4IjQEwGQ">
+             <img alt="Amazon.com" height="15px" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQQrdpDbZYFYYGcp1gd-ydWAGzmzEiNh3HdQ5JTSVsEgnjdfCoaHefx" style="margin-top:28px" title="Amazon.com" width="72px"/>
+            </a>
+           </div>
+           <div class="brYqc">
+            <a class="fl" href="/search?ie=UTF-8&amp;q=Amazon&amp;stick=H4sIAAAAAAAAAONgFmLXz9U3yLaoUuIAMXLTs9O1-J3zcwsS8yqDM1NSyxMriwEb2-DIJgAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQxA0IjgEwGQ" title="Amazon.com">
+             Amazon.c...
+            </a>
+            <div class="czonVc" title="Amazon.com">
+            </div>
+           </div>
+          </div>
+          <br/>
+          <div class="xKoZHf B27ELd" style="width:72px">
+           <div class="tQOFN" style="height:72px">
+            <a class="FEM55" href="/search?ie=UTF-8&amp;q=Dell&amp;stick=H4sIAAAAAAAAAONgFmLXz9U3yLaoUuIAMQoqLZO0-J3zcwsS8yqDM1NSyxMriwHSF-8cJgAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQsQ4IkAEwGQ">
+             <img alt="Dell" height="72px" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRJMUWIDj3ZPTY-5vwoFx2Ijx3hLNmIgI4U4F6MSNFuWoCnUxQQLQQ" title="Dell" width="72px"/>
+            </a>
+           </div>
+           <div class="brYqc">
+            <a class="fl" href="/search?ie=UTF-8&amp;q=Dell&amp;stick=H4sIAAAAAAAAAONgFmLXz9U3yLaoUuIAMQoqLZO0-J3zcwsS8yqDM1NSyxMriwHSF-8cJgAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQxA0IkQEwGQ" title="Dell">
+             Dell
+            </a>
+            <div class="czonVc" title="Dell">
+            </div>
+           </div>
+          </div>
+          <div class="B27ELd" style="width:72px">
+           <div class="tQOFN" style="height:72px">
+            <a class="FEM55" href="/search?ie=UTF-8&amp;q=Google&amp;stick=H4sIAAAAAAAAAONgFmLXz9U3yLaoUuIEMUxMk82TtPid83MLEvMqgzNTUssTK4sBWtWzZCcAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQsQ4IkwEwGQ">
+             <img alt="Google" height="72px" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT2oJXYsmRiK1fDlromF5HQyIhsOHJz_tpPj0UNTwUP3f4ugroM2Z0" title="Google" width="72px"/>
+            </a>
+           </div>
+           <div class="brYqc">
+            <a class="fl" href="/search?ie=UTF-8&amp;q=Google&amp;stick=H4sIAAAAAAAAAONgFmLXz9U3yLaoUuIEMUxMk82TtPid83MLEvMqgzNTUssTK4sBWtWzZCcAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQxA0IlAEwGQ" title="Google">
+             Google
+            </a>
+            <div class="czonVc" title="Google">
+            </div>
+           </div>
+          </div>
+          <div class="ty7XEe B27ELd" style="width:72px">
+           <div class="tQOFN" style="height:72px">
+            <a class="FEM55" href="/search?ie=UTF-8&amp;q=Best+Buy&amp;stick=H4sIAAAAAAAAAONgFmLXz9U3yLaoUuIEMQyrilIqtPid83MLEvMqgzNTUssTK4sBOrhV0ycAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQsQ4IlgEwGQ">
+             <img alt="Best Buy" height="50px" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQVRJlaC-vIF8dVaMb76IE1MsO7iFGFgX51OfsgXTgYikRE2AwPFIRR" style="margin-top:11px" title="Best Buy" width="72px"/>
+            </a>
+           </div>
+           <div class="brYqc">
+            <a class="fl" href="/search?ie=UTF-8&amp;q=Best+Buy&amp;stick=H4sIAAAAAAAAAONgFmLXz9U3yLaoUuIEMQyrilIqtPid83MLEvMqgzNTUssTK4sBOrhV0ycAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQxA0IlwEwGQ" title="Best Buy">
+             Best Buy
+            </a>
+            <div class="czonVc" title="Best Buy">
+            </div>
+           </div>
+          </div>
+          <br/>
+         </div>
+        </div>
+       </div>
+       <div class="g">
+        <div id="k2fPW">
+         <div class="u6RhQc">
+          <div>
+           <div class="CB9G1b">
+            See results about
+           </div>
+          </div>
+         </div>
+         <div class="u6RhQc">
+          <div class="TyXs8d">
+           <table class="NWncrd">
+            <tr>
+             <td class="rNjNwd">
+              <a class="fl" href="/search?ie=UTF-8&amp;q=Apple&amp;stick=H4sIAAAAAAAAAONgecQYyi3w8sc9YSmfSWtOXmN04-IKzsgvd80rySypFLLgYoOyJLi4pdj1c_UNsi2qNBikOLlgHCkRLSFOe7FDTlPrW9MEbwu2JZ9UO1DIAwANIY5ZWgAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ-DIInwEwGw">
+               <div class="JYQZge vrQIef">
+                Apple (Technology company)
+               </div>
+               <div class="C6ZAab vrQIef">
+                Products: iPhone, Apple Watch, Macintosh, macOS, iPod, iOS, Keynote, Final Cut Pro, Logic Pro, Pages, macOS Sierra, iOS 10, Numbers, iLife
+               </div>
+               <div class="C6ZAab vrQIef">
+                Stock price:
+               </div>
+              </a>
+             </td>
+             <td width="40">
+              <a href="/search?ie=UTF-8&amp;q=Apple&amp;stick=H4sIAAAAAAAAAONgecQYyi3w8sc9YSmfSWtOXmN04-IKzsgvd80rySypFLLgYoOyJLi4pdj1c_UNsi2qNBikOLlgHCkRLSFOe7FDTlPrW9MEbwu2JZ9UO1DIAwANIY5ZWgAAAA&amp;sa=X&amp;ved=0ahUKEwiMn7GX-e3cAhVIxVQKHeK_B-gQ-DIIogEwGw">
+               <img class="DBHfJe" height="40" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRyQ0xIynz9EIJ9ZY870nf4HCQOudh4K8HIWMyzBtCB2_9evMLD-NE" width="40"/>
+              </a>
+             </td>
+            </tr>
+           </table>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="g">
+       </div>
+      </ol>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <script nonce="L7VA2iULhnHgL0gBt9d9Bg==" type="text/javascript">
+   (function(){var eventid='R4dzW8zfBMiK0wLi_57ADg';google.kEI = eventid;})();
+  </script>
+  <script nonce="L7VA2iULhnHgL0gBt9d9Bg==" src="/xjs/_/js/k=xjs.hp.en_US.0AdurjI-zBY.O/m=sb_he,d/rt=j/d=1/rs=ACT90oG71POkV1kU-5zjrLlr7vvuz0kSjQ">
+  </script>
+  <script nonce="L7VA2iULhnHgL0gBt9d9Bg==" type="text/javascript">
+   google.ac&&google.ac.c({"agen":true,"cgen":true,"client":"heirloom-serp","dh":true,"dhqt":true,"ds":"","ffql":"en","fl":true,"host":"google.com","isbh":28,"jsonp":true,"msgs":{"cibl":"Clear Search","dym":"Did you mean:","lcky":"I\u0026#39;m Feeling Lucky","lml":"Learn more","oskt":"Input tools","psrc":"This search was removed from your \u003Ca href=\"/history\"\u003EWeb History\u003C/a\u003E","psrl":"Remove","sbit":"Search by image","srch":"Google Search"},"nds":true,"ovr":{},"pq":"AAPL","refpd":true,"rfs":["aapl earnings","aapl dividend","nasdaq:aapl","fb stock","amzn","facebook stock price","goog stock","amazon stock price"],"sbpl":24,"sbpr":24,"scd":10,"sce":5,"stok":"Zr8OmtT2WWwzghgXvqo0axeyKvQ","uhde":false})
+  </script>
+  <script nonce="L7VA2iULhnHgL0gBt9d9Bg==">
+   (function(){window.google.cdo={height:0,width:0};(function(){var a=window.innerWidth,b=window.innerHeight;if(!a||!b){var c=window.document,d="CSS1Compat"==c.compatMode?c.documentElement:c.body;a=d.clientWidth;b=d.clientHeight}a&&b&&(a!=google.cdo.width||b!=google.cdo.height)&&google.log("","","/client_204?&atyp=i&biw="+a+"&bih="+b+"&ei="+google.kEI);}).call(this);})();
+  </script>
+ </body>
+</html>
