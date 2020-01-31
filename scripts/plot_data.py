@@ -114,10 +114,20 @@ volmq_end_idx=volmq_date_idx+100
 
 #plot date range
 
-start_date='1982-08-11'
-# start_date='1959-07-15'
-end_date='2019-03-11'
+start_date='1959-07-15'
+# start_date='1965-08-11'
+# start_date='1972-08-11'
+# start_date='1982-08-11'
+
+
+end_date='1960-01-04'
 # end_date='1982-08-11'
+# end_date='1980-04-30'
+# end_date='1982-08-18'
+# end_date='1987-08-26' # before 1987
+# end_date='1990-03-14'
+# end_date='2019-03-11'
+
 sp_start_idx=sp_date.index(start_date)
 sp_end_idx=sp_date.index(end_date)
 vol_start_idx=vol_date.index(start_date)

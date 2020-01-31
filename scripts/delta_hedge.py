@@ -26,7 +26,7 @@ inputs:
 	COMM_STOCK_PER_UNIT, line 93: commission on trades of stocks per stock
 	COMM_STOCK_COST, line 93: commission on trades of stocks % of cost of trade
 	COMM_STOCK_FLAT, line 93: commission on trades of stocks flat fee
-	LEVERAGE_FACTOR, line 96: leverage factor used in calculating commission on trades of options
+	LEVERAGE_FACTOR, line 96: leverage factor used in calculating sizing of options trades. This is only used in the buy and sell options functions
 	COMM_PER_OPT, line 96: commission on trade of options per contract, rounding up.
 	OPT_HOLDING_PARAMS, line 101: Option holding parameters, as dict of lists:
 		{'L_VOL':[min. volatility, time to mature, holding period],
@@ -79,6 +79,7 @@ def get_DT_str(date_time_obj:datetime.datetime) -> str:
 OPTION_PR_ROUNDING=5 # round option prices to 1/10th of a pip
 
 def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
+	SIM_END_DATE:'end date, YYYY-mm-dd, str',
 	OUTPUT_CSV:str,
 	STARTING_EQUITY:float,
 	STRIKE_AT:'strike price, as fraction of underlying, float',
@@ -86,15 +87,15 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 	SIM_NAME:'simulation name for error analysis',
 	OPT_FRACTION_K:'constant option fraction',
 	OPT_FRACTION_M:'multiplier to increase option fraction based on volatility'=0,
-	FAUSTMANN_R_MIN:'minimum Faustmann ratio (market cap/net worth) at which to buy options'=0,
+###	FAUSTMANN_R_MIN:'minimum Faustmann ratio (market cap/net worth) at which to buy options'=0,
 	DEBUG:'set to true to print out full debug info'=False,
 	TRADE_DAY_MIN:'make a trade on a first trading day after this day of the month, YYYY-mm-dd, str'=10,
 	## Define commission on trades of stocks:
 	# $2 per stock + 0% of the cost of the trade + $0 flat fee
 	COMM_STOCK_PER_UNIT=2,COMM_STOCK_COST=0,COMM_STOCK_FLAT=0,
-	## Define commission on trades of options:
-	# $2 per 50 options (using S&P emini 50x), rounding up
-	LEVERAGE_FACTOR=50,COMM_PER_OPT=2,
+	## Define commission and leverage on trades of options:
+	# 100x leverage (using $SPX options 100x index value), 0.5% of trade cost to commissions
+	LEVERAGE_FACTOR=50,COMM_PER_OPT=0.005,
 	# Option holding parameters, as dict of lists:
 	# {'L_VOL':[min. volatility, time to mature, holding period],
 	#  'M_VOL':[min. volatility, time to mature, holding period],
@@ -121,15 +122,16 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 	# Collect data from CSVs
 	stocks=table('data/^GSPC.csv')
 	irate=table('data/risk_free_1yr_2yr_clean.csv')
-	corp_net_worth=table('data/corp_net_worth.csv')
-	corp_market_val=table('data/Corp_market_value.csv')
+###	corp_net_worth=table('data/corp_net_worth.csv')
+###	corp_market_val=table('data/Corp_market_value.csv')
 	volatility=table('data/volatility40.csv')
 	market_filter=table('data/market_filter.csv') # only necessary when including additional filters
-	datasets=[stocks,irate,corp_net_worth,corp_market_val,volatility]
+###	datasets=[stocks,irate,corp_net_worth,corp_market_val,volatility]
+	datasets=[stocks,irate,volatility]
 
 	## DEFINE HELPER FUNCTIONS ##
 	TRADING_COST_STOCK = lambda size, price: COMM_STOCK_PER_UNIT*size + COMM_STOCK_COST*size*price + COMM_STOCK_FLAT
-	TRADING_COST_OPTION = lambda size: math.ceil(size/LEVERAGE_FACTOR)*COMM_PER_OPT
+	TRADING_COST_OPTION = lambda size: size*COMM_PER_OPT
 
 	# Purchase only put options
 	##~ Note that we need to divide t by 252, the working days in the year
@@ -162,17 +164,17 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 		def volatility(self,date:str) -> float:
 			# Get real volatility for a matching date
 			return float([_ for _ in volatility.data if _[0]==date][0][1])/100
-		def net_worth(self,date:str) -> float:
-			# Get net worth for a matching date
-			times=[get_DT_obj(_[0]) for _ in corp_net_worth.data]
-			return float(corp_net_worth.data[times.index([_ for _ in times if _<=get_DT_obj(date)][-1])][1])
-		def market_val(self,date:str) -> float:
-			# Get market value 
-			times=[get_DT_obj(_[0]) for _ in corp_market_val.data]
-			return float(corp_market_val.data[times.index([_ for _ in times if _<=get_DT_obj(date)][-1])][1])
-		def faustmann_ratio(self,date:str) -> float:
-			# Compute Faustmann ratio, which is market cap/net worth
-			return (self.market_val(date)/1000)/get_for_date.net_worth(date)
+###		def net_worth(self,date:str) -> float:
+###			# Get net worth for a matching date
+###			times=[get_DT_obj(_[0]) for _ in corp_net_worth.data]
+###			return float(corp_net_worth.data[times.index([_ for _ in times if _<=get_DT_obj(date)][-1])][1])
+###		def market_val(self,date:str) -> float:
+###			# Get market value 
+###			times=[get_DT_obj(_[0]) for _ in corp_market_val.data]
+###			return float(corp_market_val.data[times.index([_ for _ in times if _<=get_DT_obj(date)][-1])][1])
+###		def faustmann_ratio(self,date:str) -> float:
+###			# Compute Faustmann ratio, which is market cap/net worth
+###			return (self.market_val(date)/1000)/get_for_date.net_worth(date)
 		def put_opt_price(self,purchase_date:str, current_date:str, expire_date:str) -> dict:
 			purchase_volatility=self.volatility(purchase_date)
 			current_volatility=self.volatility(current_date)
@@ -199,7 +201,12 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 
 	## Calculate valid time bounds - simulation should not extend beyound first and last days on the datasets.
 	FIRST_VALID_DATE=max(map(get_DT_obj,map(lambda _:_[0][0],[_.data for _ in datasets])))
-	LAST_VALID_DATE=min(map(get_DT_obj,map(lambda _:_[-1][0],[_.data for _ in datasets])))
+	if SIM_END_DATE=='None':
+		LAST_VALID_DATE=min(map(get_DT_obj,map(lambda _:_[-1][0],[_.data for _ in datasets])))
+		print('Last valid date: ',LAST_VALID_DATE)
+	else:
+		LAST_VALID_DATE=get_DT_obj(SIM_END_DATE)
+		print('Last valid date: ',LAST_VALID_DATE)
 
 	# Function to confirm that a particular date is present in all datasets
 	def check_date(date: str, datasets: list):
@@ -235,7 +242,7 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 		lastTradeDate=get_DT_obj(lastTradeDate)
 		return get_next_valid_date(get_DT_str(datetime.datetime(lastTradeDate.year,lastTradeDate.month,10)+relativedelta(months=+OPT_HOLDING_PERIOD)))
 
-	# Compute net worth (total equity)
+	# Compute our net worth (total equity)
 	def get_net_worth(equity, this_trade_day):
 		# add stocks and cash
 		stocks_and_cash=equity['stocks'] * get_for_date.market_price(this_trade_day)+equity['cash']
@@ -249,6 +256,7 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 	## DEFINE TRADING FUNCTIONS ##
 
 	def buy_stocks(cash:float,this_trade_day:str):
+		# if DEBUG: print('Buying stocks right now')
 		# compute how many stocks we can buy with our cash, while accounting for transaction costs
 		stocks_buy_vol=(cash-COMM_STOCK_FLAT)//(
 			get_for_date.market_price(this_trade_day)+COMM_STOCK_PER_UNIT+
@@ -272,6 +280,7 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 			
 	def buy_options():
 		if DEBUG: print('Buying options right now')
+		# get todays volatility
 		vol_current=get_for_date.volatility(this_trade_day)
 		if DEBUG: print('current vol for ',this_trade_day,' : ',round(vol_current,3),' underlying: ',round(get_for_date.market_price(this_trade_day),2),' risk free rate ',round(get_for_date.irate(this_trade_day),4))
 		# compute how much money to spend to fullfil the option fraction
@@ -283,11 +292,11 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 		# compute option price
 		options_price=round(get_for_date.put_opt_price(this_trade_day,this_trade_day,expire_date)['price'],OPTION_PR_ROUNDING)
 		option_strike=round(get_for_date.put_opt_price(this_trade_day,this_trade_day,expire_date)['K'],2)
-		# compute how many options to buy accounting for the commission
-		options_vol=trade_value//(options_price+COMM_PER_OPT/LEVERAGE_FACTOR)
+		# compute how many options to buy
+		options_volume=trade_value//(LEVERAGE_FACTOR*options_price)
 		# compute option trade cost
-		trade_cost=options_vol*options_price+TRADING_COST_OPTION(options_vol)
-		if DEBUG: print("new options price is ",options_price,' expiration date: ',expire_date,' days to expire: ',days_to_expire,' Strike: ',option_strike,' number purchased: ',options_vol) # DEBUG
+		trade_cost=options_volume*LEVERAGE_FACTOR*options_price+TRADING_COST_OPTION(options_volume)
+		if DEBUG: print("new options price is ",options_price,' expiration date: ',expire_date,' days to expire: ',days_to_expire,' Strike: ',option_strike,' number purchased: ',options_volume) # DEBUG
 		if DEBUG: print('cost of options: ',round(trade_cost,2),' net worth ',round(get_net_worth(equity, this_trade_day),2))
 		# find out how much cash needed
 		missing_cash=trade_cost-equity['cash']
@@ -299,11 +308,11 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 			# otherwise sell stocks
 			sell_stocks(missing_cash,this_trade_day)
 		# add options to equity
-		equity['options']['count']=options_vol
+		equity['options']['count']=options_volume
 		equity['options']['bought']=this_trade_day
 		equity['options']['expire']=expire_date
 		# calculate cash spent on options
-		spent_cash=round(options_price*options_vol+TRADING_COST_OPTION(options_vol),2)
+		spent_cash=round(options_price*options_volume+TRADING_COST_OPTION(options_volume),2)
 		# subtract spent cash from equity
 		equity['cash']=round(equity['cash']-spent_cash,2)
 		# return change in cash
@@ -392,7 +401,10 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 		updateConstants()
 		# set up variable to store returns from option sales
 		option_returns=0
-		# compute Faustmann ratio
+		###
+		# Use following section if testing against Faustmann ratio or another filter
+		###
+		'''
 		faustmann_ratio=get_for_date.faustmann_ratio(this_trade_day)
 		# use Faustmann ratio to determine how to trade
 		if faustmann_ratio>FAUSTMANN_R_MIN:
@@ -413,8 +425,20 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 			else:
 				if DEBUG: print('REMAIN AS IS')
 				buy_stocks(equity['cash'],this_trade_day)
+		'''
+		###
+		# Use following section for no filters
+		###
+		if equity['options']['count']:
+			if DEBUG: print('ROLL OPTIONS')
+			option_returns+=sell_options()
+			option_returns+=buy_options()
+		else:
+			if DEBUG: print('\nSELL STOCKS AND BUY OPTIONS\n')
+			option_returns+=buy_options()
+		
 		opt_current_price_1 = get_for_date.put_opt_price(equity['options']['bought'], this_trade_day, equity['options']['expire'])['price']
-		equity_curve.append([this_trade_day,get_net_worth(equity, this_trade_day),faustmann_ratio,option_returns,equity['stocks'],get_for_date.market_price(this_trade_day),equity['options']['count'],opt_current_price_1])
+		equity_curve.append([this_trade_day,get_net_worth(equity, this_trade_day),'faustmann_ratio',option_returns,equity['stocks'],get_for_date.market_price(this_trade_day),equity['options']['count'],opt_current_price_1])
 		# Move on to the next date
 		last_trade_day=this_trade_day
 		this_trade_day=make_nxt_trade_date(last_trade_day)
@@ -452,11 +476,11 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 					this_trade_day = _
 					option_returns += sell_options()
 					# Can use this next line to show dates where trades happen in equity curve. Otherwise comment out to not repeat days in equity curve
-					# equity_curve.append([this_trade_day,get_net_worth(equity, this_trade_day),faustmann_ratio,option_returns,equity['stocks'],get_for_date.market_price(this_trade_day),equity['options']['count'],opt_current_price])
+					# equity_curve.append([this_trade_day,get_net_worth(equity, this_trade_day),'faustmann_ratio',option_returns,equity['stocks'],get_for_date.market_price(this_trade_day),equity['options']['count'],opt_current_price])
 					break
 				# 1/21/19 adding this line for full equity output
 				else:
-					equity_curve.append([_,get_net_worth(equity, _),faustmann_ratio,option_returns,equity['stocks'],get_for_date.market_price(_),equity['options']['count'],opt_current_price])
+					equity_curve.append([_,get_net_worth(equity, _),'faustmann_ratio',option_returns,equity['stocks'],get_for_date.market_price(_),equity['options']['count'],opt_current_price])
 	## Close output file
 	f.close()
 	return equity_curve
@@ -472,20 +496,23 @@ if __name__ == "__main__":
 	start_time = time.time()
 	# start_date='2008-06-10'
 	start_date='1959-07-15'
+	end_date='1982-08-18'
+	# end_date='None'
 	# ~ start_date='1988-06-10'
 	start_equity=100000
 	
 	equity_curve1=main(SIM_START_DATE=start_date,
+		SIM_END_DATE=end_date,
 		OUTPUT_CSV='output_standalone1.csv',
 		STARTING_EQUITY=start_equity,
 		OPT_FRACTION_K=0.03,OPT_FRACTION_M=0,
 		STRIKE_AT=0.8,
-		# The Faustmann ratio is market cap/net worth
-		FAUSTMANN_R_MIN=0,
+###		# The Faustmann ratio is market cap/net worth
+###		FAUSTMANN_R_MIN=0,
 		# Fraction at which to exit the option trade
 		EXIT_THRESHOLD=10,
 		SIM_NAME='Simulation 1',
-		DEBUG=False,
+		DEBUG=True,
 		OPT_HOLDING_PARAMS={
 			'L_VOL':[0,   12, 4],
 			'M_VOL':[0.2,  6, 3],
@@ -514,10 +541,10 @@ if __name__ == "__main__":
 	options_value1_2=[_[7] for _ in equity_curve1]
 	
 	# Use this line for debugging:
-	# df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output, 'num_stocks':num_stocks1, 'price_stocks':price_stocks1, 'stocks_value':stocks_value1, 'options_value_calc':options_value1, 'num_options':num_options1, 'options_value_reported':options_value1_2})
+	df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output, 'num_stocks':num_stocks1, 'price_stocks':price_stocks1, 'stocks_value':stocks_value1, 'options_value_calc':options_value1, 'num_options':num_options1, 'options_value_reported':options_value1_2})
 	# Use this line for output for analytics:
-	df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output})
-	df1.to_csv('_equity1_output_01_29_20.csv', sep=',', index=False)
+	# df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output})
+	df1.to_csv('_equity1_output_01_30_20_2.csv', sep=',', index=False)
 	
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))
