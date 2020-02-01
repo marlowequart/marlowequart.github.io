@@ -297,8 +297,8 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 		option_strike=round(get_for_date.put_opt_price(this_trade_day,this_trade_day,expire_date)['K'],2)
 		# compute how many options to buy
 		options_volume=trade_value//(LEVERAGE_FACTOR*options_price)
-		# compute option trade cost
-		trade_cost=options_volume*LEVERAGE_FACTOR*options_price+total_trade_value*COMM_PER_OPT
+		# compute option trade cost. Here we also include the cost of sale, so 2x the trade cost
+		trade_cost=options_volume*LEVERAGE_FACTOR*options_price+2*total_trade_value*COMM_PER_OPT
 		if DEBUG: print("new options price is ",round(options_price,8),' expiration date: ',expire_date,' days to expire: ',days_to_expire,' Strike: ',option_strike,' number purchased: ',options_volume) # DEBUG
 		if DEBUG: print('Total cost of trade: ',round(trade_cost,2),', trade fees: ',round(total_trade_value*COMM_PER_OPT),' net worth ',round(get_net_worth(equity, this_trade_day),2))
 		# find out how much cash needed
@@ -333,12 +333,12 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 		old_option_strike=round(get_for_date.put_opt_price(equity['options']['bought'],this_trade_day,equity['options']['expire'])['K'],2)
 		old_option_expire=equity['options']['expire']
 		if DEBUG: print('current price of previous options: ',oldOptPrice,'current value of previous options: ',oldOptPrice*equity['options']['count'],' strike: ',old_option_strike,' expiration: ',old_option_expire,' number of opts held: ',equity['options']['count'])
-		# compute value of sale of options
-		option_returns=equity['options']['count']*oldOptPrice*LEVERAGE_FACTOR-equity['options']['count']*oldOptPrice*LEVERAGE_FACTOR*COMM_PER_OPT
+		# compute value of sale of options. No trade costs considered here, trade costs were taken into account at purchase
+		option_returns=equity['options']['count']*oldOptPrice*LEVERAGE_FACTOR
+		if DEBUG: print('Total results of sale: ',round(option_returns,2),' net worth ',round(get_net_worth(equity, this_trade_day),2))
+		
 		# add earned cash to equity
 		equity['cash']=round(equity['cash']+option_returns,2)
-		
-		if DEBUG: print('Total profit/loss on sale: ',round(option_returns,2),', trade fees: ',round(equity['options']['count']*oldOptPrice*LEVERAGE_FACTOR*COMM_PER_OPT,2),' net worth ',round(get_net_worth(equity, this_trade_day),2))
 		# writeout results
 		write_out_results()
 		# remove options from equity
@@ -354,14 +354,15 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 	csv_writer=csv.writer(f)
 	csv_writer.writerow(['purchase date','sale date', 'purchase underlying price',
 				'sale underlying price','contracts number','equity after sale of options',
-				'option price at purchase','option price at sale','profit/loss'])
+				'option price at purchase','option price at sale','trade costs','profit/loss'])
 
 	def write_out_results():
 		# write row in csv, 
 		# the header is defined below, at the start of the simulation
 		opt_pr_purchase=round(get_for_date.put_opt_price(equity['options']['bought'],equity['options']['bought'],equity['options']['expire'])['price'],OPTION_PR_ROUNDING)
 		opt_pr_sale=round(get_for_date.put_opt_price(equity['options']['bought'],this_trade_day,equity['options']['expire'])['price'],OPTION_PR_ROUNDING)
-		opt_trade_profit=round((opt_pr_sale-opt_pr_purchase)*equity['options']['count']*LEVERAGE_FACTOR-opt_pr_sale*equity['options']['count']*LEVERAGE_FACTOR*COMM_PER_OPT,2)
+		trade_costs=round(2*opt_pr_purchase*equity['options']['count']*LEVERAGE_FACTOR*COMM_PER_OPT,2)
+		opt_trade_profit=round((opt_pr_sale-opt_pr_purchase)*equity['options']['count']*LEVERAGE_FACTOR-trade_costs,2)
 		csv_writer.writerow( [equity['options']['bought'],
 			this_trade_day,
 			get_for_date.market_price(equity['options']['bought']),
@@ -370,6 +371,7 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 			get_net_worth(equity, this_trade_day),
 			opt_pr_purchase,
 			opt_pr_sale,
+			trade_costs,
 			opt_trade_profit])
 
 	def updateConstants():
@@ -504,6 +506,8 @@ if __name__ == "__main__":
 	start_time = time.time()
 	# start_date='2008-06-10'
 	start_date='1959-07-15'
+	
+	# Set end date to 'None' to run to last valid date
 	end_date='1982-08-18'
 	# end_date='None'
 	# ~ start_date='1988-06-10'
@@ -511,7 +515,7 @@ if __name__ == "__main__":
 	
 	equity_curve1=main(SIM_START_DATE=start_date,
 		SIM_END_DATE=end_date,
-		OUTPUT_CSV='output_standalone1.csv',
+		OUTPUT_CSV='_trade_results_01_31_20_1.csv',
 		STARTING_EQUITY=start_equity,
 		OPT_FRACTION_K=0.03,OPT_FRACTION_M=0,
 		STRIKE_AT=0.8,
@@ -552,7 +556,7 @@ if __name__ == "__main__":
 	df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output, 'num_stocks':num_stocks1, 'price_stocks':price_stocks1, 'stocks_value':stocks_value1, 'options_value_calc':options_value1, 'num_options':num_options1, 'options_value_reported':options_value1_2})
 	# Use this line for output for analytics:
 	# df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output})
-	df1.to_csv('_equity1_output_01_30_20_3.csv', sep=',', index=False)
+	df1.to_csv('_equity_curve_01_31_20_1.csv', sep=',', index=False)
 	
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))

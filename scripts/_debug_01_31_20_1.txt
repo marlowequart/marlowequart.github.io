@@ -1,5 +1,5 @@
 Start time to run script:
-2020-01-30 18:41:03.159180
+2020-01-31 18:46:55.356592
 Last valid date:  1982-08-18 00:00:00
 
 Simulation 1  looping over date:  1959-07-15
@@ -8,8 +8,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1959-07-15  :  0.088  underlying:  59.59  risk free rate  0.0452
-new options price is  0.00141  expiration date:  1960-07-15  days to expire:  366  Strike:  47.67  number purchased:  72446.0
-cost of options:  3000.15  net worth  100000.0
+new options price is  0.00141158  expiration date:  1960-07-15  days to expire:  366  Strike:  47.67  number purchased:  42292.0
+Total cost of trade:  3014.94 , trade fees:  15  net worth  100000.0
 TESTING EXIT NOW
 now testing date  1959-07-16  volatility:  0.087  opt price:  0.00153  underlying:  59.41  days to expiry:  365  risk free rate  0.0451
 now testing date  1959-07-17  volatility:  0.088  opt price:  0.00192  underlying:  59.19  days to expiry:  364  risk free rate  0.0449
@@ -53,7 +53,8 @@ now testing date  1959-09-08  volatility:  0.108  opt price:  0.01817  underlyin
     opt_current_price: 0.02
 Selling options right now
 current vol for  1959-09-08  :  0.108  underlying:  57.7  risk free rate:  0.0468
-current value of previous options:  0.018167032614368583  strike:  47.67  expiration:  1960-07-15  number of opts held:  2898
+current price of previous options:  0.018167032614368583 current value of previous options:  768.3201433268762  strike:  47.67  expiration:  1960-07-15  number of opts held:  42292.0
+Total results of sale:  38416.01  net worth  91645.52
 
 Simulation 1  looping over date:  1959-09-08
 
@@ -61,8 +62,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1959-09-08  :  0.108  underlying:  57.7  risk free rate  0.0468
-new options price is  0.0119  expiration date:  1960-09-16  days to expire:  374  Strike:  46.16  number purchased:  51615.0
-cost of options:  2680.22  net worth  89295.12
+new options price is  0.01190249  expiration date:  1960-09-16  days to expire:  374  Strike:  46.16  number purchased:  6485.0
+Total cost of trade:  3898.17 , trade fees:  19.0  net worth  129293.21
 TESTING EXIT NOW
 now testing date  1959-09-09  volatility:  0.109  opt price:  0.01532  underlying:  57.29  days to expiry:  373  risk free rate  0.0468
 now testing date  1959-09-10  volatility:  0.109  opt price:  0.01784  underlying:  56.99  days to expiry:  372  risk free rate  0.0472
@@ -154,11 +155,12 @@ Simulation 1  looping over date:  1960-01-11
 ROLL OPTIONS
 Selling options right now
 current vol for  1960-01-11  :  0.081  underlying:  58.77  risk free rate:  0.0497
-current value of previous options:  1.5611930191444714e-05  strike:  46.16  expiration:  1960-09-16  number of opts held:  2066
+current price of previous options:  1.5611930191444714e-05 current value of previous options:  0.10124336729151896  strike:  46.16  expiration:  1960-09-16  number of opts held:  6485.0
+Total results of sale:  5.06  net worth  126560.25
 Buying options right now
 current vol for  1960-01-11  :  0.081  underlying:  58.77  risk free rate  0.0497
-new options price is  0.00048  expiration date:  1961-01-20  days to expire:  375  Strike:  47.02  number purchased:  63742.0
-cost of options:  2580.6  net worth  86009.78
+new options price is  0.00048435  expiration date:  1961-01-20  days to expire:  375  Strike:  47.02  number purchased:  156001.0
+Total cost of trade:  3815.93 , trade fees:  19.0  net worth  126565.21
 TESTING EXIT NOW
 now testing date  1960-01-12  volatility:  0.082  opt price:  0.00067  underlying:  58.41  days to expiry:  374  risk free rate  0.0494
 now testing date  1960-01-13  volatility:  0.082  opt price:  0.00085  underlying:  58.08  days to expiry:  373  risk free rate  0.0495
@@ -178,7 +180,8 @@ now testing date  1960-01-29  volatility:  0.083  opt price:  0.00603  underlyin
     opt_current_price: 0.01
 Selling options right now
 current vol for  1960-01-29  :  0.083  underlying:  55.61  risk free rate:  0.0474
-current value of previous options:  0.006034263148334329  strike:  47.02  expiration:  1961-01-20  number of opts held:  2550
+current price of previous options:  0.006034263148334329 current value of previous options:  941.3510854033036  strike:  47.02  expiration:  1961-01-20  number of opts held:  156001.0
+Total results of sale:  47067.55  net worth  116981.54
 
 Simulation 1  looping over date:  1960-01-29
 
@@ -186,8 +189,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1960-01-29  :  0.083  underlying:  55.61  risk free rate  0.0474
-new options price is  0.00057  expiration date:  1961-01-20  days to expire:  357  Strike:  44.49  number purchased:  56654.0
-cost of options:  2300.29  net worth  76615.78
+new options price is  0.00057056  expiration date:  1961-01-20  days to expire:  357  Strike:  44.49  number purchased:  170665.0
+Total cost of trade:  4917.67 , trade fees:  24.0  net worth  163107.74
 TESTING EXIT NOW
 now testing date  1960-02-01  volatility:  0.085  opt price:  0.00057  underlying:  55.96  days to expiry:  354  risk free rate  0.0464
 now testing date  1960-02-02  volatility:  0.094  opt price:  0.00115  underlying:  56.82  days to expiry:  353  risk free rate  0.0452
@@ -202,7 +205,8 @@ now testing date  1960-02-11  volatility:  0.101  opt price:  0.00661  underlyin
     opt_current_price: 0.01
 Selling options right now
 current vol for  1960-02-11  :  0.101  underlying:  55.18  risk free rate:  0.0448
-current value of previous options:  0.006613790403907832  strike:  44.49  expiration:  1961-01-20  number of opts held:  2268
+current price of previous options:  0.006613790403907832 current value of previous options:  1128.7425392829302  strike:  44.49  expiration:  1961-01-20  number of opts held:  170665.0
+Total results of sale:  56437.13  net worth  156671.53
 
 Simulation 1  looping over date:  1960-02-11
 
@@ -210,8 +214,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1960-02-11  :  0.101  underlying:  55.18  risk free rate  0.0448
-new options price is  0.00664  expiration date:  1961-02-17  days to expire:  372  Strike:  44.14  number purchased:  46107.0
-cost of options:  2152.15  net worth  71681.71
+new options price is  0.00664459  expiration date:  1961-02-17  days to expire:  372  Strike:  44.14  number purchased:  19045.0
+Total cost of trade:  6390.9 , trade fees:  32.0  net worth  211979.92
 TESTING EXIT NOW
 now testing date  1960-02-12  volatility:  0.103  opt price:  0.00626  underlying:  55.46  days to expiry:  371  risk free rate  0.0448
 now testing date  1960-02-15  volatility:  0.103  opt price:  0.00736  underlying:  55.17  days to expiry:  368  risk free rate  0.0451
@@ -301,11 +305,12 @@ Simulation 1  looping over date:  1960-06-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1960-06-10  :  0.085  underlying:  57.97  risk free rate:  0.0297
-current value of previous options:  1.345017000388578e-05  strike:  44.14  expiration:  1961-02-17  number of opts held:  1846
+current price of previous options:  1.345017000388578e-05 current value of previous options:  0.2561584877240047  strike:  44.14  expiration:  1961-02-17  number of opts held:  19045.0
+Total results of sale:  12.81  net worth  214175.33
 Buying options right now
 current vol for  1960-06-10  :  0.085  underlying:  57.97  risk free rate  0.0297
-new options price is  0.00199  expiration date:  1961-06-16  days to expire:  371  Strike:  46.38  number purchased:  50760.0
-cost of options:  2133.01  net worth  71047.58
+new options price is  0.00199064  expiration date:  1961-06-16  days to expire:  371  Strike:  46.38  number purchased:  64235.0
+Total cost of trade:  6457.71 , trade fees:  32.0  net worth  214187.88
 TESTING EXIT NOW
 now testing date  1960-06-13  volatility:  0.085  opt price:  0.00194  underlying:  57.99  days to expiry:  368  risk free rate  0.0288
 now testing date  1960-06-14  volatility:  0.085  opt price:  0.00206  underlying:  57.91  days to expiry:  367  risk free rate  0.0284
@@ -378,7 +383,8 @@ now testing date  1960-09-15  volatility:  0.104  opt price:  0.02297  underlyin
     opt_current_price: 0.02
 Selling options right now
 current vol for  1960-09-15  :  0.104  underlying:  55.22  risk free rate:  0.0288
-current value of previous options:  0.022966257664607803  strike:  46.38  expiration:  1961-06-16  number of opts held:  2032
+current price of previous options:  0.022966257664607803 current value of previous options:  1475.2375610860822  strike:  46.38  expiration:  1961-06-16  number of opts held:  64235.0
+Total results of sale:  73761.88  net worth  199162.29
 
 Simulation 1  looping over date:  1960-09-15
 
@@ -386,8 +392,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1960-09-15  :  0.104  underlying:  55.22  risk free rate  0.0288
-new options price is  0.0125  expiration date:  1961-09-15  days to expire:  365  Strike:  44.18  number purchased:  36935.0
-cost of options:  1939.69  net worth  64637.34
+new options price is  0.01250491  expiration date:  1961-09-15  days to expire:  365  Strike:  44.18  number purchased:  12959.0
+Total cost of trade:  8183.99 , trade fees:  41.0  net worth  271448.93
 TESTING EXIT NOW
 now testing date  1960-09-16  volatility:  0.101  opt price:  0.0108  underlying:  55.11  days to expiry:  364  risk free rate  0.0286
 now testing date  1960-09-19  volatility:  0.115  opt price:  0.04889  underlying:  53.86  days to expiry:  361  risk free rate  0.0281
@@ -473,11 +479,12 @@ Simulation 1  looping over date:  1961-01-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1961-01-10  :  0.08  underlying:  58.97  risk free rate:  0.0258
-current value of previous options:  1.120212957207874e-06  strike:  44.18  expiration:  1961-09-15  number of opts held:  1478
+current price of previous options:  1.120212957207874e-06 current value of previous options:  0.014516839712456838  strike:  44.18  expiration:  1961-09-15  number of opts held:  12959.0
+Total results of sale:  0.73  net worth  278742.17
 Buying options right now
 current vol for  1961-01-10  :  0.08  underlying:  58.97  risk free rate  0.0258
-new options price is  0.0012  expiration date:  1962-01-19  days to expire:  374  Strike:  47.18  number purchased:  47599.0
-cost of options:  1961.12  net worth  65369.94
+new options price is  0.00120083  expiration date:  1962-01-19  days to expire:  374  Strike:  47.18  number purchased:  138578.0
+Total cost of trade:  8404.05 , trade fees:  42.0  net worth  278742.89
 TESTING EXIT NOW
 now testing date  1961-01-11  volatility:  0.075  opt price:  0.00046  underlying:  59.14  days to expiry:  373  risk free rate  0.0253
 now testing date  1961-01-12  volatility:  0.073  opt price:  0.00028  underlying:  59.32  days to expiry:  372  risk free rate  0.0256
@@ -555,7 +562,8 @@ now testing date  1961-04-24  volatility:  0.155  opt price:  0.01483  underlyin
     opt_current_price: 0.01
 Selling options right now
 current vol for  1961-04-24  :  0.155  underlying:  64.4  risk free rate:  0.0273
-current value of previous options:  0.014834596122196009  strike:  47.18  expiration:  1962-01-19  number of opts held:  1904
+current price of previous options:  0.014834596122196009 current value of previous options:  2055.7486614216787  strike:  47.18  expiration:  1962-01-19  number of opts held:  138578.0
+Total results of sale:  102787.43  net worth  297043.52
 
 Simulation 1  looping over date:  1961-04-24
 
@@ -563,8 +571,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1961-04-24  :  0.155  underlying:  64.4  risk free rate  0.0273
-new options price is  0.18996  expiration date:  1962-04-20  days to expire:  361  Strike:  51.52  number purchased:  8861.0
-cost of options:  2039.24  net worth  67928.18
+new options price is  0.18995989  expiration date:  1962-04-20  days to expire:  361  Strike:  51.52  number purchased:  1250.0
+Total cost of trade:  11991.83 , trade fees:  60.0  net worth  397775.2
 TESTING EXIT NOW
 now testing date  1961-04-25  volatility:  0.157  opt price:  0.1667  underlying:  65.3  days to expiry:  360  risk free rate  0.0274
 now testing date  1961-04-26  volatility:  0.157  opt price:  0.15688  underlying:  65.55  days to expiry:  359  risk free rate  0.0275
@@ -646,11 +654,12 @@ Simulation 1  looping over date:  1961-08-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1961-08-10  :  0.087  underlying:  67.95  risk free rate:  0.0294
-current value of previous options:  1.831472934813892e-05  strike:  51.52  expiration:  1962-04-20  number of opts held:  356
+current price of previous options:  1.831472934813892e-05 current value of previous options:  0.02289341168517365  strike:  51.52  expiration:  1962-04-20  number of opts held:  1250.0
+Total results of sale:  1.14  net worth  404230.46
 Buying options right now
 current vol for  1961-08-10  :  0.087  underlying:  67.95  risk free rate  0.0294
-new options price is  0.00296  expiration date:  1962-08-17  days to expire:  372  Strike:  54.36  number purchased:  48226.0
-cost of options:  2072.75  net worth  69060.75
+new options price is  0.00295945  expiration date:  1962-08-17  days to expire:  372  Strike:  54.36  number purchased:  81544.0
+Total cost of trade:  12187.53 , trade fees:  61.0  net worth  404231.58
 TESTING EXIT NOW
 now testing date  1961-08-11  volatility:  0.086  opt price:  0.0024  underlying:  68.06  days to expiry:  371  risk free rate  0.0296
 now testing date  1961-08-14  volatility:  0.084  opt price:  0.00232  underlying:  67.72  days to expiry:  368  risk free rate  0.0297
@@ -741,11 +750,12 @@ Simulation 1  looping over date:  1961-12-11
 ROLL OPTIONS
 Selling options right now
 current vol for  1961-12-11  :  0.058  underlying:  72.39  risk free rate:  0.0295
-current value of previous options:  3.0231974824148864e-11  strike:  54.36  expiration:  1962-08-17  number of opts held:  1930
+current price of previous options:  3.0231974824148864e-11 current value of previous options:  2.465236155060395e-06  strike:  54.36  expiration:  1962-08-17  number of opts held:  81544.0
+Total results of sale:  0.0  net worth  417361.04
 Buying options right now
 current vol for  1961-12-11  :  0.058  underlying:  72.39  risk free rate  0.0295
-new options price is  1e-05  expiration date:  1962-12-21  days to expire:  375  Strike:  57.91  number purchased:  52003.0
-cost of options:  2082.52  net worth  69355.4
+new options price is  6.03e-06  expiration date:  1962-12-21  days to expire:  375  Strike:  57.91  number purchased:  41305521.0
+Total cost of trade:  12583.44 , trade fees:  63.0  net worth  417361.04
 TESTING EXIT NOW
 now testing date  1961-12-12  volatility:  0.057  opt price:  0.0  underlying:  72.64  days to expiry:  374  risk free rate  0.0296
 now testing date  1961-12-13  volatility:  0.057  opt price:  0.0  underlying:  72.53  days to expiry:  373  risk free rate  0.0298
@@ -757,7 +767,8 @@ now testing date  1961-12-19  volatility:  0.062  opt price:  6e-05  underlying:
     opt_current_price: 0.0
 Selling options right now
 current vol for  1961-12-19  :  0.062  underlying:  71.26  risk free rate:  0.0295
-current value of previous options:  6.0884008805019846e-05  strike:  57.91  expiration:  1962-12-21  number of opts held:  2082
+current price of previous options:  6.0884008805019846e-05 current value of previous options:  2514.845704259932  strike:  57.91  expiration:  1962-12-21  number of opts held:  41305521.0
+Total results of sale:  125742.29  net worth  400681.23
 
 Simulation 1  looping over date:  1961-12-19
 
@@ -765,8 +776,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1961-12-19  :  0.062  underlying:  71.26  risk free rate  0.0295
-new options price is  2e-05  expiration date:  1962-12-21  days to expire:  367  Strike:  57.01  number purchased:  48000.0
-cost of options:  1920.96  net worth  64032.28
+new options price is  1.986e-05  expiration date:  1962-12-21  days to expire:  367  Strike:  57.01  number purchased:  15747363.0
+Total cost of trade:  15795.85 , trade fees:  79.0  net worth  523908.67
 TESTING EXIT NOW
 now testing date  1961-12-20  volatility:  0.062  opt price:  3e-05  underlying:  71.12  days to expiry:  366  risk free rate  0.0295
 now testing date  1961-12-21  volatility:  0.063  opt price:  4e-05  underlying:  70.86  days to expiry:  365  risk free rate  0.0295
@@ -783,7 +794,8 @@ now testing date  1962-01-05  volatility:  0.076  opt price:  0.00053  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1962-01-05  :  0.076  underlying:  70.84  risk free rate:  0.031
-current value of previous options:  0.0005336998823095261  strike:  57.01  expiration:  1962-12-21  number of opts held:  1920
+current price of previous options:  0.0005336998823095261 current value of previous options:  8404.365779785387  strike:  57.01  expiration:  1962-12-21  number of opts held:  15747363.0
+Total results of sale:  420218.29  net worth  510624.82
 
 Simulation 1  looping over date:  1962-01-05
 
@@ -791,8 +803,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1962-01-05  :  0.076  underlying:  70.84  risk free rate  0.031
-new options price is  0.00039  expiration date:  1962-12-21  days to expire:  350  Strike:  56.67  number purchased:  44368.0
-cost of options:  1793.3  net worth  59735.12
+new options price is  0.00039137  expiration date:  1962-12-21  days to expire:  350  Strike:  56.67  number purchased:  1407109.0
+Total cost of trade:  27811.51 , trade fees:  138.0  net worth  922438.74
 TESTING EXIT NOW
 now testing date  1962-01-08  volatility:  0.071  opt price:  0.00033  underlying:  69.84  days to expiry:  347  risk free rate  0.0314
 now testing date  1962-01-09  volatility:  0.071  opt price:  0.0003  underlying:  69.93  days to expiry:  346  risk free rate  0.0313
@@ -878,7 +890,8 @@ now testing date  1962-05-01  volatility:  0.086  opt price:  0.00887  underlyin
     opt_current_price: 0.01
 Selling options right now
 current vol for  1962-05-01  :  0.086  underlying:  65.94  risk free rate:  0.0294
-current value of previous options:  0.008865458294091577  strike:  56.67  expiration:  1962-12-21  number of opts held:  1776
+current price of previous options:  0.008865458294091577 current value of previous options:  12474.666154740906  strike:  56.67  expiration:  1962-12-21  number of opts held:  1407109.0
+Total results of sale:  623733.31  net worth  835331.87
 
 Simulation 1  looping over date:  1962-05-01
 
@@ -886,8 +899,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1962-05-01  :  0.086  underlying:  65.94  risk free rate  0.0294
-new options price is  0.00199  expiration date:  1963-04-19  days to expire:  353  Strike:  52.75  number purchased:  37471.0
-cost of options:  1574.57  net worth  52447.86
+new options price is  0.00199243  expiration date:  1963-04-19  days to expire:  353  Strike:  52.75  number purchased:  433447.0
+Total cost of trade:  43614.69 , trade fees:  217.0  net worth  1446590.51
 TESTING EXIT NOW
 now testing date  1962-05-02  volatility:  0.087  opt price:  0.00146  underlying:  66.67  days to expiry:  352  risk free rate  0.0294
 now testing date  1962-05-03  volatility:  0.09  opt price:  0.00188  underlying:  66.93  days to expiry:  351  risk free rate  0.0294
@@ -901,7 +914,8 @@ now testing date  1962-05-11  volatility:  0.1  opt price:  0.02021  underlying:
     opt_current_price: 0.02
 Selling options right now
 current vol for  1962-05-11  :  0.1  underlying:  64.1  risk free rate:  0.0288
-current value of previous options:  0.020213832539168974  strike:  52.75  expiration:  1963-04-19  number of opts held:  1500
+current price of previous options:  0.020213832539168974 current value of previous options:  8761.625072605175  strike:  52.75  expiration:  1963-04-19  number of opts held:  433447.0
+Total results of sale:  438081.25  net worth  1356201.16
 
 Simulation 1  looping over date:  1962-05-11
 
@@ -909,8 +923,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1962-05-11  :  0.1  underlying:  64.1  risk free rate  0.0288
-new options price is  0.01079  expiration date:  1963-05-17  days to expire:  371  Strike:  51.28  number purchased:  28718.0
-cost of options:  1459.87  net worth  48620.08
+new options price is  0.01079403  expiration date:  1963-05-17  days to expire:  371  Strike:  51.28  number purchased:  98754.0
+Total cost of trade:  53833.36 , trade fees:  268.0  net worth  1785520.78
 TESTING EXIT NOW
 now testing date  1962-05-14  volatility:  0.103  opt price:  0.01954  underlying:  63.31  days to expiry:  368  risk free rate  0.029
 now testing date  1962-05-15  volatility:  0.116  opt price:  0.02613  underlying:  64.87  days to expiry:  367  risk free rate  0.0291
@@ -924,7 +938,8 @@ now testing date  1962-05-23  volatility:  0.13  opt price:  0.1162  underlying:
     opt_current_price: 0.12
 Selling options right now
 current vol for  1962-05-23  :  0.13  underlying:  62.42  risk free rate:  0.0292
-current value of previous options:  0.11619588391460445  strike:  51.28  expiration:  1963-05-17  number of opts held:  1150
+current price of previous options:  0.11619588391460445 current value of previous options:  11474.808320102848  strike:  51.28  expiration:  1963-05-17  number of opts held:  98754.0
+Total results of sale:  573740.42  net worth  1686718.62
 
 Simulation 1  looping over date:  1962-05-23
 
@@ -932,8 +947,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1962-05-23  :  0.13  underlying:  62.42  risk free rate  0.0292
-new options price is  0.06764  expiration date:  1963-05-17  days to expire:  359  Strike:  49.94  number purchased:  13389.0
-cost of options:  1441.63  net worth  48040.32
+new options price is  0.0676403  expiration date:  1963-05-17  days to expire:  359  Strike:  49.94  number purchased:  19849.0
+Total cost of trade:  67804.31 , trade fees:  337.0  net worth  2248984.23
 TESTING EXIT NOW
 now testing date  1962-05-24  volatility:  0.129  opt price:  0.07792  underlying:  61.79  days to expiry:  358  risk free rate  0.0292
 now testing date  1962-05-25  volatility:  0.134  opt price:  0.12439  underlying:  60.98  days to expiry:  357  risk free rate  0.0291
@@ -942,7 +957,8 @@ now testing date  1962-05-28  volatility:  0.205  opt price:  0.94227  underlyin
     opt_current_price: 0.94
 Selling options right now
 current vol for  1962-05-28  :  0.205  underlying:  59.15  risk free rate:  0.0287
-current value of previous options:  0.9422684162662094  strike:  49.94  expiration:  1963-05-17  number of opts held:  536
+current price of previous options:  0.9422684162662094 current value of previous options:  18703.08579446799  strike:  49.94  expiration:  1963-05-17  number of opts held:  19849.0
+Total results of sale:  935154.29  net worth  2071064.78
 
 Simulation 1  looping over date:  1962-05-28
 
@@ -950,8 +966,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1962-05-28  :  0.205  underlying:  59.15  risk free rate  0.0287
-new options price is  0.14189  expiration date:  1962-11-16  days to expire:  172  Strike:  47.32  number purchased:  9272.0
-cost of options:  1687.6  net worth  56217.3
+new options price is  0.14188568  expiration date:  1962-11-16  days to expire:  172  Strike:  47.32  number purchased:  12570.0
+Total cost of trade:  90071.4 , trade fees:  448.0  net worth  2987515.98
 TESTING EXIT NOW
 now testing date  1962-05-29  volatility:  0.242  opt price:  0.36238  underlying:  58.29  days to expiry:  171  risk free rate  0.0287
 now testing date  1962-05-31  volatility:  0.254  opt price:  0.25134  underlying:  60.82  days to expiry:  169  risk free rate  0.029
@@ -1010,11 +1026,12 @@ Simulation 1  looping over date:  1962-08-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1962-08-10  :  0.177  underlying:  57.85  risk free rate:  0.0319
-current value of previous options:  0.018404235941011926  strike:  47.32  expiration:  1962-11-16  number of opts held:  372
+current price of previous options:  0.018404235941011926 current value of previous options:  231.34124577851992  strike:  47.32  expiration:  1962-11-16  number of opts held:  12570.0
+Total results of sale:  11567.06  net worth  2807399.95
 Buying options right now
 current vol for  1962-08-10  :  0.177  underlying:  57.85  risk free rate  0.0319
-new options price is  0.31019  expiration date:  1963-08-16  days to expire:  371  Strike:  46.28  number purchased:  4523.0
-cost of options:  1584.99  net worth  52797.54
+new options price is  0.31019377  expiration date:  1963-08-16  days to expire:  371  Strike:  46.28  number purchased:  5424.0
+Total cost of trade:  84970.17 , trade fees:  423.0  net worth  2818735.67
 TESTING EXIT NOW
 now testing date  1962-08-13  volatility:  0.163  opt price:  0.21102  underlying:  57.9  days to expiry:  368  risk free rate  0.0316
 now testing date  1962-08-14  volatility:  0.165  opt price:  0.19522  underlying:  58.43  days to expiry:  367  risk free rate  0.0311
@@ -1104,11 +1121,12 @@ Simulation 1  looping over date:  1962-12-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1962-12-10  :  0.168  underlying:  63.35  risk free rate:  0.0292
-current value of previous options:  0.01955381608343021  strike:  46.28  expiration:  1963-08-16  number of opts held:  182
+current price of previous options:  0.01955381608343021 current value of previous options:  106.05989843652546  strike:  46.28  expiration:  1963-08-16  number of opts held:  5424.0
+Total results of sale:  5302.99  net worth  2991680.37
 Buying options right now
 current vol for  1962-12-10  :  0.168  underlying:  63.35  risk free rate  0.0292
-new options price is  0.28439  expiration date:  1963-12-20  days to expire:  375  Strike:  50.68  number purchased:  5171.0
-cost of options:  1678.58  net worth  55924.49
+new options price is  0.28439191  expiration date:  1963-12-20  days to expire:  375  Strike:  50.68  number purchased:  6291.0
+Total cost of trade:  90354.54 , trade fees:  450.0  net worth  2996877.3
 TESTING EXIT NOW
 now testing date  1962-12-11  volatility:  0.167  opt price:  0.32808  underlying:  62.58  days to expiry:  374  risk free rate  0.0293
 now testing date  1962-12-12  volatility:  0.167  opt price:  0.28986  underlying:  63.16  days to expiry:  373  risk free rate  0.0293
@@ -1199,11 +1217,12 @@ Simulation 1  looping over date:  1963-04-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1963-04-10  :  0.072  underlying:  68.89  risk free rate:  0.03
-current value of previous options:  1.640513595410729e-08  strike:  50.68  expiration:  1963-12-20  number of opts held:  208
+current price of previous options:  1.640513595410729e-08 current value of previous options:  0.00010320471028728896  strike:  50.68  expiration:  1963-12-20  number of opts held:  6291.0
+Total results of sale:  0.01  net worth  3158395.49
 Buying options right now
 current vol for  1963-04-10  :  0.072  underlying:  68.89  risk free rate  0.03
-new options price is  0.00029  expiration date:  1964-04-17  days to expire:  373  Strike:  55.11  number purchased:  43724.0
-cost of options:  1762.68  net worth  58722.15
+new options price is  0.00028715  expiration date:  1964-04-17  days to expire:  373  Strike:  55.11  number purchased:  6566381.0
+Total cost of trade:  95225.62 , trade fees:  474.0  net worth  3158395.5
 TESTING EXIT NOW
 now testing date  1963-04-11  volatility:  0.073  opt price:  0.00029  underlying:  69.07  days to expiry:  372  risk free rate  0.0302
 now testing date  1963-04-15  volatility:  0.074  opt price:  0.0002  underlying:  69.56  days to expiry:  368  risk free rate  0.0308
@@ -1295,11 +1314,12 @@ Simulation 1  looping over date:  1963-08-12
 ROLL OPTIONS
 Selling options right now
 current vol for  1963-08-12  :  0.073  underlying:  71.0  risk free rate:  0.0351
-current value of previous options:  1.412173199766506e-06  strike:  55.11  expiration:  1964-04-17  number of opts held:  1750
+current price of previous options:  1.412173199766506e-06 current value of previous options:  9.27286726765599  strike:  55.11  expiration:  1964-04-17  number of opts held:  6566381.0
+Total results of sale:  463.64  net worth  3154639.95
 Buying options right now
 current vol for  1963-08-12  :  0.073  underlying:  71.0  risk free rate  0.0351
-new options price is  0.00025  expiration date:  1964-08-21  days to expire:  375  Strike:  56.8  number purchased:  42404.0
-cost of options:  1708.6  net worth  56892.39
+new options price is  0.00024736  expiration date:  1964-08-21  days to expire:  375  Strike:  56.8  number purchased:  7614780.0
+Total cost of trade:  95126.09 , trade fees:  473.0  net worth  3155094.32
 TESTING EXIT NOW
 now testing date  1963-08-13  volatility:  0.072  opt price:  0.0002  underlying:  71.09  days to expiry:  374  risk free rate  0.035
 now testing date  1963-08-14  volatility:  0.073  opt price:  0.00019  underlying:  71.32  days to expiry:  373  risk free rate  0.0349
@@ -1377,7 +1397,8 @@ now testing date  1963-11-22  volatility:  0.11  opt price:  0.0047  underlying:
     opt_current_price: 0.0
 Selling options right now
 current vol for  1963-11-22  :  0.11  underlying:  72.17  risk free rate:  0.0366
-current value of previous options:  0.004699526821413252  strike:  56.8  expiration:  1964-08-21  number of opts held:  1698
+current price of previous options:  0.004699526821413252 current value of previous options:  35785.8628491612  strike:  56.8  expiration:  1964-08-21  number of opts held:  7614780.0
+Total results of sale:  1789293.14  net worth  3143920.01
 
 Simulation 1  looping over date:  1963-11-22
 
@@ -1385,8 +1406,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1963-11-22  :  0.11  underlying:  72.17  risk free rate  0.0366
-new options price is  0.02186  expiration date:  1964-11-20  days to expire:  364  Strike:  57.74  number purchased:  26428.0
-cost of options:  1635.72  net worth  54496.16
+new options price is  0.02185507  expiration date:  1964-11-20  days to expire:  364  Strike:  57.74  number purchased:  133779.0
+Total cost of trade:  147656.68 , trade fees:  735.0  net worth  4897427.29
 TESTING EXIT NOW
 now testing date  1963-11-26  volatility:  0.15  opt price:  0.13518  underlying:  72.74  days to expiry:  360  risk free rate  0.0366
 now testing date  1963-11-27  volatility:  0.149  opt price:  0.12967  underlying:  72.78  days to expiry:  359  risk free rate  0.0366
@@ -1465,11 +1486,12 @@ Simulation 1  looping over date:  1964-03-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1964-03-10  :  0.036  underlying:  78.9  risk free rate:  0.0378
-current value of previous options:  1.4838981275032193e-30  strike:  57.74  expiration:  1964-11-20  number of opts held:  1058
+current price of previous options:  1.4838981275032193e-30 current value of previous options:  1.9851440759925318e-25  strike:  57.74  expiration:  1964-11-20  number of opts held:  133779.0
+Total results of sale:  0.0  net worth  5145101.95
 Buying options right now
 current vol for  1964-03-10  :  0.036  underlying:  78.9  risk free rate  0.0378
-new options price is  0.0  expiration date:  1965-03-19  days to expire:  374  Strike:  63.12  number purchased:  42479.0
-cost of options:  1700.0  net worth  56638.8
+new options price is  0.0  expiration date:  1965-03-19  days to expire:  374  Strike:  63.12  number purchased:  3.0159060223131016e+16
+Total cost of trade:  155124.82 , trade fees:  772.0  net worth  5145101.95
 TESTING EXIT NOW
 now testing date  1964-03-11  volatility:  0.037  opt price:  0.0  underlying:  79.42  days to expiry:  373  risk free rate  0.0378
 now testing date  1964-03-12  volatility:  0.036  opt price:  0.0  underlying:  79.41  days to expiry:  372  risk free rate  0.0378
@@ -1508,7 +1530,8 @@ now testing date  1964-04-27  volatility:  0.043  opt price:  0.0  underlying:  
     opt_current_price: 0.0
 Selling options right now
 current vol for  1964-04-27  :  0.043  underlying:  80.01  risk free rate:  0.037
-current value of previous options:  7.497928964893175e-12  strike:  63.12  expiration:  1965-03-19  number of opts held:  1700
+current price of previous options:  7.497928964893175e-12 current value of previous options:  226130.49120097168  strike:  63.12  expiration:  1965-03-19  number of opts held:  3.0159060223131016e+16
+Total results of sale:  11306524.56  net worth  5283166.22
 
 Simulation 1  looping over date:  1964-04-27
 
@@ -1516,8 +1539,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1964-04-27  :  0.043  underlying:  80.01  risk free rate  0.037
-new options price is  0.0  expiration date:  1965-04-16  days to expire:  354  Strike:  64.01  number purchased:  40454.0
-cost of options:  1620.0  net worth  53939.36
+new options price is  0.0  expiration date:  1965-04-16  days to expire:  354  Strike:  64.01  number purchased:  36942028239380.0
+Total cost of trade:  493361.34 , trade fees:  2455.0  net worth  16363560.29
 TESTING EXIT NOW
 now testing date  1964-04-28  volatility:  0.046  opt price:  0.0  underlying:  80.26  days to expiry:  353  risk free rate  0.037
 now testing date  1964-04-29  volatility:  0.046  opt price:  0.0  underlying:  80.6  days to expiry:  352  risk free rate  0.0369
@@ -1526,7 +1549,8 @@ now testing date  1964-04-30  volatility:  0.046  opt price:  0.0  underlying:  
     opt_current_price: 0.0
 Selling options right now
 current vol for  1964-04-30  :  0.046  underlying:  80.08  risk free rate:  0.0368
-current value of previous options:  3.321598137831404e-09  strike:  64.01  expiration:  1965-04-16  number of opts held:  1620
+current price of previous options:  3.321598137831404e-09 current value of previous options:  122706.57220763975  strike:  64.01  expiration:  1965-04-16  number of opts held:  36942028239380.0
+Total results of sale:  6135328.61  net worth  15745388.04
 
 Simulation 1  looping over date:  1964-04-30
 
@@ -1534,15 +1558,16 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1964-04-30  :  0.046  underlying:  80.08  risk free rate  0.0368
-new options price is  0.0  expiration date:  1965-04-16  days to expire:  351  Strike:  64.06  number purchased:  37994.0
-cost of options:  1520.0  net worth  50659.07
+new options price is  0.0  expiration date:  1965-04-16  days to expire:  351  Strike:  64.06  number purchased:  3483187817734.0
+Total cost of trade:  656004.0 , trade fees:  3264.0  net worth  21758010.08
 TESTING EXIT NOW
 now testing date  1964-05-01  volatility:  0.051  opt price:  0.0  underlying:  80.47  days to expiry:  350  risk free rate  0.0368
     hit an exit threshold on date  1964-05-01
     opt_current_price: 0.0
 Selling options right now
 current vol for  1964-05-01  :  0.051  underlying:  80.47  risk free rate:  0.0368
-current value of previous options:  4.1569596257693665e-08  strike:  64.06  expiration:  1965-04-16  number of opts held:  1520
+current price of previous options:  4.1569596257693665e-08 current value of previous options:  144794.71127291946  strike:  64.06  expiration:  1965-04-16  number of opts held:  3483187817734.0
+Total results of sale:  7239735.56  net worth  21218611.26
 
 Simulation 1  looping over date:  1964-05-01
 
@@ -1550,8 +1575,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1964-05-01  :  0.051  underlying:  80.47  risk free rate  0.0368
-new options price is  0.0  expiration date:  1965-04-16  days to expire:  350  Strike:  64.38  number purchased:  35833.0
-cost of options:  1434.0  net worth  47778.14
+new options price is  7e-08  expiration date:  1965-04-16  days to expire:  350  Strike:  64.38  number purchased:  235758668513.0
+Total cost of trade:  853653.6 , trade fees:  4247.0  net worth  28313552.11
 TESTING EXIT NOW
 now testing date  1964-05-04  volatility:  0.051  opt price:  0.0  underlying:  81.01  days to expiry:  347  risk free rate  0.0369
 now testing date  1964-05-05  volatility:  0.052  opt price:  0.0  underlying:  81.2  days to expiry:  346  risk free rate  0.0371
@@ -1580,7 +1605,8 @@ now testing date  1964-06-04  volatility:  0.061  opt price:  1e-05  underlying:
     opt_current_price: 0.0
 Selling options right now
 current vol for  1964-06-04  :  0.061  underlying:  79.75  risk free rate:  0.0371
-current value of previous options:  6.200784348109399e-06  strike:  64.38  expiration:  1965-04-16  number of opts held:  1434
+current price of previous options:  6.200784348109399e-06 current value of previous options:  1461888.6616465226  strike:  64.38  expiration:  1965-04-16  number of opts held:  235758668513.0
+Total results of sale:  73094433.08  net worth  28526775.25
 
 Simulation 1  looping over date:  1964-06-04
 
@@ -1588,8 +1614,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1964-06-04  :  0.061  underlying:  79.75  risk free rate  0.0371
-new options price is  1e-05  expiration date:  1965-05-21  days to expire:  351  Strike:  63.8  number purchased:  33306.0
-cost of options:  1334.33  net worth  44420.36
+new options price is  6.88e-06  expiration date:  1965-05-21  days to expire:  351  Strike:  63.8  number purchased:  8687781770.0
+Total cost of trade:  3019803.49 , trade fees:  15024.0  net worth  100159319.67
 TESTING EXIT NOW
 now testing date  1964-06-05  volatility:  0.062  opt price:  1e-05  underlying:  79.45  days to expiry:  350  risk free rate  0.0371
 now testing date  1964-06-08  volatility:  0.063  opt price:  2e-05  underlying:  79.44  days to expiry:  347  risk free rate  0.0371
@@ -1686,11 +1712,12 @@ Simulation 1  looping over date:  1964-10-12
 ROLL OPTIONS
 Selling options right now
 current vol for  1964-10-12  :  0.043  underlying:  85.58  risk free rate:  0.0379
-current value of previous options:  1.645483509087509e-22  strike:  63.8  expiration:  1965-05-21  number of opts held:  1334
+current price of previous options:  1.645483509087509e-22 current value of previous options:  1.429560163308609e-12  strike:  63.8  expiration:  1965-05-21  number of opts held:  8687781770.0
+Total results of sale:  0.0  net worth  102415970.24
 Buying options right now
 current vol for  1964-10-12  :  0.043  underlying:  85.58  risk free rate  0.0379
-new options price is  0.0  expiration date:  1965-10-15  days to expire:  368  Strike:  68.46  number purchased:  33622.0
-cost of options:  1346.0  net worth  44830.23
+new options price is  0.0  expiration date:  1965-10-15  days to expire:  368  Strike:  68.46  number purchased:  240473797249479.0
+Total cost of trade:  3087841.5 , trade fees:  15362.0  net worth  102415970.24
 TESTING EXIT NOW
 now testing date  1964-10-13  volatility:  0.044  opt price:  0.0  underlying:  85.57  days to expiry:  367  risk free rate  0.0379
 now testing date  1964-10-14  volatility:  0.044  opt price:  0.0  underlying:  85.29  days to expiry:  366  risk free rate  0.038
@@ -1699,7 +1726,8 @@ now testing date  1964-10-15  volatility:  0.048  opt price:  0.0  underlying:  
     opt_current_price: 0.0
 Selling options right now
 current vol for  1964-10-15  :  0.048  underlying:  84.99  risk free rate:  0.038
-current value of previous options:  2.8024896454135108e-08  strike:  68.46  expiration:  1965-10-15  number of opts held:  1346
+current price of previous options:  2.8024896454135108e-08 current value of previous options:  6739253.267849329  strike:  68.46  expiration:  1965-10-15  number of opts held:  240473797249479.0
+Total results of sale:  336962663.39  net worth  105326151.26
 
 Simulation 1  looping over date:  1964-10-15
 
@@ -1707,8 +1735,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1964-10-15  :  0.048  underlying:  84.99  risk free rate  0.038
-new options price is  0.0  expiration date:  1965-10-15  days to expire:  365  Strike:  67.99  number purchased:  31330.0
-cost of options:  1254.0  net worth  41774.51
+new options price is  1e-08  expiration date:  1965-10-15  days to expire:  365  Strike:  67.99  number purchased:  21516395082560.0
+Total cost of trade:  13131819.28 , trade fees:  65332.0  net worth  435549561.38
 TESTING EXIT NOW
 now testing date  1964-10-16  volatility:  0.048  opt price:  0.0  underlying:  85.1  days to expiry:  364  risk free rate  0.038
 now testing date  1964-10-19  volatility:  0.048  opt price:  0.0  underlying:  85.36  days to expiry:  361  risk free rate  0.038
@@ -1745,7 +1773,8 @@ now testing date  1964-12-01  volatility:  0.056  opt price:  0.0  underlying:  
     opt_current_price: 0.0
 Selling options right now
 current vol for  1964-12-01  :  0.056  underlying:  84.56  risk free rate:  0.0407
-current value of previous options:  3.872973336140642e-07  strike:  67.99  expiration:  1965-10-15  number of opts held:  1254
+current price of previous options:  3.872973336140642e-07 current value of previous options:  8333242.444462251  strike:  67.99  expiration:  1965-10-15  number of opts held:  21516395082560.0
+Total results of sale:  416662122.22  net worth  421272844.81
 
 Simulation 1  looping over date:  1964-12-01
 
@@ -1753,8 +1782,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1964-12-01  :  0.056  underlying:  84.56  risk free rate  0.0407
-new options price is  0.0  expiration date:  1965-11-19  days to expire:  353  Strike:  67.65  number purchased:  29248.0
-cost of options:  1170.0  net worth  38997.84
+new options price is  6.3e-07  expiration date:  1965-11-19  days to expire:  353  Strike:  67.65  number purchased:  785756370958.0
+Total cost of trade:  25012492.0 , trade fees:  124440.0  net worth  829601724.59
 TESTING EXIT NOW
 now testing date  1964-12-02  volatility:  0.055  opt price:  0.0  underlying:  84.23  days to expiry:  352  risk free rate  0.0401
 now testing date  1964-12-03  volatility:  0.056  opt price:  0.0  underlying:  84.74  days to expiry:  351  risk free rate  0.0397
@@ -1852,11 +1881,12 @@ Simulation 1  looping over date:  1965-04-12
 ROLL OPTIONS
 Selling options right now
 current vol for  1965-04-12  :  0.046  underlying:  88.36  risk free rate:  0.04
-current value of previous options:  8.348925408844464e-17  strike:  67.65  expiration:  1965-11-19  number of opts held:  1170
+current price of previous options:  8.348925408844464e-17 current value of previous options:  6.560221330652662e-05  strike:  67.65  expiration:  1965-11-19  number of opts held:  785756370958.0
+Total results of sale:  0.0  net worth  831413267.65
 Buying options right now
 current vol for  1965-04-12  :  0.046  underlying:  88.36  risk free rate  0.04
-new options price is  0.0  expiration date:  1966-04-15  days to expire:  368  Strike:  70.69  number purchased:  28723.0
-cost of options:  1150.0  net worth  38298.44
+new options price is  0.0  expiration date:  1966-04-15  days to expire:  368  Strike:  70.69  number purchased:  126091892197085.0
+Total cost of trade:  25067110.02 , trade fees:  124712.0  net worth  831413267.65
 TESTING EXIT NOW
 now testing date  1965-04-13  volatility:  0.046  opt price:  0.0  underlying:  88.48  days to expiry:  367  risk free rate  0.04
 now testing date  1965-04-14  volatility:  0.044  opt price:  0.0  underlying:  88.65  days to expiry:  366  risk free rate  0.04
@@ -1894,7 +1924,8 @@ now testing date  1965-05-27  volatility:  0.053  opt price:  0.0  underlying:  
     opt_current_price: 0.0
 Selling options right now
 current vol for  1965-05-27  :  0.053  underlying:  88.36  risk free rate:  0.0395
-current value of previous options:  7.275302532663256e-08  strike:  70.69  expiration:  1966-04-15  number of opts held:  1150
+current price of previous options:  7.275302532663256e-08 current value of previous options:  9173566.626497546  strike:  70.69  expiration:  1966-04-15  number of opts held:  126091892197085.0
+Total results of sale:  458678331.32  net worth  815079868.25
 
 Simulation 1  looping over date:  1965-05-27
 
@@ -1902,8 +1933,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1965-05-27  :  0.053  underlying:  88.36  risk free rate  0.0395
-new options price is  0.0  expiration date:  1966-05-20  days to expire:  358  Strike:  70.69  number purchased:  26958.0
-cost of options:  1080.0  net worth  35944.44
+new options price is  2.1e-07  expiration date:  1966-05-20  days to expire:  358  Strike:  70.69  number purchased:  3544003740541.0
+Total cost of trade:  38127226.68 , trade fees:  189688.0  net worth  1264584632.94
 TESTING EXIT NOW
 now testing date  1965-05-28  volatility:  0.055  opt price:  0.0  underlying:  88.68  days to expiry:  357  risk free rate  0.0395
 now testing date  1965-06-01  volatility:  0.055  opt price:  0.0  underlying:  88.8  days to expiry:  353  risk free rate  0.0395
@@ -1912,7 +1943,8 @@ now testing date  1965-06-02  volatility:  0.073  opt price:  0.00022  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1965-06-02  :  0.073  underlying:  87.87  risk free rate:  0.0395
-current value of previous options:  0.0002246087618263115  strike:  70.69  expiration:  1966-05-20  number of opts held:  1080
+current price of previous options:  0.0002246087618263115 current value of previous options:  796014292.0707306  strike:  70.69  expiration:  1966-05-20  number of opts held:  3544003740541.0
+Total results of sale:  39800714603.54  net worth  2006613027.49
 
 Simulation 1  looping over date:  1965-06-02
 
@@ -1920,8 +1952,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1965-06-02  :  0.073  underlying:  87.87  risk free rate  0.0395
-new options price is  0.00016  expiration date:  1966-05-20  days to expire:  352  Strike:  70.3  number purchased:  25058.0
-cost of options:  1008.01  net worth  33545.44
+new options price is  0.00016271  expiration date:  1966-05-20  days to expire:  352  Strike:  70.3  number purchased:  150478421539.0
+Total cost of trade:  1236491097.16 , trade fees:  6151697.0  net worth  41011313338.96
 TESTING EXIT NOW
 now testing date  1965-06-03  volatility:  0.073  opt price:  0.00015  underlying:  88.05  days to expiry:  351  risk free rate  0.0394
 now testing date  1965-06-04  volatility:  0.073  opt price:  0.00023  underlying:  87.46  days to expiry:  350  risk free rate  0.0392
@@ -1934,7 +1966,8 @@ now testing date  1965-06-11  volatility:  0.079  opt price:  0.00175  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1965-06-11  :  0.079  underlying:  85.68  risk free rate:  0.0394
-current value of previous options:  0.001745525678927981  strike:  70.3  expiration:  1966-05-20  number of opts held:  1004
+current price of previous options:  0.001745525678927981 current value of previous options:  262663948.9208739  strike:  70.3  expiration:  1966-05-20  number of opts held:  150478421539.0
+Total results of sale:  13133197446.04  net worth  38215485875.39
 
 Simulation 1  looping over date:  1965-06-11
 
@@ -1942,8 +1975,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1965-06-11  :  0.079  underlying:  85.68  risk free rate  0.0394
-new options price is  0.00075  expiration date:  1966-06-17  days to expire:  371  Strike:  68.54  number purchased:  22615.0
-cost of options:  922.96  net worth  30718.87
+new options price is  0.00074545  expiration date:  1966-06-17  days to expire:  371  Strike:  68.54  number purchased:  40912571159.0
+Total cost of trade:  1540243484.06 , trade fees:  7662903.0  net worth  51086019372.51
 TESTING EXIT NOW
 now testing date  1965-06-14  volatility:  0.085  opt price:  0.00173  underlying:  85.68  days to expiry:  368  risk free rate  0.0393
 now testing date  1965-06-15  volatility:  0.085  opt price:  0.00284  underlying:  84.86  days to expiry:  367  risk free rate  0.0391
@@ -1958,7 +1991,8 @@ now testing date  1965-06-24  volatility:  0.095  opt price:  0.00873  underlyin
     opt_current_price: 0.01
 Selling options right now
 current vol for  1965-06-24  :  0.095  underlying:  84.73  risk free rate:  0.0381
-current value of previous options:  0.008733000770776045  strike:  68.54  expiration:  1966-06-17  number of opts held:  906
+current price of previous options:  0.008733000770776045 current value of previous options:  357289515.4659768  strike:  68.54  expiration:  1966-06-17  number of opts held:  40912571159.0
+Total results of sale:  17864475773.3  net worth  49099731658.67
 
 Simulation 1  looping over date:  1965-06-24
 
@@ -1966,8 +2000,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1965-06-24  :  0.095  underlying:  84.73  risk free rate  0.0381
-new options price is  0.00589  expiration date:  1966-06-17  days to expire:  358  Strike:  67.78  number purchased:  18769.0
-cost of options:  862.55  net worth  28711.76
+new options price is  0.00588719  expiration date:  1966-06-17  days to expire:  358  Strike:  67.78  number purchased:  6754387136.0
+Total cost of trade:  2008198575.14 , trade fees:  9991038.0  net worth  66606917916.5
 TESTING EXIT NOW
 now testing date  1965-06-25  volatility:  0.096  opt price:  0.00894  underlying:  83.83  days to expiry:  357  risk free rate  0.0381
 now testing date  1965-06-28  volatility:  0.103  opt price:  0.01998  underlying:  83.34  days to expiry:  354  risk free rate  0.0382
@@ -2049,11 +2083,12 @@ Simulation 1  looping over date:  1965-10-11
 ROLL OPTIONS
 Selling options right now
 current vol for  1965-10-11  :  0.048  underlying:  91.84  risk free rate:  0.0415
-current value of previous options:  5.204058580671623e-18  strike:  67.78  expiration:  1966-06-17  number of opts held:  752
+current price of previous options:  5.204058580671623e-18 current value of previous options:  3.515022633227883e-08  strike:  67.78  expiration:  1966-06-17  number of opts held:  6754387136.0
+Total results of sale:  0.0  net worth  69632900812.18
 Buying options right now
 current vol for  1965-10-11  :  0.048  underlying:  91.84  risk free rate  0.0415
-new options price is  0.0  expiration date:  1966-10-21  days to expire:  375  Strike:  73.47  number purchased:  22043.0
-cost of options:  882.0  net worth  29391.29
+new options price is  1e-08  expiration date:  1966-10-21  days to expire:  375  Strike:  73.47  number purchased:  3504243044800120.0
+Total cost of trade:  2099431959.49 , trade fees:  10444935.0  net worth  69632900812.18
 TESTING EXIT NOW
 now testing date  1965-10-12  volatility:  0.048  opt price:  0.0  underlying:  91.94  days to expiry:  374  risk free rate  0.0415
 now testing date  1965-10-13  volatility:  0.048  opt price:  0.0  underlying:  91.81  days to expiry:  373  risk free rate  0.0414
@@ -2145,11 +2180,12 @@ Simulation 1  looping over date:  1966-02-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1966-02-10  :  0.053  underlying:  94.7  risk free rate:  0.0479
-current value of previous options:  2.2254861925863966e-11  strike:  73.47  expiration:  1966-10-21  number of opts held:  882
+current price of previous options:  2.2254861925863966e-11 current value of previous options:  77986.4451166958  strike:  73.47  expiration:  1966-10-21  number of opts held:  3504243044800120.0
+Total results of sale:  3899322.26  net worth  69601557530.24
 Buying options right now
 current vol for  1966-02-10  :  0.053  underlying:  94.7  risk free rate  0.0479
-new options price is  0.0  expiration date:  1967-02-17  days to expire:  372  Strike:  75.76  number purchased:  21358.0
-cost of options:  856.0  net worth  28477.89
+new options price is  1.6e-07  expiration date:  1967-02-17  days to expire:  372  Strike:  75.76  number purchased:  263273205596864.0
+Total cost of trade:  2098602172.81 , trade fees:  10440807.0  net worth  69605378866.05
 TESTING EXIT NOW
 now testing date  1966-02-11  volatility:  0.053  opt price:  0.0  underlying:  94.52  days to expiry:  371  risk free rate  0.048
 now testing date  1966-02-14  volatility:  0.054  opt price:  0.0  underlying:  94.4  days to expiry:  368  risk free rate  0.0484
@@ -2163,7 +2199,8 @@ now testing date  1966-02-23  volatility:  0.054  opt price:  0.0  underlying:  
     opt_current_price: 0.0
 Selling options right now
 current vol for  1966-02-23  :  0.054  underlying:  92.21  risk free rate:  0.0487
-current value of previous options:  2.4694846886761637e-06  strike:  75.76  expiration:  1967-02-17  number of opts held:  856
+current price of previous options:  2.4694846886761637e-06 current value of previous options:  650149150.1601473  strike:  75.76  expiration:  1967-02-17  number of opts held:  263273205596864.0
+Total results of sale:  32507457508.01  net worth  66347394176.73
 
 Simulation 1  looping over date:  1966-02-23
 
@@ -2171,8 +2208,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1966-02-23  :  0.054  underlying:  92.21  risk free rate  0.0487
-new options price is  0.0  expiration date:  1967-02-17  days to expire:  359  Strike:  73.77  number purchased:  19502.0
-cost of options:  782.0  net worth  26003.35
+new options price is  1.9e-07  expiration date:  1967-02-17  days to expire:  359  Strike:  73.77  number purchased:  310694738093277.0
+Total cost of trade:  2960871781.42 , trade fees:  14730705.0  net worth  98204702534.58
 TESTING EXIT NOW
 now testing date  1966-02-24  volatility:  0.056  opt price:  0.0  underlying:  91.81  days to expiry:  358  risk free rate  0.0486
 now testing date  1966-02-25  volatility:  0.055  opt price:  0.0  underlying:  91.88  days to expiry:  357  risk free rate  0.0486
@@ -2182,7 +2219,8 @@ now testing date  1966-03-01  volatility:  0.063  opt price:  1e-05  underlying:
     opt_current_price: 0.0
 Selling options right now
 current vol for  1966-03-01  :  0.063  underlying:  91.65  risk free rate:  0.0494
-current value of previous options:  9.289863757477759e-06  strike:  73.77  expiration:  1967-02-17  number of opts held:  782
+current price of previous options:  9.289863757477759e-06 current value of previous options:  2886311787.0517783  strike:  73.77  expiration:  1967-02-17  number of opts held:  310694738093277.0
+Total results of sale:  144315589352.59  net worth  96943737158.39
 
 Simulation 1  looping over date:  1966-03-01
 
@@ -2190,8 +2228,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1966-03-01  :  0.063  underlying:  91.65  risk free rate  0.0494
-new options price is  1e-05  expiration date:  1967-02-17  days to expire:  353  Strike:  73.32  number purchased:  18183.0
-cost of options:  728.18  net worth  24250.65
+new options price is  5.8e-06  expiration date:  1967-02-17  days to expire:  353  Strike:  73.32  number purchased:  24555418554245.0
+Total cost of trade:  7186946393.93 , trade fees:  35755952.0  net worth  238373014723.93
 TESTING EXIT NOW
 now testing date  1966-03-02  volatility:  0.067  opt price:  5e-05  underlying:  90.65  days to expiry:  352  risk free rate  0.0493
 now testing date  1966-03-03  volatility:  0.065  opt price:  5e-05  underlying:  90.03  days to expiry:  351  risk free rate  0.0489
@@ -2201,7 +2239,8 @@ now testing date  1966-03-07  volatility:  0.072  opt price:  0.00032  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1966-03-07  :  0.072  underlying:  89.39  risk free rate:  0.0487
-current value of previous options:  0.00032320079681116137  strike:  73.32  expiration:  1967-02-17  number of opts held:  728
+current price of previous options:  0.00032320079681116137 current value of previous options:  7936330842.76356  strike:  73.32  expiration:  1967-02-17  number of opts held:  24555418554245.0
+Total results of sale:  396816542138.18  net worth  230600704355.47
 
 Simulation 1  looping over date:  1966-03-07
 
@@ -2209,8 +2248,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1966-03-07  :  0.072  underlying:  89.39  risk free rate  0.0487
-new options price is  0.00011  expiration date:  1967-03-17  days to expire:  375  Strike:  71.51  number purchased:  16595.0
-cost of options:  665.83  net worth  22187.79
+new options price is  0.0001132  expiration date:  1967-03-17  days to expire:  375  Strike:  71.51  number purchased:  3267155947563.0
+Total cost of trade:  18677349606.87 , trade fees:  92922137.0  net worth  619480915650.89
 TESTING EXIT NOW
 now testing date  1966-03-08  volatility:  0.072  opt price:  0.00014  underlying:  89.0  days to expiry:  374  risk free rate  0.0487
 now testing date  1966-03-09  volatility:  0.076  opt price:  0.0003  underlying:  89.21  days to expiry:  373  risk free rate  0.0486
@@ -2260,7 +2299,8 @@ now testing date  1966-05-09  volatility:  0.095  opt price:  0.00499  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1966-05-09  :  0.095  underlying:  87.96  risk free rate:  0.0482
-current value of previous options:  0.0049932651668411765  strike:  71.51  expiration:  1967-03-17  number of opts held:  664
+current price of previous options:  0.0049932651668411765 current value of previous options:  16313775987.604305  strike:  71.51  expiration:  1967-03-17  number of opts held:  3267155947563.0
+Total results of sale:  815688799380.22  net worth  599455346597.53
 
 Simulation 1  looping over date:  1966-05-09
 
@@ -2268,8 +2308,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1966-05-09  :  0.095  underlying:  87.96  risk free rate  0.0482
-new options price is  0.00531  expiration date:  1967-05-19  days to expire:  375  Strike:  70.37  number purchased:  13616.0
-cost of options:  618.3  net worth  20565.62
+new options price is  0.00530657  expiration date:  1967-05-19  days to expire:  375  Strike:  70.37  number purchased:  157371328341.0
+Total cost of trade:  42174735655.16 , trade fees:  209824555.0  net worth  1398830369990.15
 TESTING EXIT NOW
 now testing date  1966-05-10  volatility:  0.094  opt price:  0.00484  underlying:  87.88  days to expiry:  374  risk free rate  0.0482
 now testing date  1966-05-11  volatility:  0.093  opt price:  0.00351  underlying:  88.38  days to expiry:  373  risk free rate  0.0482
@@ -2346,7 +2386,8 @@ now testing date  1966-08-18  volatility:  0.109  opt price:  0.06436  underlyin
     opt_current_price: 0.06
 Selling options right now
 current vol for  1966-08-18  :  0.109  underlying:  81.38  risk free rate:  0.0542
-current value of previous options:  0.06435727510407685  strike:  70.37  expiration:  1967-05-19  number of opts held:  546
+current price of previous options:  0.06435727510407685 current value of previous options:  10127989871.535744  strike:  70.37  expiration:  1967-05-19  number of opts held:  157371328341.0
+Total results of sale:  506399493576.79  net worth  1249594160506.91
 
 Simulation 1  looping over date:  1966-08-18
 
@@ -2354,8 +2395,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1966-08-18  :  0.109  underlying:  81.38  risk free rate  0.0542
-new options price is  0.01347  expiration date:  1967-08-18  days to expire:  365  Strike:  65.1  number purchased:  10526.0
-cost of options:  563.79  net worth  18762.53
+new options price is  0.01347492  expiration date:  1967-08-18  days to expire:  365  Strike:  65.1  number purchased:  77349754533.0
+Total cost of trade:  52637849775.48 , trade fees:  261879850.0  net worth  1745865664212.16
 TESTING EXIT NOW
 now testing date  1966-08-19  volatility:  0.11  opt price:  0.01715  underlying:  80.78  days to expiry:  364  risk free rate  0.0542
 now testing date  1966-08-22  volatility:  0.116  opt price:  0.03485  underlying:  79.88  days to expiry:  361  risk free rate  0.0539
@@ -2368,7 +2409,8 @@ now testing date  1966-08-29  volatility:  0.138  opt price:  0.22812  underlyin
     opt_current_price: 0.23
 Selling options right now
 current vol for  1966-08-29  :  0.138  underlying:  76.24  risk free rate:  0.058
-current value of previous options:  0.22811772918746076  strike:  65.1  expiration:  1967-08-18  number of opts held:  422
+current price of previous options:  0.22811772918746076 current value of previous options:  17644850357.27546  strike:  65.1  expiration:  1967-08-18  number of opts held:  77349754533.0
+Total results of sale:  882242517863.77  net worth  1593988011206.17
 
 Simulation 1  looping over date:  1966-08-29
 
@@ -2376,8 +2418,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1966-08-29  :  0.138  underlying:  76.24  risk free rate  0.058
-new options price is  0.06546  expiration date:  1967-08-18  days to expire:  354  Strike:  60.99  number purchased:  5412.0
-cost of options:  572.27  net worth  19025.69
+new options price is  0.06545577  expiration date:  1967-08-18  days to expire:  354  Strike:  60.99  number purchased:  22423930279.0
+Total cost of trade:  74126358213.1 , trade fees:  368787852.0  net worth  2458585678712.66
 TESTING EXIT NOW
 now testing date  1966-08-30  volatility:  0.147  opt price:  0.09317  underlying:  76.46  days to expiry:  353  risk free rate  0.0577
 now testing date  1966-08-31  volatility:  0.149  opt price:  0.06891  underlying:  78.06  days to expiry:  352  risk free rate  0.057
@@ -2456,11 +2498,12 @@ Simulation 1  looping over date:  1966-12-12
 ROLL OPTIONS
 Selling options right now
 current vol for  1966-12-12  :  0.101  underlying:  83.54  risk free rate:  0.0512
-current value of previous options:  1.7363611983807763e-05  strike:  60.99  expiration:  1967-08-18  number of opts held:  218
+current price of previous options:  1.7363611983807763e-05 current value of previous options:  389360.4245165142  strike:  60.99  expiration:  1967-08-18  number of opts held:  22423930279.0
+Total results of sale:  19468021.23  net worth  2590498453651.09
 Buying options right now
 current vol for  1966-12-12  :  0.101  underlying:  83.54  risk free rate  0.0512
-new options price is  0.00751  expiration date:  1967-12-15  days to expire:  368  Strike:  66.83  number purchased:  12602.0
-cost of options:  600.64  net worth  19958.81
+new options price is  0.00750957  expiration date:  1967-12-15  days to expire:  368  Strike:  66.83  number purchased:  205942539410.0
+Total cost of trade:  78104103599.01 , trade fees:  388577630.0  net worth  2590517532311.9
 TESTING EXIT NOW
 now testing date  1966-12-13  volatility:  0.101  opt price:  0.0064  underlying:  83.88  days to expiry:  367  risk free rate  0.0513
 now testing date  1966-12-14  volatility:  0.098  opt price:  0.00606  underlying:  83.35  days to expiry:  366  risk free rate  0.0508
@@ -2548,11 +2591,12 @@ Simulation 1  looping over date:  1967-04-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1967-04-10  :  0.083  underlying:  89.32  risk free rate:  0.0387
-current value of previous options:  2.1313273138300623e-06  strike:  66.83  expiration:  1967-12-15  number of opts held:  506
+current price of previous options:  2.1313273138300623e-06 current value of previous options:  438930.95932405704  strike:  66.83  expiration:  1967-12-15  number of opts held:  205942539410.0
+Total results of sale:  21946547.97  net worth  2684771776399.9
 Buying options right now
 current vol for  1967-04-10  :  0.083  underlying:  89.32  risk free rate  0.0387
-new options price is  0.00164  expiration date:  1968-04-19  days to expire:  375  Strike:  71.46  number purchased:  14529.0
-cost of options:  605.83  net worth  20167.38
+new options price is  0.00164221  expiration date:  1968-04-19  days to expire:  375  Strike:  71.46  number purchased:  976013266175.0
+Total cost of trade:  80946517513.04 , trade fees:  402718993.0  net worth  2684793284016.91
 TESTING EXIT NOW
 now testing date  1967-04-11  volatility:  0.085  opt price:  0.002  underlying:  89.34  days to expiry:  374  risk free rate  0.0387
 now testing date  1967-04-12  volatility:  0.085  opt price:  0.00182  underlying:  89.54  days to expiry:  373  risk free rate  0.0387
@@ -2598,7 +2642,8 @@ now testing date  1967-06-06  volatility:  0.118  opt price:  0.01909  underlyin
     opt_current_price: 0.02
 Selling options right now
 current vol for  1967-06-06  :  0.118  underlying:  90.59  risk free rate:  0.0386
-current value of previous options:  0.019086473742166876  strike:  71.46  expiration:  1968-04-19  number of opts held:  582
+current price of previous options:  0.019086473742166876 current value of previous options:  18628651576.855667  strike:  71.46  expiration:  1968-04-19  number of opts held:  976013266175.0
+Total results of sale:  931432578842.78  net worth  2658056062224.26
 
 Simulation 1  looping over date:  1967-06-06
 
@@ -2606,8 +2651,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1967-06-06  :  0.118  underlying:  90.59  risk free rate  0.0386
-new options price is  0.03634  expiration date:  1968-05-17  days to expire:  346  Strike:  72.47  number purchased:  7667.0
-cost of options:  586.62  net worth  19510.99
+new options price is  0.03633716  expiration date:  1968-05-17  days to expire:  346  Strike:  72.47  number purchased:  58667304443.0
+Total cost of trade:  107661428682.9 , trade fees:  535628998.0  net worth  3570859989490.18
 TESTING EXIT NOW
 now testing date  1967-06-07  volatility:  0.118  opt price:  0.02616  underlying:  91.75  days to expiry:  345  risk free rate  0.0388
 now testing date  1967-06-08  volatility:  0.118  opt price:  0.02623  underlying:  91.78  days to expiry:  344  risk free rate  0.0394
@@ -2702,11 +2747,12 @@ Simulation 1  looping over date:  1967-10-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1967-10-10  :  0.064  underlying:  98.15  risk free rate:  0.0519
-current value of previous options:  4.104549668292426e-12  strike:  72.47  expiration:  1968-05-17  number of opts held:  308
+current price of previous options:  4.104549668292426e-12 current value of previous options:  0.2408028649911264  strike:  72.47  expiration:  1968-05-17  number of opts held:  58667304443.0
+Total results of sale:  12.04  net worth  3733503062241.5
 Buying options right now
 current vol for  1967-10-10  :  0.064  underlying:  98.15  risk free rate  0.0519
-new options price is  1e-05  expiration date:  1968-10-18  days to expire:  374  Strike:  78.52  number purchased:  15121.0
-cost of options:  606.15  net worth  20166.85
+new options price is  1.098e-05  expiration date:  1968-10-18  days to expire:  374  Strike:  78.52  number purchased:  203067999910255.0
+Total cost of trade:  112565117326.94 , trade fees:  560025459.0  net worth  3733503062253.3
 TESTING EXIT NOW
 now testing date  1967-10-11  volatility:  0.065  opt price:  3e-05  underlying:  97.34  days to expiry:  373  risk free rate  0.052
 now testing date  1967-10-12  volatility:  0.067  opt price:  7e-05  underlying:  96.7  days to expiry:  372  risk free rate  0.052
@@ -2716,7 +2762,8 @@ now testing date  1967-10-16  volatility:  0.07  opt price:  0.00016  underlying
     opt_current_price: 0.0
 Selling options right now
 current vol for  1967-10-16  :  0.07  underlying:  96.55  risk free rate:  0.0524
-current value of previous options:  0.0001643528789665883  strike:  78.52  expiration:  1968-10-18  number of opts held:  606
+current price of previous options:  0.0001643528789665883 current value of previous options:  33374810411.237305  strike:  78.52  expiration:  1968-10-18  number of opts held:  203067999910255.0
+Total results of sale:  1668740520561.87  net worth  3593562952080.54
 
 Simulation 1  looping over date:  1967-10-16
 
@@ -2724,8 +2771,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1967-10-16  :  0.07  underlying:  96.55  risk free rate  0.0524
-new options price is  6e-05  expiration date:  1968-10-18  days to expire:  368  Strike:  77.24  number purchased:  13944.0
-cost of options:  558.84  net worth  18620.79
+new options price is  6.043e-05  expiration date:  1968-10-18  days to expire:  368  Strike:  77.24  number purchased:  51657334122730.0
+Total cost of trade:  157652199166.27 , trade fees:  784339299.0  net worth  5228928662231.17
 TESTING EXIT NOW
 now testing date  1967-10-17  volatility:  0.069  opt price:  7e-05  underlying:  95.92  days to expiry:  367  risk free rate  0.0524
 now testing date  1967-10-18  volatility:  0.068  opt price:  5e-05  underlying:  95.82  days to expiry:  366  risk free rate  0.0523
@@ -2743,7 +2790,8 @@ now testing date  1967-11-01  volatility:  0.078  opt price:  0.00089  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1967-11-01  :  0.078  underlying:  94.21  risk free rate:  0.0533
-current value of previous options:  0.000885560529361909  strike:  77.24  expiration:  1968-10-18  number of opts held:  558
+current price of previous options:  0.000885560529361909 current value of previous options:  45745696151.14978  strike:  77.24  expiration:  1968-10-18  number of opts held:  51657334122730.0
+Total results of sale:  2287284807557.49  net worth  4965009218272.41
 
 Simulation 1  looping over date:  1967-11-01
 
@@ -2751,8 +2799,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1967-11-01  :  0.078  underlying:  94.21  risk free rate  0.0533
-new options price is  0.00025  expiration date:  1968-10-18  days to expire:  352  Strike:  75.37  number purchased:  12711.0
-cost of options:  513.18  net worth  17054.72
+new options price is  0.00024806  expiration date:  1968-10-18  days to expire:  352  Strike:  75.37  number purchased:  17343538843163.0
+Total cost of trade:  217277432139.81 , trade fees:  1080982249.0  net worth  7206548329678.75
 TESTING EXIT NOW
 now testing date  1967-11-02  volatility:  0.078  opt price:  0.00036  underlying:  93.69  days to expiry:  351  risk free rate  0.0533
 now testing date  1967-11-03  volatility:  0.079  opt price:  0.00066  underlying:  92.9  days to expiry:  350  risk free rate  0.0536
@@ -2771,7 +2819,8 @@ now testing date  1967-11-21  volatility:  0.093  opt price:  0.00264  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1967-11-21  :  0.093  underlying:  93.71  risk free rate:  0.0544
-current value of previous options:  0.0026369988388574572  strike:  75.37  expiration:  1968-10-18  number of opts held:  510
+current price of previous options:  0.0026369988388574572 current value of previous options:  45734891791.10004  strike:  75.37  expiration:  1968-10-18  number of opts held:  17343538843163.0
+Total results of sale:  2286744589555.0  net worth  6956173805248.5
 
 Simulation 1  looping over date:  1967-11-21
 
@@ -2779,8 +2828,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1967-11-21  :  0.093  underlying:  93.71  risk free rate  0.0544
-new options price is  0.0029  expiration date:  1968-11-15  days to expire:  360  Strike:  74.97  number purchased:  11156.0
-cost of options:  480.35  net worth  15953.56
+new options price is  0.00289985  expiration date:  1968-11-15  days to expire:  360  Strike:  74.97  number purchased:  1893446020802.0
+Total cost of trade:  277295082615.78 , trade fees:  1379577525.0  net worth  9197183503012.4
 TESTING EXIT NOW
 now testing date  1967-11-22  volatility:  0.093  opt price:  0.00212  underlying:  94.41  days to expiry:  359  risk free rate  0.0538
 now testing date  1967-11-24  volatility:  0.093  opt price:  0.00199  underlying:  94.46  days to expiry:  357  risk free rate  0.0556
@@ -2861,11 +2910,12 @@ Simulation 1  looping over date:  1968-03-11
 ROLL OPTIONS
 Selling options right now
 current vol for  1968-03-11  :  0.105  underlying:  90.56  risk free rate:  0.0541
-current value of previous options:  0.010376376204182691  strike:  74.97  expiration:  1968-11-15  number of opts held:  448
+current price of previous options:  0.010376376204182691 current value of previous options:  19647108234.154278  strike:  74.97  expiration:  1968-11-15  number of opts held:  1893446020802.0
+Total results of sale:  982355411707.71  net worth  8600478197312.62
 Buying options right now
 current vol for  1968-03-11  :  0.105  underlying:  90.56  risk free rate  0.0541
-new options price is  0.01183  expiration date:  1969-03-21  days to expire:  375  Strike:  72.45  number purchased:  8451.0
-cost of options:  439.98  net worth  14601.22
+new options price is  0.01183483  expiration date:  1969-03-21  days to expire:  375  Strike:  72.45  number purchased:  482408485475.0
+Total cost of trade:  288330072998.37 , trade fees:  1434477975.0  net worth  9563186500786.18
 TESTING EXIT NOW
 now testing date  1968-03-12  volatility:  0.105  opt price:  0.01094  underlying:  90.78  days to expiry:  374  risk free rate  0.0541
 now testing date  1968-03-13  volatility:  0.105  opt price:  0.01085  underlying:  90.71  days to expiry:  373  risk free rate  0.0547
@@ -2951,11 +3001,12 @@ Simulation 1  looping over date:  1968-07-11
 ROLL OPTIONS
 Selling options right now
 current vol for  1968-07-11  :  0.09  underlying:  103.67  risk free rate:  0.0545
-current value of previous options:  8.074457834171814e-08  strike:  72.45  expiration:  1969-03-21  number of opts held:  340
+current price of previous options:  8.074457834171814e-08 current value of previous options:  38951.869748145735  strike:  72.45  expiration:  1969-03-21  number of opts held:  482408485475.0
+Total results of sale:  1947593.49  net worth  10601772599776.91
 Buying options right now
 current vol for  1968-07-11  :  0.09  underlying:  103.67  risk free rate  0.0545
-new options price is  0.0026  expiration date:  1969-07-18  days to expire:  372  Strike:  82.94  number purchased:  11160.0
-cost of options:  477.02  net worth  15848.4
+new options price is  0.00259638  expiration date:  1969-07-18  days to expire:  372  Strike:  82.94  number purchased:  2437724548843.0
+Total cost of trade:  319643501428.74 , trade fees:  1590266176.0  net worth  10601774508418.53
 TESTING EXIT NOW
 now testing date  1968-07-12  volatility:  0.09  opt price:  0.00301  underlying:  103.24  days to expiry:  371  risk free rate  0.0547
 now testing date  1968-07-15  volatility:  0.089  opt price:  0.00254  underlying:  103.15  days to expiry:  368  risk free rate  0.055
@@ -2969,7 +3020,8 @@ now testing date  1968-07-25  volatility:  0.101  opt price:  0.026  underlying:
     opt_current_price: 0.03
 Selling options right now
 current vol for  1968-07-25  :  0.101  underlying:  100.07  risk free rate:  0.052
-current value of previous options:  0.025998935850893745  strike:  82.94  expiration:  1969-07-18  number of opts held:  448
+current price of previous options:  0.025998935850893745 current value of previous options:  63378244167.51805  strike:  82.94  expiration:  1969-07-18  number of opts held:  2437724548843.0
+Total results of sale:  3168912208375.9  net worth  9983907795749.17
 
 Simulation 1  looping over date:  1968-07-25
 
@@ -2977,8 +3029,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1968-07-25  :  0.101  underlying:  100.07  risk free rate  0.052
-new options price is  0.00845  expiration date:  1969-07-18  days to expire:  358  Strike:  80.06  number purchased:  9080.0
-cost of options:  440.73  net worth  14664.73
+new options price is  0.00845259  expiration date:  1969-07-18  days to expire:  358  Strike:  80.06  number purchased:  924497206897.0
+Total cost of trade:  394646669062.54 , trade fees:  1963416264.0  net worth  13089441759957.55
 TESTING EXIT NOW
 now testing date  1968-07-26  volatility:  0.101  opt price:  0.01087  underlying:  99.14  days to expiry:  357  risk free rate  0.0521
 now testing date  1968-07-29  volatility:  0.102  opt price:  0.0131  underlying:  98.78  days to expiry:  354  risk free rate  0.052
@@ -3047,11 +3099,12 @@ Simulation 1  looping over date:  1968-11-12
 ROLL OPTIONS
 Selling options right now
 current vol for  1968-11-12  :  0.058  underlying:  105.28  risk free rate:  0.0549
-current value of previous options:  1.7407772075085176e-11  strike:  80.06  expiration:  1969-07-18  number of opts held:  364
+current price of previous options:  1.7407772075085176e-11 current value of previous options:  16.093436661715838  strike:  80.06  expiration:  1969-07-18  number of opts held:  924497206897.0
+Total results of sale:  804.67  net worth  13300598207541.35
 Buying options right now
 current vol for  1968-11-12  :  0.058  underlying:  105.28  risk free rate  0.0549
-new options price is  0.0  expiration date:  1969-11-21  days to expire:  374  Strike:  84.22  number purchased:  10940.0
-cost of options:  438.0  net worth  14587.82
+new options price is  8.5e-07  expiration date:  1969-11-21  days to expire:  374  Strike:  84.22  number purchased:  9323930358495368.0
+Total cost of trade:  401013035981.15 , trade fees:  1995089731.0  net worth  13300598208329.93
 TESTING EXIT NOW
 now testing date  1968-11-13  volatility:  0.056  opt price:  0.0  underlying:  105.76  days to expiry:  373  risk free rate  0.0546
 now testing date  1968-11-14  volatility:  0.054  opt price:  0.0  underlying:  106.01  days to expiry:  372  risk free rate  0.0548
@@ -3089,7 +3142,8 @@ now testing date  1969-01-06  volatility:  0.073  opt price:  6e-05  underlying:
     opt_current_price: 0.0
 Selling options right now
 current vol for  1969-01-06  :  0.073  underlying:  104.36  risk free rate:  0.0615
-current value of previous options:  5.796834647371976e-05  strike:  84.22  expiration:  1969-11-21  number of opts held:  438
+current price of previous options:  5.796834647371976e-05 current value of previous options:  540492825518.0936  strike:  84.22  expiration:  1969-11-21  number of opts held:  9323930358495368.0
+Total results of sale:  27024641275904.68  net worth  13321768019244.44
 
 Simulation 1  looping over date:  1969-01-06
 
@@ -3097,8 +3151,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1969-01-06  :  0.073  underlying:  104.36  risk free rate  0.0615
-new options price is  8e-05  expiration date:  1970-01-16  days to expire:  375  Strike:  83.49  number purchased:  10159.0
-cost of options:  408.81  net worth  13573.17
+new options price is  8.057e-05  expiration date:  1970-01-16  days to expire:  375  Strike:  83.49  number purchased:  294942297933800.0
+Total cost of trade:  1200148381559.37 , trade fees:  5970887470.0  net worth  39805916469631.03
 TESTING EXIT NOW
 now testing date  1969-01-07  volatility:  0.077  opt price:  0.0005  underlying:  102.68  days to expiry:  374  risk free rate  0.0618
 now testing date  1969-01-08  volatility:  0.078  opt price:  0.00073  underlying:  102.12  days to expiry:  373  risk free rate  0.061
@@ -3107,7 +3161,8 @@ now testing date  1969-01-09  volatility:  0.078  opt price:  0.00083  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1969-01-09  :  0.078  underlying:  102.09  risk free rate:  0.0606
-current value of previous options:  0.0008292472752689725  strike:  83.49  expiration:  1970-01-16  number of opts held:  408
+current price of previous options:  0.0008292472752689725 current value of previous options:  244580096923.17316  strike:  83.49  expiration:  1970-01-16  number of opts held:  294942297933800.0
+Total results of sale:  12229004846158.66  net worth  37541640827132.44
 
 Simulation 1  looping over date:  1969-01-09
 
@@ -3115,8 +3170,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1969-01-09  :  0.078  underlying:  102.09  risk free rate  0.0606
-new options price is  0.00027  expiration date:  1970-01-16  days to expire:  372  Strike:  81.67  number purchased:  9284.0
-cost of options:  374.51  net worth  12462.76
+new options price is  0.00027425  expiration date:  1970-01-16  days to expire:  372  Strike:  81.67  number purchased:  107811941484565.0
+Total cost of trade:  1493210877127.48 , trade fees:  7428909836.0  net worth  49526065576367.93
 TESTING EXIT NOW
 now testing date  1969-01-10  volatility:  0.079  opt price:  0.00028  underlying:  102.14  days to expiry:  371  risk free rate  0.0604
 now testing date  1969-01-13  volatility:  0.079  opt price:  0.00044  underlying:  101.35  days to expiry:  368  risk free rate  0.0604
@@ -3206,11 +3261,12 @@ Simulation 1  looping over date:  1969-05-12
 ROLL OPTIONS
 Selling options right now
 current vol for  1969-05-12  :  0.07  underlying:  105.65  risk free rate:  0.0619
-current value of previous options:  1.0892696476923711e-07  strike:  81.67  expiration:  1970-01-16  number of opts held:  372
+current price of previous options:  1.0892696476923711e-07 current value of previous options:  11743627.551792264  strike:  81.67  expiration:  1970-01-16  number of opts held:  107811941484565.0
+Total results of sale:  587181377.59  net worth  49501667266721.42
 Buying options right now
 current vol for  1969-05-12  :  0.07  underlying:  105.65  risk free rate  0.0619
-new options price is  4e-05  expiration date:  1970-05-15  days to expire:  368  Strike:  84.52  number purchased:  9081.0
-cost of options:  364.36  net worth  12120.33
+new options price is  3.586e-05  expiration date:  1970-05-15  days to expire:  368  Strike:  84.52  number purchased:  824149265454971.0
+Total cost of trade:  1492492617539.81 , trade fees:  7425336406.0  net worth  49502242704471.45
 TESTING EXIT NOW
 now testing date  1969-05-13  volatility:  0.069  opt price:  2e-05  underlying:  105.91  days to expiry:  367  risk free rate  0.0612
 now testing date  1969-05-14  volatility:  0.071  opt price:  2e-05  underlying:  106.74  days to expiry:  366  risk free rate  0.0608
@@ -3228,7 +3284,8 @@ now testing date  1969-05-28  volatility:  0.078  opt price:  0.00041  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1969-05-28  :  0.078  underlying:  103.91  risk free rate:  0.0633
-current value of previous options:  0.00041316515837048345  strike:  84.52  expiration:  1970-05-15  number of opts held:  364
+current price of previous options:  0.00041316515837048345 current value of previous options:  340509761782.6207  strike:  84.52  expiration:  1970-05-15  number of opts held:  824149265454971.0
+Total results of sale:  17025488089131.04  net worth  47538888041686.55
 
 Simulation 1  looping over date:  1969-05-28
 
@@ -3236,8 +3293,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1969-05-28  :  0.078  underlying:  103.91  risk free rate  0.0633
-new options price is  0.00017  expiration date:  1970-05-15  days to expire:  352  Strike:  83.13  number purchased:  8355.0
-cost of options:  337.42  net worth  11188.58
+new options price is  0.00016936  expiration date:  1970-05-15  days to expire:  352  Strike:  83.13  number purchased:  226396768759726.0
+Total cost of trade:  1936349571026.4 , trade fees:  9633579955.0  net worth  64223866369034.97
 TESTING EXIT NOW
 now testing date  1969-05-29  volatility:  0.076  opt price:  9e-05  underlying:  104.27  days to expiry:  351  risk free rate  0.064
 now testing date  1969-06-02  volatility:  0.077  opt price:  0.00014  underlying:  103.75  days to expiry:  347  risk free rate  0.0649
@@ -3252,7 +3309,8 @@ now testing date  1969-06-11  volatility:  0.085  opt price:  0.00174  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1969-06-11  :  0.085  underlying:  100.71  risk free rate:  0.0696
-current value of previous options:  0.001737963149669064  strike:  83.13  expiration:  1970-05-15  number of opts held:  336
+current price of previous options:  0.001737963149669064 current value of previous options:  393469241308.5521  strike:  83.13  expiration:  1970-05-15  number of opts held:  226396768759726.0
+Total results of sale:  19673462065427.6  net worth  60496631490788.08
 
 Simulation 1  looping over date:  1969-06-11
 
@@ -3260,8 +3318,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1969-06-11  :  0.085  underlying:  100.71  risk free rate  0.0696
-new options price is  0.0006  expiration date:  1970-06-19  days to expire:  373  Strike:  80.57  number purchased:  7524.0
-cost of options:  306.51  net worth  10182.88
+new options price is  0.0005975  expiration date:  1970-06-19  days to expire:  373  Strike:  80.57  number purchased:  79709787500829.0
+Total cost of trade:  2405265223094.44 , trade fees:  11966493647.0  net worth  79776624314907.12
 TESTING EXIT NOW
 now testing date  1969-06-12  volatility:  0.085  opt price:  0.00082  underlying:  99.78  days to expiry:  372  risk free rate  0.0696
 now testing date  1969-06-13  volatility:  0.085  opt price:  0.00108  underlying:  99.51  days to expiry:  371  risk free rate  0.068
@@ -3287,7 +3345,8 @@ now testing date  1969-07-10  volatility:  0.098  opt price:  0.0096  underlying
     opt_current_price: 0.01
 Selling options right now
 current vol for  1969-07-10  :  0.098  underlying:  97.04  risk free rate:  0.0706
-current value of previous options:  0.009600593389747947  strike:  80.57  expiration:  1970-06-19  number of opts held:  302
+current price of previous options:  0.009600593389747947 current value of previous options:  765261258978.6724  strike:  80.57  expiration:  1970-06-19  number of opts held:  79709787500829.0
+Total results of sale:  38263062948933.62  net worth  75004897648078.8
 
 Simulation 1  looping over date:  1969-07-10
 
@@ -3295,8 +3354,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1969-07-10  :  0.098  underlying:  97.04  risk free rate  0.0706
-new options price is  0.00321  expiration date:  1970-07-17  days to expire:  372  Strike:  77.63  number purchased:  6439.0
-cost of options:  278.67  net worth  9274.94
+new options price is  0.00320524  expiration date:  1970-07-17  days to expire:  372  Strike:  77.63  number purchased:  20954499016661.0
+Total cost of trade:  3391956385041.66 , trade fees:  16875404901.0  net worth  112502699338033.77
 TESTING EXIT NOW
 now testing date  1969-07-11  volatility:  0.096  opt price:  0.00292  underlying:  96.65  days to expiry:  371  risk free rate  0.0702
 now testing date  1969-07-14  volatility:  0.099  opt price:  0.00483  underlying:  96.17  days to expiry:  368  risk free rate  0.0709
@@ -3313,7 +3372,8 @@ now testing date  1969-07-28  volatility:  0.115  opt price:  0.05725  underlyin
     opt_current_price: 0.06
 Selling options right now
 current vol for  1969-07-28  :  0.115  underlying:  91.91  risk free rate:  0.0734
-current value of previous options:  0.05724857016425511  strike:  77.63  expiration:  1970-07-17  number of opts held:  258
+current price of previous options:  0.05724857016425511 current value of previous options:  1199615107212.1318  strike:  77.63  expiration:  1970-07-17  number of opts held:  20954499016661.0
+Total results of sale:  59980755360606.59  net worth  103891931374868.6
 
 Simulation 1  looping over date:  1969-07-28
 
@@ -3321,8 +3381,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1969-07-28  :  0.115  underlying:  91.91  risk free rate  0.0734
-new options price is  0.01341  expiration date:  1970-07-17  days to expire:  354  Strike:  73.53  number purchased:  4843.0
-cost of options:  258.94  net worth  8622.93
+new options price is  0.01340657  expiration date:  1970-07-17  days to expire:  354  Strike:  73.53  number purchased:  7243898562865.0
+Total cost of trade:  4904593109591.85 , trade fees:  24400960744.0  net worth  162673071628263.06
 TESTING EXIT NOW
 now testing date  1969-07-29  volatility:  0.115  opt price:  0.01457  underlying:  91.56  days to expiry:  353  risk free rate  0.0733
 now testing date  1969-07-30  volatility:  0.117  opt price:  0.02087  underlying:  90.82  days to expiry:  352  risk free rate  0.0731
@@ -3403,11 +3463,12 @@ Simulation 1  looping over date:  1969-11-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1969-11-10  :  0.079  underlying:  99.23  risk free rate:  0.0712
-current value of previous options:  4.215818126435096e-08  strike:  73.53  expiration:  1970-07-17  number of opts held:  194
+current price of previous options:  4.215818126435096e-08 current value of previous options:  305389.58867383405  strike:  73.53  expiration:  1970-07-17  number of opts held:  7243898562865.0
+Total results of sale:  15269479.43  net worth  169091292884989.22
 Buying options right now
 current vol for  1969-11-10  :  0.079  underlying:  99.23  risk free rate  0.0712
-new options price is  0.00017  expiration date:  1970-11-20  days to expire:  375  Strike:  79.38  number purchased:  6597.0
-cost of options:  265.12  net worth  8834.11
+new options price is  0.00017175  expiration date:  1970-11-20  days to expire:  375  Strike:  79.38  number purchased:  587764013581815.0
+Total cost of trade:  5098102931649.73 , trade fees:  25363696177.0  net worth  169091307849079.06
 TESTING EXIT NOW
 now testing date  1969-11-11  volatility:  0.079  opt price:  0.00024  underlying:  98.79  days to expiry:  374  risk free rate  0.0712
 now testing date  1969-11-12  volatility:  0.079  opt price:  0.00024  underlying:  98.72  days to expiry:  373  risk free rate  0.0713
@@ -3422,7 +3483,8 @@ now testing date  1969-11-21  volatility:  0.085  opt price:  0.00208  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1969-11-21  :  0.085  underlying:  95.34  risk free rate:  0.0777
-current value of previous options:  0.0020784577444837304  strike:  79.38  expiration:  1970-11-20  number of opts held:  264
+current price of previous options:  0.0020784577444837304 current value of previous options:  1221642665957.9639  strike:  79.38  expiration:  1970-11-20  number of opts held:  587764013581815.0
+Total results of sale:  61082133297898.2  net worth  158709112412978.4
 
 Simulation 1  looping over date:  1969-11-21
 
@@ -3430,8 +3492,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1969-11-21  :  0.085  underlying:  95.34  risk free rate  0.0777
-new options price is  0.00034  expiration date:  1970-11-20  days to expire:  364  Strike:  76.27  number purchased:  5930.0
-cost of options:  240.02  net worth  7974.16
+new options price is  0.00033803  expiration date:  1970-11-20  days to expire:  364  Strike:  76.27  number purchased:  386020944839799.0
+Total cost of trade:  6589873531804.29 , trade fees:  32785440457.0  net worth  218569603044918.62
 TESTING EXIT NOW
 now testing date  1969-11-24  volatility:  0.087  opt price:  0.00074  underlying:  94.43  days to expiry:  361  risk free rate  0.0786
 now testing date  1969-11-25  volatility:  0.087  opt price:  0.00088  underlying:  94.17  days to expiry:  360  risk free rate  0.0773
@@ -3447,7 +3509,8 @@ now testing date  1969-12-08  volatility:  0.092  opt price:  0.00414  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1969-12-08  :  0.092  underlying:  92.05  risk free rate:  0.076
-current value of previous options:  0.0041359004193007864  strike:  76.27  expiration:  1970-11-20  number of opts held:  238
+current price of previous options:  0.0041359004193007864 current value of previous options:  1596544187621.8105  strike:  76.27  expiration:  1970-11-20  number of opts held:  386020944839799.0
+Total results of sale:  79827209381090.53  net worth  205214580805855.72
 
 Simulation 1  looping over date:  1969-12-08
 
@@ -3455,8 +3518,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1969-12-08  :  0.092  underlying:  92.05  risk free rate  0.076
-new options price is  0.00131  expiration date:  1970-12-18  days to expire:  375  Strike:  73.64  number purchased:  5260.0
-cost of options:  218.89  net worth  7244.18
+new options price is  0.00130824  expiration date:  1970-12-18  days to expire:  375  Strike:  73.64  number purchased:  129347082935344.0
+Total cost of trade:  8545874166879.59 , trade fees:  42516786900.0  net worth  283445245999324.44
 TESTING EXIT NOW
 now testing date  1969-12-09  volatility:  0.088  opt price:  0.00074  underlying:  91.79  days to expiry:  374  risk free rate  0.0765
 now testing date  1969-12-10  volatility:  0.081  opt price:  0.00031  underlying:  91.22  days to expiry:  373  risk free rate  0.0767
@@ -3495,7 +3558,8 @@ now testing date  1970-01-26  volatility:  0.108  opt price:  0.0142  underlying
     opt_current_price: 0.01
 Selling options right now
 current vol for  1970-01-26  :  0.108  underlying:  89.23  risk free rate:  0.0748
-current value of previous options:  0.014200915779004508  strike:  73.64  expiration:  1970-12-18  number of opts held:  212
+current price of previous options:  0.014200915779004508 current value of previous options:  1836847031024.7314  strike:  73.64  expiration:  1970-12-18  number of opts held:  129347082935344.0
+Total results of sale:  91842351551236.58  net worth  266886993474465.16
 
 Simulation 1  looping over date:  1970-01-26
 
@@ -3503,8 +3567,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1970-01-26  :  0.108  underlying:  89.23  risk free rate  0.0748
-new options price is  0.00659  expiration date:  1971-01-15  days to expire:  354  Strike:  71.38  number purchased:  4290.0
-cost of options:  200.27  net worth  6663.67
+new options price is  0.0065869  expiration date:  1971-01-15  days to expire:  354  Strike:  71.38  number purchased:  32346771164643.0
+Total cost of trade:  10760308814539.38 , trade fees:  53533874699.0  net worth  356892497994677.0
 TESTING EXIT NOW
 now testing date  1970-01-27  volatility:  0.107  opt price:  0.00757  underlying:  88.54  days to expiry:  353  risk free rate  0.075
 now testing date  1970-01-28  volatility:  0.108  opt price:  0.00895  underlying:  88.24  days to expiry:  352  risk free rate  0.0761
@@ -3576,7 +3640,8 @@ now testing date  1970-04-30  volatility:  0.12  opt price:  0.07618  underlying
     opt_current_price: 0.08
 Selling options right now
 current vol for  1970-04-30  :  0.12  underlying:  82.57  risk free rate:  0.0715
-current value of previous options:  0.07618093396048864  strike:  71.38  expiration:  1971-01-15  number of opts held:  172
+current price of previous options:  0.07618093396048864 current value of previous options:  2464207237928.7065  strike:  71.38  expiration:  1971-01-15  number of opts held:  32346771164643.0
+Total results of sale:  123210361896435.31  net worth  321169396670168.3
 
 Simulation 1  looping over date:  1970-04-30
 
@@ -3584,8 +3649,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1970-04-30  :  0.12  underlying:  82.57  risk free rate  0.0715
-new options price is  0.01812  expiration date:  1971-04-16  days to expire:  351  Strike:  66.06  number purchased:  3164.0
-cost of options:  185.33  net worth  6130.7
+new options price is  0.01812326  expiration date:  1971-04-16  days to expire:  351  Strike:  66.06  number purchased:  14557178075677.0
+Total cost of trade:  13323753872559.36 , trade fees:  66287332699.0  net worth  441915551328674.94
 TESTING EXIT NOW
 now testing date  1970-05-01  volatility:  0.12  opt price:  0.01909  underlying:  82.32  days to expiry:  350  risk free rate  0.0721
 now testing date  1970-05-04  volatility:  0.133  opt price:  0.05326  underlying:  81.28  days to expiry:  347  risk free rate  0.0728
@@ -3601,7 +3666,8 @@ now testing date  1970-05-14  volatility:  0.143  opt price:  0.24187  underlyin
     opt_current_price: 0.24
 Selling options right now
 current vol for  1970-05-14  :  0.143  underlying:  76.64  risk free rate:  0.0713
-current value of previous options:  0.24187204420206632  strike:  66.06  expiration:  1971-04-16  number of opts held:  128
+current price of previous options:  0.24187204420206632 current value of previous options:  3520974418977.498  strike:  66.06  expiration:  1971-04-16  number of opts held:  14557178075677.0
+Total results of sale:  176048720948874.9  net worth  398985262385247.8
 
 Simulation 1  looping over date:  1970-05-14
 
@@ -3609,8 +3675,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1970-05-14  :  0.143  underlying:  76.64  risk free rate  0.0713
-new options price is  0.07134  expiration date:  1971-05-21  days to expire:  372  Strike:  61.31  number purchased:  1658.0
-cost of options:  186.28  net worth  6155.69
+new options price is  0.07133545  expiration date:  1971-05-21  days to expire:  372  Strike:  61.31  number purchased:  4782941368862.0
+Total cost of trade:  17231117218791.36 , trade fees:  85726951337.0  net worth  571513008915145.2
 TESTING EXIT NOW
 now testing date  1970-05-15  volatility:  0.154  opt price:  0.09489  underlying:  77.42  days to expiry:  371  risk free rate  0.0714
 now testing date  1970-05-18  volatility:  0.154  opt price:  0.09087  underlying:  77.68  days to expiry:  368  risk free rate  0.0705
@@ -3625,7 +3691,8 @@ now testing date  1970-05-27  volatility:  0.215  opt price:  0.82785  underlyin
     opt_current_price: 0.83
 Selling options right now
 current vol for  1970-05-27  :  0.215  underlying:  73.22  risk free rate:  0.072
-current value of previous options:  0.8278499340139494  strike:  61.31  expiration:  1971-05-21  number of opts held:  68
+current price of previous options:  0.8278499340139494 current value of previous options:  3959557696604.995  strike:  61.31  expiration:  1971-05-21  number of opts held:  4782941368862.0
+Total results of sale:  197977884830249.75  net worth  529732307267691.44
 
 Simulation 1  looping over date:  1970-05-27
 
@@ -3633,8 +3700,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1970-05-27  :  0.215  underlying:  73.22  risk free rate  0.072
-new options price is  0.16578  expiration date:  1970-11-20  days to expire:  177  Strike:  58.58  number purchased:  1020.0
-cost of options:  211.1  net worth  7000.65
+new options price is  0.1657807  expiration date:  1970-11-20  days to expire:  177  Strike:  58.58  number purchased:  2606329572963.0
+Total cost of trade:  21821081627199.39 , trade fees:  108562595160.0  net worth  723750634401336.1
 TESTING EXIT NOW
 now testing date  1970-05-28  volatility:  0.228  opt price:  0.14136  underlying:  75.44  days to expiry:  176  risk free rate  0.0712
 now testing date  1970-05-29  volatility:  0.24  opt price:  0.13982  underlying:  76.92  days to expiry:  175  risk free rate  0.071
@@ -3693,11 +3760,12 @@ Simulation 1  looping over date:  1970-08-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1970-08-10  :  0.158  underlying:  77.4  risk free rate:  0.0667
-current value of previous options:  0.00025952699569843293  strike:  58.58  expiration:  1970-11-20  number of opts held:  42
+current price of previous options:  0.00025952699569843293 current value of previous options:  676412883.871067  strike:  58.58  expiration:  1970-11-20  number of opts held:  2606329572963.0
+Total results of sale:  33820644193.55  net worth  737157131993789.6
 Buying options right now
 current vol for  1970-08-10  :  0.158  underlying:  77.4  risk free rate  0.0667
-new options price is  0.1452  expiration date:  1971-08-20  days to expire:  375  Strike:  61.92  number purchased:  1150.0
-cost of options:  212.98  net worth  7102.37
+new options price is  0.14520278  expiration date:  1971-08-20  days to expire:  375  Strike:  61.92  number purchased:  3030951541090.0
+Total cost of trade:  22226286828183.32 , trade fees:  110578541434.0  net worth  737190276225099.2
 TESTING EXIT NOW
 now testing date  1970-08-11  volatility:  0.157  opt price:  0.17295  underlying:  76.33  days to expiry:  374  risk free rate  0.0667
 now testing date  1970-08-12  volatility:  0.149  opt price:  0.13044  underlying:  76.24  days to expiry:  373  risk free rate  0.0664
@@ -3790,11 +3858,12 @@ Simulation 1  looping over date:  1970-12-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1970-12-10  :  0.095  underlying:  90.87  risk free rate:  0.0491
-current value of previous options:  6.62516031453157e-08  strike:  61.92  expiration:  1971-08-20  number of opts held:  46
+current price of previous options:  6.62516031453157e-08 current value of previous options:  200805.3986529777  strike:  61.92  expiration:  1971-08-20  number of opts held:  3030951541090.0
+Total results of sale:  10040269.93  net worth  838929828216652.8
 Buying options right now
 current vol for  1970-12-10  :  0.095  underlying:  90.87  risk free rate  0.0491
-new options price is  0.00489  expiration date:  1971-12-17  days to expire:  372  Strike:  72.7  number purchased:  5370.0
-cost of options:  242.26  net worth  8036.22
+new options price is  0.00489171  expiration date:  1971-12-17  days to expire:  372  Strike:  72.7  number purchased:  102385744916224.0
+Total cost of trade:  25293734617391.84 , trade fees:  125839475708.0  net worth  838929838056117.5
 TESTING EXIT NOW
 now testing date  1970-12-11  volatility:  0.095  opt price:  0.00466  underlying:  90.93  days to expiry:  371  risk free rate  0.0485
 now testing date  1970-12-14  volatility:  0.095  opt price:  0.005  underlying:  90.81  days to expiry:  368  risk free rate  0.048
@@ -3884,11 +3953,12 @@ Simulation 1  looping over date:  1971-04-12
 ROLL OPTIONS
 Selling options right now
 current vol for  1971-04-12  :  0.076  underlying:  103.54  risk free rate:  0.0415
-current value of previous options:  5.289089378837107e-10  strike:  72.7  expiration:  1971-12-17  number of opts held:  216
+current price of previous options:  5.289089378837107e-10 current value of previous options:  54152.73559807257  strike:  72.7  expiration:  1971-12-17  number of opts held:  102385744916224.0
+Total results of sale:  2707636.78  net worth  926640361054746.8
 Buying options right now
 current vol for  1971-04-12  :  0.076  underlying:  103.54  risk free rate  0.0415
-new options price is  0.00051  expiration date:  1972-04-21  days to expire:  375  Strike:  82.83  number purchased:  6403.0
-cost of options:  261.27  net worth  8646.91
+new options price is  0.00051173  expiration date:  1972-04-21  days to expire:  375  Strike:  82.83  number purchased:  1081042966412884.0
+Total cost of trade:  27938206965803.14 , trade fees:  138996054556.0  net worth  926640363708230.8
 TESTING EXIT NOW
 now testing date  1971-04-13  volatility:  0.075  opt price:  0.00036  underlying:  103.96  days to expiry:  374  risk free rate  0.0413
 now testing date  1971-04-14  volatility:  0.076  opt price:  0.00037  underlying:  104.01  days to expiry:  373  risk free rate  0.041
@@ -3958,7 +4028,8 @@ now testing date  1971-07-13  volatility:  0.098  opt price:  0.00566  underlyin
     opt_current_price: 0.01
 Selling options right now
 current vol for  1971-07-13  :  0.098  underlying:  101.06  risk free rate:  0.0555
-current value of previous options:  0.005664084816945414  strike:  82.83  expiration:  1972-04-21  number of opts held:  258
+current price of previous options:  0.005664084816945414 current value of previous options:  6123119052524.848  strike:  82.83  expiration:  1972-04-21  number of opts held:  1081042966412884.0
+Total results of sale:  306155952626242.4  net worth  882890293362961.9
 
 Simulation 1  looping over date:  1971-07-13
 
@@ -3966,8 +4037,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1971-07-13  :  0.098  underlying:  101.06  risk free rate  0.0555
-new options price is  0.00599  expiration date:  1972-07-21  days to expire:  374  Strike:  80.85  number purchased:  5189.0
-cost of options:  239.08  net worth  7955.51
+new options price is  0.00598825  expiration date:  1972-07-21  days to expire:  374  Strike:  80.85  number purchased:  117931751423544.0
+Total cost of trade:  35665132277140.88 , trade fees:  177438469041.0  net worth  1182923126936679.5
 TESTING EXIT NOW
 now testing date  1971-07-14  volatility:  0.091  opt price:  0.00423  underlying:  99.83  days to expiry:  373  risk free rate  0.0556
 now testing date  1971-07-15  volatility:  0.091  opt price:  0.00317  underlying:  100.48  days to expiry:  372  risk free rate  0.0563
@@ -3998,7 +4069,8 @@ now testing date  1971-08-17  volatility:  0.131  opt price:  0.06243  underlyin
     opt_current_price: 0.06
 Selling options right now
 current vol for  1971-08-17  :  0.131  underlying:  101.0  risk free rate:  0.0528
-current value of previous options:  0.06243111163005155  strike:  80.85  expiration:  1972-07-21  number of opts held:  208
+current price of previous options:  0.06243111163005155 current value of previous options:  7362610337850.767  strike:  80.85  expiration:  1972-07-21  number of opts held:  117931751423544.0
+Total results of sale:  368130516892538.3  net worth  1148878769967378.2
 
 Simulation 1  looping over date:  1971-08-17
 
@@ -4006,8 +4078,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1971-08-17  :  0.131  underlying:  101.0  risk free rate  0.0528
-new options price is  0.07413  expiration date:  1972-08-18  days to expire:  367  Strike:  80.8  number purchased:  2055.0
-cost of options:  236.34  net worth  7819.83
+new options price is  0.07413091  expiration date:  1972-08-18  days to expire:  367  Strike:  80.8  number purchased:  12157669293518.0
+Total cost of trade:  45515847297139.52 , trade fees:  226447001478.0  net worth  1509646676522065.5
 TESTING EXIT NOW
 now testing date  1971-08-18  volatility:  0.136  opt price:  0.10954  underlying:  100.19  days to expiry:  366  risk free rate  0.0522
 now testing date  1971-08-19  volatility:  0.135  opt price:  0.13317  underlying:  99.07  days to expiry:  365  risk free rate  0.0503
@@ -4095,11 +4167,12 @@ Simulation 1  looping over date:  1971-12-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1971-12-10  :  0.132  underlying:  97.69  risk free rate:  0.0455
-current value of previous options:  0.07868634275690978  strike:  80.8  expiration:  1972-08-18  number of opts held:  84
+current price of previous options:  0.07868634275690978 current value of previous options:  956642533154.9144  strike:  80.8  expiration:  1972-08-18  number of opts held:  12157669293518.0
+Total results of sale:  47832126657745.72  net worth  1411268619741845.2
 Buying options right now
 current vol for  1971-12-10  :  0.132  underlying:  97.69  risk free rate  0.0455
-new options price is  0.09137  expiration date:  1972-12-15  days to expire:  371  Strike:  78.15  number purchased:  1692.0
-cost of options:  222.6  net worth  7410.94
+new options price is  0.09137178  expiration date:  1972-12-15  days to expire:  371  Strike:  78.15  number purchased:  9527143239611.0
+Total cost of trade:  43963044731569.46 , trade fees:  218721615580.0  net worth  1458144103866435.8
 TESTING EXIT NOW
 now testing date  1971-12-13  volatility:  0.132  opt price:  0.08561  underlying:  97.97  days to expiry:  368  risk free rate  0.0448
 now testing date  1971-12-14  volatility:  0.132  opt price:  0.08852  underlying:  97.67  days to expiry:  367  risk free rate  0.0452
@@ -4189,11 +4262,12 @@ Simulation 1  looping over date:  1972-04-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1972-04-10  :  0.072  underlying:  110.54  risk free rate:  0.047
-current value of previous options:  5.964375677848701e-11  strike:  78.15  expiration:  1972-12-15  number of opts held:  68
+current price of previous options:  5.964375677848701e-11 current value of previous options:  568.2346141771652  strike:  78.15  expiration:  1972-12-15  number of opts held:  9527143239611.0
+Total results of sale:  28411.73  net worth  1600326119768518.5
 Buying options right now
 current vol for  1972-04-10  :  0.072  underlying:  110.54  risk free rate  0.047
-new options price is  0.00015  expiration date:  1973-04-20  days to expire:  375  Strike:  88.43  number purchased:  6018.0
-cost of options:  242.9  net worth  8054.39
+new options price is  0.00015252  expiration date:  1973-04-20  days to expire:  375  Strike:  88.43  number purchased:  6263955998711566.0
+Total cost of trade:  48249832511860.3 , trade fees:  240048917969.0  net worth  1600326119796362.0
 TESTING EXIT NOW
 now testing date  1972-04-11  volatility:  0.07  opt price:  0.00011  underlying:  110.38  days to expiry:  374  risk free rate  0.0477
 now testing date  1972-04-12  volatility:  0.069  opt price:  5e-05  underlying:  111.11  days to expiry:  373  risk free rate  0.0478
@@ -4217,7 +4291,8 @@ now testing date  1972-05-04  volatility:  0.075  opt price:  0.00163  underlyin
     opt_current_price: 0.0
 Selling options right now
 current vol for  1972-05-04  :  0.075  underlying:  106.81  risk free rate:  0.0439
-current value of previous options:  0.001629787041298042  strike:  88.43  expiration:  1973-04-20  number of opts held:  242
+current price of previous options:  0.001629787041298042 current value of previous options:  10208914313961.244  strike:  88.43  expiration:  1973-04-20  number of opts held:  6263955998711566.0
+Total results of sale:  510445715698062.2  net worth  1509283828648269.0
 
 Simulation 1  looping over date:  1972-05-04
 
@@ -4225,8 +4300,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1972-05-04  :  0.075  underlying:  106.81  risk free rate  0.0439
-new options price is  0.00026  expiration date:  1973-04-20  days to expire:  351  Strike:  85.45  number purchased:  5448.0
-cost of options:  219.42  net worth  7312.2
+new options price is  0.00026462  expiration date:  1973-04-20  days to expire:  351  Strike:  85.45  number purchased:  4533674648178088.0
+Total cost of trade:  60587046995475.94 , trade fees:  301428094505.0  net worth  2009520630032370.2
 TESTING EXIT NOW
 now testing date  1972-05-05  volatility:  0.076  opt price:  0.00024  underlying:  107.33  days to expiry:  350  risk free rate  0.0435
 now testing date  1972-05-08  volatility:  0.076  opt price:  0.00028  underlying:  106.81  days to expiry:  347  risk free rate  0.0435
@@ -4322,11 +4397,12 @@ Simulation 1  looping over date:  1972-09-11
 ROLL OPTIONS
 Selling options right now
 current vol for  1972-09-11  :  0.079  underlying:  110.57  risk free rate:  0.0539
-current value of previous options:  1.3191902835141029e-06  strike:  85.45  expiration:  1973-04-20  number of opts held:  218
+current price of previous options:  1.3191902835141029e-06 current value of previous options:  5980779544.490752  strike:  85.45  expiration:  1973-04-20  number of opts held:  4533674648178088.0
+Total results of sale:  299038977224.54  net worth  2009300895707553.5
 Buying options right now
 current vol for  1972-09-11  :  0.079  underlying:  110.57  risk free rate  0.0539
-new options price is  0.00049  expiration date:  1973-09-21  days to expire:  375  Strike:  88.46  number purchased:  5271.0
-cost of options:  214.58  net worth  7114.95
+new options price is  0.00048768  expiration date:  1973-09-21  days to expire:  375  Strike:  88.46  number purchased:  2460052734310568.0
+Total cost of trade:  60589257710242.77 , trade fees:  301439093086.0  net worth  2009593953905233.5
 TESTING EXIT NOW
 now testing date  1972-09-12  volatility:  0.08  opt price:  0.00075  underlying:  109.84  days to expiry:  374  risk free rate  0.054
 now testing date  1972-09-13  volatility:  0.08  opt price:  0.00097  underlying:  109.36  days to expiry:  373  risk free rate  0.054
@@ -4415,11 +4491,12 @@ Simulation 1  looping over date:  1973-01-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1973-01-10  :  0.072  underlying:  120.44  risk free rate:  0.0543
-current value of previous options:  4.280973687032624e-09  strike:  88.46  expiration:  1973-09-21  number of opts held:  212
+current price of previous options:  4.280973687032624e-09 current value of previous options:  10531421.0242962  strike:  88.46  expiration:  1973-09-21  number of opts held:  2460052734310568.0
+Total results of sale:  526571051.21  net worth  2122198420126875.5
 Buying options right now
 current vol for  1973-01-10  :  0.072  underlying:  120.44  risk free rate  0.0543
-new options price is  0.00012  expiration date:  1974-01-18  days to expire:  373  Strike:  96.35  number purchased:  5452.0
-cost of options:  220.65  net worth  7292.31
+new options price is  0.00011876  expiration date:  1974-01-18  days to expire:  373  Strike:  96.35  number purchased:  1.0668142089773016e+16
+Total cost of trade:  63984297925420.14 , trade fees:  318329840425.0  net worth  2122198936166505.5
 TESTING EXIT NOW
 now testing date  1973-01-11  volatility:  0.073  opt price:  8e-05  underlying:  121.74  days to expiry:  372  risk free rate  0.0549
 now testing date  1973-01-12  volatility:  0.077  opt price:  0.00022  underlying:  121.27  days to expiry:  371  risk free rate  0.0548
@@ -4436,7 +4513,8 @@ now testing date  1973-01-26  volatility:  0.08  opt price:  0.00155  underlying
     opt_current_price: 0.0
 Selling options right now
 current vol for  1973-01-26  :  0.08  underlying:  117.29  risk free rate:  0.0578
-current value of previous options:  0.001548582622802136  strike:  96.35  expiration:  1974-01-18  number of opts held:  220
+current price of previous options:  0.001548582622802136 current value of previous options:  16520499457806.557  strike:  96.35  expiration:  1974-01-18  number of opts held:  1.0668142089773016e+16
+Total results of sale:  826024972890327.9  net worth  2020147199354751.8
 
 Simulation 1  looping over date:  1973-01-26
 
@@ -4444,8 +4522,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1973-01-26  :  0.08  underlying:  117.29  risk free rate  0.0578
-new options price is  0.00042  expiration date:  1974-01-18  days to expire:  357  Strike:  93.83  number purchased:  4950.0
-cost of options:  200.08  net worth  6669.4
+new options price is  0.00042126  expiration date:  1974-01-18  days to expire:  357  Strike:  93.83  number purchased:  4010087720029309.0
+Total cost of trade:  85313997934536.27 , trade fees:  424447750918.0  net worth  2829651672787273.0
 TESTING EXIT NOW
 now testing date  1973-01-29  volatility:  0.081  opt price:  0.00041  underlying:  117.18  days to expiry:  354  risk free rate  0.0598
 now testing date  1973-01-30  volatility:  0.081  opt price:  0.00043  underlying:  117.11  days to expiry:  353  risk free rate  0.0595
@@ -4464,7 +4542,8 @@ now testing date  1973-02-14  volatility:  0.103  opt price:  0.00847  underlyin
     opt_current_price: 0.01
 Selling options right now
 current vol for  1973-02-14  :  0.103  underlying:  116.92  risk free rate:  0.0576
-current value of previous options:  0.008468613103668088  strike:  93.83  expiration:  1974-01-18  number of opts held:  198
+current price of previous options:  0.008468613103668088 current value of previous options:  33959881412698.69  strike:  93.83  expiration:  1974-01-18  number of opts held:  4010087720029309.0
+Total results of sale:  1697994070634934.5  net worth  2757697957762197.5
 
 Simulation 1  looping over date:  1973-02-14
 
@@ -4472,8 +4551,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1973-02-14  :  0.103  underlying:  116.92  risk free rate  0.0576
-new options price is  0.00983  expiration date:  1974-02-15  days to expire:  366  Strike:  93.54  number purchased:  3785.0
-cost of options:  189.21  net worth  6286.89
+new options price is  0.0098343  expiration date:  1974-02-15  days to expire:  366  Strike:  93.54  number purchased:  268425104989247.0
+Total cost of trade:  133315224231580.56 , trade fees:  663259822048.0  net worth  4421732146984434.0
 TESTING EXIT NOW
 now testing date  1973-02-15  volatility:  0.103  opt price:  0.01467  underlying:  115.68  days to expiry:  365  risk free rate  0.0573
 now testing date  1973-02-16  volatility:  0.1  opt price:  0.01175  underlying:  115.47  days to expiry:  364  risk free rate  0.0575
@@ -4504,7 +4583,8 @@ now testing date  1973-03-22  volatility:  0.121  opt price:  0.10416  underlyin
     opt_current_price: 0.1
 Selling options right now
 current vol for  1973-03-22  :  0.121  underlying:  110.39  risk free rate:  0.0666
-current value of previous options:  0.10416428609927886  strike:  93.54  expiration:  1974-02-15  number of opts held:  152
+current price of previous options:  0.10416428609927886 current value of previous options:  27960309432328.89  strike:  93.54  expiration:  1974-02-15  number of opts held:  268425104989247.0
+Total results of sale:  1398015471616444.5  net worth  4052679879286786.0
 
 Simulation 1  looping over date:  1973-03-22
 
@@ -4512,8 +4592,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1973-03-22  :  0.121  underlying:  110.39  risk free rate  0.0666
-new options price is  0.02971  expiration date:  1974-03-15  days to expire:  358  Strike:  88.31  number purchased:  2579.0
-cost of options:  180.62  net worth  5994.38
+new options price is  0.02971225  expiration date:  1974-03-15  days to expire:  358  Strike:  88.31  number purchased:  108957528259556.0
+Total cost of trade:  163495461500346.78 , trade fees:  813410256221.0  net worth  5422735041470902.0
 TESTING EXIT NOW
 now testing date  1973-03-23  volatility:  0.118  opt price:  0.02648  underlying:  109.97  days to expiry:  357  risk free rate  0.0666
 now testing date  1973-03-26  volatility:  0.121  opt price:  0.02883  underlying:  110.4  days to expiry:  354  risk free rate  0.0664
@@ -4560,7 +4640,8 @@ now testing date  1973-05-21  volatility:  0.153  opt price:  0.32595  underlyin
     opt_current_price: 0.33
 Selling options right now
 current vol for  1973-05-21  :  0.153  underlying:  103.77  risk free rate:  0.0668
-current value of previous options:  0.32595264729841933  strike:  88.31  expiration:  1974-03-15  number of opts held:  104
+current price of previous options:  0.32595264729841933 current value of previous options:  35514994779294.62  strike:  88.31  expiration:  1974-03-15  number of opts held:  108957528259556.0
+Total results of sale:  1775749738964731.0  net worth  4959513430014606.0
 
 Simulation 1  looping over date:  1973-05-21
 
@@ -4568,8 +4649,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1973-05-21  :  0.153  underlying:  103.77  risk free rate  0.0668
-new options price is  0.14971  expiration date:  1974-05-17  days to expire:  361  Strike:  83.02  number purchased:  981.0
-cost of options:  186.87  net worth  6206.15
+new options price is  0.14970709  expiration date:  1974-05-17  days to expire:  361  Strike:  83.02  number purchased:  26717168532267.0
+Total cost of trade:  201997407452127.16 , trade fees:  1004962226130.0  net worth  6699748174200041.0
 TESTING EXIT NOW
 now testing date  1973-05-22  volatility:  0.153  opt price:  0.11769  underlying:  105.04  days to expiry:  360  risk free rate  0.068
 now testing date  1973-05-23  volatility:  0.147  opt price:  0.09187  underlying:  105.1  days to expiry:  359  risk free rate  0.0679
@@ -4653,11 +4734,12 @@ Simulation 1  looping over date:  1973-09-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1973-09-10  :  0.108  underlying:  105.12  risk free rate:  0.0835
-current value of previous options:  0.0011361820851354051  strike:  83.02  expiration:  1974-05-17  number of opts held:  40
+current price of previous options:  0.0011361820851354051 current value of previous options:  30355568251.90515  strike:  83.02  expiration:  1974-05-17  number of opts held:  26717168532267.0
+Total results of sale:  1517778412595.26  net worth  6553158106853318.0
 Buying options right now
 current vol for  1973-09-10  :  0.108  underlying:  105.12  risk free rate  0.0835
-new options price is  0.00719  expiration date:  1974-09-20  days to expire:  375  Strike:  84.1  number purchased:  3844.0
-cost of options:  181.64  net worth  6047.34
+new options price is  0.00718798  expiration date:  1974-09-20  days to expire:  375  Strike:  84.1  number purchased:  544397882061524.0
+Total cost of trade:  197622562720384.38 , trade fees:  983196829455.0  net worth  6554645529697661.0
 TESTING EXIT NOW
 now testing date  1973-09-11  volatility:  0.102  opt price:  0.00505  underlying:  104.09  days to expiry:  374  risk free rate  0.0843
 now testing date  1973-09-12  volatility:  0.102  opt price:  0.00506  underlying:  103.98  days to expiry:  373  risk free rate  0.085
@@ -4713,7 +4795,8 @@ now testing date  1973-11-19  volatility:  0.152  opt price:  0.1239  underlying
     opt_current_price: 0.12
 Selling options right now
 current vol for  1973-11-19  :  0.152  underlying:  103.65  risk free rate:  0.0733
-current value of previous options:  0.12389573595005166  strike:  84.1  expiration:  1974-09-20  number of opts held:  154
+current price of previous options:  0.12389573595005166 current value of previous options:  67448576247661.94  strike:  84.1  expiration:  1974-09-20  number of opts held:  544397882061524.0
+Total results of sale:  3372428812383097.0  net worth  6332846069909609.0
 
 Simulation 1  looping over date:  1973-11-19
 
@@ -4721,8 +4804,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1973-11-19  :  0.152  underlying:  103.65  risk free rate  0.0733
-new options price is  0.12948  expiration date:  1974-11-15  days to expire:  361  Strike:  82.92  number purchased:  1080.0
-cost of options:  183.84  net worth  6103.11
+new options price is  0.12948182  expiration date:  1974-11-15  days to expire:  361  Strike:  82.92  number purchased:  44436988294303.0
+Total cost of trade:  290580463127255.1 , trade fees:  1445673945907.0  net worth  9637826306045044.0
 TESTING EXIT NOW
 now testing date  1973-11-20  volatility:  0.158  opt price:  0.24978  underlying:  100.65  days to expiry:  360  risk free rate  0.0739
 now testing date  1973-11-21  volatility:  0.159  opt price:  0.23899  underlying:  101.33  days to expiry:  359  risk free rate  0.0737
@@ -4744,7 +4827,8 @@ now testing date  1973-12-12  volatility:  0.216  opt price:  1.48958  underlyin
     opt_current_price: 1.49
 Selling options right now
 current vol for  1973-12-12  :  0.216  underlying:  95.52  risk free rate:  0.0708
-current value of previous options:  1.489580249440591  strike:  82.92  expiration:  1974-11-15  number of opts held:  44
+current price of previous options:  1.489580249440591 current value of previous options:  66192460107816.484  strike:  82.92  expiration:  1974-11-15  number of opts held:  44436988294303.0
+Total results of sale:  3309623005390823.5  net worth  8627996570061004.0
 
 Simulation 1  looping over date:  1973-12-12
 
@@ -4752,8 +4836,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1973-12-12  :  0.216  underlying:  95.52  risk free rate  0.0708
-new options price is  0.25765  expiration date:  1974-06-21  days to expire:  191  Strike:  76.42  number purchased:  707.0
-cost of options:  212.16  net worth  7016.61
+new options price is  0.25764874  expiration date:  1974-06-21  days to expire:  191  Strike:  76.42  number purchased:  27507381179671.0
+Total cost of trade:  357923527527616.5 , trade fees:  1780714067302.0  net worth  1.1871427115344012e+16
 TESTING EXIT NOW
 now testing date  1973-12-13  volatility:  0.217  opt price:  0.30189  underlying:  94.68  days to expiry:  190  risk free rate  0.069
 now testing date  1973-12-14  volatility:  0.219  opt price:  0.32766  underlying:  94.53  days to expiry:  189  risk free rate  0.0673
@@ -4820,11 +4904,12 @@ Simulation 1  looping over date:  1974-03-11
 ROLL OPTIONS
 Selling options right now
 current vol for  1974-03-11  :  0.156  underlying:  99.4  risk free rate:  0.0703
-current value of previous options:  0.0005435873358817615  strike:  76.42  expiration:  1974-06-21  number of opts held:  30
+current price of previous options:  0.0005435873358817615 current value of previous options:  14952664052.541466  strike:  76.42  expiration:  1974-06-21  number of opts held:  27507381179671.0
+Total results of sale:  747633202627.07  net worth  1.191995002486709e+16
 Buying options right now
 current vol for  1974-03-11  :  0.156  underlying:  99.4  risk free rate  0.0703
-new options price is  0.16109  expiration date:  1975-03-21  days to expire:  375  Strike:  79.52  number purchased:  1047.0
-cost of options:  210.66  net worth  7020.43
+new options price is  0.16109162  expiration date:  1975-03-21  days to expire:  375  Strike:  79.52  number purchased:  44177639814176.0
+Total cost of trade:  359408583567975.7 , trade fees:  1788102405811.0  net worth  1.1920682705405666e+16
 TESTING EXIT NOW
 now testing date  1974-03-12  volatility:  0.155  opt price:  0.14309  underlying:  100.02  days to expiry:  374  risk free rate  0.0705
 now testing date  1974-03-13  volatility:  0.155  opt price:  0.12308  underlying:  100.73  days to expiry:  373  risk free rate  0.0708
@@ -4913,7 +4998,8 @@ now testing date  1974-07-09  volatility:  0.168  opt price:  1.65893  underlyin
     opt_current_price: 1.66
 Selling options right now
 current vol for  1974-07-09  :  0.168  underlying:  82.5  risk free rate:  0.0821
-current value of previous options:  1.6589320110142118  strike:  79.52  expiration:  1975-03-21  number of opts held:  42
+current price of previous options:  1.6589320110142118 current value of previous options:  73287700858792.5  strike:  79.52  expiration:  1975-03-21  number of opts held:  44177639814176.0
+Total results of sale:  3664385042939625.0  net worth  9663520014321084.0
 
 Simulation 1  looping over date:  1974-07-09
 
@@ -4921,8 +5007,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1974-07-09  :  0.168  underlying:  82.5  risk free rate  0.0821
-new options price is  0.16879  expiration date:  1975-07-18  days to expire:  374  Strike:  66.0  number purchased:  1056.0
-cost of options:  222.24  net worth  7351.47
+new options price is  0.16878716  expiration date:  1975-07-18  days to expire:  374  Strike:  66.0  number purchased:  46881568090852.0
+Total cost of trade:  399626713295509.94 , trade fees:  1988192603460.0  net worth  1.3254617356401914e+16
 TESTING EXIT NOW
 now testing date  1974-07-10  volatility:  0.172  opt price:  0.1992  underlying:  82.22  days to expiry:  373  risk free rate  0.0819
 now testing date  1974-07-11  volatility:  0.172  opt price:  0.24344  underlying:  81.08  days to expiry:  372  risk free rate  0.0806
@@ -4965,7 +5051,8 @@ now testing date  1974-08-29  volatility:  0.218  opt price:  1.69049  underlyin
     opt_current_price: 1.69
 Selling options right now
 current vol for  1974-08-29  :  0.218  underlying:  71.22  risk free rate:  0.0933
-current value of previous options:  1.6904912619935786  strike:  66.0  expiration:  1975-07-18  number of opts held:  44
+current price of previous options:  1.6904912619935786 current value of previous options:  79252881206142.28  strike:  66.0  expiration:  1975-07-18  number of opts held:  46881568090852.0
+Total results of sale:  3962644060307114.0  net worth  1.1112006945484292e+16
 
 Simulation 1  looping over date:  1974-08-29
 
@@ -4973,8 +5060,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1974-08-29  :  0.218  underlying:  71.22  risk free rate  0.0933
-new options price is  0.14387  expiration date:  1975-02-21  days to expire:  176  Strike:  56.98  number purchased:  1285.0
-cost of options:  236.87  net worth  7877.59
+new options price is  0.14386936  expiration date:  1975-02-21  days to expire:  176  Strike:  56.98  number purchased:  62224872483106.0
+Total cost of trade:  452111253456241.4 , trade fees:  2249309718688.0  net worth  1.4995398124585268e+16
 TESTING EXIT NOW
 now testing date  1974-08-30  volatility:  0.235  opt price:  0.15748  underlying:  72.68  days to expiry:  175  risk free rate  0.0919
 now testing date  1974-09-03  volatility:  0.23  opt price:  0.12293  underlying:  73.01  days to expiry:  171  risk free rate  0.0929
@@ -5032,11 +5119,12 @@ Simulation 1  looping over date:  1974-11-11
 ROLL OPTIONS
 Selling options right now
 current vol for  1974-11-11  :  0.297  underlying:  75.7  risk free rate:  0.0734
-current value of previous options:  0.10052889596564762  strike:  56.98  expiration:  1975-02-21  number of opts held:  52
+current price of previous options:  0.10052889596564762 current value of previous options:  6255397732329.853  strike:  56.98  expiration:  1975-02-21  number of opts held:  62224872483106.0
+Total results of sale:  312769886616492.6  net worth  1.5364638269225872e+16
 Buying options right now
 current vol for  1974-11-11  :  0.297  underlying:  75.7  risk free rate  0.0734
-new options price is  0.73878  expiration date:  1975-05-16  days to expire:  186  Strike:  60.56  number purchased:  313.0
-cost of options:  245.24  net worth  8150.78
+new options price is  0.73878378  expiration date:  1975-05-16  days to expire:  186  Strike:  60.56  number purchased:  12663621503529.0
+Total cost of trade:  472485255657006.6 , trade fees:  2350672913717.0  net worth  1.5671152758110034e+16
 TESTING EXIT NOW
 now testing date  1974-11-12  volatility:  0.3  opt price:  0.77148  underlying:  75.59  days to expiry:  185  risk free rate  0.0737
 now testing date  1974-11-13  volatility:  0.3  opt price:  0.90351  underlying:  74.25  days to expiry:  184  risk free rate  0.0738
@@ -5105,11 +5193,12 @@ Simulation 1  looping over date:  1975-02-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1975-02-10  :  0.184  underlying:  79.4  risk free rate:  0.0572
-current value of previous options:  0.002098059278518874  strike:  60.56  expiration:  1975-05-16  number of opts held:  14
+current price of previous options:  0.002098059278518874 current value of previous options:  26569028595.130154  strike:  60.56  expiration:  1975-05-16  number of opts held:  12663621503529.0
+Total results of sale:  1328451429756.51  net worth  1.5939751978747154e+16
 Buying options right now
 current vol for  1975-02-10  :  0.184  underlying:  79.4  risk free rate  0.0572
-new options price is  0.36522  expiration date:  1976-02-20  days to expire:  375  Strike:  63.52  number purchased:  612.0
-cost of options:  249.51  net worth  8273.0
+new options price is  0.36522032  expiration date:  1976-02-20  days to expire:  375  Strike:  63.52  number purchased:  26057720780998.0
+Total cost of trade:  480622773913608.94 , trade fees:  2391158079172.0  net worth  1.5941053861148314e+16
 TESTING EXIT NOW
 now testing date  1975-02-11  volatility:  0.182  opt price:  0.37342  underlying:  79.07  days to expiry:  374  risk free rate  0.0561
 now testing date  1975-02-12  volatility:  0.182  opt price:  0.31037  underlying:  80.21  days to expiry:  373  risk free rate  0.0561
@@ -5199,11 +5288,12 @@ Simulation 1  looping over date:  1975-06-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1975-06-10  :  0.143  underlying:  91.21  risk free rate:  0.056
-current value of previous options:  0.0009204282315348616  strike:  63.52  expiration:  1976-02-20  number of opts held:  26
+current price of previous options:  0.0009204282315348616 current value of previous options:  23984261856.283203  strike:  63.52  expiration:  1976-02-20  number of opts held:  26057720780998.0
+Total results of sale:  1199213092814.16  net worth  1.775032083045187e+16
 Buying options right now
 current vol for  1975-06-10  :  0.143  underlying:  91.21  risk free rate  0.056
-new options price is  0.11461  expiration date:  1976-06-18  days to expire:  374  Strike:  72.97  number purchased:  1782.0
-cost of options:  276.24  net worth  9184.86
+new options price is  0.11461069  expiration date:  1976-06-18  days to expire:  374  Strike:  72.97  number purchased:  92466449204079.0
+Total cost of trade:  535207606187374.75 , trade fees:  2662724408892.0  net worth  1.7751496059282828e+16
 TESTING EXIT NOW
 now testing date  1975-06-11  volatility:  0.142  opt price:  0.10275  underlying:  91.67  days to expiry:  373  risk free rate  0.0544
 now testing date  1975-06-12  volatility:  0.143  opt price:  0.11311  underlying:  91.36  days to expiry:  372  risk free rate  0.054
@@ -5296,11 +5386,12 @@ Simulation 1  looping over date:  1975-10-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1975-10-10  :  0.182  underlying:  89.17  risk free rate:  0.065
-current value of previous options:  0.2641476536500633  strike:  72.97  expiration:  1976-06-18  number of opts held:  72
+current price of previous options:  0.2641476536500633 current value of previous options:  24424795598610.234  strike:  72.97  expiration:  1976-06-18  number of opts held:  92466449204079.0
+Total results of sale:  1221239779930511.8  net worth  1.6846394283733258e+16
 Buying options right now
 current vol for  1975-10-10  :  0.182  underlying:  89.17  risk free rate  0.065
-new options price is  0.34951  expiration date:  1976-10-15  days to expire:  371  Strike:  71.34  number purchased:  700.0
-cost of options:  272.66  net worth  9101.45
+new options price is  0.34950876  expiration date:  1976-10-15  days to expire:  371  Strike:  71.34  number purchased:  30819816993552.0
+Total cost of trade:  544002759432163.8 , trade fees:  2706481390210.0  net worth  1.804320926806516e+16
 TESTING EXIT NOW
 now testing date  1975-10-13  volatility:  0.184  opt price:  0.33896  underlying:  89.67  days to expiry:  368  risk free rate  0.065
 now testing date  1975-10-14  volatility:  0.184  opt price:  0.28688  underlying:  90.8  days to expiry:  367  risk free rate  0.0656
@@ -5391,11 +5482,12 @@ Simulation 1  looping over date:  1976-02-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1976-02-10  :  0.123  underlying:  100.96  risk free rate:  0.0547
-current value of previous options:  0.0001543290505867474  strike:  71.34  expiration:  1976-10-15  number of opts held:  28
+current price of previous options:  0.0001543290505867474 current value of previous options:  4756393095.872184  strike:  71.34  expiration:  1976-10-15  number of opts held:  30819816993552.0
+Total results of sale:  237819654793.61  net worth  1.9799060659067508e+16
 Buying options right now
 current vol for  1976-02-10  :  0.123  underlying:  100.96  risk free rate  0.0547
-new options price is  0.04806  expiration date:  1977-02-18  days to expire:  374  Strike:  80.77  number purchased:  3391.0
-cost of options:  298.97  net worth  9954.32
+new options price is  0.04806271  expiration date:  1977-02-18  days to expire:  374  Strike:  80.77  number purchased:  245932397611629.0
+Total cost of trade:  596948705728223.4 , trade fees:  2969894058349.0  net worth  1.9799293722329204e+16
 TESTING EXIT NOW
 now testing date  1976-02-11  volatility:  0.123  opt price:  0.03963  underlying:  101.8  days to expiry:  373  risk free rate  0.0546
 now testing date  1976-02-12  volatility:  0.124  opt price:  0.04367  underlying:  101.55  days to expiry:  372  risk free rate  0.0546
@@ -5486,11 +5578,12 @@ Simulation 1  looping over date:  1976-06-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1976-06-10  :  0.101  underlying:  99.98  risk free rate:  0.07
-current value of previous options:  0.0018305912471579394  strike:  80.77  expiration:  1977-02-18  number of opts held:  136
+current price of previous options:  0.0018305912471579394 current value of previous options:  450201694460.4142  strike:  80.77  expiration:  1977-02-18  number of opts held:  245932397611629.0
+Total results of sale:  22510084723020.71  net worth  1.9007604386069764e+16
 Buying options right now
 current vol for  1976-06-10  :  0.101  underlying:  99.98  risk free rate  0.07
-new options price is  0.00487  expiration date:  1977-06-17  days to expire:  372  Strike:  79.98  number purchased:  6302.0
-cost of options:  284.69  net worth  9426.46
+new options price is  0.00487253  expiration date:  1977-06-17  days to expire:  372  Strike:  79.98  number purchased:  2331584167059804.0
+Total cost of trade:  573744377713314.5 , trade fees:  2854449640365.0  net worth  1.902966426909833e+16
 TESTING EXIT NOW
 now testing date  1976-06-11  volatility:  0.105  opt price:  0.00499  underlying:  101.22  days to expiry:  371  risk free rate  0.0703
 now testing date  1976-06-14  volatility:  0.108  opt price:  0.0043  underlying:  102.51  days to expiry:  368  risk free rate  0.0701
@@ -5582,11 +5675,12 @@ Simulation 1  looping over date:  1976-10-12
 ROLL OPTIONS
 Selling options right now
 current vol for  1976-10-12  :  0.107  underlying:  102.19  risk free rate:  0.058
-current value of previous options:  0.001272659057205791  strike:  79.98  expiration:  1977-06-17  number of opts held:  254
+current price of previous options:  0.001272659057205791 current value of previous options:  2967311707846.28  strike:  79.98  expiration:  1977-06-17  number of opts held:  2331584167059804.0
+Total results of sale:  148365585392314.0  net worth  1.8858496202790084e+16
 Buying options right now
 current vol for  1976-10-12  :  0.107  underlying:  102.19  risk free rate  0.058
-new options price is  0.0133  expiration date:  1977-10-21  days to expire:  374  Strike:  81.75  number purchased:  5115.0
-cost of options:  274.03  net worth  9088.9
+new options price is  0.01330485  expiration date:  1977-10-21  days to expire:  374  Strike:  81.75  number purchased:  852721285076532.0
+Total cost of trade:  572967418465707.5 , trade fees:  2850584171471.0  net worth  1.900389447647455e+16
 TESTING EXIT NOW
 now testing date  1976-10-13  volatility:  0.112  opt price:  0.01848  underlying:  102.44  days to expiry:  373  risk free rate  0.0582
 now testing date  1976-10-14  volatility:  0.115  opt price:  0.02636  underlying:  102.14  days to expiry:  372  risk free rate  0.0581
@@ -5676,11 +5770,12 @@ Simulation 1  looping over date:  1977-02-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1977-02-10  :  0.086  underlying:  101.51  risk free rate:  0.0604
-current value of previous options:  0.00022734625206700249  strike:  81.75  expiration:  1977-10-21  number of opts held:  206
+current price of previous options:  0.00022734625206700249 current value of previous options:  193862988219.90753  strike:  81.75  expiration:  1977-10-21  number of opts held:  852721285076532.0
+Total results of sale:  9693149410995.38  net worth  1.8302853676532016e+16
 Buying options right now
 current vol for  1977-02-10  :  0.086  underlying:  101.51  risk free rate  0.0604
-new options price is  0.001  expiration date:  1978-02-17  days to expire:  372  Strike:  81.21  number purchased:  6249.0
-cost of options:  256.25  net worth  8541.55
+new options price is  0.00099839  expiration date:  1978-02-17  days to expire:  372  Strike:  81.21  number purchased:  1.0950092392660546e+16
+Total cost of trade:  552117441833086.94 , trade fees:  2746852944443.0  net worth  1.831235296295479e+16
 TESTING EXIT NOW
 now testing date  1977-02-11  volatility:  0.086  opt price:  0.00128  underlying:  101.18  days to expiry:  371  risk free rate  0.0602
 now testing date  1977-02-14  volatility:  0.087  opt price:  0.00143  underlying:  101.06  days to expiry:  368  risk free rate  0.0606
@@ -5760,7 +5855,8 @@ now testing date  1977-05-27  volatility:  0.101  opt price:  0.01002  underlyin
     opt_current_price: 0.01
 Selling options right now
 current vol for  1977-05-27  :  0.101  underlying:  97.26  risk free rate:  0.062
-current value of previous options:  0.010016304206335758  strike:  81.21  expiration:  1978-02-17  number of opts held:  250
+current price of previous options:  0.010016304206335758 current value of previous options:  109679456492371.02  strike:  81.21  expiration:  1978-02-17  number of opts held:  1.0950092392660546e+16
+Total results of sale:  5483972824618551.0  net worth  1.7118282013250728e+16
 
 Simulation 1  looping over date:  1977-05-27
 
@@ -5768,8 +5864,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1977-05-27  :  0.101  underlying:  97.26  risk free rate  0.062
-new options price is  0.00534  expiration date:  1978-05-19  days to expire:  357  Strike:  77.81  number purchased:  5123.0
-cost of options:  233.36  net worth  7743.64
+new options price is  0.00533947  expiration date:  1978-05-19  days to expire:  357  Strike:  77.81  number purchased:  2514866899207565.0
+Total cost of trade:  678151147748513.8 , trade fees:  3373886307207.0  net worth  2.2492575381376908e+16
 TESTING EXIT NOW
 now testing date  1977-05-31  volatility:  0.098  opt price:  0.00481  underlying:  96.75  days to expiry:  353  risk free rate  0.0618
 now testing date  1977-06-01  volatility:  0.098  opt price:  0.00377  underlying:  97.27  days to expiry:  352  risk free rate  0.0624
@@ -5848,11 +5944,12 @@ Simulation 1  looping over date:  1977-09-12
 ROLL OPTIONS
 Selling options right now
 current vol for  1977-09-12  :  0.089  underlying:  96.64  risk free rate:  0.0678
-current value of previous options:  0.00025253394269748007  strike:  77.81  expiration:  1978-05-19  number of opts held:  206
+current price of previous options:  0.00025253394269748007 current value of previous options:  635089253416.2726  strike:  77.81  expiration:  1978-05-19  number of opts held:  2514866899207565.0
+Total results of sale:  31754462670813.63  net worth  2.1583319011566136e+16
 Buying options right now
 current vol for  1977-09-12  :  0.089  underlying:  96.64  risk free rate  0.0678
-new options price is  0.00105  expiration date:  1978-09-15  days to expire:  368  Strike:  77.31  number purchased:  5298.0
-cost of options:  217.56  net worth  7249.83
+new options price is  0.00104706  expiration date:  1978-09-15  days to expire:  368  Strike:  77.31  number purchased:  1.2323837308246698e+16
+Total cost of trade:  651675317307253.4 , trade fees:  3242165757748.0  net worth  2.1614438384983536e+16
 TESTING EXIT NOW
 now testing date  1977-09-13  volatility:  0.086  opt price:  0.00071  underlying:  96.56  days to expiry:  367  risk free rate  0.0675
 now testing date  1977-09-14  volatility:  0.084  opt price:  0.00043  underlying:  96.88  days to expiry:  366  risk free rate  0.0674
@@ -5911,7 +6008,8 @@ now testing date  1977-11-30  volatility:  0.114  opt price:  0.01189  underlyin
     opt_current_price: 0.01
 Selling options right now
 current vol for  1977-11-30  :  0.114  underlying:  95.17  risk free rate:  0.0711
-current value of previous options:  0.01189092361801486  strike:  77.31  expiration:  1978-09-15  number of opts held:  212
+current price of previous options:  0.01189092361801486 current value of previous options:  146541808113203.34  strike:  77.31  expiration:  1978-09-15  number of opts held:  1.2323837308246698e+16
+Total results of sale:  7327090405660166.0  net worth  2.078092084487771e+16
 
 Simulation 1  looping over date:  1977-11-30
 
@@ -5919,8 +6017,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1977-11-30  :  0.114  underlying:  95.17  risk free rate  0.0711
-new options price is  0.01286  expiration date:  1978-11-17  days to expire:  352  Strike:  76.14  number purchased:  3840.0
-cost of options:  203.38  net worth  6767.43
+new options price is  0.01285501  expiration date:  1978-11-17  days to expire:  352  Strike:  76.14  number purchased:  1298559629324195.0
+Total cost of trade:  843038303689103.5 , trade fees:  4194220416364.0  net worth  2.796146944242468e+16
 TESTING EXIT NOW
 now testing date  1977-12-01  volatility:  0.113  opt price:  0.01141  underlying:  95.45  days to expiry:  351  risk free rate  0.0713
 now testing date  1977-12-02  volatility:  0.113  opt price:  0.01147  underlying:  95.25  days to expiry:  350  risk free rate  0.0715
@@ -5995,11 +6093,12 @@ Simulation 1  looping over date:  1978-03-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1978-03-10  :  0.088  underlying:  89.25  risk free rate:  0.0754
-current value of previous options:  0.0034488065784579747  strike:  76.14  expiration:  1978-11-17  number of opts held:  154
+current price of previous options:  0.0034488065784579747 current value of previous options:  4478480992133.232  strike:  76.14  expiration:  1978-11-17  number of opts held:  1298559629324195.0
+Total results of sale:  223924049606661.62  net worth  2.5315243522247424e+16
 Buying options right now
 current vol for  1978-03-10  :  0.088  underlying:  89.25  risk free rate  0.0754
-new options price is  0.00067  expiration date:  1979-03-16  days to expire:  371  Strike:  71.4  number purchased:  4435.0
-cost of options:  180.97  net worth  6012.73
+new options price is  0.0006665  expiration date:  1979-03-16  days to expire:  371  Strike:  71.4  number purchased:  2.2871963431226116e+16
+Total cost of trade:  769870876089488.0 , trade fees:  3830203363629.0  net worth  2.5534689090861956e+16
 TESTING EXIT NOW
 now testing date  1978-03-13  volatility:  0.088  opt price:  0.0005  underlying:  89.77  days to expiry:  368  risk free rate  0.0754
 now testing date  1978-03-14  volatility:  0.089  opt price:  0.00058  underlying:  89.62  days to expiry:  367  risk free rate  0.0754
@@ -6088,11 +6187,12 @@ Simulation 1  looping over date:  1978-07-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1978-07-10  :  0.107  underlying:  95.67  risk free rate:  0.085
-current value of previous options:  5.4698895904407244e-05  strike:  71.4  expiration:  1979-03-16  number of opts held:  178
+current price of previous options:  5.4698895904407244e-05 current value of previous options:  1251071146854.0464  strike:  71.4  expiration:  1979-03-16  number of opts held:  2.2871963431226116e+16
+Total results of sale:  62553557342702.32  net worth  2.6539161424596184e+16
 Buying options right now
 current vol for  1978-07-10  :  0.107  underlying:  95.67  risk free rate  0.085
-new options price is  0.00525  expiration date:  1979-07-20  days to expire:  375  Strike:  76.54  number purchased:  4021.0
-cost of options:  183.11  net worth  6065.3
+new options price is  0.00524785  expiration date:  1979-07-20  days to expire:  375  Strike:  76.54  number purchased:  3026089387913688.0
+Total cost of trade:  802003986910379.5 , trade fees:  3990069586619.0  net worth  2.6600463910792028e+16
 TESTING EXIT NOW
 now testing date  1978-07-11  volatility:  0.106  opt price:  0.0036  underlying:  96.49  days to expiry:  374  risk free rate  0.0848
 now testing date  1978-07-12  volatility:  0.104  opt price:  0.00275  underlying:  96.83  days to expiry:  373  risk free rate  0.0848
@@ -6178,7 +6278,8 @@ now testing date  1978-11-01  volatility:  0.165  opt price:  0.05429  underlyin
     opt_current_price: 0.05
 Selling options right now
 current vol for  1978-11-01  :  0.165  underlying:  97.41  risk free rate:  0.0944
-current value of previous options:  0.05428631116013505  strike:  76.54  expiration:  1979-07-20  number of opts held:  162
+current price of previous options:  0.05428631116013505 current value of previous options:  164275230110665.06  strike:  76.54  expiration:  1979-07-20  number of opts held:  3026089387913688.0
+Total results of sale:  8213761505533253.0  net worth  2.6420303143368864e+16
 
 Simulation 1  looping over date:  1978-11-01
 
@@ -6186,8 +6287,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1978-11-01  :  0.165  underlying:  97.41  risk free rate  0.0944
-new options price is  0.13316  expiration date:  1979-10-19  days to expire:  352  Strike:  77.93  number purchased:  1045.0
-cost of options:  181.15  net worth  6036.62
+new options price is  0.1331617  expiration date:  1979-10-19  days to expire:  352  Strike:  77.93  number purchased:  154537409106148.0
+Total cost of trade:  1039264150976556.8 , trade fees:  5170468412819.0  net worth  3.446978941879145e+16
 TESTING EXIT NOW
 now testing date  1978-11-02  volatility:  0.167  opt price:  0.14539  underlying:  97.31  days to expiry:  351  risk free rate  0.0942
 now testing date  1978-11-03  volatility:  0.164  opt price:  0.13431  underlying:  96.98  days to expiry:  350  risk free rate  0.0949
@@ -6281,11 +6382,12 @@ Simulation 1  looping over date:  1979-03-12
 ROLL OPTIONS
 Selling options right now
 current vol for  1979-03-12  :  0.105  underlying:  100.04  risk free rate:  0.0981
-current value of previous options:  0.0001245843704764226  strike:  77.93  expiration:  1979-10-19  number of opts held:  42
+current price of previous options:  0.0001245843704764226 current value of previous options:  19252945828.54683  strike:  77.93  expiration:  1979-10-19  number of opts held:  154537409106148.0
+Total results of sale:  962647291427.34  net worth  3.4190317012919276e+16
 Buying options right now
 current vol for  1979-03-12  :  0.105  underlying:  100.04  risk free rate  0.0981
-new options price is  0.00291  expiration date:  1980-03-21  days to expire:  375  Strike:  80.03  number purchased:  4173.0
-cost of options:  180.14  net worth  5969.4
+new options price is  0.00291444  expiration date:  1980-03-21  days to expire:  375  Strike:  80.03  number purchased:  7003811493663667.0
+Total cost of trade:  1030866501279036.0 , trade fees:  5128689061090.0  net worth  3.4191260407264876e+16
 TESTING EXIT NOW
 now testing date  1979-03-13  volatility:  0.103  opt price:  0.00193  underlying:  100.66  days to expiry:  374  risk free rate  0.098
 now testing date  1979-03-14  volatility:  0.099  opt price:  0.00114  underlying:  100.43  days to expiry:  373  risk free rate  0.0982
@@ -6374,11 +6476,12 @@ Simulation 1  looping over date:  1979-07-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1979-07-10  :  0.088  underlying:  105.17  risk free rate:  0.0904
-current value of previous options:  2.824428565850924e-06  strike:  80.03  expiration:  1980-03-21  number of opts held:  168
+current price of previous options:  2.824428565850924e-06 current value of previous options:  19781765252.53869  strike:  80.03  expiration:  1980-03-21  number of opts held:  7003811493663667.0
+Total results of sale:  989088262626.93  net worth  3.484550393185574e+16
 Buying options right now
 current vol for  1979-07-10  :  0.088  underlying:  105.17  risk free rate  0.0904
-new options price is  0.00036  expiration date:  1980-07-18  days to expire:  374  Strike:  84.14  number purchased:  4391.0
-cost of options:  177.58  net worth  5907.68
+new options price is  0.00036215  expiration date:  1980-07-18  days to expire:  374  Strike:  84.14  number purchased:  5.744355141406864e+16
+Total cost of trade:  1050621168136346.5 , trade fees:  5226970985753.0  net worth  3.4846473238353116e+16
 TESTING EXIT NOW
 now testing date  1979-07-11  volatility:  0.088  opt price:  0.00054  underlying:  104.34  days to expiry:  373  risk free rate  0.0904
 now testing date  1979-07-12  volatility:  0.092  opt price:  0.00126  underlying:  103.72  days to expiry:  372  risk free rate  0.0901
@@ -6448,7 +6551,8 @@ now testing date  1979-10-10  volatility:  0.133  opt price:  0.00939  underlyin
     opt_current_price: 0.01
 Selling options right now
 current vol for  1979-10-10  :  0.133  underlying:  106.23  risk free rate:  0.114
-current value of previous options:  0.00938826188362396  strike:  84.14  expiration:  1980-07-18  number of opts held:  176
+current price of previous options:  0.00938826188362396 current value of previous options:  539295104200693.9  strike:  84.14  expiration:  1980-07-18  number of opts held:  5.744355141406864e+16
+Total results of sale:  2.6964755210034692e+16  net worth  3.4660747098398936e+16
 
 Simulation 1  looping over date:  1979-10-10
 
@@ -6456,8 +6560,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1979-10-10  :  0.133  underlying:  106.23  risk free rate  0.114
-new options price is  0.02187  expiration date:  1980-10-17  days to expire:  373  Strike:  84.98  number purchased:  2737.0
-cost of options:  169.86  net worth  5646.56
+new options price is  0.021872  expiration date:  1980-10-17  days to expire:  373  Strike:  84.98  number purchased:  1667358776355775.0
+Total cost of trade:  1841749147207622.5 , trade fees:  9162931080635.0  net worth  6.1086207204232936e+16
 TESTING EXIT NOW
 now testing date  1979-10-11  volatility:  0.132  opt price:  0.02029  underlying:  106.33  days to expiry:  372  risk free rate  0.1126
 now testing date  1979-10-12  volatility:  0.132  opt price:  0.02195  underlying:  106.2  days to expiry:  371  risk free rate  0.1117
@@ -6547,11 +6651,12 @@ Simulation 1  looping over date:  1980-02-11
 ROLL OPTIONS
 Selling options right now
 current vol for  1980-02-11  :  0.125  underlying:  119.05  risk free rate:  0.126
-current value of previous options:  4.802991323074775e-05  strike:  84.98  expiration:  1980-10-17  number of opts held:  110
+current price of previous options:  4.802991323074775e-05 current value of previous options:  80083097352.89362  strike:  84.98  expiration:  1980-10-17  number of opts held:  1667358776355775.0
+Total results of sale:  4004154867644.68  net worth  6.5883445847147656e+16
 Buying options right now
 current vol for  1980-02-11  :  0.125  underlying:  119.05  risk free rate  0.126
-new options price is  0.01042  expiration date:  1981-02-20  days to expire:  375  Strike:  95.24  number purchased:  3578.0
-cost of options:  181.28  net worth  6014.65
+new options price is  0.01042207  expiration date:  1981-02-20  days to expire:  375  Strike:  95.24  number purchased:  3774178089087473.0
+Total cost of trade:  1986504203055375.2 , trade fees:  9883105487838.0  net worth  6.588736991891794e+16
 TESTING EXIT NOW
 now testing date  1980-02-13  volatility:  0.124  opt price:  0.00707  underlying:  120.22  days to expiry:  373  risk free rate  0.1252
 now testing date  1980-02-14  volatility:  0.127  opt price:  0.01136  underlying:  119.3  days to expiry:  372  risk free rate  0.126
@@ -6573,7 +6678,8 @@ now testing date  1980-03-06  volatility:  0.151  opt price:  0.1078  underlying
     opt_current_price: 0.11
 Selling options right now
 current vol for  1980-03-06  :  0.151  underlying:  111.29  risk free rate:  0.1527
-current value of previous options:  0.10779894020727032  strike:  95.24  expiration:  1981-02-20  number of opts held:  144
+current price of previous options:  0.10779894020727032 current value of previous options:  406852398157130.25  strike:  95.24  expiration:  1981-02-20  number of opts held:  3774178089087473.0
+Total results of sale:  2.034261990785651e+16  net worth  6.01192190927599e+16
 
 Simulation 1  looping over date:  1980-03-06
 
@@ -6581,8 +6687,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1980-03-06  :  0.151  underlying:  111.29  risk free rate  0.1527
-new options price is  0.03042  expiration date:  1981-03-20  days to expire:  379  Strike:  89.03  number purchased:  2426.0
-cost of options:  171.8  net worth  5696.59
+new options price is  0.03041627  expiration date:  1981-03-20  days to expire:  379  Strike:  89.03  number purchased:  1571291734758292.0
+Total cost of trade:  2413657846064146.5 , trade fees:  12008247990369.0  net worth  8.005498660245928e+16
 TESTING EXIT NOW
 now testing date  1980-03-07  volatility:  0.155  opt price:  0.05586  underlying:  108.96  days to expiry:  378  risk free rate  0.152
 now testing date  1980-03-10  volatility:  0.155  opt price:  0.07359  underlying:  107.86  days to expiry:  375  risk free rate  0.1471
@@ -6600,7 +6706,8 @@ now testing date  1980-03-24  volatility:  0.187  opt price:  0.42196  underlyin
     opt_current_price: 0.42
 Selling options right now
 current vol for  1980-03-24  :  0.187  underlying:  102.18  risk free rate:  0.1536
-current value of previous options:  0.42195596745867103  strike:  89.03  expiration:  1981-03-20  number of opts held:  98
+current price of previous options:  0.42195596745867103 current value of previous options:  663015924099748.6  strike:  89.03  expiration:  1981-03-20  number of opts held:  1571291734758292.0
+Total results of sale:  3.315079620498743e+16  net worth  7.16705448553434e+16
 
 Simulation 1  looping over date:  1980-03-24
 
@@ -6608,8 +6715,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1980-03-24  :  0.187  underlying:  102.18  risk free rate  0.1536
-new options price is  0.12795  expiration date:  1981-03-20  days to expire:  361  Strike:  81.74  number purchased:  1072.0
-cost of options:  181.16  net worth  6002.07
+new options price is  0.12795432  expiration date:  1981-03-20  days to expire:  361  Strike:  81.74  number purchased:  485974365008681.0
+Total cost of trade:  3140373502857363.0 , trade fees:  15623748770435.0  net worth  1.0415832513623107e+17
 TESTING EXIT NOW
 now testing date  1980-03-25  volatility:  0.184  opt price:  0.14546  underlying:  100.58  days to expiry:  360  risk free rate  0.1519
 now testing date  1980-03-26  volatility:  0.184  opt price:  0.13071  underlying:  101.22  days to expiry:  359  risk free rate  0.1526
@@ -6691,11 +6798,12 @@ Simulation 1  looping over date:  1980-07-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1980-07-10  :  0.124  underlying:  118.57  risk free rate:  0.089
-current value of previous options:  2.6452285342204234e-05  strike:  81.74  expiration:  1981-03-20  number of opts held:  44
+current price of previous options:  2.6452285342204234e-05 current value of previous options:  12855132572.206142  strike:  81.74  expiration:  1981-03-20  number of opts held:  485974365008681.0
+Total results of sale:  642756628610.31  net worth  1.165683855515428e+17
 Buying options right now
 current vol for  1980-07-10  :  0.124  underlying:  118.57  risk free rate  0.089
-new options price is  0.02407  expiration date:  1981-07-17  days to expire:  372  Strike:  94.86  number purchased:  3128.0
-cost of options:  201.29  net worth  6680.78
+new options price is  0.02406557  expiration date:  1981-07-17  days to expire:  372  Strike:  94.86  number purchased:  2891753533928529.0
+Total cost of trade:  3514555815909120.5 , trade fees:  17485352317956.0  net worth  1.1656901545303883e+17
 TESTING EXIT NOW
 now testing date  1980-07-11  volatility:  0.124  opt price:  0.0253  underlying:  118.38  days to expiry:  371  risk free rate  0.0897
 now testing date  1980-07-14  volatility:  0.13  opt price:  0.0243  underlying:  120.37  days to expiry:  368  risk free rate  0.0916
@@ -6786,11 +6894,12 @@ Simulation 1  looping over date:  1980-11-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1980-11-10  :  0.174  underlying:  130.51  risk free rate:  0.1329
-current value of previous options:  0.009859128603979805  strike:  94.86  expiration:  1981-07-17  number of opts held:  126
+current price of previous options:  0.009859128603979805 current value of previous options:  28510169982014.445  strike:  94.86  expiration:  1981-07-17  number of opts held:  2891753533928529.0
+Total results of sale:  1425508499100722.2  net worth  1.2442603219785685e+17
 Buying options right now
 current vol for  1980-11-10  :  0.174  underlying:  130.51  risk free rate  0.1329
-new options price is  0.14724  expiration date:  1981-11-20  days to expire:  375  Strike:  104.41  number purchased:  1125.0
-cost of options:  211.64  net worth  7025.09
+new options price is  0.1472445  expiration date:  1981-11-20  days to expire:  375  Strike:  104.41  number purchased:  510147076727926.0
+Total cost of trade:  3793564370388310.0 , trade fees:  18873454579046.0  net worth  1.2582303052697555e+17
 TESTING EXIT NOW
 now testing date  1980-11-12  volatility:  0.186  opt price:  0.14724  underlying:  135.12  days to expiry:  373  risk free rate  0.1286
 now testing date  1980-11-13  volatility:  0.185  opt price:  0.1118  underlying:  137.21  days to expiry:  372  risk free rate  0.1289
@@ -6877,11 +6986,12 @@ Simulation 1  looping over date:  1981-03-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1981-03-10  :  0.127  underlying:  132.64  risk free rate:  0.1374
-current value of previous options:  0.002597394626634844  strike:  104.41  expiration:  1981-11-20  number of opts held:  46
+current price of previous options:  0.002597394626634844 current value of previous options:  1325053275886.5886  strike:  104.41  expiration:  1981-11-20  number of opts held:  510147076727926.0
+Total results of sale:  66252663794329.43  net worth  1.2400433178477442e+17
 Buying options right now
 current vol for  1981-03-10  :  0.127  underlying:  132.64  risk free rate  0.1374
-new options price is  0.00984  expiration date:  1982-03-19  days to expire:  374  Strike:  106.11  number purchased:  4139.0
-cost of options:  206.73  net worth  6877.13
+new options price is  0.00983818  expiration date:  1982-03-19  days to expire:  374  Strike:  106.11  number purchased:  7528765494285253.0
+Total cost of trade:  3740688170768080.0 , trade fees:  18610388909294.0  net worth  1.2406925939529286e+17
 TESTING EXIT NOW
 now testing date  1981-03-11  volatility:  0.127  opt price:  0.01302  underlying:  131.2  days to expiry:  373  risk free rate  0.1379
 now testing date  1981-03-12  volatility:  0.142  opt price:  0.02519  underlying:  133.56  days to expiry:  372  risk free rate  0.137
@@ -6973,11 +7083,12 @@ Simulation 1  looping over date:  1981-07-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1981-07-10  :  0.104  underlying:  130.43  risk free rate:  0.1488
-current value of previous options:  0.0004367256233073491  strike:  106.11  expiration:  1982-03-19  number of opts held:  166
+current price of previous options:  0.0004367256233073491 current value of previous options:  3288004803226.5894  strike:  106.11  expiration:  1982-03-19  number of opts held:  7528765494285253.0
+Total results of sale:  164400240161329.47  net worth  1.1828991231312222e+17
 Buying options right now
 current vol for  1981-07-10  :  0.104  underlying:  130.43  risk free rate  0.1488
-new options price is  0.00053  expiration date:  1982-07-16  days to expire:  371  Strike:  104.34  number purchased:  4731.0
-cost of options:  192.51  net worth  6391.71
+new options price is  0.00052514  expiration date:  1982-07-16  days to expire:  371  Strike:  104.34  number purchased:  1.3465996371746024e+17
+Total cost of trade:  3571298390136681.5 , trade fees:  17767653682272.0  net worth  1.1845102454848032e+17
 TESTING EXIT NOW
 now testing date  1981-07-13  volatility:  0.103  opt price:  0.00041  underlying:  130.82  days to expiry:  368  risk free rate  0.1483
 now testing date  1981-07-14  volatility:  0.102  opt price:  0.0003  underlying:  130.78  days to expiry:  367  risk free rate  0.1507
@@ -7014,7 +7125,8 @@ now testing date  1981-08-24  volatility:  0.129  opt price:  0.00587  underlyin
     opt_current_price: 0.01
 Selling options right now
 current vol for  1981-08-24  :  0.129  underlying:  128.59  risk free rate:  0.1686
-current value of previous options:  0.00587176057374178  strike:  104.34  expiration:  1982-07-16  number of opts held:  190
+current price of previous options:  0.00587176057374178 current value of previous options:  790691065817681.6  strike:  104.34  expiration:  1982-07-16  number of opts held:  1.3465996371746024e+17
+Total results of sale:  3.953455329088408e+16  net worth  1.1401475473709011e+17
 
 Simulation 1  looping over date:  1981-08-24
 
@@ -7022,8 +7134,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1981-08-24  :  0.129  underlying:  128.59  risk free rate  0.1686
-new options price is  0.00442  expiration date:  1982-08-20  days to expire:  361  Strike:  102.87  number purchased:  4014.0
-cost of options:  179.74  net worth  5944.5
+new options price is  0.00442328  expiration date:  1982-08-20  days to expire:  361  Strike:  102.87  number purchased:  2.0617502900841676e+16
+Total cost of trade:  4605672301409020.0 , trade fees:  22913792544323.0  net worth  1.527586169621565e+17
 TESTING EXIT NOW
 now testing date  1981-08-25  volatility:  0.129  opt price:  0.00822  underlying:  125.77  days to expiry:  360  risk free rate  0.1667
 now testing date  1981-08-26  volatility:  0.128  opt price:  0.00726  underlying:  126.17  days to expiry:  359  risk free rate  0.1669
@@ -7039,7 +7151,8 @@ now testing date  1981-09-08  volatility:  0.139  opt price:  0.04539  underlyin
     opt_current_price: 0.05
 Selling options right now
 current vol for  1981-09-08  :  0.139  underlying:  120.12  risk free rate:  0.1695
-current value of previous options:  0.04538579480618066  strike:  102.87  expiration:  1982-08-20  number of opts held:  162
+current price of previous options:  0.04538579480618066 current value of previous options:  935741756073434.8  strike:  102.87  expiration:  1982-08-20  number of opts held:  2.0617502900841676e+16
+Total results of sale:  4.6787087803671736e+16  net worth  1.3885382028011938e+17
 
 Simulation 1  looping over date:  1981-09-08
 
@@ -7047,8 +7160,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1981-09-08  :  0.139  underlying:  120.12  risk free rate  0.1695
-new options price is  0.00963  expiration date:  1982-09-17  days to expire:  374  Strike:  96.1  number purchased:  3267.0
-cost of options:  163.46  net worth  5406.26
+new options price is  0.00963076  expiration date:  1982-09-17  days to expire:  374  Strike:  96.1  number purchased:  1.144966380744168e+16
+Total cost of trade:  5568860764780687.0 , trade fees:  27705774949158.0  net worth  1.847051663277177e+17
 TESTING EXIT NOW
 now testing date  1981-09-09  volatility:  0.139  opt price:  0.0114  underlying:  119.49  days to expiry:  373  risk free rate  0.1695
 now testing date  1981-09-10  volatility:  0.145  opt price:  0.01064  underlying:  122.18  days to expiry:  372  risk free rate  0.1672
@@ -7138,11 +7251,12 @@ Simulation 1  looping over date:  1982-01-11
 ROLL OPTIONS
 Selling options right now
 current vol for  1982-01-11  :  0.135  underlying:  120.34  risk free rate:  0.1455
-current value of previous options:  0.005806097030601587  strike:  96.1  expiration:  1982-09-17  number of opts held:  132
+current price of previous options:  0.005806097030601587 current value of previous options:  66477859033773.6  strike:  96.1  expiration:  1982-09-17  number of opts held:  1.144966380744168e+16
+Total results of sale:  3323892951688679.5  net worth  1.7888192070735635e+17
 Buying options right now
 current vol for  1982-01-11  :  0.135  underlying:  120.34  risk free rate  0.1455
-new options price is  0.013  expiration date:  1983-01-21  days to expire:  375  Strike:  96.27  number purchased:  2907.0
-cost of options:  155.79  net worth  5137.23
+new options price is  0.01299532  expiration date:  1983-01-21  days to expire:  375  Strike:  96.27  number purchased:  8367408009737871.0
+Total cost of trade:  5491500974370339.0 , trade fees:  27320900370002.0  net worth  1.8213933580001126e+17
 TESTING EXIT NOW
 now testing date  1982-01-12  volatility:  0.134  opt price:  0.02272  underlying:  117.49  days to expiry:  374  risk free rate  0.1449
 now testing date  1982-01-13  volatility:  0.134  opt price:  0.02115  underlying:  117.46  days to expiry:  373  risk free rate  0.1478
@@ -7177,7 +7291,8 @@ now testing date  1982-02-23  volatility:  0.158  opt price:  0.16478  underlyin
     opt_current_price: 0.16
 Selling options right now
 current vol for  1982-02-23  :  0.158  underlying:  112.46  risk free rate:  0.1433
-current value of previous options:  0.1647755309907435  strike:  96.27  expiration:  1983-01-21  number of opts held:  118
+current price of previous options:  0.1647755309907435 current value of previous options:  1378744097820757.8  strike:  96.27  expiration:  1983-01-21  number of opts held:  8367408009737871.0
+Total results of sale:  6.893720489103789e+16  net worth  1.6645123451785267e+17
 
 Simulation 1  looping over date:  1982-02-23
 
@@ -7185,8 +7300,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1982-02-23  :  0.158  underlying:  112.46  risk free rate  0.1433
-new options price is  0.05073  expiration date:  1983-02-18  days to expire:  360  Strike:  89.97  number purchased:  1658.0
-cost of options:  152.11  net worth  5015.36
+new options price is  0.05072945  expiration date:  1983-02-18  days to expire:  360  Strike:  89.97  number purchased:  2753898924871355.0
+Total cost of trade:  7055392313628754.0 , trade fees:  35101454296660.0  net worth  2.340096953110698e+17
 TESTING EXIT NOW
 now testing date  1982-02-24  volatility:  0.166  opt price:  0.0589  underlying:  113.88  days to expiry:  359  risk free rate  0.1424
 now testing date  1982-02-25  volatility:  0.166  opt price:  0.05002  underlying:  114.86  days to expiry:  358  risk free rate  0.1425
@@ -7268,11 +7383,12 @@ Simulation 1  looping over date:  1982-06-10
 ROLL OPTIONS
 Selling options right now
 current vol for  1982-06-10  :  0.109  underlying:  109.7  risk free rate:  0.1412
-current value of previous options:  0.001242462818213004  strike:  89.97  expiration:  1983-02-18  number of opts held:  68
+current price of previous options:  0.001242462818213004 current value of previous options:  3421617019269.426  strike:  89.97  expiration:  1983-02-18  number of opts held:  2753898924871355.0
+Total results of sale:  171080850963471.28  net worth  2.203682947300089e+17
 Buying options right now
 current vol for  1982-06-10  :  0.109  underlying:  109.7  risk free rate  0.1412
-new options price is  0.00111  expiration date:  1983-06-17  days to expire:  372  Strike:  87.76  number purchased:  3411.0
-cost of options:  141.79  net worth  4674.63
+new options price is  0.00110539  expiration date:  1983-06-17  days to expire:  372  Strike:  87.76  number purchased:  1.191067464385442e+17
+Total cost of trade:  6649159012013187.0 , trade fees:  33080393094593.0  net worth  2.2053595396395312e+17
 TESTING EXIT NOW
 now testing date  1982-06-11  volatility:  0.115  opt price:  0.00142  underlying:  111.48  days to expiry:  371  risk free rate  0.1408
 now testing date  1982-06-14  volatility:  0.117  opt price:  0.00173  underlying:  111.22  days to expiry:  368  risk free rate  0.1437
@@ -7316,7 +7432,8 @@ now testing date  1982-08-04  volatility:  0.133  opt price:  0.01837  underlyin
     opt_current_price: 0.02
 Selling options right now
 current vol for  1982-08-04  :  0.133  underlying:  107.83  risk free rate:  0.1293
-current value of previous options:  0.018371843855362835  strike:  87.76  expiration:  1983-06-17  number of opts held:  138
+current price of previous options:  0.018371843855362835 current value of previous options:  2188210547689227.2  strike:  87.76  expiration:  1983-06-17  number of opts held:  1.191067464385442e+17
+Total results of sale:  1.0941052738446136e+17  net worth  2.1234460129861584e+17
 
 Simulation 1  looping over date:  1982-08-04
 
@@ -7324,8 +7441,8 @@ SELL STOCKS AND BUY OPTIONS
 
 Buying options right now
 current vol for  1982-08-04  :  0.133  underlying:  107.83  risk free rate  0.1293
-new options price is  0.01358  expiration date:  1983-07-15  days to expire:  345  Strike:  86.26  number purchased:  2450.0
-cost of options:  131.27  net worth  4376.84
+new options price is  0.01357937  expiration date:  1983-07-15  days to expire:  345  Strike:  86.26  number purchased:  1.404935536142938e+16
+Total cost of trade:  9634942581781948.0 , trade fees:  47935037720308.0  net worth  3.19566918135388e+17
 TESTING EXIT NOW
 now testing date  1982-08-05  volatility:  0.134  opt price:  0.02076  underlying:  106.1  days to expiry:  344  risk free rate  0.1308
 now testing date  1982-08-06  volatility:  0.137  opt price:  0.02905  underlying:  105.16  days to expiry:  343  risk free rate  0.1324
@@ -7415,5 +7532,5 @@ now testing date  1982-12-08  volatility:  0.243  opt price:  0.0071  underlying
 now testing date  1982-12-09  volatility:  0.242  opt price:  0.00846  underlying:  141.8  days to expiry:  218  risk free rate  0.0983
 now testing date  1982-12-10  volatility:  0.239  opt price:  0.00763  underlying:  141.15  days to expiry:  217  risk free rate  0.0987
 
-134.061631 seconds to run script
+127.574835 seconds to run script
 
