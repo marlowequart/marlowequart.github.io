@@ -95,7 +95,7 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 	COMM_STOCK_PER_UNIT=2,COMM_STOCK_COST=0,COMM_STOCK_FLAT=0,
 	## Define commission and leverage on trades of options:
 	# 100x leverage (using $SPX options 100x index value), 0.5% of trade cost to commissions
-	LEVERAGE_FACTOR=50,COMM_PER_OPT=0.005,
+	LEVERAGE_FACTOR=100,COMM_PER_OPT=0.005,
 	# Option holding parameters, as dict of lists:
 	# {'L_VOL':[min. volatility, time to mature, holding period],
 	#  'M_VOL':[min. volatility, time to mature, holding period],
@@ -355,7 +355,8 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 	csv_writer.writerow(['purchase date','sale date', 'purchase underlying price',
 				'sale underlying price','contracts number','equity after sale of options',
 				'option price at purchase','option price at sale','trade costs','profit/loss'])
-
+	
+	
 	def write_out_results():
 		# write row in csv, 
 		# the header is defined below, at the start of the simulation
@@ -363,6 +364,8 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 		opt_pr_sale=round(get_for_date.put_opt_price(equity['options']['bought'],this_trade_day,equity['options']['expire'])['price'],OPTION_PR_ROUNDING)
 		trade_costs=round(2*opt_pr_purchase*equity['options']['count']*LEVERAGE_FACTOR*COMM_PER_OPT,2)
 		opt_trade_profit=round((opt_pr_sale-opt_pr_purchase)*equity['options']['count']*LEVERAGE_FACTOR-trade_costs,2)
+		purchase_cost=round(opt_pr_purchase*equity['options']['count']*LEVERAGE_FACTOR,2)
+		
 		csv_writer.writerow( [equity['options']['bought'],
 			this_trade_day,
 			get_for_date.market_price(equity['options']['bought']),
@@ -372,7 +375,10 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 			opt_pr_purchase,
 			opt_pr_sale,
 			trade_costs,
+			purchase_cost,
 			opt_trade_profit])
+
+
 
 	def updateConstants():
 		global TRADE_DELTA
@@ -505,17 +511,18 @@ if __name__ == "__main__":
 	
 	start_time = time.time()
 	# start_date='2008-06-10'
-	start_date='1959-07-15'
+	start_date='1988-06-10'
+	# ~ start_date='1959-07-15'
 	
 	# Set end date to 'None' to run to last valid date
-	end_date='1982-08-18'
-	# end_date='None'
+	# ~ end_date='1965-08-18'
+	end_date='None'
 	# ~ start_date='1988-06-10'
 	start_equity=100000
 	
 	equity_curve1=main(SIM_START_DATE=start_date,
 		SIM_END_DATE=end_date,
-		OUTPUT_CSV='_trade_results_01_31_20_1.csv',
+		OUTPUT_CSV='_trade_results_02_02_20_1.csv',
 		STARTING_EQUITY=start_equity,
 		OPT_FRACTION_K=0.03,OPT_FRACTION_M=0,
 		STRIKE_AT=0.8,
@@ -556,7 +563,7 @@ if __name__ == "__main__":
 	df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output, 'num_stocks':num_stocks1, 'price_stocks':price_stocks1, 'stocks_value':stocks_value1, 'options_value_calc':options_value1, 'num_options':num_options1, 'options_value_reported':options_value1_2})
 	# Use this line for output for analytics:
 	# df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output})
-	df1.to_csv('_equity_curve_01_31_20_1.csv', sep=',', index=False)
+	df1.to_csv('_equity_curve_02_02_20_1.csv', sep=',', index=False)
 	
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))
