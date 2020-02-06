@@ -555,6 +555,8 @@ if __name__ == "__main__":
 	print('Start time to run script:')
 	print(datetime.datetime.now())
 	
+	file_name_suffix='_1959to2019_02_05_20.csv'
+	
 	start_time = time.time()
 	# start_date='2008-06-10'
 	# start_date='1988-06-10'
@@ -568,15 +570,13 @@ if __name__ == "__main__":
 	
 	equity_curve1=main(SIM_START_DATE=start_date,
 		SIM_END_DATE=end_date,
-		OUTPUT_CSV='_trade_results_02_05_20_3.csv',
+		OUTPUT_CSV='sim16_out'+file_name_suffix,
 		STARTING_EQUITY=start_equity,
 		OPT_FRACTION_K=0.03,OPT_FRACTION_M=0,
-		STRIKE_AT=0.8,
-###		# The Faustmann ratio is market cap/net worth
-###		FAUSTMANN_R_MIN=0,
+		STRIKE_AT=0.6,
 		# Fraction at which to exit the option trade
 		EXIT_THRESHOLD=10,
-		SIM_NAME='Simulation 1',
+		SIM_NAME='Simulation 16',
 		DEBUG=False,
 		OPT_HOLDING_PARAMS={
 			'L_VOL':[0,   12, 4],
@@ -606,10 +606,10 @@ if __name__ == "__main__":
 	options_value1_2=[_[7] for _ in equity_curve1]
 	
 	# Use this line for debugging:
-	df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output, 'num_stocks':num_stocks1, 'price_stocks':price_stocks1, 'stocks_value':stocks_value1, 'options_value_calc':options_value1, 'num_options':num_options1, 'options_value_reported':options_value1_2})
+	# df1=pandas.DataFrame({'Date':date_output1, 'Equity':equity_curve1_output, 'num_stocks':num_stocks1, 'price_stocks':price_stocks1, 'stocks_value':stocks_value1, 'options_value_calc':options_value1, 'num_options':num_options1, 'options_value_reported':options_value1_2})
 	# Use this line for output for analytics:
-	# df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output})
-	df1.to_csv('_equity_curve_02_05_20_3.csv', sep=',', index=False)
+	df1=pandas.DataFrame({'Date':date_output1, 'Equity':equity_curve1_output})
+	df1.to_csv('equity16_output'+file_name_suffix, sep=',', index=False)
 	
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))

@@ -11,8 +11,8 @@ print(datetime.datetime.now())
 
 file_name_suffix='_1959to2019_02_05_20.csv'
 # start_date='2008-06-10'
-# start_date='1988-06-10'
-start_date='1959-07-15'
+start_date='1988-06-10'
+# start_date='1959-07-15'
 
 # Set end date to 'None' to run to last valid date
 # end_date='1969-08-18'
@@ -20,7 +20,7 @@ end_date='None'
 # end_date='1988-06-10'
 start_equity=100000
 
-
+print()
 print('Sim 1')
 print(datetime.datetime.now())
 
@@ -394,6 +394,31 @@ df15=pandas.DataFrame({'Date':date_output15, 'Equity':equity_curve15_output})
 df15.to_csv('equity15_output'+file_name_suffix, sep=',', index=False)
 
 
+print('Sim 16')
+print(datetime.datetime.now())
+
+equity_curve16=dhedge.main(SIM_START_DATE=start_date,
+	SIM_END_DATE=end_date,
+	OUTPUT_CSV='sim16_out'+file_name_suffix,
+	STARTING_EQUITY=start_equity,
+	OPT_FRACTION_K=0.03,OPT_FRACTION_M=0,
+	STRIKE_AT=0.8,
+	# Fraction at which to exit the option trade
+	EXIT_THRESHOLD=50,
+	SIM_NAME='Simulation 16',
+	DEBUG=False,
+	OPT_HOLDING_PARAMS={
+		'L_VOL':[0,   12, 4],
+		'M_VOL':[0.2,  6, 3],
+		'H_VOL':[0.4,  3, 1]})
+
+# Save equity curves into .csv file
+date_output16=[_[0] for _ in equity_curve16]
+equity_curve16_output=[_[1] for _ in equity_curve16]
+df16=pandas.DataFrame({'Date':date_output16, 'Equity':equity_curve16_output})
+df16.to_csv('equity16_output'+file_name_suffix, sep=',', index=False)
+
+
 # ~ df = pandas.DataFrame(data={'Date': equity_curve1[0], 'Equity1': equity_curve1_output, 'Equity2': equity_curve2_output, 'Equity3': equity_curve3_output})
 
 print()
@@ -404,7 +429,7 @@ print()
 ## PLOT ##
 
 # Plot equity curve
-plt.plot([dhedge.get_DT_obj(_[0]) for _ in equity_curve1],[_[1] for _ in equity_curve1],'r')
+# plt.plot([dhedge.get_DT_obj(_[0]) for _ in equity_curve1],[_[1] for _ in equity_curve1],'r')
 # plt.plot([dhedge.get_DT_obj(_[0]) for _ in equity_curve2],[_[1] for _ in equity_curve2],'b')
 # plt.plot([dhedge.get_DT_obj(_[0]) for _ in equity_curve3],[_[1] for _ in equity_curve3],'g')
 
@@ -416,5 +441,5 @@ plt.plot([dhedge.get_DT_obj(_[0]) for _ in equity_curve1],[_[1] for _ in equity_
 # ~ plt.plot([get_DT_obj(_[0]) for _ in equity_curve],[_[-1] for _ in equity_curve])
 # ~ plt.axhline(y=0, color='r', linestyle='-')
 
-plt.show()
+# plt.show()
 
