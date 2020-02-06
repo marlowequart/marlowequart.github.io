@@ -28,7 +28,7 @@ import math
 
 sp_input_file='data/^GSPC.csv'
 vol_input_file='data/volatility40.csv'
-equity_input_file='_equity1_output_01_29_20.csv'
+equity_input_file='_equity_curve_02_05_20_3.csv'
 # ~ vol2_input_file='data/volatility40_2.csv'
 # ~ volmq_input_file='data/vixmq_dec08_to_nov18.csv'
 
@@ -114,13 +114,13 @@ volmq_end_idx=volmq_date_idx+100
 
 #plot date range
 
-start_date='1959-07-15'
+start_date='1990-07-13'
 # start_date='1965-08-11'
 # start_date='1972-08-11'
 # start_date='1982-08-11'
 
-
-end_date='1960-01-04'
+end_date='1995-02-10'
+# end_date='1998-10-05'
 # end_date='1982-08-11'
 # end_date='1980-04-30'
 # end_date='1982-08-18'

@@ -42,12 +42,13 @@ from scipy.stats import skew,kurtosis
 
 
 PRINT=True
+# PRINT=False
 PLOT=False
 
 
-input_file='equity1_output.csv'
+input_file='_equity_curve_02_05_20_3.csv'
 risk_free_input='data/risk_free_1yr_2yr_clean.csv'
-trades_input='sim1_out.csv'
+trades_input='_trade_results_02_05_20_3_noblk.csv'
 
 data_df = pd.read_csv(input_file,header=0)
 date=data_df['Date'].tolist()
@@ -71,15 +72,24 @@ end_idx=17420
 
 #use date range
 
-start_date='1976-06-01'
-end_date='2019-03-11'
+start_date='1959-07-15'
+# start_date='1988-06-10'
+
+# end_date='1969-11-10'
+# end_date='2019-03-11'
+end_date='2019-06-05'
+
+
 start_idx=date.index(start_date)
 end_idx=date.index(end_date)
 
-rf_start_date='1976-06-01'
-rf_end_date='2019-03-11'
-rf_start_idx=rf_date.index(rf_start_date)
-rf_end_idx=rf_date.index(rf_end_date)
+rf_start_idx=rf_date.index(start_date)
+rf_end_idx=rf_date.index(end_date)
+
+# rf_start_date='1988-06-10'
+# rf_end_date='2019-03-11'
+# rf_start_idx=rf_date.index(rf_start_date)
+# rf_end_idx=rf_date.index(rf_end_date)
 
 # ~ trades_start_date='1959-07-15'
 # ~ trades_end_date='2019-03-11'
@@ -104,45 +114,57 @@ num_yrs=num_days/365.25
 final_value=equity[end_idx]
 initial_value=equity[start_idx]
 CAGR=100*((final_value/initial_value)**(1/num_yrs)-1)
-if PRINT: print('CAGR: ',round(CAGR,2))
+if PRINT: print('CAGR: ',round(CAGR,2),', Number of years: ',round(num_yrs,1),', Ending equity: ',round(final_value,2))
 if PRINT: print()
 
-# Max Drawdown and length
+# Max Drawdown and length for max draw down in percentage terms
 new_high=0
-new_low=10000000
+new_low=100000000000
 new_high_day=0
 new_low_day=0
 max_dd_pct=0
-max_dd_length=0
+max_dd_length_pct=0
+max_dd_length_time=0
 max_dd_start_date_idx=0
 for i in range(start_idx,end_idx):
 	# check for new high
 	if equity[i] > new_high:
+		# print('hit new high on date ',date[i],', value: ',equity[i],', idx is ',i)
 		new_high=equity[i]
 		new_high_day=i
-		new_low=100000000
+		new_low=1000000000000
 		new_low_day=0
 	else:
 		# Check for new low
 		if equity[i] < new_low:
+			# print('hit new low on date ',date[i],', value: ',equity[i],', idx is ',i)
 			new_low=equity[i]
-			new_low_day=i
+			new_low_day_hold=i
 		# measure the length of this drawdown and determine longest drawdown
-		this_dd_length=new_low_day-new_high_day
-		if this_dd_length > max_dd_length:
-			max_dd_length=this_dd_length
+		this_dd_length=new_low_day_hold-new_high_day
+		# if this_dd_length > max_dd_length_pct:
+			# max_dd_length_pct=this_dd_length
+		if this_dd_length > max_dd_length_time:
+			max_dd_time_start_date_idx=new_high_day
+			max_dd_time_end_date_idx=new_low_day_hold
+			max_dd_length_time=max_dd_time_end_date_idx-max_dd_time_start_date_idx
 		# check for max drawdown
 		today_dd=abs(equity[new_high_day]-equity[i])
 		today_dd_pct=today_dd/equity[new_high_day]
 		if today_dd_pct > max_dd_pct:
+			# print('hit new max dd pct on date ',date[i],', value: ',today_dd_pct,', idx is ',i)
 			max_dd_pct=today_dd_pct
-			max_dd_start_date_idx=new_high_day
-			max_dd_end_date_idx=new_low_day
+			max_dd_pct_start_date_idx=new_high_day
+			max_dd_pct_end_date_idx=new_low_day_hold
+			max_dd_length_pct=max_dd_pct_end_date_idx-max_dd_pct_start_date_idx
 
+# print('Start date of max drawdown is ',date[max_dd_start_date_idx],', idx is : ',max_dd_start_date_idx,', end date is ',date[max_dd_end_date_idx],', idx is : ',max_dd_end_date_idx)
 max_dd=100*max_dd_pct
 if PRINT: print('Max drawdown: ',round(max_dd,2),'%')
-if PRINT: print('Length of max drawdown is ',max_dd_length,' days, or ',round(max_dd_length/365.25,2),' years')
-if PRINT: print('Start date of max drawdown is ',date[max_dd_start_date_idx],', end date is ',date[max_dd_end_date_idx])
+if PRINT: print('Length of max percent drawdown is ',max_dd_length_pct,' days, or ',round(max_dd_length_pct/253,2),' years')
+if PRINT: print('Start date of max pct drawdown is ',date[max_dd_pct_start_date_idx],', end date is ',date[max_dd_pct_end_date_idx])
+if PRINT: print('Length of max time drawdown is ',max_dd_length_time,' days, or ',round(max_dd_length_time/253,2),' years')
+if PRINT: print('Start date of max time drawdown is ',date[max_dd_time_start_date_idx],', end date is ',date[max_dd_time_end_date_idx])
 if PRINT: print()
 
 
@@ -204,7 +226,7 @@ mean_rtns_mo=np.mean(excess_return_monthly)
 
 # Sharpe Ratio
 sharpe_monthly=mean_rtns_mo/np.std(excess_return_monthly)
-if PRINT: print('Sharpe ratio based on monthly data is: ',round(sharpe_monthly,2))
+# if PRINT: print('Sharpe ratio based on monthly data is: ',round(sharpe_monthly,2))
 # ~ if PRINT: print()
 
 # Sortino Ratio
@@ -216,7 +238,7 @@ for i in range(len(excess_return_monthly)):
 
 downside_std=np.sqrt(np.mean(var))
 sortino_monthly=mean_rtns_mo/downside_std
-if PRINT: print('Sortino ratio based on monthly data is: ',round(sortino_monthly,2))
+# if PRINT: print('Sortino ratio based on monthly data is: ',round(sortino_monthly,2))
 # ~ if PRINT: print()
 
 
@@ -338,10 +360,12 @@ end_idx_idx=[loss_streak.index(max(loss_streak))]
 loss_streak_end_idx=[loss_streak_idx[x] for x in end_idx_idx]
 loss_streak_start_idx=[]
 time_deltas=[]
+dates=[]
 for idx in loss_streak_end_idx:
 	loss_streak_start_idx=idx-longest_loss_streak+1
 	loss_start_date=trades_dates[loss_streak_start_idx]
 	loss_end_date=trades_end_dates[idx]
+	dates.append([loss_start_date,loss_end_date])
 	# ~ print('loss streak starts on date: ',loss_start_date,', and ends on date ',loss_end_date)
 	# get time delta with datetime objects
 	loss_start_date_obj=datetime.datetime.strptime(loss_start_date,'%Y-%m-%d')
@@ -350,7 +374,7 @@ for idx in loss_streak_end_idx:
 	time_deltas.append(loss_diff)
 
 # ~ print(loss_streak)
-
+max_loss_idx=time_deltas.index(max(time_deltas))
 
 
 # how long between profitable trades?
@@ -359,6 +383,9 @@ for idx in loss_streak_end_idx:
 # ~ if PRINT: print()
 if PRINT: print('Number of profitable trades: ',num_profitable,', win percentage: ',round(100*num_profitable/num_trades,1))
 if PRINT: print('Avg trades per year: ',round(trades_per_yr,1),', longest losing streak num trades: ',longest_loss_streak,', longest losing streak in yrs: ',max(time_deltas))
+if PRINT: print('longest losing streak start date: ',dates[max_loss_idx][0],', end date: ',dates[max_loss_idx][1])
+
+# Consider equity growth during max losing streak, also consider this as start date
 
 
 if PRINT: print()

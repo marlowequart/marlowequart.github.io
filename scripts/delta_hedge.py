@@ -190,9 +190,28 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 			S=self.market_price(current_date)
 			r=self.irate(current_date)
 			t=(get_DT_obj(expire_date)-get_DT_obj(current_date)).days
-			v=self.volatility(current_date)
+			####
+			# We need to include a premium on volatility for % out of the money and duration
+			# 2/4/20 basic model: We will create a line, y=mx+b, where y is the premium added to volatility baseline
+			# and x is the percent out of the money. This premium will be added to the generated VIX.
+			# The y intercept, b, is the duration premium and is going to be determined by premium_factor(4%)*log10(months to expire)
+			# The slope, m, is determined by slope_factor(15)*1/(time_factor*months)
+			####
+			#calculate months to expire
+			current_date_obj=get_DT_obj(current_date)
+			expire_date_obj=get_DT_obj(expire_date)
+			num_months=round((expire_date_obj-current_date_obj).days/30.44,2)
+			# time_premium is the y intercept
+			time_premium=(4.*math.log10(num_months))/100
+			# duration_slope is the slope
+			duration_slope=(125./(15*num_months))/100
+			# calculate percent otm
+			pct_otm=K/S
+			# Volatility premium
+			vol_prem=duration_slope*pct_otm+time_premium
+			v=self.volatility(current_date)+vol_prem
 			opt_price=compute_put_opt_price(S, K, r, t, v)
-			return {'K':K,'price':opt_price}
+			return {'K':K,'price':opt_price,'volatility':v}
 		def check_filter(self,date):
 			return bool(int([_ for _ in market_filter.data if _[0]==date][0][1]))
 
@@ -201,29 +220,35 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 
 	## Calculate valid time bounds - simulation should not extend beyound first and last days on the datasets.
 	FIRST_VALID_DATE=max(map(get_DT_obj,map(lambda _:_[0][0],[_.data for _ in datasets])))
+	print()
 	if SIM_END_DATE=='None':
 		LAST_VALID_DATE=min(map(get_DT_obj,map(lambda _:_[-1][0],[_.data for _ in datasets])))
-		print('Last valid date: ',LAST_VALID_DATE)
+		if DEBUG: print('Last valid date: ',LAST_VALID_DATE)
 	else:
 		LAST_VALID_DATE=get_DT_obj(SIM_END_DATE)
-		print('Last valid date: ',LAST_VALID_DATE)
+		if DEBUG: print('Last valid date: ',LAST_VALID_DATE)
 
 	# Function to confirm that a particular date is present in all datasets
 	def check_date(date: str, datasets: list):
 		return reduce((lambda x, y: x * y), [date in [_[0] for _ in _] for _ in datasets] )
 
 	# Get the next closest valid date
-	def get_next_valid_date(date: str, datasets=[stocks.data,irate.data]):
+	def get_next_valid_date(date: str, datasets=[stocks.data,irate.data,volatility.data]):
 		LAST_VALID_DT=min(map(get_DT_obj,map(lambda _:_[-1][0],datasets)))
-		while True:
+		# LAST_VALID_DT=min(map(get_DT_obj,map(lambda _:_[-1][0],[_.data for _ in datasets])))
+		# LAST_VALID_DT=LAST_VALID_DATE
+		exit=True
+		while exit==True:
 			# To the given date add one day at a time until a valid date is found
 			# Return that date
 			if check_date(date, datasets):
 				return date
 			if get_DT_obj(date)<LAST_VALID_DT:
 				date=get_DT_str( get_DT_obj(date)+datetime.timedelta(days=1) )
+			# if the date being checked is past last valid date, return last valid date
 			else:
-				return False
+				return get_DT_str(LAST_VALID_DT)
+				exit=False
 
 	# U.S. equity stock option contracts expire on third friday of the month
 	def get_third_friday(my_year: int, my_month: int) -> datetime.date:
@@ -235,7 +260,7 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 	# Compute days to maturity from date of purchase
 	def get_days_to_expire(tradeDate: datetime.datetime):
 		newDate_far=tradeDate+datetime.timedelta(days=OPT_TIME_TO_MATURE*30)
-		return (get_third_friday(newDate_far.year,newDate_far.month) - tradeDate.date()).days
+		return (get_third_friday(newDate_far.year,newDate_far.month) - tradeDate.date()).days,OPT_TIME_TO_MATURE
 
 	# Determine the next trade day first day after the 10th of the month after the holding period
 	def make_nxt_trade_date(lastTradeDate):
@@ -280,21 +305,22 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 			
 	def buy_options():
 		if DEBUG: print('Buying options right now')
-		# get todays volatility
-		vol_current=get_for_date.volatility(this_trade_day)
-		if DEBUG: print('current vol for ',this_trade_day,' : ',round(vol_current,3),' underlying: ',round(get_for_date.market_price(this_trade_day),2),' risk free rate ',round(get_for_date.irate(this_trade_day),4))
 		# compute how much money to spend to fullfil the option fraction
 		total_trade_value=get_net_worth(equity, this_trade_day)*(OPT_FRACTION)
 		# subtract trading costs
 		trade_value=total_trade_value-total_trade_value*COMM_PER_OPT
 		# compute number of days before desired expiry date
-		days_to_expire=get_days_to_expire(get_DT_obj(this_trade_day))
+		days_to_expire,holding_months=get_days_to_expire(get_DT_obj(this_trade_day))
 		# compute expiry date
 		expire_date=get_DT_str(get_DT_obj(this_trade_day)+datetime.timedelta(days_to_expire))
 		# compute option price
 		# ~ options_price=round(get_for_date.put_opt_price(this_trade_day,this_trade_day,expire_date)['price'],OPTION_PR_ROUNDING)
 		options_price=get_for_date.put_opt_price(this_trade_day,this_trade_day,expire_date)['price']
 		option_strike=round(get_for_date.put_opt_price(this_trade_day,this_trade_day,expire_date)['K'],2)
+		# get todays volatility
+		csv_vol=get_for_date.volatility(this_trade_day)
+		vol_current=get_for_date.put_opt_price(this_trade_day,this_trade_day,expire_date)['volatility']
+		if DEBUG: print('current vol for ',this_trade_day,' : ',round(vol_current,3),', csv vol: ',round(csv_vol,3),', num months to expire: ',holding_months,' underlying: ',round(get_for_date.market_price(this_trade_day),2),' risk free rate ',round(get_for_date.irate(this_trade_day),4))
 		# compute how many options to buy
 		options_volume=trade_value//(LEVERAGE_FACTOR*options_price)
 		# compute option trade cost. Here we also include the cost of sale, so 2x the trade cost
@@ -326,13 +352,14 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 
 	def sell_options():
 		if DEBUG: print('Selling options right now')
-		vol_current=get_for_date.volatility(this_trade_day)
-		if DEBUG: print('current vol for ',this_trade_day,' : ',round(vol_current,3),' underlying: ',round(get_for_date.market_price(this_trade_day),2),' risk free rate: ',round(get_for_date.irate(this_trade_day),4))
+		csv_vol=get_for_date.volatility(this_trade_day)
+		vol_current=get_for_date.put_opt_price(this_trade_day,this_trade_day,equity['options']['expire'])['volatility']
+		if DEBUG: print('current mod_vol for ',this_trade_day,' : ',round(vol_current,3),', csv vol: ',round(csv_vol,3),' underlying: ',round(get_for_date.market_price(this_trade_day),2),' risk free rate: ',round(get_for_date.irate(this_trade_day),4))
 		# compute how much previous options cost today
 		oldOptPrice=get_for_date.put_opt_price(equity['options']['bought'],this_trade_day,equity['options']['expire'])['price']
 		old_option_strike=round(get_for_date.put_opt_price(equity['options']['bought'],this_trade_day,equity['options']['expire'])['K'],2)
 		old_option_expire=equity['options']['expire']
-		if DEBUG: print('current price of previous options: ',oldOptPrice,'current value of previous options: ',oldOptPrice*equity['options']['count'],' strike: ',old_option_strike,' expiration: ',old_option_expire,' number of opts held: ',equity['options']['count'])
+		if DEBUG: print('current price of previous options: ',oldOptPrice,'current value of previous options: ',oldOptPrice*equity['options']['count']*LEVERAGE_FACTOR,' strike: ',old_option_strike,' expiration: ',old_option_expire,' number of opts held: ',equity['options']['count'])
 		# compute value of sale of options. No trade costs considered here, trade costs were taken into account at purchase
 		option_returns=equity['options']['count']*oldOptPrice*LEVERAGE_FACTOR
 		if DEBUG: print('Total results of sale: ',round(option_returns,2),' net worth ',round(get_net_worth(equity, this_trade_day),2))
@@ -354,7 +381,7 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 	csv_writer=csv.writer(f)
 	csv_writer.writerow(['purchase date','sale date', 'purchase underlying price',
 				'sale underlying price','contracts number','equity after sale of options',
-				'option price at purchase','option price at sale','trade costs','profit/loss'])
+				'option price at purchase','option price at sale','trade costs','cost of purchase','profit/loss'])
 	
 	
 	def write_out_results():
@@ -366,7 +393,7 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 		opt_trade_profit=round((opt_pr_sale-opt_pr_purchase)*equity['options']['count']*LEVERAGE_FACTOR-trade_costs,2)
 		purchase_cost=round(opt_pr_purchase*equity['options']['count']*LEVERAGE_FACTOR,2)
 		
-		csv_writer.writerow( [equity['options']['bought'],
+		csv_writer.writerow([equity['options']['bought'],
 			this_trade_day,
 			get_for_date.market_price(equity['options']['bought']),
 			get_for_date.market_price(this_trade_day),
@@ -385,7 +412,21 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 		global OPT_FRACTION
 		global OPT_TIME_TO_MATURE
 		global OPT_HOLDING_PERIOD
-		current_volatility=get_for_date.volatility(this_trade_day)
+		# print('updating constants:')
+		if equity['options']['expire']==None:
+			one_year_date=get_DT_str(get_DT_obj(this_trade_day)+relativedelta(years=1))
+			current_volatility=get_for_date.put_opt_price(this_trade_day,this_trade_day,one_year_date)['volatility']
+			# print('no options expire date, vol:',round(current_volatility,3))
+		# this is what happens if you are buying options after selling previous ones on an exit, need to get correct vol here without knowing opitons expiration date
+		# Use a 1yr expiration as baseline
+		elif equity['options']['expire']=='':
+			one_year_date=get_DT_str(get_DT_obj(this_trade_day)+relativedelta(years=1))
+			current_volatility=get_for_date.put_opt_price(this_trade_day,this_trade_day,one_year_date)['volatility']
+			# if DEBUG: print('no options expire date, vol:',round(current_volatility,3))
+		# this only works if you are rolling options
+		else:
+			current_volatility=get_for_date.put_opt_price(this_trade_day,this_trade_day,equity['options']['expire'])['volatility']
+			# if DEBUG: print('yes options expire date, vol:',round(current_volatility,3))
 		OPT_FRACTION=OPT_FRACTION_K+OPT_FRACTION_M*current_volatility
 		OPT_FRACTION=0 if OPT_FRACTION<0 else OPT_FRACTION
 		## Update option holding params based on volatility
@@ -457,7 +498,11 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 		equity_curve.append([this_trade_day,get_net_worth(equity, this_trade_day),'faustmann_ratio',option_returns,equity['stocks'],get_for_date.market_price(this_trade_day),equity['options']['count'],opt_current_price_1])
 		# Move on to the next date
 		last_trade_day=this_trade_day
+		# print('this_trade_day is ',make_nxt_trade_date(last_trade_day))
 		this_trade_day=make_nxt_trade_date(last_trade_day)
+		# if get_DT_obj(this_trade_day) >= LAST_VALID_DATE:
+			# print('this_trade_day is ',this_trade_day)
+			# break
 		## EXIT STRATEGY BEGINS HERE
 		if DEBUG: print('TESTING EXIT NOW')
 		# only run exit strategy if there are options in the portfolio
@@ -479,7 +524,8 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 				# count how many days to expire are left
 				days_to_expire = (opt_exp_date-get_DT_obj(_)).days
 				if DEBUG: print('now testing date ',_,
-						' volatility: ',round(get_for_date.volatility(_),3),
+						' csv_volatility: ',round(get_for_date.volatility(_),3),
+						' mod_volatility: ',round(get_for_date.put_opt_price(_,_,equity['options']['expire'])['volatility'],3),
 						' opt price: ',round(opt_current_price,OPTION_PR_ROUNDING),
 						' underlying: ',round(get_for_date.market_price(_),2),
 						' days to expiry: ',days_to_expire,
@@ -511,18 +557,18 @@ if __name__ == "__main__":
 	
 	start_time = time.time()
 	# start_date='2008-06-10'
-	start_date='1988-06-10'
-	# ~ start_date='1959-07-15'
+	# start_date='1988-06-10'
+	start_date='1959-07-15'
 	
 	# Set end date to 'None' to run to last valid date
-	# ~ end_date='1965-08-18'
+	# end_date='1969-08-18'
 	end_date='None'
-	# ~ start_date='1988-06-10'
+	# end_date='1988-06-10'
 	start_equity=100000
 	
 	equity_curve1=main(SIM_START_DATE=start_date,
 		SIM_END_DATE=end_date,
-		OUTPUT_CSV='_trade_results_02_02_20_1.csv',
+		OUTPUT_CSV='_trade_results_02_05_20_3.csv',
 		STARTING_EQUITY=start_equity,
 		OPT_FRACTION_K=0.03,OPT_FRACTION_M=0,
 		STRIKE_AT=0.8,
@@ -531,7 +577,7 @@ if __name__ == "__main__":
 		# Fraction at which to exit the option trade
 		EXIT_THRESHOLD=10,
 		SIM_NAME='Simulation 1',
-		DEBUG=True,
+		DEBUG=False,
 		OPT_HOLDING_PARAMS={
 			'L_VOL':[0,   12, 4],
 			'M_VOL':[0.2,  6, 3],
@@ -563,7 +609,7 @@ if __name__ == "__main__":
 	df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output, 'num_stocks':num_stocks1, 'price_stocks':price_stocks1, 'stocks_value':stocks_value1, 'options_value_calc':options_value1, 'num_options':num_options1, 'options_value_reported':options_value1_2})
 	# Use this line for output for analytics:
 	# df1=pandas.DataFrame({'Date':date_output1, 'Equity1':equity_curve1_output})
-	df1.to_csv('_equity_curve_02_02_20_1.csv', sep=',', index=False)
+	df1.to_csv('_equity_curve_02_05_20_3.csv', sep=',', index=False)
 	
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))
