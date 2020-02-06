@@ -77,8 +77,9 @@ start_date='1959-07-15'
 # start_date='1988-06-10'
 
 # end_date='1969-11-10'
+end_date='1989-12-29'
 # end_date='2019-03-11'
-end_date='2019-06-05'
+# ~ end_date='2019-06-05'
 
 
 start_idx=date.index(start_date)
