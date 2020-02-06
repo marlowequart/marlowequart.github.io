@@ -45,14 +45,15 @@ PRINT=True
 # PRINT=False
 PLOT=False
 
+sim_num='15'
 
-input_file='_equity_curve_02_05_20_3.csv'
+input_file='equity'+sim_num+'_output_1959to2019_02_05_20.csv'
 risk_free_input='data/risk_free_1yr_2yr_clean.csv'
-trades_input='_trade_results_02_05_20_3_noblk.csv'
+trades_input='sim'+sim_num+'_out_1959to2019_02_05_20.csv'
 
 data_df = pd.read_csv(input_file,header=0)
 date=data_df['Date'].tolist()
-equity=data_df['Equity1'].tolist()
+equity=data_df['Equity'].tolist()
 
 rf_df = pd.read_csv(risk_free_input,header=0)
 rf_date=rf_df['Date'].tolist()
