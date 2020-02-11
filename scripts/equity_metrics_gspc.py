@@ -46,7 +46,7 @@ PLOT=False
 
 
 input_file='data/^GSPC.csv'
-risk_free_input='data/risk_free_1plus2yr.csv'
+risk_free_input='data/risk_free_1yr_2yr_clean.csv'
 # ~ risk_free_input='data/DGS2clean.csv'
 
 data_df = pd.read_csv(input_file,header=0)
@@ -67,15 +67,18 @@ end_idx=17420
 
 #use date range
 
-start_date='1971-01-04'
-end_date='2009-12-31'
+start_date='1990-01-02'
+end_date='1999-12-31'
 start_idx=date.index(start_date)
 end_idx=date.index(end_date)
 
-rf_start_date='1/4/71'
-rf_end_date='12/31/09'
-rf_start_idx=rf_date.index(rf_start_date)
-rf_end_idx=rf_date.index(rf_end_date)
+rf_start_idx=rf_date.index(start_date)
+rf_end_idx=rf_date.index(end_date)
+
+# ~ rf_start_date='1/2/90'
+# ~ rf_end_date='12/31/99'
+# ~ rf_start_idx=rf_date.index(rf_start_date)
+# ~ rf_end_idx=rf_date.index(rf_end_date)
 
 
 
@@ -174,8 +177,8 @@ month_beg=0
 month_end=0
 rf_rate_monthly=[]
 for i in range(rf_start_idx,rf_end_idx):
-	today=datetime.datetime.strptime(rf_date[i],'%m/%d/%y')
-	# ~ today=datetime.datetime.strptime(rf_date[i],'%Y-%m-%d')
+	# ~ today=datetime.datetime.strptime(rf_date[i],'%m/%d/%y')
+	today=datetime.datetime.strptime(rf_date[i],'%Y-%m-%d')
 	if today.month != prev_mo:
 		month_end=i-1
 		rf_rate_monthly.append([prev_mo,prev_yr,np.mean(rf_rate[month_beg:month_end])/100/12])
@@ -198,7 +201,7 @@ mean_rtns_mo=np.mean(excess_return_monthly)
 
 # Sharpe Ratio
 sharpe_monthly=mean_rtns_mo/np.std(excess_return_monthly)
-if PRINT: print('Sharpe ratio based on monthly data is: ',round(sharpe_monthly,2))
+# ~ if PRINT: print('Sharpe ratio based on monthly data is: ',round(sharpe_monthly,2))
 # ~ if PRINT: print()
 
 # Sortino Ratio
@@ -210,7 +213,7 @@ for i in range(len(excess_return_monthly)):
 
 downside_std=np.sqrt(np.mean(var))
 sortino_monthly=mean_rtns_mo/downside_std
-if PRINT: print('Sortino ratio based on monthly data is: ',round(sortino_monthly,2))
+# ~ if PRINT: print('Sortino ratio based on monthly data is: ',round(sortino_monthly,2))
 # ~ if PRINT: print()
 
 
@@ -240,8 +243,8 @@ yr_beg=0
 yr_end=0
 rf_rate_yearly=[]
 for i in range(rf_start_idx,rf_end_idx):
-	today=datetime.datetime.strptime(rf_date[i],'%m/%d/%y')
-	# ~ today=datetime.datetime.strptime(rf_date[i],'%Y-%m-%d')
+	# ~ today=datetime.datetime.strptime(rf_date[i],'%m/%d/%y')
+	today=datetime.datetime.strptime(rf_date[i],'%Y-%m-%d')
 	if today.year != prev_yr:
 		yr_end=i-1
 		rf_rate_yearly.append([prev_yr,np.mean(rf_rate[yr_beg:yr_end])/100])

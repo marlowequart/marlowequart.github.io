@@ -175,21 +175,7 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 ###		def faustmann_ratio(self,date:str) -> float:
 ###			# Compute Faustmann ratio, which is market cap/net worth
 ###			return (self.market_val(date)/1000)/get_for_date.net_worth(date)
-		def put_opt_price(self,purchase_date:str, current_date:str, expire_date:str) -> dict:
-			purchase_volatility=self.volatility(purchase_date)
-			current_volatility=self.volatility(current_date)
-			# Get strike and current price of a put option given purchase, current and expiry dates.
-			# Calculate strike price at reference (purchase) date
-			S_ref=self.market_price(purchase_date)
-			r_ref=self.irate(purchase_date)
-			t_ref=(get_DT_obj(expire_date)-get_DT_obj(purchase_date)).days
-			v_ref=self.volatility(purchase_date)
-			### Find K as proportional to reference strike
-			K=S_ref*STRIKE_AT
-			# Calculate today's option price
-			S=self.market_price(current_date)
-			r=self.irate(current_date)
-			t=(get_DT_obj(expire_date)-get_DT_obj(current_date)).days
+		def calc_vol_skew(self, current_date:str, expire_date:str, K:float, S:float):
 			####
 			# We need to include a premium on volatility for % out of the money and duration
 			# 2/4/20 basic model: We will create a line, y=mx+b, where y is the premium added to volatility baseline
@@ -209,7 +195,23 @@ def main(SIM_START_DATE:'start date, YYYY-mm-dd, str',
 			pct_otm=K/S
 			# Volatility premium
 			vol_prem=duration_slope*pct_otm+time_premium
-			v=self.volatility(current_date)+vol_prem
+			return vol_prem
+		def put_opt_price(self,purchase_date:str, current_date:str, expire_date:str) -> dict:
+			purchase_volatility=self.volatility(purchase_date)
+			current_volatility=self.volatility(current_date)
+			# Get strike and current price of a put option given purchase, current and expiry dates.
+			# Calculate strike price at reference (purchase) date
+			S_ref=self.market_price(purchase_date)
+			r_ref=self.irate(purchase_date)
+			t_ref=(get_DT_obj(expire_date)-get_DT_obj(purchase_date)).days
+			v_ref=self.volatility(purchase_date)
+			### Find K as proportional to reference strike
+			K=S_ref*STRIKE_AT
+			# Calculate today's option price
+			S=self.market_price(current_date)
+			r=self.irate(current_date)
+			t=(get_DT_obj(expire_date)-get_DT_obj(current_date)).days
+			v=self.volatility(current_date)+self.calc_vol_skew(current_date,expire_date,K,S)
 			opt_price=compute_put_opt_price(S, K, r, t, v)
 			return {'K':K,'price':opt_price,'volatility':v}
 		def check_filter(self,date):
@@ -555,7 +557,7 @@ if __name__ == "__main__":
 	print('Start time to run script:')
 	print(datetime.datetime.now())
 	
-	file_name_suffix='_1959to2019_02_05_20.csv'
+	file_name_suffix='_1959to2019_02_07_20.csv'
 	
 	start_time = time.time()
 	# start_date='2008-06-10'
@@ -563,21 +565,21 @@ if __name__ == "__main__":
 	start_date='1959-07-15'
 	
 	# Set end date to 'None' to run to last valid date
-	# end_date='1969-08-18'
-	end_date='None'
+	end_date='1969-08-18'
+	# ~ end_date='None'
 	# end_date='1988-06-10'
 	start_equity=100000
 	
 	equity_curve1=main(SIM_START_DATE=start_date,
 		SIM_END_DATE=end_date,
-		OUTPUT_CSV='sim16_out'+file_name_suffix,
+		OUTPUT_CSV='_sim16_out'+file_name_suffix,
 		STARTING_EQUITY=start_equity,
 		OPT_FRACTION_K=0.03,OPT_FRACTION_M=0,
 		STRIKE_AT=0.6,
 		# Fraction at which to exit the option trade
 		EXIT_THRESHOLD=10,
 		SIM_NAME='Simulation 16',
-		DEBUG=False,
+		DEBUG=True,
 		OPT_HOLDING_PARAMS={
 			'L_VOL':[0,   12, 4],
 			'M_VOL':[0.2,  6, 3],
@@ -609,7 +611,7 @@ if __name__ == "__main__":
 	# df1=pandas.DataFrame({'Date':date_output1, 'Equity':equity_curve1_output, 'num_stocks':num_stocks1, 'price_stocks':price_stocks1, 'stocks_value':stocks_value1, 'options_value_calc':options_value1, 'num_options':num_options1, 'options_value_reported':options_value1_2})
 	# Use this line for output for analytics:
 	df1=pandas.DataFrame({'Date':date_output1, 'Equity':equity_curve1_output})
-	df1.to_csv('equity16_output'+file_name_suffix, sep=',', index=False)
+	df1.to_csv('_equity16_output'+file_name_suffix, sep=',', index=False)
 	
 	print()
 	print('%f seconds to run script' % (time.time() - start_time))

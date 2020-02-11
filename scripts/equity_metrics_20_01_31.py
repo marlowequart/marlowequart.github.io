@@ -44,6 +44,7 @@ from scipy.stats import skew,kurtosis
 
 
 def main(SIM_NUM:'input simulation number, str',
+	SIM_DATES:'input simulation number, str',
 	START_DATE:'start date, YYYY-mm-dd, str',
 	END_DATE:'end date, YYYY-mm-dd, str',
 	PRINT:'set to true to print out results'=True,
@@ -51,9 +52,9 @@ def main(SIM_NUM:'input simulation number, str',
 	):
 	
 
-	input_file='equity'+SIM_NUM+'_output_1959to2019_02_05_20.csv'
+	input_file='equity'+SIM_NUM+'_output_'+SIM_DATES+'.csv'
 	risk_free_input='data/risk_free_1yr_2yr_clean.csv'
-	trades_input='sim'+SIM_NUM+'_out_1959to2019_02_05_20.csv'
+	trades_input='sim'+SIM_NUM+'_out_'+SIM_DATES+'.csv'
 
 	data_df = pd.read_csv(input_file,header=0)
 	date=data_df['Date'].tolist()
@@ -467,36 +468,40 @@ if __name__ == "__main__":
 	# print(datetime.datetime.now())
 	
 	#use date range
+	
+	#simulation dates
+	sim_input_dates='1990to2000_02_07_20'
 
-	start_date='1959-07-15'
-	# start_date='1988-06-10'
+	# ~ start_date='1959-07-15'
+	start_date='1990-01-02'
 
 	# end_date='1969-11-10'
-	end_date='1989-12-29'
-	# end_date='2019-03-11'
+	# ~ end_date='1989-12-29'
+	end_date='2000-03-10'
 	# end_date='2019-06-05'
 	
 	# Use for loops
-	# for i in range(1,17,1):
+	for i in range(1,17,1):
 		
-		# sim_num=str(i)
+		sim_num=str(i)
 		
-		# results=main(SIM_NUM=sim_num,
-			# START_DATE=start_date,
-			# END_DATE=end_date,
-			# PRINT=False,
-			# PLOT=False)
+		results=main(SIM_NUM=sim_num,
+			SIM_DATES=sim_input_dates,
+			START_DATE=start_date,
+			END_DATE=end_date,
+			PRINT=False,
+			PLOT=False)
 			
-		# print('Outputs sim'+sim_num+': ',results)
+		print('Outputs sim'+sim_num+': ',results)
 	
 	
 	# Use for single
-	sim_num='16'
+	# ~ sim_num='16'
 	
-	results=main(SIM_NUM=sim_num,
-		START_DATE=start_date,
-		END_DATE=end_date,
-		PRINT=True,
-		PLOT=False)
+	# ~ results=main(SIM_NUM=sim_num,
+		# ~ START_DATE=start_date,
+		# ~ END_DATE=end_date,
+		# ~ PRINT=True,
+		# ~ PLOT=False)
 		
-	print('Outputs sim'+sim_num+': ',results)
+	# ~ print('Outputs sim'+sim_num+': ',results)

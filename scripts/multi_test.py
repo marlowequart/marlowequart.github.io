@@ -9,14 +9,14 @@ print('Start time to run script:')
 print(datetime.datetime.now())
 
 
-file_name_suffix='_1959to2019_02_05_20.csv'
+file_name_suffix='_1990to2000_02_07_20.csv'
 # start_date='2008-06-10'
-start_date='1988-06-10'
+start_date='1990-01-02'
 # start_date='1959-07-15'
 
 # Set end date to 'None' to run to last valid date
-# end_date='1969-08-18'
-end_date='None'
+end_date='1999-12-31'
+# ~ end_date='None'
 # end_date='1988-06-10'
 start_equity=100000
 
@@ -402,9 +402,9 @@ equity_curve16=dhedge.main(SIM_START_DATE=start_date,
 	OUTPUT_CSV='sim16_out'+file_name_suffix,
 	STARTING_EQUITY=start_equity,
 	OPT_FRACTION_K=0.03,OPT_FRACTION_M=0,
-	STRIKE_AT=0.8,
+	STRIKE_AT=0.6,
 	# Fraction at which to exit the option trade
-	EXIT_THRESHOLD=50,
+	EXIT_THRESHOLD=10,
 	SIM_NAME='Simulation 16',
 	DEBUG=False,
 	OPT_HOLDING_PARAMS={
