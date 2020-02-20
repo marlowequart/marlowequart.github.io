@@ -1,0 +1,66 @@
+Equities:
+*CA-CAC40
+*AX-DAX
+*LX-FTSE100
+*HS-Hang Seng
+*ND-Nasdaq 100
+*NK-Nikkei 225
+*ES-S&P 500
+*XU-EuroStoxx 50
+*RL-Russell 2000
+
+
+Interest Rates:
+*DT-Bund
+*UZ-Schatz
+*GS-Long gilt
+*TU-US 2-yr
+*TY-US 10-yr
+*ED-Eurodollar
+*UB-EuroBobl
+*SS-Short Sterling
+
+
+Agricultural Commodities:
+*CT-Cotton
+*C-Corn
+*LB-Lumber
+*LC-Live Cattle
+*LH-Lean Hogs
+*O-Oats
+*NR-Rough Rice
+*S-Soybeans
+*SB-Sugar
+*W-Wheat
+
+
+
+Currencies:
+*AN-AUD/USD
+*BN-GBP/USD
+*FN-EUR/USD
+*JN-JPY/USD
+*SN-CHF/USD
+*CN-CAD/USD
+*MP-MXN/USD
+
+
+Non Agricultural Commodities:
+*BG-Gasoil
+*CL-Crude Oil
+*HO-Heating Oil
+*NG-Natural Gas
+*RB-Gasoline
+*GC-Gold
+*HG-Copper
+*PA-Palladium
+*PL-Platinum
+*SI-Silver
+
+
+
+
+
+Full listing:
+
+AD	AUSTRALIAN $$, day sessionAN	AUSTRALIAN $$, compositeAP	AUSTRALIAN PRICE INDEXBC	BRENT CRUDE OIL, compositeBG	BRENT GASOIL, comp.BN	BRITISH POUND, compositeBO	SOYBEAN OILC_	CORNCA	CAC40 INDEXCB	CANADIAN 10YR BONDCC	COCOACL	CRUDE OILCN	CANADIAN $$, compositeCR	CRB FUTURESCT	COTTON #2DA	MILK III, Comp.DJ	DOW JONES, day sessionDT	EURO BOND (BUND)DX	US DOLLAR INDEXED	EURODOLLARSEN	NASDAQ, MINIER	RUSSELL 2000, MINIES	S & P 500, MINIFA	T-NOTE, 5yr day sessionFB	T-NOTE, 5yr compositeFC	FEEDER CATTLEFF	FED FUNDSFN	EURO, compositeFX	EURO, day sessionGC	GOLD (COMMEX)GI	GOLDMAN SAKS C. I.GS	GILT, LONG  BONDHG	COPPERHO	HEATING OIL #2HS	HANG SENGHU	UNLEADED GASJN	JAPANESE YEN, compositeJO	ORANGE JUICEJY	JAPANESE YEN, day sessionKC	COFFEEKW	WHEAT, KCLB	LUMBERLC	LIVE CATTLELH	LIVE HOGSLX	FTSE 100 INDEXEC	EURODOLLAR, compositeMD	S&P 400 (Mini electronic)MP	MEXICAN PESOMW	WHEAT, MINNND	NASDAQ 100NG	NATURAL GASNK	NIKKEI INDEXNR	ROUGH RICEO_	OATSPA	PALLADIUMPL	PLATINUMRB	RBOB GASOLINERL	RUSSELL 2000S_	SOYBEANSSB	SUGAR #11SC	S & P 500, compositeSF	SWISS FRANC, day sessionSI	SILVER  (COMMEX)SM	SOYBEAN MEALSN	SWISS FRANC, compositeSP	S & P 500, day sessionSS	STERLING, SHORTTA	T-NOTE, 10yr day sessionTD	T-NOTES, 2yr day sessionTU	T-NOTES, 2yr compositeTY	T-NOTE, 10yr compositeUA	T-BONDS, day sessionUB	EURO BOBLUS	T-BONDS, compositeUZ	EURO SCHATZW_	WHEAT, CBOTAX	GERMAN DAX INDEXXU	DOW JONES EUROSTOXX50YM	Mini Dow Jones ($5.00)XX	DOW JONES STOXX 50ZD	DOW JONES, compositeZG	GOLD, ElectronicZI	SILVER, ElectronicZC	CORN, ElectronicZS	SOYBEANS, ElectronicZL	SOYBEAN OIL, ElectronicZO	OATS, ElectronicZM	SOYBEAN MEAL, ElectronicZR	ROUGH RICE, ElectronicZW	WHEAT, ElectronicZU	CRUDE OIL, ElectronicZB	RBOB, ElectronicZH	HEATING OIL, electronicZN	NATURAL GAS, electronicZK	COPPER, electronicZA	PALLADIUM, electronicZP	PLATINUM, electronicZF	FEEDER CATTLE, ElectronicZT	LIVE CATTLE, ElectronicZZ	LEAN HOGS, Electronic
