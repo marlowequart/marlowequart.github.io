@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 import math
 import statistics
+import datetime
+import time
 
 pd.options.mode.chained_assignment = None
 
@@ -132,8 +134,9 @@ def main(df):
 # when this program is imported as a module the following will be ignored:
 if __name__ == "__main__":
 	
-	# print('Start time to run script:')
-	# print(datetime.datetime.now())
+	print('Start time to run script:')
+	print(datetime.datetime.now())
+	print()
 	
 	
 	# Load the desired commodity list
@@ -191,14 +194,20 @@ if __name__ == "__main__":
 		# print(sym)
 		
 	# output to .csv
-	f=open('all_volatility.csv','w')
+	f=open('all_volatility.csv','w',newline='\n')
 	csv_writer=csv.writer(f)
 	csv_writer.writerow(['symbol','mean annualised pct atr', 'mean annualised pct std dev'])
 	for item in data:
 		sym=item[0]
 		atr=item[1]
 		stddev=item[2]
-		csv_writer.writerow([sym,atr,stddev])
+		csv_writer.writerow([sym,round(atr,2),round(stddev,2)])
 	
 	f.close
-		
+	
+	
+	
+	print()
+	print('%f seconds to run script' % (time.time() - start_time))
+	print(datetime.datetime.now())
+	print()
