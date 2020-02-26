@@ -1,3 +1,30 @@
+'''
+The purpose of this script is to cycle through a list of .csv files and calculate the historical volatility
+
+
+Input: list of .csv files contained in separate .csv file
+input desired ranges to calculate over in lines 122 & 123
+
+Output: Volatility over given ranges
+
+
+
+
+Notes:
+python version: 3.5.5
+
+pandas version: 0.23.4
+matplotlib version: 2.2.2
+numpy version: 1.11.3
+scipy version: 1.1.0
+datetime, # built-in, Python 3.5.5
+csv, # built-in, Python 3.5.5
+math, # built-in, Python 3.5.5
+
+
+'''
+
+
 import csv
 from matplotlib import pyplot as plt
 import pandas as pd
