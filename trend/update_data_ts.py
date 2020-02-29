@@ -91,6 +91,7 @@ def update_sing_symbol(symbol,date):
 	download_data(symbol,date)
 
 def main():
+	start_time = time.time()
 	# currently starting with tradestation app open, chart view open and window maximized, timeframe set to daily
 	# and the data window is open
 	# move from command prompt to tradestation app (must be the next window opened in alt tab)
@@ -116,14 +117,19 @@ def main():
 	'''
 	
 	# fourth, download data
+	# Tradestation has 2 years of data down to 1 minute increments
 	# 2/29/20: Create a list of symbols using the current roll dates
-	indexes=['ESZ19','NKZ19']
-	currencies=['M6EZ19','M6AZ19','M6BZ19','MCDZ19','MSFZ19']
-	rates=['EDZ19']
-	# indexes=['ESH20','NKH20']
-	# currencies=['M6EH20','M6AH20','M6BH20','MCDH20','MSFH20']
+	indexes=['ESH19','NKH19','NQH19','RTYH19','BTCH19','VXH19']
+	currencies=['ECH19','ADH19','BPH19','CDH19','SFH19','JYH19','MP1H19','NE1H19','DXH19']
+	rates=['EDH19']
+	non_ags=['YIG19','LBF19']
+	ags=['DAF19','CBF19','LHG19','LCG19','FCF19','KCH19','CTH19','OJF19','CCH19','SBH19']
+	non_futures=['$VIX.X']
+	# indexes=['ESH20','NKH20','NQH20','RTYH20','BTCH20','VXH20']
+	# currencies=['M6EH20','M6AH20','M6BH20','MCDH20','MSFH20','MJYH20']
 	# rates=['EDH20']
-	symbols = indexes+currencies+rates
+	# non_ags=['YIH20']
+	symbols = indexes+currencies+rates+non_ags+ags
 	
 	# get todays date for saving files in format _YYYY_MM_DD
 	# 2/29/20: Generate a new date for each day that data is downloaded
@@ -166,6 +172,9 @@ def main():
 	pg.press('enter')
 	pg.write('Data is done downloading and has been uploaded to gitsite!',interval=0.05)
 	
+	print()
+	print('%f seconds to run script' % (time.time() - start_time))
+	print()
 	
 
 main()
