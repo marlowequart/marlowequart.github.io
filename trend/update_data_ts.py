@@ -119,11 +119,11 @@ def main():
 	# fourth, download data
 	# Tradestation has 2 years of data down to 1 minute increments
 	# 2/29/20: Create a list of symbols using the current roll dates
-	indexes=['ESM19','NKM19','NQM19','RTYM19','BTCM19','VXM19']
-	currencies=['ECM19','ADM19','BPM19','CDM19','SFM19','JYM19','MP1M19','NE1M19','DXM19']
-	rates=['EDM19']
-	non_ags=['YIJ19','LBH19']
-	ags=['DAG19','CBG19','LHJ19','LCJ19','FCH19','KCK19','CTK19','OJH19','CCK19','SBK19']
+	indexes=['ESU19','NKU19','NQU19','RTYU19','BTCU19','VXU19']
+	currencies=['ECU19','ADU19','BPU19','CDU19','SFU19','JYU19','MP1U19','NE1U19','DXU19']
+	rates=['EDU19']
+	non_ags=['YIM19','LBK19']
+	ags=['DAH19','CBH19','LHM19','LCM19','FCK19','KCN19','CTN19','OJK19','CCN19','SBN19']
 	non_futures=['$VIX.X']
 	# indexes=['ESH20','NKH20','NQH20','RTYH20','BTCH20','VXH20']
 	# currencies=['M6EH20','M6AH20','M6BH20','MCDH20','MSFH20','MJYH20']
