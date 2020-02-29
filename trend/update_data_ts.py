@@ -114,7 +114,7 @@ def main():
 	# Type ctrl+shift+D to bring up data window, only want to do this on the first symbol
 	pg.hotkey('ctrl','shift','d')
 	'''
-	'''
+	
 	# fourth, download data
 	# 2/29/20: Create a list of symbols using the current roll dates
 	indexes=['ESZ19','NKZ19']
@@ -134,8 +134,7 @@ def main():
 	for sym in symbols:
 		print('now updating ',sym)
 		update_sing_symbol(sym,date)
-	'''
-	date='2020_02_28'
+	
 	# After we are done downloading data, move the files to the transfer folder
 	# open a new command prompt
 	pg.click(135,750,duration = 1)
@@ -165,7 +164,7 @@ def main():
 	
 	# tell us that we are done downloading and transfering data
 	pg.press('enter')
-	pg.write('Data is done downloading and has been uploaded to gitsite!',interval=0.25)
+	pg.write('Data is done downloading and has been uploaded to gitsite!',interval=0.05)
 	
 	
 
