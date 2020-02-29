@@ -150,18 +150,18 @@ def main():
 	
 	# upload to git site
 	# navigate to transfer folder
-	pg.write('cd C:\\python\\transfer',interval=0.25)
+	pg.write('cd C:\\python\\transfer',interval=0.05)
 	pg.press('enter')
 	time.sleep(0.5)
-	pg.write('git add *',interval=0.25)
-	pg.press('enter')
-	time.sleep(2)
-	pg.write('git commit -m \"adding downloaded data from date '+date+' now\"',interval=0.25)
-	pg.press('enter')
-	time.sleep(2)
-	pg.write('git push origin master',interval=0.25)
+	pg.write('git add *',interval=0.05)
 	pg.press('enter')
 	time.sleep(5)
+	pg.write('git commit -m \"adding downloaded data from date '+date+' now\"',interval=0.05)
+	pg.press('enter')
+	time.sleep(2)
+	pg.write('git push origin master',interval=0.05)
+	pg.press('enter')
+	time.sleep(10)
 	
 	# tell us that we are done downloading and transfering data
 	pg.press('enter')
