@@ -37,7 +37,10 @@ import time
 import pyautogui as pg
 
 
-# Using resolution 1920x1200
+# Using resolution 1366x768 (windows 10 laptop)
+# pyautogui.size()
+# current location pyautogui.position()
+
 	
 
 def input_data(location,data):
@@ -77,10 +80,10 @@ def download_data():
 
 def main():
 	# wait 5 seconds before beginning
-	time.sleep(5)
+	time.sleep(10)
 	
 	# go to browser bar and input website
-	position=[580,50]
+	position=[490,50]
 	website='https://www.google.com/search?q=%24SPX&rlz=1C1GCEA_enUS867US867&oq=%24SPX&aqs=chrome..69i57j0l3j69i59j0.846j0j4&sourceid=chrome&ie=UTF-8'
 	input_data(position,website)
 	
