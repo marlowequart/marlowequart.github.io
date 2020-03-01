@@ -119,18 +119,20 @@ def main():
 	# fourth, download data
 	# Tradestation has 2 years of data down to 1 minute increments
 	# 2/29/20: Create a list of symbols using the current roll dates
-	indexes=['ESU19','NKU19','NQU19','RTYU19','BTCU19','VXU19']
-	currencies=['ECU19','ADU19','BPU19','CDU19','SFU19','JYU19','MP1U19','NE1U19','DXU19']
-	rates=['EDU19']
-	non_ags=['YIM19','LBK19']
-	ags=['DAH19','CBH19','LHM19','LCM19','FCK19','KCN19','CTN19','OJK19','CCN19','SBN19']
+	indexes=['RTYZ19','BTCZ19','VXZ19']
+	currencies=['ECZ19','ADZ19','BPZ19','CDZ19','SFZ19','JYZ19','MP1Z19','NE1Z19','DXZ19','CNHH19','CNHU19','CNHM19','CNHZ19']
+	rates=['EDZ19']
+	non_ags=['YIQ19','LBN19','YIV19','YIZ19','LBU19','LBX19','YIG20','YIJ20','LBF20','LBH20']
+	ags=['DAJ19','CBJ19','LHN19','LCQ19','FCQ19','KCU19','CTZ19','OJN19','CCU19','SBV19']
+	finish=['KCZ19','KCH20','CTH20','SBH20','CCZ19','CCH20']
 	non_futures=['$VIX.X']
-	# indexes=['ESH20','NKH20','NQH20','RTYH20','BTCH20','VXH20']
-	# currencies=['M6EH20','M6AH20','M6BH20','MCDH20','MSFH20','MJYH20']
-	# rates=['EDH20']
-	# non_ags=['YIH20']
-	symbols = indexes+currencies+rates+non_ags+ags
-	
+	# indexes=['ESU19','NKU19','NQU19','RTYU19','BTCU19','VXU19']
+	# currencies=['ECU19','ADU19','BPU19','CDU19','SFU19','JYU19','MP1U19','NE1U19','DXU19',CNHU19']
+	# rates=['EDU19']
+	# non_ags=['YIM19','LBK19']
+	# ags=['DAH19','CBH19','LHM19','LCM19','FCK19','KCN19','CTN19','OJK19','CCN19','SBN19']
+	# symbols = indexes+currencies+rates+non_ags+ags
+	symbols = indexes+currencies+non_ags+ags+finish
 	# get todays date for saving files in format _YYYY_MM_DD
 	# 2/29/20: Generate a new date for each day that data is downloaded
 	date='2020_02_28'
