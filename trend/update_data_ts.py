@@ -118,18 +118,53 @@ def main():
 	
 	# fourth, download data
 	# Tradestation has 2 years of data down to 1 minute increments
+	
+	#####
+	# Use this to download historical data
+	#####
+	f_mo=['BTC','DA','CB','LB','OJ','FC']
+	g_mo=['BTC','DA','CB','YI','LH','LC']
+	h_mo=['ES','NK','NQ','RTY','BTC','VX','EC','AD','BP','CD','SF','JY','MP1','NE1','DX','CNH','ED','DA','CB','LB','CC','KC','CT','SB','OJ','FC']
+	j_mo=['BTC','DA','CB','YI','LH','LC']
+	k_mo=['BTC','DA','CB','LB','CC','KC','CT','SB','OJ','FC']
+	m_mo=['ES','NK','NQ','RTY','BTC','VX','EC','AD','BP','CD','SF','JY','MP1','NE1','DX','CNH','ED','DA','CB','YI','LH','LC']
+	n_mo=['BTC','DA','CB','LB','LH','CC','KC','CT','SB','OJ','FC']
+	q_mo=['BTC','DA','CB','YI','LH','LC']
+	u_mo=['ES','NK','NQ','RTY','BTC','VX','EC','AD','BP','CD','SF','JY','MP1','NE1','DX','CNH','ED','DA','CB','LB','CC','KC','OJ','FC']
+	v_mo=['BTC','DA','CB','YI','LH','LC','SB','FC']
+	x_mo=['BTC','DA','CB','LB','OJ','FC']
+	z_mo=['ES','NK','NQ','RTY','BTC','VX','EC','AD','BP','CD','SF','JY','MP1','NE1','DX','CNH','ED','DA','CB','YI','LH','LC','CC','KC','CT']
+	
+	
+	yr='18'
+	
+	f_str=[str(item+'F'+yr) for item in f_mo]
+	g_str=[str(item+'G'+yr) for item in g_mo]
+	h_str=[str(item+'H'+yr) for item in h_mo]
+	j_str=[str(item+'J'+yr) for item in j_mo]
+	k_str=[str(item+'K'+yr) for item in k_mo]
+	m_str=[str(item+'M'+yr) for item in m_mo]
+	n_str=[str(item+'N'+yr) for item in n_mo]
+	q_str=[str(item+'Q'+yr) for item in q_mo]
+	u_str=[str(item+'U'+yr) for item in u_mo]
+	v_str=[str(item+'V'+yr) for item in v_mo]
+	x_str=[str(item+'X'+yr) for item in x_mo]
+	z_str=[str(item+'Z'+yr) for item in z_mo]
+	
+	symbols=j_str+k_str+m_str+n_str+q_str+u_str+v_str+x_str+z_str
+	
 	# 2/29/20: Create a list of symbols using the current roll dates
-	non_futures=['$VIX.X']
-	indexes=['ESU19','NKU19','NQU19','RTYU19','BTCU19','VXU19']
-	currencies=['ECU19','ADU19','BPU19','CDU19','SFU19','JYU19','MP1U19','NE1U19','DXU19',CNHU19']
-	rates=['EDU19']
-	non_ags=['YIM19','LBK19']
-	ags=['DAH19','CBH19','LHM19','LCM19','FCK19','KCN19','CTN19','OJK19','CCN19','SBN19']
-	symbols = indexes+currencies+rates+non_ags+ags
+	# non_futures=['$VIX.X']
+	# indexes=['ESU19','NKU19','NQU19','RTYU19','BTCU19','VXU19']
+	# currencies=['ECU19','ADU19','BPU19','CDU19','SFU19','JYU19','MP1U19','NE1U19','DXU19','CNHU19']
+	# rates=['EDU19']
+	# non_ags=['YIM19','LBK19']
+	# ags=['DAH19','CBH19','LHM19','LCM19','FCK19','KCN19','CTN19','OJK19','CCN19','SBN19']
+	# symbols = indexes+currencies+rates+non_ags+ags
 	
 	# get todays date for saving files in format _YYYY_MM_DD
 	# 2/29/20: Generate a new date for each day that data is downloaded
-	date='2020_02_28'
+	date='2020_02_29'
 	
 	# update_sing_symbol(symbols[0],date)
 	
