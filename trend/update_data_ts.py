@@ -122,6 +122,7 @@ def main():
 	#####
 	# Use this to download historical data
 	#####
+	'''
 	f_mo=['BTC','DA','CB','LB','OJ','FC']
 	g_mo=['BTC','DA','CB','YI','LH','LC']
 	h_mo=['ES','NK','NQ','RTY','BTC','VX','EC','AD','BP','CD','SF','JY','MP1','NE1','DX','CNH','ED','DA','CB','LB','CC','KC','CT','SB','OJ','FC']
@@ -152,19 +153,19 @@ def main():
 	z_str=[str(item+'Z'+yr) for item in z_mo]
 	
 	symbols=j_str+k_str+m_str+n_str+q_str+u_str+v_str+x_str+z_str
-	
+	'''
 	# 2/29/20: Create a list of symbols using the current roll dates
-	# non_futures=['$VIX.X']
-	# indexes=['ESU19','NKU19','NQU19','RTYU19','BTCU19','VXU19']
-	# currencies=['ECU19','ADU19','BPU19','CDU19','SFU19','JYU19','MP1U19','NE1U19','DXU19','CNHU19']
-	# rates=['EDU19']
-	# non_ags=['YIM19','LBK19']
-	# ags=['DAH19','CBH19','LHM19','LCM19','FCK19','KCN19','CTN19','OJK19','CCN19','SBN19']
-	# symbols = indexes+currencies+rates+non_ags+ags
+	non_futures=['$VIX.X']
+	indexes=['ESU19','NKU19','NQU19','RTYU19','BTCU19','VXU19']
+	currencies=['ECU19','ADU19','BPU19','CDU19','SFU19','JYU19','MP1U19','NE1U19','DXU19','CNHU19']
+	rates=['EDU19']
+	non_ags=['YIM19','LBK19']
+	ags=['DAH19','CBH19','LHM19','LCM19','FCK19','KCN19','CTN19','OJK19','CCN19','SBN19']
+	symbols = indexes+currencies+rates+non_ags+ags
 	
 	# get todays date for saving files in format _YYYY_MM_DD
 	# 2/29/20: Generate a new date for each day that data is downloaded
-	date='2020_02_29'
+	date='2020_03_04'
 	
 	# update_sing_symbol(symbols[0],date)
 	
