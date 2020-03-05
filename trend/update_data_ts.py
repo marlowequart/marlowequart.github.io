@@ -184,7 +184,7 @@ def main():
 	# downloaded data location: C:\Users\dell\Documents\TradeStation 10.0\Data
 	# select all files and move files to folder: C:\python\transfer\trend\ts_data
 	time.sleep(2)
-	pg.write("""move C:\\Users\\dell\\Documents\\"TradeStation 10.0"\\Data\\*.* C:\\python\\transfer\\trend\\ts_data""",interval=0.05)
+	pg.write("""move C:\\Users\\dell\\Documents\\*.* C:\\python\\transfer\\trend\\ts_data""",interval=0.05)
 	pg.press('enter')
 	
 	# upload to git site
