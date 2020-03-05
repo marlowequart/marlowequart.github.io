@@ -41,7 +41,8 @@ import pyautogui as pg
 # pyautogui.size()
 # current location pyautogui.position()
 
-	
+wait_time=10
+
 
 def input_data(location,data):
 	# go to desired location on screen and input data and press enter
@@ -82,12 +83,13 @@ def download_data(symbol,date):
 	# use this function to place the data window in the proper location
 
 def update_sing_symbol(symbol,date):
+	global wait_time
 	# Run this function to update for single symbol
 	time.sleep(5)
 	# go to symbol location input
 	position=[25,87]
 	input_data(position,symbol)
-	time.sleep(5)
+	time.sleep(wait_time)
 	download_data(symbol,date)
 
 def main():
@@ -156,11 +158,11 @@ def main():
 	'''
 	# 2/29/20: Create a list of symbols using the current roll dates
 	non_futures=['$VIX.X']
-	indexes=['ESU19','NKU19','NQU19','RTYU19','BTCU19','VXU19']
-	currencies=['ECU19','ADU19','BPU19','CDU19','SFU19','JYU19','MP1U19','NE1U19','DXU19','CNHU19']
-	rates=['EDU19']
-	non_ags=['YIM19','LBK19']
-	ags=['DAH19','CBH19','LHM19','LCM19','FCK19','KCN19','CTN19','OJK19','CCN19','SBN19']
+	indexes=['ESH20','NKH20','NQH20','RTYH20','BTCH20','VXH20']
+	currencies=['ECH20','ADH20','BPH20','CDH20','SFH20','JYH20','MP1H20','NE1H20','DXH20','CNHH20']
+	rates=['EDH20']
+	non_ags=['YIJ20','LBH20']
+	ags=['DAH20','CBH20','LHJ20','LCJ20','FCH20','KCH20','CTH20','OJH20','CCH20','SBH20']
 	symbols = indexes+currencies+rates+non_ags+ags
 	
 	# get todays date for saving files in format _YYYY_MM_DD
