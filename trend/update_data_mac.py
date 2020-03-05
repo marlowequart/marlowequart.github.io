@@ -39,8 +39,8 @@ import os
 import shutil
 
 # Global variable
-# using='mac'
-using='pc'
+using='mac'
+# ~ using='pc'
 
 def get_filename_and_date(filename):
 	#input a file name string date in format SYM_YYYY_MM_DD.csv
@@ -105,7 +105,7 @@ def create_dict(list_of_files):
 
 def main():
 	# wait 5 seconds before beginning
-	# ~ time.sleep(1)
+	time.sleep(1)
 	
 	global using
 	
@@ -126,13 +126,19 @@ def main():
 	
 	
 	# Open a new terminal window
-	# ~ pg.hotkey('command','n')
-	# ~ time.sleep(1)
+	pg.hotkey('command','n')
+	time.sleep(1)
+	
+	# Navigate to the git pull dir
+	pg.write('cd /Users/Marlowe/gitsite/transfer',interval=0.05)
+	pg.press('enter')
+	time.sleep(2)
 	
 	# update folders from github
-	# ~ pg.write('git pull origin master',interval=0.05)
-	# ~ pg.press('enter')
-	# ~ time.sleep(10)
+	pg.write('git pull origin master',interval=0.05)
+	pg.press('enter')
+	time.sleep(10)
+	
 	
 	# ~ # Navigate to the download dir
 	# ~ pg.write('cd '+download_data_dir,interval=0.05)
@@ -186,6 +192,7 @@ def main():
 			shutil.move(download_data_dir+new_files_dict[key][1],current_working_dir+new_files_dict[key][1])
 	
 	
+	pg.write('Done updating data!',interval=0.05)
 	return
 	
 	

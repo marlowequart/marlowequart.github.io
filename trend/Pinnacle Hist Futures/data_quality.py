@@ -142,11 +142,13 @@ def main():
 	# Change the file name here
 	#####
 	#windows path:
-	path = 'C:\\Python\\Data\\ES_data_test\\'
+	# ~ path = 'C:\\Python\\Data\\ES_data_test\\'
 	# file_name='all_data_v1.csv'
 	file_name='ESH08_12_01_to_03_30.csv'
 	
 	#mac path:
+	# ~ current_working_dir='/Users/Marlowe/gitsite/transfer/trend/data/working_dir/'
+	# ~ file_name='ESH08_12_01_to_03_30.csv'
 	
 	
 	df=import_data(path+file_name)
