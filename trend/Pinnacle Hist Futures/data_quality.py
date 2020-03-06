@@ -46,10 +46,12 @@ from matplotlib import colors
 
 
 #open csv file, return the data in a pandas dataframe
-def import_data(file_name):
+def import_data(file_name,fields):
 	#open the file using pandas, use the first row as the header
-	data = pd.read_csv(file_name,header=0)
+	# data = pd.read_csv(file_name,header=0)
 	
+	#open the file using pandas, make a new row fields as the header
+	data = pd.read_csv(file_name,header=0,names=fields)
 	
 	#want to check data for duplicate dates and remove any duplicates
 	
@@ -121,16 +123,21 @@ def countnums(dataframe,cols):
 				numcount[item]=numcount[item]+count
 	print(numcount)
 	#list the numbers from 9 to 0
+	tot_count=0
+	for key in numcount:
+		tot_count=tot_count+numcount[key]
+	pcts=[]
 	numlist=[]
 	nums=[9,8,7,6,5,4,3,2,1,0]
 	for num in nums:
 		numlist.append(numcount[str(num)])
-	
+		pcts.append([num,round(100*numcount[str(num)]/tot_count,2)])
+	print('Percents of each numbers: ',pcts)
 	fig = plt.figure()
 	ax1 = fig.add_subplot(111)
 	ax1.plot(nums,numlist)
 	ax1.grid('on')
-	plt.show()
+	# plt.show()
 	
 	
 def main():
@@ -142,17 +149,34 @@ def main():
 	# Change the file name here
 	#####
 	#windows path:
-	# ~ path = 'C:\\Python\\Data\\ES_data_test\\'
+	path = """C:\\Python\\transfer\\trend\\Pinnacle Hist Futures\\CLCDATA_ratio_adj\\"""
+	
+	pinnacle_columns=['Date','Open','High','Low','Close','Volume','OI']
+	
 	# file_name='all_data_v1.csv'
-	file_name='ESH08_12_01_to_03_30.csv'
+	'''
+	# file_name='ZI_RAD.csv'	# Silver
+	# file_name='ZG_RAD.csv'	# Gold
+	# file_name='KC_RAD.csv'	# Coffee
+	# file_name='MP_RAD.csv'	# MXN
+	# file_name='ZS_RAD.csv'	# Soybeans
+	# file_name='TY_RAD.csv'	# Ten Year
+	# file_name='SB_RAD.csv'	# Sugar
+	# file_name='ZZ_RAD.csv'	# Lean Hogs
+	# file_name='ZW_RAD.csv'	# Wheat
+	file_name='ES_RAD.csv'	# S&P
+	
+	
 	
 	#mac path:
 	# ~ current_working_dir='/Users/Marlowe/gitsite/transfer/trend/data/working_dir/'
 	# ~ file_name='ESH08_12_01_to_03_30.csv'
 	
 	
-	df=import_data(path+file_name)
-
+	df=import_data(path+file_name,pinnacle_columns)
+	
+	# print(df.head(10))
+	# print(df.tail(10))
 	#print column headings
 	# print (*df.columns, sep=', ')
 	
@@ -161,10 +185,11 @@ def main():
 	#####
 	data_list=df['Close'].tolist()
 	# print(data_list[:20])
+	# print(data_list[-20:])
 	# plot_hist(data_list)
 	# hist_basic(data_list)
 	# check_duplicates(data_list)
-	
+	# return
 	#####
 	# Create list of % change by row and plot histogram
 	#####
@@ -172,7 +197,7 @@ def main():
 	returns=[]
 	for i in range(1,len(data_list)):
 		# print(str(set[i][0])+' '+str(set[i][1]))
-		returns.append(data_list[i-1]-data_list[i])
+		returns.append(100*(data_list[i]-data_list[i-1])/data_list[i-1])
 	
 	# plot_hist(returns)
 	# check_duplicates(returns)
@@ -184,16 +209,38 @@ def main():
 	# check_blank=np.where(df.applymap(lambda x: x == ''))
 	# print(check_blank)
 	
-	
+	# return
 	#####
 	# count all individual numbers in file
 	#####
 	#columns to check
 	# cols=['Date','Time','Open','High','Low','Close']
-	cols=['Open','High','Low','Close']
-	countnums(df,cols)
+	# cols=['Open','High','Low','Close']
+	# countnums(df,cols)
 	# test = str(df['Open'][13])
-
-
+	
+	'''
+	#####
+	# Cycle through files and check numbers
+	#####
+	file_name1='ZI_RAD.csv'	# Silver
+	file_name2='ZG_RAD.csv'	# Gold
+	file_name3='KC_RAD.csv'	# Coffee
+	file_name4='MP_RAD.csv'	# MXN
+	file_name5='ZS_RAD.csv'	# Soybeans
+	file_name6='TY_RAD.csv'	# Ten Year
+	file_name7='SB_RAD.csv'	# Sugar
+	file_name8='ZZ_RAD.csv'	# Lean Hogs
+	file_name9='ZW_RAD.csv'	# Wheat
+	file_name10='ES_RAD.csv'	# S&P
+	
+	file_name=[file_name1,file_name2,file_name3,file_name4,file_name5,file_name6,file_name7,file_name8,file_name9,file_name10]
+	
+	for entry in file_name:
+		print()
+		print('testing ',entry)
+		df=import_data(path+entry,pinnacle_columns)
+		cols=['Open','High','Low','Close']
+		countnums(df,cols)
 	
 main()
