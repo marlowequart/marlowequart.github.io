@@ -107,7 +107,7 @@ def check_duplicates(list):
 	max_dup_pct=round(store*100,3)
 	print()
 	print('Largest number of repeated values in dataset is '+str(max_dup))
-	print('This represents '+str(max_dup_pct)+'% of the total number of values')
+	print('This represents '+str(max_dup_pct)+'% of the total number of values, '+str(len(list)))
 	
 def countnums(dataframe,cols):
 	#count the number of each digit in the columns in a dataframe
@@ -136,7 +136,7 @@ def countnums(dataframe,cols):
 	fig = plt.figure()
 	ax1 = fig.add_subplot(111)
 	ax1.plot(nums,numlist)
-	ax1.grid('on')
+	ax1.grid(True)
 	# plt.show()
 	
 	
@@ -149,28 +149,33 @@ def main():
 	# Change the file name here
 	#####
 	#windows path:
-	path = """C:\\Python\\transfer\\trend\\Pinnacle Hist Futures\\CLCDATA_ratio_adj\\"""
+	# ~ path = """C:\\Python\\transfer\\trend\\Pinnacle Hist Futures\\CLCDATA_ratio_adj\\"""
+	
+	#mac path:
+	path='/Users/Marlowe/gitsite/transfer/trend/Pinnacle Hist Futures/CLCDATA_ratio_adj/'
+	# ~ file_name='ESH08_12_01_to_03_30.csv'
 	
 	pinnacle_columns=['Date','Open','High','Low','Close','Volume','OI']
 	
-	# file_name='all_data_v1.csv'
+	
 	'''
+	#####
+	# Check a single symbol
+	#####
+	
+	# file_name='all_data_v1.csv'
+	
 	# file_name='ZI_RAD.csv'	# Silver
 	# file_name='ZG_RAD.csv'	# Gold
 	# file_name='KC_RAD.csv'	# Coffee
-	# file_name='MP_RAD.csv'	# MXN
+	file_name='MP_RAD.csv'	# MXN
 	# file_name='ZS_RAD.csv'	# Soybeans
 	# file_name='TY_RAD.csv'	# Ten Year
 	# file_name='SB_RAD.csv'	# Sugar
 	# file_name='ZZ_RAD.csv'	# Lean Hogs
 	# file_name='ZW_RAD.csv'	# Wheat
-	file_name='ES_RAD.csv'	# S&P
+	# ~ file_name='ES_RAD.csv'	# S&P
 	
-	
-	
-	#mac path:
-	# ~ current_working_dir='/Users/Marlowe/gitsite/transfer/trend/data/working_dir/'
-	# ~ file_name='ESH08_12_01_to_03_30.csv'
 	
 	
 	df=import_data(path+file_name,pinnacle_columns)
@@ -199,15 +204,18 @@ def main():
 		# print(str(set[i][0])+' '+str(set[i][1]))
 		returns.append(100*(data_list[i]-data_list[i-1])/data_list[i-1])
 	
-	# plot_hist(returns)
-	# check_duplicates(returns)
+	# ~ plot_hist(returns)
+	# ~ check_duplicates(returns)
 	
 	#####
 	# Check for blank entries
 	#####
-	# check_nan=np.where(pd.isnull(df))
-	# check_blank=np.where(df.applymap(lambda x: x == ''))
-	# print(check_blank)
+	# ~ check_nan=np.where(pd.isnull(df))
+	# ~ check_blank=np.where(df.applymap(lambda x: x == ''))
+	# ~ print('Checking for blanks: ')
+	# ~ print(check_blank)
+	# ~ print('Checking for nan: ')
+	# ~ print(check_nan)
 	
 	# return
 	#####
@@ -215,14 +223,15 @@ def main():
 	#####
 	#columns to check
 	# cols=['Date','Time','Open','High','Low','Close']
-	# cols=['Open','High','Low','Close']
-	# countnums(df,cols)
+	cols=['Open','High','Low','Close']
+	# ~ countnums(df,cols)
 	# test = str(df['Open'][13])
 	
 	'''
 	#####
 	# Cycle through files and check numbers
 	#####
+	
 	file_name1='ZI_RAD.csv'	# Silver
 	file_name2='ZG_RAD.csv'	# Gold
 	file_name3='KC_RAD.csv'	# Coffee
@@ -240,7 +249,18 @@ def main():
 		print()
 		print('testing ',entry)
 		df=import_data(path+entry,pinnacle_columns)
-		cols=['Open','High','Low','Close']
-		countnums(df,cols)
+		# ~ cols=['Open','High','Low','Close']
+		# ~ countnums(df,cols)
+		
+		data_list=df['Open'].tolist()
+		check_duplicates(data_list)
+		
+		check_nan=np.where(pd.isnull(df))
+		check_blank=np.where(df.applymap(lambda x: x == ''))
+		print('Checking for blanks: ')
+		print(check_blank)
+		print('Checking for nan: ')
+		print(check_nan)
+	
 	
 main()
