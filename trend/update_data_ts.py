@@ -159,16 +159,16 @@ def main():
 	'''
 	# 2/29/20: Create a list of symbols using the current roll dates
 	non_futures=['$VIX.X']
-	indexes=['ESH20','NKH20','NQH20','RTYH20','BTCH20','VXH20']
-	currencies=['ECH20','ADH20','BPH20','CDH20','SFH20','JYH20','MP1H20','NE1H20','DXH20','CNHH20']
-	rates=['EDH20']
+	indexes=['ESM20','NKM20','NQM20','RTYM20','BTCM20','VXM20']
+	currencies=['ECM20','ADM20','BPM20','CDM20','SFM20','JYM20','MP1M20','NE1M20','DXM20','CNHM20']
+	rates=['EDM20']
 	non_ags=['YIJ20','LBH20']
 	ags=['DAH20','CBH20','LHJ20','LCJ20','FCH20','KCH20','CTH20','OJH20','CCH20','SBH20']
 	symbols = indexes+currencies+rates+non_ags+ags
 	
 	# get todays date for saving files in format _YYYY_MM_DD
 	# 2/29/20: Generate a new date for each day that data is downloaded
-	date='2020_03_04'
+	date='2020_03_28'
 	
 	# update_sing_symbol(symbols[0],date)
 	
