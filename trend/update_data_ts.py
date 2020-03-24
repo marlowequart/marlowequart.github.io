@@ -97,6 +97,7 @@ def main():
 	# currently starting with tradestation app open, chart view open and window maximized, timeframe set to daily
 	# and the data window is open
 	# move from command prompt to tradestation app (must be the next window opened in alt tab)
+	# change date in line 171
 	time.sleep(2)
 	pg.hotkey('alt','tab')
 	
@@ -184,7 +185,7 @@ def main():
 	# downloaded data location: C:\Users\dell\Documents\TradeStation 10.0\Data
 	# select all files and move files to folder: C:\python\transfer\trend\ts_data
 	time.sleep(2)
-	pg.write("""move C:\\Users\\dell\\Documents\\*.* C:\\python\\transfer\\trend\\ts_data""",interval=0.05)
+	pg.write("""move C:\\Users\\dell\\Documents\\*.* C:\\python\\transfer\\trend\\ts_data\\""",interval=0.05)
 	pg.press('enter')
 	
 	# upload to git site
