@@ -94,8 +94,9 @@ def update_sing_symbol(symbol,date):
 
 def main():
 	start_time = time.time()
+	# mqdataw
 	# currently starting with tradestation app open, chart view open and window maximized, timeframe set to daily
-	# and the data window is open
+	# and the data window is open (ctrl-shift-d)
 	# move from command prompt to tradestation app (must be the next window opened in alt tab)
 	# change date in line 171
 	time.sleep(2)
@@ -168,7 +169,7 @@ def main():
 	
 	# get todays date for saving files in format _YYYY_MM_DD
 	# 2/29/20: Generate a new date for each day that data is downloaded
-	date='2020_03_28'
+	date='2020_04_25'
 	
 	# update_sing_symbol(symbols[0],date)
 	
@@ -182,7 +183,7 @@ def main():
 	pg.write('cmd',interval=0.25)
 	time.sleep(0.5)
 	pg.press('enter')
-	# downloaded data location: C:\Users\dell\Documents\TradeStation 10.0\Data
+	# downloaded data location: C:\Users\dell\Documents\
 	# select all files and move files to folder: C:\python\transfer\trend\ts_data
 	time.sleep(2)
 	pg.write("""move C:\\Users\\dell\\Documents\\*.* C:\\python\\transfer\\trend\\ts_data\\""",interval=0.05)
