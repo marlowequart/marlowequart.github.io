@@ -1,0 +1,4 @@
+
+Run: python3 futuresGetContract_tester.py SYM DATE
+
+To generate the current contract for the given symbol and todays date
