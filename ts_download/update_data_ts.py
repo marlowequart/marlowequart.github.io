@@ -171,7 +171,7 @@ def main():
 	
 	# get todays date for saving files in format _YYYY_MM_DD
 	# 2/29/20: Generate a new date for each day that data is downloaded
-	date='2020_04_25'
+	date='2020_04_28'
 	
 	# update_sing_symbol(symbols[0],date)
 	
