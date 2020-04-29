@@ -3,7 +3,7 @@ ES,S&P E-MINI,"H,M,U,Z",Thur prior 2nd Fri of DM
 NQ,NASDAQ E-MINI,"H,M,U,Z",Thur prior 2nd Fri of DM
 RTY,RUSSELL 2000 E-MINI,"H,M,U,Z",Thur prior 2nd Fri of DM
 NK,NIKKEI 225,"H,M,U,Z",3rd of DM
-VX,VIX FUTURES,"H,M,U,Z",TBD
+VX,VIX FUTURES,"H,M,U,Z",8th of DM
 $VIX.X,VIX INDEX,"",No rollover
 BTC,BITCOIN FUTURES,"F,G,H,J,K,M,N,Q,U,V,X,Z",8th of DM
 EC,EUR/USD,"H,M,U,Z",8th of DM
@@ -15,6 +15,7 @@ JY,JPY/USD,"H,M,U,Z",8th of DM
 MP1,MXN/USD,"H,M,U,Z",8th of DM
 NE1,NZD/USD,"H,M,U,Z",8th of DM
 DX,DOLLAR INDEX,"H,M,U,Z",8th of DM
+CNH,CHINESE CURRENCY,"H,M,U,Z",8th of DM
 ED,EURODOLLAR,"H,M,U,Z",22th of MPDM
 YI,SILVER (ICE),"G,J,M,Q,V,Z",22th of MPDM
 LB,LUMBER,"F,H,K,N,U,X",1st of DM

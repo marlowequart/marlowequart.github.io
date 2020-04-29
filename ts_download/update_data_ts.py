@@ -163,9 +163,11 @@ def main():
 	indexes=['ESM20','NKM20','NQM20','RTYM20','BTCM20','VXM20']
 	currencies=['ECM20','ADM20','BPM20','CDM20','SFM20','JYM20','MP1M20','NE1M20','DXM20','CNHM20']
 	rates=['EDM20']
-	non_ags=['YIJ20','LBH20']
-	ags=['DAH20','CBH20','LHJ20','LCJ20','FCH20','KCH20','CTH20','OJH20','CCH20','SBH20']
-	symbols = indexes+currencies+rates+non_ags+ags
+	non_ags=['YIM20','LBK20']
+	ags=['DAM20','CBM20','LHM20','LCM20','FCK20','KCN20','CTN20','OJN20','CCN20','SBN20']
+	addtl=['CTK20','KCK20','SBK20','DAJ20','DAK20','CBJ20','CBK20','CCK20','OJK20']
+	# ~ symbols = indexes+currencies+rates+non_ags+ags
+	symbols = indexes+currencies+rates+non_ags+ags+addtl
 	
 	# get todays date for saving files in format _YYYY_MM_DD
 	# 2/29/20: Generate a new date for each day that data is downloaded
